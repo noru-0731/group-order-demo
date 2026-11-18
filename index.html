@@ -265,7 +265,7 @@ body:not(.loading) .st svg path{animation:draw 1.4s var(--out) .5s forwards}
 .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .ch h3{font-size:15px;font-weight:800}
 .lg{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--mute);font-weight:700}
-.lg i{width:90px;height:7px;border-radius:9px;background:linear-gradient(90deg,#ecf6ef,#127a44)}
+.lg i{width:90px;height:7px;border-radius:9px;background:linear-gradient(90deg,#e6f4ea 0 20%,#bfe5cc 20% 40%,#8fd1a9 40% 60%,#4fb07c 60% 80%,#1f8a52 80%)}
 .mgrid{display:grid;grid-template-columns:1fr 52px;gap:10px}
 .mapbox{position:relative;overflow:hidden;border-radius:12px;background:#f7f8f5}
 .mapwrap{position:relative;width:min(100%,540px);margin:0 auto;aspect-ratio:800/658;transform-origin:96% 50%;transition:transform .7s var(--out)}
@@ -335,6 +335,33 @@ body:not(.loading) .st svg path{animation:draw 1.4s var(--out) .5s forwards}
 .fl .tile{width:34px;height:34px;font-size:18px;border-radius:10px}
 .fl .it b{font-size:13px;font-weight:800;display:block;margin-bottom:5px}
 .fl .it .roll{font-size:13px;font-weight:800;color:var(--g);justify-content:flex-end}
+
+/* ===== admin calm ===== */
+.admin{--ease:cubic-bezier(.2,.8,.2,1)}
+.admin .card{animation-duration:.4s}
+.admin .card:hover{transform:none;box-shadow:none}
+.admin .logo:hover{transform:none}
+.admin .nvp{transition:top .25s var(--ease)}
+.admin .nv:active,.admin .apb:active{transform:scale(.97)}
+.admin .search,.admin .search:focus-within{width:260px;transition:box-shadow .2s,border-color .2s}
+.admin .seg .th{transition:left .25s var(--ease),width .25s var(--ease)}
+.admin .rc{transition-duration:.45s}
+.admin .bar i{transition:width .45s var(--ease)}
+.admin .bar i::after{display:none}
+.admin .mapwrap path{transition:fill .4s ease,stroke .15s}
+.admin .mapwrap path:hover{transform:none;filter:none;stroke:var(--ink);stroke-width:2}
+.admin .mapwrap path.sel{transform:none;filter:none;stroke:var(--ink);stroke-width:2.6}
+.admin .mapbox.detail .mapwrap{transform:none}
+.admin .dp{transition:transform .3s var(--ease),opacity .25s}
+.admin .wb i{transition:height .4s var(--ease)}
+.admin .rb{transition:filter .2s,opacity .2s}
+.admin .rb:hover{transform:none}
+.admin .rlp{transition:top .25s var(--ease)}
+.admin .fi{transition:grid-template-rows .35s var(--ease)}
+.admin .fr{transform:none;transition:opacity .3s}
+.admin .br .bt i{transition:width .45s var(--ease)}
+.tip{transition:opacity .12s}
+.tip,.tip.on{transform:translate(12px,12px)}
 </style>
 </head>
 <body class="loading">
@@ -498,7 +525,7 @@ function roll(el,n,f){
       else{const sp=document.createElement('span');sp.className='rs';sp.textContent=c;el.appendChild(sp);el._c.push(null)}
     });el.offsetHeight;
   }
-  ch.forEach((c,i)=>{const col=el._c[i];if(col){col.style.transitionDelay=(i*35)+'ms';col.style.transform=`translateY(${-Number(c)*10}%)`}});
+  ch.forEach((c,i)=>{const col=el._c[i];if(col){col.style.transitionDelay=el.closest('.admin')?'0ms':(i*35)+'ms';col.style.transform=`translateY(${-Number(c)*10}%)`}});
   el._s=s;
 }
 
@@ -525,18 +552,21 @@ const GUS=GEO.g.map(g=>g.n);
 const vol={},gw={};
 GUS.forEach(g=>{const base=(g==='성동구'?900:240)+rnd()*1100;const ws=ITEMS.map(()=>.3+rnd());const s=ws.reduce((a,b)=>a+b);vol[g]={};ITEMS.forEach((it,i)=>vol[g][it.id]=Math.round(base*ws[i]/s));gw[g]=Array.from({length:7},(_,i)=>base*(.08+i*.018+rnd()*.05))});
 const ME={store:'성수 한끼식당',gu:'성동구'};
+const HSC=[Math.min(...gw['성동구'])*.55,Math.max(...gw['성동구'])*1.6];
 const PM=[.16,1,4.2];
-const S={per:1,filter:'all',sel:null,orders:1284,saved:4128000,stores:312,paused:false,qty:Object.fromEntries(ITEMS.map(i=>[i.id,0]))};
+const S={per:1,filter:'all',sel:null,orders:1284,saved:4128000,stores:312,paused:true,qty:Object.fromEntries(ITEMS.map(i=>[i.id,0]))};
 const N=14;
 const SER=[0,1,2].map(p=>Array.from({length:N},(_,i)=>(1000+i*90+rnd()*700)*(p===0?.2:p===2?3:1)));
+const SC=SER.map(v=>[Math.min(...v)*.55,Math.max(...v)*1.6]);
 const XL=[['06','08','10','12','14','16','18','20','22'],['월','화','수','목','금','토','일'],['1주','2주','3주','4주']];
 const guTot=g=>Object.values(vol[g]).reduce((a,b)=>a+b,0);
 const guVal=g=>S.filter==='all'?guTot(g):vol[g][S.filter];
 const total=()=>GUS.reduce((a,g)=>a+guTot(g),0);
 
 /* chart path */
-function paths(v,w,h,pt=10){
-  const mx=Math.max(...v)*1.08,mn=Math.min(...v)*.55;
+function paths(v,w,h,pt=10,sc){
+  if(sc&&Math.max(...v)>sc[1])sc[1]=Math.max(...v)*1.2;
+  const mx=sc?sc[1]:Math.max(...v)*1.08,mn=sc?sc[0]:Math.min(...v)*.55;
   const P=v.map((x,i)=>[+(i/(v.length-1)*w).toFixed(1),+(h-pt-(x-mn)/(mx-mn)*(h-pt*2)).toFixed(1)]);
   let d=`M${P[0]}`;
   for(let i=0;i<P.length-1;i++){const p0=P[i-1]||P[i],p1=P[i],p2=P[i+1],p3=P[i+2]||p2;
@@ -573,7 +603,7 @@ const reseg={wk:seg($('#wkSeg')),f:seg($('#fSeg'))};
 
 function renderHome(){
   roll($('#hNum'),guTot(ME.gu));
-  const p=paths(gw[ME.gu],300,96,8);setD($('#hLn'),p.line);setD($('#hAr'),p.area);
+  const p=paths(gw[ME.gu],300,96,8,HSC);setD($('#hLn'),p.line);setD($('#hAr'),p.area);
   const u=$('#urgent');
   if(!u.children.length){[...FARMS].sort((a,b)=>a.d-b.d).slice(0,3).forEach((f,k)=>{u.insertAdjacentHTML('beforeend',`<div class="card mini stag" style="--i:${k+3}" data-f="${FARMS.indexOf(f)}"><div class="tile">${IT[f.it].e}</div><div class="mb"><div class="mt"><span>${f.n}</span><span class="pc"></span></div><div class="bar"><i></i></div></div><span class="dd">D-${f.d}</span></div>`)});
     $$('.mini',u).forEach(m=>m.onclick=()=>{go(2);setTimeout(()=>openFarm(+m.dataset.f),500)})}
@@ -659,7 +689,7 @@ seg($('#perSeg'),i=>{S.per=i;renderAdmin()});
 let aP=null;
 function renderBig(){
   roll($('#aNum'),total()*PM[S.per]);
-  aP=paths(SER[S.per],600,150,14);setD($('#aLn'),aP.line);setD($('#aAr'),aP.area);
+  aP=paths(SER[S.per],600,150,14,SC[S.per]);setD($('#aLn'),aP.line);setD($('#aAr'),aP.area);
   $('#aXl').innerHTML=XL[S.per].map(x=>`<span>${x}</span>`).join('');
 }
 const ac=$('#aChart');
@@ -687,31 +717,32 @@ $$('path',map).forEach(p=>{
   p.addEventListener('mouseleave',()=>tip.classList.remove('on'));
   p.addEventListener('click',()=>select(S.sel===p.dataset.g?null:p.dataset.g));
 });
-const mix=t=>{t=Math.pow(t,.75);const a=[236,246,239],b=[18,122,68];return`rgb(${a.map((x,i)=>Math.round(x+(b[i]-x)*t)).join(',')})`};
+const LV=['#e6f4ea','#bfe5cc','#8fd1a9','#4fb07c','#1f8a52'];
+const setMax=()=>S.mapMax=Math.max(...GUS.map(guVal))*1.15;
 function renderMap(){
-  const vs=GUS.map(guVal),mx=Math.max(...vs);
-  GUS.forEach((g,i)=>{$(`path[data-g="${g}"]`,map).style.fill=mix(vs[i]/mx);roll(PINS[g],vs[i],ton)});
+  if(!S.mapMax)setMax();const vs=GUS.map(guVal);
+  GUS.forEach((g,i)=>{$(`path[data-g="${g}"]`,map).style.fill=LV[Math.min(4,Math.floor(vs[i]/S.mapMax*5))];roll(PINS[g],vs[i],ton)});
 }
-function ripple(g){const p=PINS[g],r=document.createElement('i');r.className='rip';r.style.left=p.style.left;r.style.top=p.style.top;mw.appendChild(r);setTimeout(()=>r.remove(),1400);p.classList.remove('bump');void p.offsetWidth;p.classList.add('bump')}
+function ripple(g){const p=PINS[g],r=document.createElement('i');r.className='rip';r.style.left=p.style.left;r.style.top=p.style.top;mw.appendChild(r);setTimeout(()=>r.remove(),1400)}
 function select(g){
   S.sel=g;$$('path',map).forEach(p=>p.classList.toggle('sel',p.dataset.g===g));
   $('#mapbox').classList.toggle('detail',!!g);
-  if(g){const dv=$('#dpV');dv._c=null;dv._s=null;$$('#dpW i').forEach(i=>i.style.height='0');requestAnimationFrame(()=>renderDetail())}
+  if(g){const dv=$('#dpV');dv._c=null;dv._s=null;$$('#dpW i').forEach(i=>i.style.height='0');requestAnimationFrame(()=>renderDetail(true))}
 }
 $('#dpx').onclick=()=>select(null);
 $('#dpW').innerHTML='<i></i>'.repeat(7);
-function renderDetail(){
+function renderDetail(open){
   const g=S.sel;if(!g)return;$('#dpN').textContent=g;roll($('#dpV'),guTot(g));
-  const w=gw[g],mx=Math.max(...w);$$('#dpW i').forEach((b,i)=>setTimeout(()=>b.style.height=(w[i]/mx*100)+'%',i*60));
+  const w=gw[g],mx=Math.max(...w);$$('#dpW i').forEach((b,i)=>setTimeout(()=>b.style.height=(w[i]/mx*100)+'%',open?i*40:0));
   const tops=Object.entries(vol[g]).sort((a,b)=>b[1]-a[1]).slice(0,3),tm=tops[0][1];
-  $('#dpT').innerHTML=tops.map(([id,v])=>`<div><span>${IT[id].e}</span><div class="bar"><i style="width:0"></i></div><span>${ton(v)}</span></div>`).join('');
+  $('#dpT').innerHTML=tops.map(([id,v])=>`<div><span>${IT[id].e}</span><div class="bar"><i style="width:${open?0:v/tm*100}%"></i></div><span>${ton(v)}</span></div>`).join('');
   requestAnimationFrame(()=>$$('#dpT .bar i').forEach((b,i)=>b.style.width=(tops[i][1]/tm*100)+'%'));
 }
 // rail
 const rail=$('#rail');
 [{id:'all',e:'전체'},...ITEMS].forEach(it=>rail.insertAdjacentHTML('beforeend',`<button class="rb${it.id==='all'?' all on':''}" data-id="${it.id}" title="${it.n||'전체'}">${it.e}</button>`));
 const rbs=$$('.rb',rail);const placeRl=b=>$('#rlp').style.top=b.offsetTop+'px';
-rbs.forEach(b=>b.onclick=()=>{rbs.forEach(x=>x.classList.remove('on'));b.classList.add('on');placeRl(b);S.filter=b.dataset.id;$('#bLg').textContent=S.filter==='all'?'전체 품목':IT[S.filter].e+' '+IT[S.filter].n;renderMap();renderBars()});
+rbs.forEach(b=>b.onclick=()=>{rbs.forEach(x=>x.classList.remove('on'));b.classList.add('on');placeRl(b);S.filter=b.dataset.id;setMax();$('#bLg').textContent=S.filter==='all'?'전체 품목':IT[S.filter].e+' '+IT[S.filter].n;renderMap();renderBars()});
 requestAnimationFrame(()=>placeRl(rbs[0]));
 
 // bars (FLIP)
@@ -723,7 +754,7 @@ function renderBars(){
     if(!r){r=document.createElement('div');r.className='br';r.dataset.g=g;r.innerHTML=`<b class="rk"></b><span>${g}</span><div class="bt"><i></i></div><span class="vv"></span>`;r.style.animation='up .5s var(--out) both'}
     box.appendChild(r);$('.rk',r).textContent=i+1;const bi=$('.bt i',r);requestAnimationFrame(()=>bi.style.width=(v/mx*100)+'%');roll($('.vv',r),v,n=>fmt(n)+'kg')});
   $$('.br',box).forEach(r=>{const o=old.get(r.dataset.g);if(o==null)return;const dy=o-r.getBoundingClientRect().top;if(Math.abs(dy)<1)return;
-    r.animate([{transform:`translateY(${dy}px)`},{transform:'none'}],{duration:700,easing:'cubic-bezier(.3,1.25,.4,1)'});if(dy>0){r.classList.remove('upd');void r.offsetWidth;r.classList.add('upd')}});
+    r.animate([{transform:`translateY(${dy}px)`},{transform:'none'}],{duration:450,easing:'cubic-bezier(.2,.8,.2,1)'});if(dy>0){r.classList.remove('upd');void r.offsetWidth;r.classList.add('upd')}});
 }
 
 // feed
@@ -737,7 +768,7 @@ function addFeed(o,instant){
 }
 function ftime(){const now=Date.now();$$('.fi',feed).forEach(li=>{const s=Math.floor((now-li.dataset.t)/1000);$('small',li).textContent=s<5?'방금':s<60?s+'초 전':Math.floor(s/60)+'분 전'})}
 
-function renderAdmin(){renderBig();renderStats();renderMap();renderBars();renderDetail();roll($('#fCnt'),S.orders,n=>'오늘 '+fmt(n)+'건')}
+function renderAdmin(){renderBig();renderStats();renderMap();S.barsDirty=true;renderDetail();roll($('#fCnt'),S.orders,n=>'오늘 '+fmt(n)+'건')}
 
 /* order event */
 function order(o){
@@ -753,10 +784,11 @@ function randOrder(){
   order({store:st,gu:g,item:it,qty:5*(1+Math.floor(R()*8))});
 }
 setInterval(()=>{if(!S.paused&&!document.hidden)randOrder()},4200);
+setInterval(()=>{if(S.barsDirty){S.barsDirty=false;renderBars()}},5000);
 document.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT')return;
   if(e.key==='g'||e.key==='G'){for(let i=0;i<14;i++)setTimeout(randOrder,i*260)}
-  if(e.key==='p'||e.key==='P'){S.paused=!S.paused;$('#live').classList.toggle('pz',S.paused)}
+  if(e.key==='p'||e.key==='P'){S.paused=!S.paused}
 });
 $('#q').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.trim();const g=GUS.find(g=>v&&g.includes(v));if(g){select(g);e.target.blur()}}});
 
@@ -771,7 +803,7 @@ document.querySelectorAll('.ln').forEach(l=>l.addEventListener('animationend',()
 /* boot */
 for(let i=7;i>0;i--){const it=ITEMS[i%6].id;addFeed({store:STORES[i*3%STORES.length],gu:GUS[i*5%25],item:it,qty:5*(1+i%7),t:Date.now()-i*47000},true)}
 renderOrder();placeTab();
-setTimeout(()=>{document.body.classList.remove('loading');renderHome();renderAdmin();renderFarms()},950);
+setTimeout(()=>{document.body.classList.remove('loading');renderHome();renderAdmin();renderBars();S.barsDirty=false;renderFarms()},950);
 window.addEventListener('resize',()=>{placeTab();placeNv($('.nv.on'));placeRl($('.rb.on'))});
 </script>
 </body>
