@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>공동 발주 시연</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'">
 <style>
 :root{--bg:#f6f7f4;--card:#fff;--line:#e6e8e3;--ink:#15181a;--sub:#6d726b;--mute:#a3a8a0;--g:#16a05c;--g2:#e7f6ee;--g3:#c9ebd8;--r:14px;--spring:cubic-bezier(.3,1.35,.5,1);--out:cubic-bezier(.2,.9,.25,1)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -44,7 +44,9 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes hl{0%{background:#d9f2e4}100%{background:transparent}}
 @keyframes hl2{from{background:#eff8f3}}
-@keyframes hlm{from{background:#c4e9d3}}
+@keyframes hlm{0%,45%{background:#16a05c;color:#fff}100%{background:#e4f5eb}}
+.fi.mine.in.hl .fr b,.fi.mine.in.hl .fr span,.fi.mine.in.hl .fr .q,.fi.mine.in.hl .fr small{animation:hlmt 2.4s ease-out}
+@keyframes hlmt{0%,45%{color:#fff}}
 @keyframes rowfl{from{background:#dcf2e5;border-color:var(--g)}}
 
 /* card + skeleton */
@@ -243,6 +245,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .admin .br .bt i{transition:width .45s var(--ease)}
 .tip{transition:opacity .12s}
 .tip,.tip.on{transform:translate(12px,12px)}
+.sheet .go:focus{outline:none}.sheet .go:focus-visible{box-shadow:0 0 0 4px var(--g3)}
 </style>
 </head>
 <body class="loading">
@@ -252,7 +255,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
  <div class="phone"><div class="screen" id="screen">
   <div class="sbar"><span id="ptime">9:41</span><span>●●● ▮</span></div>
   <div class="phead">
-   <span class="av" style="background:#16a05c">한</span>
+   <span class="av" style="background:#16a05c">성</span>
    <h2>성수 한끼식당</h2><span class="chip">성동구</span>
   </div>
   <div class="panes"><div class="track" id="track">
@@ -430,6 +433,7 @@ function confirmOrder(){
     S.cfT=later(confetti,250);
   },600);
 }
+$('#sheetGo').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.repeat)e.preventDefault()});
 $('#sheetGo').onclick=$('#scrim').onclick=()=>{
   if(!sheetOpen)return;sheetOpen=false;clearTimeout(S.cfT);
   const sh=$('#sheet'),row=pinned;
@@ -443,7 +447,7 @@ $('#sheetGo').onclick=$('#scrim').onclick=()=>{
   later(()=>{hold.classList.remove('done');busy=false},500);
 };
 const behind=on=>['.sbar','.phead','.panes','.tabbar'].forEach(q=>$(q).inert=on);
-document.addEventListener('keydown',e=>{if(e.key==='Tab'&&sheetOpen){e.preventDefault();if(!$('.stage').inert)$('#sheetGo').focus({preventScroll:true})}});
+document.addEventListener('keydown',e=>{if(e.key==='Tab'&&sheetOpen&&!$('.app').classList.contains('hide')){e.preventDefault();if(!$('.stage').inert)$('#sheetGo').focus({preventScroll:true})}});
 function confetti(){
   const sc=$('#screen'),w=sc.clientWidth,h=sc.clientHeight,cs=['#16a05c','#2cc277','#ffd34d','#ff7a59','#5aa9ff','#c9ebd8'];
   for(let i=0;i<22;i++){const c=document.createElement('i');c.className='cf';c.style.background=cs[i%cs.length];c.style.left=w/2+'px';c.style.top=(h*.5)+'px';sc.appendChild(c);
@@ -563,7 +567,7 @@ $('#tog').onclick=togPhone;
 /* reset (R) */
 function resetDemo(){
   TM.forEach(clearTimeout);TM=[];stopBurst();cancelHold();clearTimeout(S.barsT);S.barsT=null;clearTimeout(S.cfT);clearTimeout(togT);
-  busy=false;sheetOpen=false;pinned=null;
+  busy=false;sheetOpen=false;pinned=null;tip.classList.remove('on');
   hold.classList.remove('loading','done','pressing','shake');
   $('#scrim').classList.remove('show');$('#sheet').classList.remove('show');$('#scrim').inert=true;$('#sheet').inert=true;behind(false);
   $$('.cf,.rip').forEach(e=>e.remove());$$('.row.flash',ol).forEach(r=>r.classList.remove('flash'));
@@ -584,6 +588,7 @@ document.addEventListener('keydown',e=>{
 seedFeed();
 renderOrder();placeTab();
 setTimeout(()=>{document.body.classList.remove('loading');renderAdmin();renderBars();renderFarms();fitFeed()},950);
+if(document.fonts)document.fonts.ready.then(()=>{fit();placeTab();fitFeed()});
 let rzF=0;window.addEventListener('resize',()=>{cancelAnimationFrame(rzF);rzF=requestAnimationFrame(()=>{fit();placeTab();fitFeed()})});
 </script>
 </body>
