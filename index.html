@@ -47,6 +47,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke
 @keyframes hlmt{0%,86%{color:#fff}}
 @keyframes rowfl{from{background:#dcf2e5;border-color:var(--g)}}
 @keyframes ddin{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes store-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* card + skeleton */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);position:relative;transition:transform .3s var(--out),box-shadow .3s;animation:up .6s var(--out) both;animation-delay:var(--d,0ms)}
@@ -203,25 +204,42 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 
 .body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(450px,1fr);gap:14px;min-height:0}
 .lcol{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:14px;min-height:0}
-.mapc{padding:14px 16px;display:flex;flex-direction:column;min-height:0}
+.mapc{padding:14px 16px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .ch h3{font-size:17px;font-weight:800}
+.map-heading{display:flex;align-items:center;gap:10px}
+.map-all{font-size:12px;font-weight:800;color:var(--g);background:var(--g2);padding:4px 8px;border-radius:7px;white-space:nowrap}
 .lg{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--sub);font-weight:700}
 .lg .k{display:inline-flex;align-items:center;gap:6px}
 .lg .k i{width:12px;height:12px;border-radius:50%;background:#5cb985}
 .lg .k i.c{background:#fff;border:2px solid #9fcfb4}
-.mapbox{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:12px;container-type:size;background:#f7f8f5}
-.mapwrap{position:absolute;inset:0;isolation:isolate}
-.mapwrap svg{position:absolute;inset:0;width:100%;height:100%}
+.mapbox{position:relative;flex:1;min-height:0;overflow:hidden;overflow:clip;border-radius:12px;container-type:size;background:#f7f8f5}
+/* Animate the map and use its current scale to keep the markers the same size. */
+@property --map-scale{syntax:"<number>";inherits:true;initial-value:1}
+@property --map-x{syntax:"<percentage>";inherits:false;initial-value:0%}
+@property --map-y{syntax:"<percentage>";inherits:false;initial-value:0%}
+@property --pin-boost{syntax:"<number>";inherits:false;initial-value:1}
+.mapwrap{position:absolute;inset:0;isolation:isolate;--mark-scale:calc(1 / var(--map-scale));transform-origin:0 0;transform:translate(var(--map-x),var(--map-y)) scale(var(--map-scale));transition:--map-x 550ms var(--ease),--map-y 550ms var(--ease),--map-scale 550ms var(--ease)}
+.mapwrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .mapwrap path{fill:#e9ede6;stroke:#fff;stroke-width:2}
-.mapwrap path.op{fill:#5cb985}
-.cand{position:absolute;width:clamp(16px,2.6cqw,22px);height:clamp(16px,2.6cqw,22px);border-radius:50%;border:3px solid #7fc39d;background:rgba(255,255,255,.9);transform:translate(-50%,-50%);pointer-events:none}
-.mdot{position:absolute;z-index:2;width:14px;height:14px;border-radius:50%;background:var(--g);border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transform:translate(-50%,-50%);pointer-events:none}
-.pin{position:absolute;z-index:3;transform:translate(-50%,calc(-100% - 12px));display:inline-flex;align-items:center;white-space:nowrap;font-size:clamp(16px,min(3cqw,3.6cqh),21px);font-weight:800;padding:4px 10px;border-radius:9px;background:rgba(255,255,255,.95);color:var(--g);box-shadow:0 0 0 1.5px var(--g3),0 2px 6px rgba(0,0,0,.14);pointer-events:none;transition:background .6s cubic-bezier(.2,.8,.2,1),color .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1)}
+.mapwrap path.op{fill:#5cb985;cursor:pointer}
+.mapwrap path.selected{fill:var(--g3)}
+.mapwrap path.op.selected{fill:color-mix(in srgb,var(--g),#5cb985)}
+.mapwrap path.map-outline{fill:none;stroke:var(--g);stroke-width:2.5;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.cand{position:absolute;z-index:2;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;transform:translate(-50%,-50%) scale(var(--mark-scale));transition:opacity .2s ease-out}
+.cand::before{content:"";box-sizing:border-box;width:clamp(16px,2.6cqw,22px);aspect-ratio:1;border-radius:50%;border:3px solid #7fc39d;background:#fff}
+.cand:hover::before,.cand:focus-visible::before,.cand[aria-pressed="true"]::before{border-color:var(--g)}
+.mapwrap.focused .cand:not([aria-pressed="true"]):not(:hover):not(:focus-visible){opacity:.34}
+.cand[aria-pressed="true"]{z-index:5}
+.cand-label{position:absolute;left:50%;bottom:calc(50% + 14px);transform:translateX(-50%);white-space:nowrap;color:var(--g);background:#fff;border-radius:8px;box-shadow:0 0 0 1px var(--g3),0 2px 6px rgba(0,0,0,.14);padding:5px 9px;font-size:14px;font-weight:800;pointer-events:none}
+.mdot{position:absolute;z-index:1;width:14px;height:14px;border-radius:50%;background:var(--g);border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transform:translate(-50%,-50%) scale(var(--mark-scale));pointer-events:none}
+.pin{position:absolute;z-index:3;transform-origin:50% 100%;transform:translate(-50%,-100%) scale(var(--mark-scale)) translateY(-12px) scale(var(--pin-boost));display:inline-flex;align-items:center;white-space:nowrap;font-size:clamp(16px,min(3cqw,3.6cqh),21px);font-weight:800;padding:4px 10px;border-radius:9px;background:#fff;color:var(--g);box-shadow:0 0 0 1.5px var(--g3),0 2px 6px rgba(0,0,0,.14);transition:background .6s var(--ease),color .6s var(--ease),--pin-boost .6s var(--ease)}
+.pin[aria-pressed="true"]{box-shadow:0 0 0 1.5px var(--g),0 2px 6px rgba(0,0,0,.14)}
 .pin .pl{color:var(--ink);white-space:pre;transition:color .6s cubic-bezier(.2,.8,.2,1)}
-.pin.hot{background:var(--ink);color:#fff;transform:translate(-50%,calc(-100% - 12px)) scale(1.08)}
+.pin.hot{background:var(--ink);color:#fff;--pin-boost:1.08}
 .pin.hot .pl{color:#fff}
-.rip{position:absolute;border-radius:50%;border:2.5px solid var(--g);transform:translate(-50%,-50%);animation:rip 1.3s ease-out forwards;pointer-events:none}
+.rip{position:absolute;border-radius:50%;border:2.5px solid var(--g);transform:translate(-50%,-50%) scale(var(--mark-scale));animation:rip 1.3s ease-out forwards;pointer-events:none}
+.pin:focus-visible,.cand:focus-visible,.map-all:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 .tip{position:fixed;z-index:50;background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:7px 10px;border-radius:9px;pointer-events:none;opacity:0;transform:translate(12px,12px);transition:opacity .12s}
 .tip.on{opacity:1}
 .tip span{color:#9ee6bd;margin-left:6px}
@@ -251,6 +269,16 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .fi.mine .fr{border-left:6px solid var(--g);background:#e4f5eb;padding:calc(14px + var(--fx,0px)) 14px calc(14px + var(--fx,0px)) 11px;color:#2f5c43}
 .fi.mine .fr .c1{font-size:16px}
 .fi.mine.in.hl .fr{animation:hlm 2.4s ease-out}
+.feedc [hidden]{display:none}
+.feed-title-in{display:inline-block;animation:store-in 240ms ease-out both}
+.stores{flex:1;min-height:0;display:flex;flex-direction:column}
+.store-list{flex:1;min-height:0;display:grid;grid-auto-rows:minmax(0,1fr);max-height:calc(var(--store-count) * 76px);overflow:hidden}
+.stores .fh,.stores .fr{grid-template-columns:minmax(0,1fr) minmax(80px,24%) minmax(64px,19%);text-align:right}
+.stores .fh>:first-child,.stores .fr>:first-child{text-align:left}
+.stores .fr{padding:0 14px;animation:store-in 240ms ease-out both;animation-delay:calc(var(--i) * 30ms)}
+.stores .fr.mine{border-left-color:var(--g);background:var(--g2)}
+.stores .fr.mine .c1,.store-qty{color:var(--g)}
+.store-status{justify-self:end;background:var(--g2);color:var(--g);border-radius:7px;padding:3px 8px;font-size:12px;font-weight:800}
 
 /* bundle status */
 .lc{padding:12px 18px 10px}
@@ -272,7 +300,12 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .admin .card:hover{transform:none;box-shadow:none}
 .admin .rc{transition-duration:.45s}
 .admin .mapwrap path{transition:fill .4s ease,stroke .15s}
-.admin .mapwrap path:hover{stroke:var(--ink);stroke-width:2}
+.admin .mapwrap:not(.focused) path[data-g]:hover{stroke:var(--ink)}
+.admin .mapwrap path.op:focus-visible{outline:none;stroke:var(--g);stroke-width:3}
+@media (prefers-reduced-motion:reduce){
+  .mapwrap{transition:none}
+  .stores .fr,.feed-title-in{animation:none;opacity:1}
+}
 </style>
 </head>
 <body class="loading">
@@ -325,7 +358,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
   <div class="body">
    <div class="lcol">
     <div class="card mapc" style="--d:300ms">
-     <div class="ch"><h3>운영 상권</h3><span class="lg"><span class="k"><i></i>운영 중</span><span class="k"><i class="c"></i>후보</span></span></div>
+     <div class="ch"><div class="map-heading"><h3>운영 상권</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>운영 중</span><span class="k"><i class="c"></i>후보</span></span></div>
      <div class="mapbox" id="mapbox">
       <div class="mapwrap" id="mapwrap"><svg id="map"></svg></div>
      </div>
@@ -333,9 +366,10 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
     <div class="card lc" style="--d:420ms"><div class="ch"><h3>공동발주 현황</h3></div><div class="bars" id="bars"></div></div>
    </div>
    <div class="card feedc" style="--d:360ms">
-    <div class="ch"><h3>주문 기록</h3></div>
-    <div class="fh"><span>점포</span><span>상권</span><span>품목</span><span class="c4">납품</span><span class="c5">시각</span></div>
+    <div class="ch"><h3 id="feedTitle" aria-live="polite">주문 기록</h3></div>
+    <div class="fh" id="feedHead"><span>점포</span><span>상권</span><span>품목</span><span class="c4">납품</span><span class="c5">시각</span></div>
     <div class="feed" id="feed"></div>
+    <div class="stores" id="stores" role="table" aria-labelledby="feedTitle" hidden></div>
    </div>
   </div>
  </div>
@@ -388,16 +422,44 @@ const HIST=[
 /* G: same-area orders, onion and leek only */
 const BURST=[[ST[1],'on',3],[ST[3],'lk',1],[ST[4],'on',3],[ST[0],'lk',1],[ST[5],'on',3],[ST[7],'lk',1],[ST[6],'on',3]];
 /* candidate areas for expansion (hollow dots) */
-const CANDS=['성북구','중랑구','광진구','성동구','종로구','중구','서대문구','노원구','마포구'];
+const CANDS=[
+ {gu:'성북구',area:'안암역',stores:[
+  ['김밥 전공필수','김밥'],['떡볶이 추가점','분식'],['칼국수 면접','칼국수'],['백반 장학금','백반'],
+  ['파전 복학생','파전'],['순대 출석부','순댓국'],['돈까스 유급','돈까스'],['덮밥 재수강','덮밥']]},
+ {gu:'중랑구',area:'상봉역',stores:[
+  ['국밥 막차탑승','국밥'],['김밥 환승중','김밥'],['냉면 급정거','냉면'],['족발 종착역','족발'],
+  ['떡볶이 급출발','분식'],['백반 첫차','백반'],['닭갈비 만석','닭갈비'],['짜장 개찰구','중식']]},
+ {gu:'광진구',area:'건대입구',stores:[
+  ['찌개 단톡방','찌개'],['덮밥 읽씹금지','덮밥'],['떡볶이 답장좀','분식'],['김밥 말다잠','김밥'],
+  ['냉면 밀당중','냉면'],['족발 약속잡기','족발'],['짬뽕 손절금지','중식'],['파전 이모티콘','파전']]},
+ {gu:'성동구',area:'왕십리역',stores:[
+  ['순대 꽉찬속','순댓국'],['돈까스 주먹쾅','돈까스'],['냉면 이빨악','냉면'],['국밥 쌀잠수','국밥'],
+  ['덮밥 밥묻혔네','덮밥'],['파전 뒤집개왕','파전'],['닭갈비 불꽃쇼','닭갈비'],['찌개 뚝배기쨍','찌개']]},
+ {gu:'종로구',area:'혜화역',stores:[
+  ['김밥 주연상','김밥'],['칼국수 대역','칼국수'],['족발 커튼콜','족발'],['순대 관객석','순댓국'],
+  ['닭갈비 열연','닭갈비'],['백반 대사없음','백반'],['냉면 관객울림','냉면'],['짬뽕 기립박수','중식']]},
+ {gu:'중구',area:'충무로',stores:[
+  ['국밥 무삭제','국밥'],['짜장 검은화면','중식'],['돈까스 음향팀','돈까스'],['칼국수 면연기','칼국수'],
+  ['떡볶이 컷금지','분식'],['덮밥 감독판','덮밥'],['찌개 실화바탕','찌개'],['족발 특별출연','족발']]},
+ {gu:'서대문구',area:'신촌',stores:[
+  ['백반 셔츠조심','백반'],['김밥 말다지각','김밥'],['떡볶이 출튀','분식'],['국밥 과탑','국밥'],
+  ['닭갈비 팀플중','닭갈비'],['파전 공강한판','파전'],['순대 속전공','순댓국'],['칼국수 면제출','칼국수']]},
+ {gu:'노원구',area:'공릉역',stores:[
+  ['국밥 내복한겹','국밥'],['파전 외투금지','파전'],['냉면 입김남','냉면'],['족발 발시려','족발'],
+  ['찌개 패딩벗어','찌개'],['백반 주머니밥','백반'],['칼국수 목도리','칼국수'],['덮밥 이불덮밥','덮밥']]},
+ {gu:'마포구',area:'홍대입구',stores:[
+  ['김밥 한줄공연','김밥'],['냉면 고음불가','냉면'],['파전 앙코르','파전'],['돈까스 드럼쾅','돈까스'],
+  ['짜장 입술염색','중식'],['순대 랩배틀','순댓국'],['닭갈비 떼창','닭갈비'],['찌개 볼륨최대','찌개']]}
+];
 
 const IT=Object.fromEntries(ITEMS.map(i=>[i.id,i]));
 const BOF=id=>BUNDLES.find(b=>b.it===id);
 const pic=id=>`<img src="img/${IT[id].f}" alt="" draggable="false">`;
 const PRE=ITEMS.map(i=>{const im=new Image();im.src='img/'+i.f;return im});
-const S={qty:{},recs:[],done:{}};
+const S={qty:{},recs:[],storeOrders:new Map(),done:{}};
 function initData(){
-  BUNDLES.forEach(b=>b.cur=0);ITEMS.forEach(i=>S.qty[i.id]=0);S.recs=[];
-  HIST.forEach(([st,it,q])=>{BOF(it).cur+=q;S.recs.push(st)});
+  BUNDLES.forEach(b=>b.cur=0);ITEMS.forEach(i=>S.qty[i.id]=0);S.recs=[];S.storeOrders.clear();
+  HIST.forEach(([st,it,q])=>applyOrder(st,it,q));
 }
 initData();
 const total=()=>BUNDLES.reduce((a,b)=>a+b.cur,0);
@@ -459,6 +521,7 @@ function confirmOrder(){
   if(!lines.length||BT.length){hold.classList.remove('pressing','shake');renderOrder();shake();return}
   busy=true;gLock=true;
   hold.classList.remove('pressing');hold.classList.add('loading');
+  setArea(null);
   // phone cards, admin rows and the record table update at the moment of hold completion
   lines.forEach(l=>applyOrder(ME.store,l.id,l.q));
   S.done=Object.fromEntries(lines.map(l=>[l.id,l.q]));renderMini();
@@ -514,32 +577,79 @@ function renderFarms(){
 
 /* ===== ADMIN ===== */
 // map: operating area (동대문구) + candidate areas
-const map=$('#map'),mw=$('#mapwrap'),tip=$('#tip');
+const map=$('#map'),mw=$('#mapwrap'),mapbox=$('#mapbox'),mapAll=$('#mapAll'),tip=$('#tip');
 const GG=Object.fromEntries(GEO.g.map(g=>[g.n,g]));
+const AREAS=new Map([ME,...CANDS].map(area=>[area.gu,area]));
 /* the view is cropped around the operating and candidate areas and stretched to the card's shape */
-let VB={x:0,y:0,w:GEO.w,h:GEO.h};const MK=[];
+let VB={x:0,y:0,w:GEO.w,h:GEO.h},selectedArea=null,pin,mapOutline;
+const MK=[];
 const at=(el,x,y)=>{el._x=x;el._y=y;el.style.left=((x-VB.x)/VB.w*100)+'%';el.style.top=((y-VB.y)/VB.h*100)+'%'};
-map.innerHTML=GEO.g.map(g=>`<path d="${g.d}" data-g="${g.n}"${g.n===ME.gu?' class="op"':''}/>`).join('');
-CANDS.forEach(n=>{const d=document.createElement('i');d.className='cand';at(d,GG[n].x,GG[n].y);mw.appendChild(d);MK.push(d)});
-const mdot=document.createElement('i');mdot.className='mdot';at(mdot,ME.x,ME.y);mw.appendChild(mdot);MK.push(mdot);
-const pin=document.createElement('span');pin.className='pin';pin.innerHTML=`<span class="pl">${ME.area} · </span><span class="roll" id="pinN"></span>kg`;at(pin,ME.x,ME.y);mw.appendChild(pin);MK.push(pin);
+function renderMap(){
+  map.innerHTML=GEO.g.map(g=>`<path d="${g.d}" data-g="${g.n}"${g.n===ME.gu?` class="op" data-area="${ME.gu}" role="button" tabindex="0" aria-label="${ME.gu} · ${ME.area}" aria-pressed="false"`:''}/>`).join('')+
+    '<path class="map-outline" aria-hidden="true"/>';
+  mapOutline=$('.map-outline',map);
+  CANDS.forEach(({gu,area})=>{
+    const d=document.createElement('button');d.type='button';d.className='cand';d.dataset.area=gu;d.tabIndex=0;
+    d.setAttribute('aria-label',`${area} · 후보`);d.setAttribute('aria-pressed','false');
+    d.innerHTML=`<span class="cand-label" hidden>${area} · 후보</span>`;
+    at(d,GG[gu].x,GG[gu].y);mw.appendChild(d);MK.push(d);
+  });
+  const mdot=document.createElement('i');mdot.className='mdot';at(mdot,ME.x,ME.y);mw.appendChild(mdot);MK.push(mdot);
+  pin=document.createElement('button');pin.type='button';pin.className='pin';pin.dataset.area=ME.gu;pin.tabIndex=0;
+  pin.setAttribute('aria-label',`${ME.area} · 운영 중`);pin.setAttribute('aria-pressed','false');
+  pin.innerHTML=`<span class="pl">${ME.area} · </span><span class="roll" id="pinN"></span>kg`;
+  at(pin,ME.x,ME.y);mw.appendChild(pin);MK.push(pin);
+  $$('path[data-g]',map).forEach(p=>{
+    const gu=p.dataset.g,tag=gu===ME.gu?'<span>운영 중</span>':AREAS.has(gu)?'<span>후보</span>':'';
+    p.addEventListener('mouseenter',()=>{if(selectedArea)return;tip.innerHTML=gu+tag;tip.classList.add('on')});
+    p.addEventListener('mousemove',e=>{tip.style.left=e.clientX+'px';tip.style.top=e.clientY+'px'});
+    p.addEventListener('mouseleave',()=>tip.classList.remove('on'));
+  });
+}
+function positionMap(){
+  const target=selectedArea===ME?ME:GG[selectedArea?.gu],scale=target?1.65:1;
+  const x=target?50-(target.x-VB.x)/VB.w*100*scale:0;
+  const y=target?52-(target.y-VB.y)/VB.h*100*scale:0;
+  mw.style.setProperty('--map-x',x+'%');mw.style.setProperty('--map-y',y+'%');mw.style.setProperty('--map-scale',scale);
+}
 function fitMap(){
   const bw=mw.clientWidth,bh=mw.clientHeight;if(!bw||!bh)return;
-  const pts=[...CANDS.map(n=>GG[n]),ME],P=60,T=110;
+  const pts=[...CANDS.map(({gu})=>GG[gu]),ME],P=60,T=110;
   let x0=Math.min(...pts.map(p=>p.x))-P,x1=Math.max(...pts.map(p=>p.x))+P,y0=Math.min(...pts.map(p=>p.y))-P,y1=Math.max(...pts.map(p=>p.y))+P;
   y0=Math.min(y0,ME.y-T);
   let w=x1-x0,h=y1-y0;const a=bw/bh;
   if(w/h<a){const nw=h*a;x0-=(nw-w)/2;w=nw}else{const nh=w/a;y0-=(nh-h)/2;h=nh}
-  VB={x:x0,y:y0,w,h};map.setAttribute('viewBox',`${x0.toFixed(1)} ${y0.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}`);
+  VB={x:x0,y:y0,w,h};map.setAttribute('viewBox',`${x0} ${y0} ${w} ${h}`);
   MK.forEach(el=>at(el,el._x,el._y));
+  $$('.rip',mw).forEach(el=>at(el,ME.x,ME.y));
+  positionMap();
 }
-$$('path',map).forEach(p=>{
-  const g=p.dataset.g,tag=g===ME.gu?'<span>운영 중</span>':CANDS.includes(g)?'<span>후보</span>':'';
-  p.addEventListener('mouseenter',()=>{map.appendChild(p);tip.innerHTML=g+tag;tip.classList.add('on')});
-  p.addEventListener('mousemove',e=>{tip.style.left=e.clientX+'px';tip.style.top=e.clientY+'px'});
-  p.addEventListener('mouseleave',()=>tip.classList.remove('on'));
+function setArea(area){
+  if(selectedArea===area)return;
+  if(!area&&document.activeElement===mapAll)$(`button[data-area="${selectedArea.gu}"]`,mw).focus({preventScroll:true});
+  selectedArea=area;
+  mapAll.hidden=!area;mw.classList.toggle('focused',!!area);tip.classList.remove('on');
+  $$('path[data-g]',map).forEach(p=>p.classList.toggle('selected',p.dataset.g===area?.gu));
+  if(area)mapOutline.setAttribute('d',GG[area.gu].d);else mapOutline.removeAttribute('d');
+  $$('[data-area]',mw).forEach(el=>{
+    const active=el.dataset.area===area?.gu;el.setAttribute('aria-pressed',String(active));
+    const label=$('.cand-label',el);if(label)label.hidden=!active;
+  });
+  positionMap();renderAreaPanel();
+}
+mapbox.addEventListener('click',e=>{
+  const area=AREAS.get(e.target.closest('[data-area]')?.dataset.area);
+  setArea(area&&area!==selectedArea?area:null);
 });
-function ripple(){const r=document.createElement('i');r.className='rip';r.style.left=pin.style.left;r.style.top=pin.style.top;mw.appendChild(r);later(()=>r.remove(),1400)}
+$('.mapc').addEventListener('keydown',e=>{
+  if(e.key!=='Enter'&&e.key!==' ')return;
+  if(e.repeat){e.preventDefault();return}
+  if(e.target.matches('path[data-area]')){
+    e.preventDefault();setArea(selectedArea===ME?null:ME);
+  }
+});
+mapAll.onclick=()=>setArea(null);
+function ripple(){const r=document.createElement('i');r.className='rip';at(r,ME.x,ME.y);mw.appendChild(r);later(()=>r.remove(),1400)}
 function hotPin(){clearTimeout(S.hotT);pin.classList.add('hot');S.hotT=later(()=>pin.classList.remove('hot'),2500)}
 // bundle status rows (fixed BUNDLES order, same moment as phone cards)
 const fund=$('#bars');
@@ -551,10 +661,28 @@ function renderFund(){
 }
 
 // order record table
-const feed=$('#feed'),RAF=new Set();
+const feed=$('#feed'),feedHead=$('#feedHead'),feedTitle=$('#feedTitle'),stores=$('#stores'),RAF=new Set();
+function renderAreaPanel(){
+  const area=selectedArea,active=area===ME;
+  const title=document.createElement('span');title.className='feed-title-in';
+  title.textContent=area?`${area.area} ${active?'점포':'후보 점포'}`:'주문 기록';
+  feedTitle.replaceChildren(title);
+  feed.hidden=feedHead.hidden=!!area;stores.hidden=!area;
+  if(!area){stores.replaceChildren();fitFeed();return}
+
+  const headers=active?['점포','이번 주 주문량','주문 건수']:['점포','업종','상태'];
+  const rows=active?[ME.store,...ST].map(store=>{
+    const stats=S.storeOrders.get(store);
+    return [store,stats?`${fmt(stats.qty)}kg`:'-',`${stats?.count??0}건`];
+  }):area.stores.map(([store,type])=>[store,type,'후보']);
+  stores.innerHTML=`<div class="fh" role="row">${headers.map(h=>`<span role="columnheader">${h}</span>`).join('')}</div>`+
+    `<div class="store-list" role="rowgroup" style="--store-count:${rows.length}">${rows.map(([store,value,status],i)=>
+      `<div class="fr${store===ME.store?' mine':''}" role="row" style="--i:${i}"><span class="c1" role="cell">${store}</span><span${active&&value!=='-'?' class="store-qty"':''} role="cell">${value}</span><span${active?'':' class="store-status"'} role="cell">${status}</span></div>`).join('')}</div>`;
+}
 const FEED_MAX=12;
 /* rows that fit (max FEED_MAX) share the leftover height as padding */
 function fitFeed(){
+  if(feed.hidden)return;
   const H=feed.clientHeight,items=$$('.fi',feed);
   feed.style.setProperty('--fx','0px');let acc=0,n=0;
   for(let i=0;i<items.length&&i<FEED_MAX;i++){const fr=items[i].querySelector('.fr'),h=fr?fr.offsetHeight:44;if(acc+h>H+1)break;acc+=h;n++}
@@ -579,8 +707,13 @@ function renderAdmin(){
 $('#sFullOf').textContent='/ '+BUNDLES.length;
 
 /* order event */
-function applyOrder(store,item,qty){BOF(item).cur+=qty;S.recs.push(store)}
-function pushOrder(o){const bb=BOF(o.item);if(bb.cur>=bb.goal)return;o.qty=Math.min(o.qty,bb.goal-bb.cur);ITEMS.forEach(i=>{const x=BOF(i.id),r=Math.max(0,x.goal-x.cur-(i.id===o.item?o.qty:0));if(S.qty[i.id]>r)S.qty[i.id]=r});applyOrder(o.store,o.item,o.qty);renderAdmin();ripple();hotPin();addFeed(o);renderFarms();renderFund();renderMini()}
+function applyOrder(store,item,qty){
+  BOF(item).cur+=qty;S.recs.push(store);
+  const stats=S.storeOrders.get(store)??{qty:0,count:0};
+  stats.qty+=qty;stats.count++;
+  S.storeOrders.set(store,stats);
+}
+function pushOrder(o){const bb=BOF(o.item);if(bb.cur>=bb.goal)return;o.qty=Math.min(o.qty,bb.goal-bb.cur);ITEMS.forEach(i=>{const x=BOF(i.id),r=Math.max(0,x.goal-x.cur-(i.id===o.item?o.qty:0));if(S.qty[i.id]>r)S.qty[i.id]=r});setArea(null);applyOrder(o.store,o.item,o.qty);renderAdmin();ripple();hotPin();addFeed(o);renderFarms();renderFund();renderMini()}
 let BT=[],burstDone=false;
 /* G is ignored from the moment a hold starts (pressing, confirming, sheet open) */
 function runBurst(){if(BT.length||burstDone||gLock||sheetOpen||hp!==null||ht)return;burstDone=true;BURST.forEach(([st,it,q],i)=>BT.push(setTimeout(()=>pushOrder({store:st,item:it,qty:q,t:Date.now()}),i*260)));BT.push(setTimeout(()=>BT=[],(BURST.length-1)*260+50))}
@@ -615,6 +748,7 @@ $('#tog').onclick=togPhone;
 function resetDemo(){
   TM.forEach(clearTimeout);TM=[];stopBurst();burstDone=false;cancelHold();clearTimeout(S.cfT);clearTimeout(S.hotT);clearTimeout(togT);
   RAF.forEach(cancelAnimationFrame);RAF.clear();
+  setArea(null);
   busy=false;sheetOpen=false;gLock=false;pinned=null;S.done={};tip.classList.remove('on');
   hold.classList.remove('loading','done','pressing','shake');
   $('#scrim').classList.remove('show');$('#sheet').classList.remove('show');$('#scrim').inert=true;$('#sheet').inert=true;behind(false);
@@ -636,7 +770,8 @@ document.addEventListener('keydown',e=>{
 /* boot */
 seedFeed();
 renderOrder();placeTab();
-new ResizeObserver(fitMap).observe(mw);
+renderMap();fitMap();
+new ResizeObserver(fitMap).observe(mapbox);
 setTimeout(()=>{document.body.classList.remove('loading');renderAdmin();renderFarms();renderFund();fitFeed()},950);
 if(document.fonts)document.fonts.ready.then(()=>{fit();placeTab();fitFeed()});
 let rzF=0;window.addEventListener('resize',()=>{cancelAnimationFrame(rzF);rzF=requestAnimationFrame(()=>{fit();placeTab();fitFeed()})});
