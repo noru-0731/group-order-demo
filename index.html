@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LOOP 공동발주 시연</title>
+<title>소쿠리 공동발주 시연</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" media="print" onload="this.media='all'">
 <style>
-:root{--bg:#f6f7f4;--card:#fff;--line:#e6e8e3;--ink:#15181a;--sub:#6d726b;--mute:#a3a8a0;--g:#16a05c;--g2:#e7f6ee;--g3:#c9ebd8;--r:14px;--spring:cubic-bezier(.3,1.35,.5,1);--out:cubic-bezier(.2,.9,.25,1)}
+:root{--bg:#f5f6f8;--card:#fff;--line:#e4e7ee;--ink:#15181a;--sub:#646d7e;--mute:#939bad;--g:#0919b4;--deep:#06127e;--yellow:#fff000;--mine:#fff59a;--g2:#edf0ff;--g3:#cbd4fa;--r:14px;--spring:cubic-bezier(.3,1.35,.5,1);--out:cubic-bezier(.2,.9,.25,1)}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{font-family:Pretendard,-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow:hidden;font-variant-numeric:tabular-nums}
@@ -37,28 +37,26 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke
 @keyframes sheen{0%{transform:translateX(-100%)}60%,100%{transform:translateX(220%)}}
 @keyframes rip{from{width:10px;height:10px;opacity:1}to{width:90px;height:90px;opacity:0}}
 @keyframes shake{0%,100%{transform:none}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,160,92,.55)}100%{box-shadow:0 0 0 9px rgba(22,160,92,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(9,25,180,.55)}100%{box-shadow:0 0 0 9px rgba(9,25,180,0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes pop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
 @keyframes draw{to{stroke-dashoffset:0}}
-@keyframes hl2{from{background:#eff8f3}}
-@keyframes hlm{0%,50%{background:#16a05c;color:#fff}64%,100%{background:#e4f5eb}}
-.fi.mine.in.hl .fr>*{animation:hlmt 1.4s linear}
-@keyframes hlmt{0%,86%{color:#fff}}
-@keyframes rowfl{from{background:#dcf2e5;border-color:var(--g)}}
+@keyframes hl2{from{background:#edf0ff}}
+@keyframes hlm{0%,24%{background:var(--yellow)}100%{background:var(--mine)}}
+@keyframes rowfl{from{background:#e2e8ff;border-color:var(--g)}}
 @keyframes ddin{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 @keyframes store-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* card + skeleton */
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);position:relative;transition:transform .3s var(--out),box-shadow .3s;animation:up .6s var(--out) both;animation-delay:var(--d,0ms)}
-.card:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(20,40,25,.28)}
+.card:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(20,27,48,.28)}
 .card>*{transition:opacity .5s}
 body.loading .card>*{opacity:0}
-body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:10px;background:linear-gradient(90deg,#f0f1ed 25%,#f8f9f6 50%,#f0f1ed 75%);background-size:200% 100%;animation:shim 1.1s linear infinite}
+body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:10px;background:linear-gradient(90deg,#eceff4 25%,#f8f9fb 50%,#eceff4 75%);background-size:200% 100%;animation:shim 1.1s linear infinite}
 
 /* progress bar */
-.bar{height:8px;border-radius:99px;background:#eef0ec;overflow:hidden}
-.bar i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#2cc277,#16a05c);transition:width 1.2s var(--out);position:relative;overflow:hidden}
+.bar{height:8px;border-radius:99px;background:#edf0f5;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#5268eb,#0919b4);transition:width 1.2s var(--out);position:relative;overflow:hidden}
 .bar i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);animation:sheen 2.4s ease-in-out infinite}
 
 .chip{display:inline-flex;align-items:center;gap:3px;font-size:12px;font-weight:700;padding:3px 8px;border-radius:99px;background:var(--g2);color:var(--g)}
@@ -66,9 +64,9 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .av img{width:26px;height:26px;display:block;user-select:none}
 
 /* ===== phone ===== */
-.stage{display:grid;place-items:center;background:radial-gradient(circle at 30% 15%,#fff 0,#eceee9 70%);border-right:1px solid var(--line)}
-.phone{width:372px;height:790px;border-radius:54px;background:#121412;padding:10px;box-shadow:0 40px 70px -30px rgba(20,35,25,.45),inset 0 0 0 2px #2c2f2c}
-.screen{position:relative;height:100%;border-radius:44px;background:#f9faf8;overflow:hidden;display:flex;flex-direction:column}
+.stage{display:grid;place-items:center;background:radial-gradient(circle at 30% 15%,#fff 0,#e8ebf2 70%);border-right:1px solid var(--line)}
+.phone{width:372px;height:790px;border-radius:54px;background:#12141c;padding:10px;box-shadow:0 40px 70px -30px rgba(20,26,48,.45),inset 0 0 0 2px #2c303e}
+.screen{position:relative;height:100%;border-radius:44px;background:#f5f6f8;overflow:hidden;display:flex;flex-direction:column}
 .sbar{height:50px;display:flex;justify-content:space-between;align-items:center;padding:4px 30px 0;font-size:14px;font-weight:700}
 .sic{display:flex;align-items:center;gap:6px}
 .sic svg{display:block;fill:var(--ink)}
@@ -85,9 +83,9 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .tab:active{transform:scale(.9)}
 .tab.on{color:var(--g)}
 
-.tile{width:44px;height:44px;border-radius:13px;background:#f2f4ef;display:grid;place-items:center;flex:none;transition:transform .4s var(--spring),background .3s}
+.tile{width:44px;height:44px;border-radius:13px;background:#eff1f6;display:grid;place-items:center;flex:none;transition:transform .4s var(--spring),background .3s}
 .tile img{width:34px;height:34px;display:block;user-select:none;pointer-events:none}
-.dd{font-size:11px;font-weight:800;color:#7c8179;background:#eff0ec;padding:3px 7px;border-radius:7px;white-space:nowrap}
+.dd{font-size:11px;font-weight:800;color:#697286;background:#eceff4;padding:3px 7px;border-radius:7px;white-space:nowrap}
 .dd.ok{color:#fff;background:var(--g);animation:ddin .18s ease-out}
 .dds{display:flex;flex-direction:column;align-items:flex-end;gap:4px;align-self:flex-start}
 
@@ -95,7 +93,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .pane.order{display:flex;flex-direction:column;padding-bottom:0;overflow:hidden}
 .olist{flex:1;overflow-y:auto;margin:12px -16px 0;padding:0 16px 10px;scrollbar-width:none}
 .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 12px 12px;margin-bottom:8px;transition:border-color .3s,background .3s,transform .3s var(--out),box-shadow .3s}
-.row.has{border-color:var(--g3);background:#fbfefc}
+.row.has{border-color:var(--g3);background:#f8faff}
 .row.has .tile{background:var(--g2);transform:rotate(-6deg) scale(1.05)}
 .row .inf{flex:1;min-width:0}
 .row .nm{font-size:17px;font-weight:700;white-space:nowrap}
@@ -104,14 +102,14 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .row .sp{font-size:12px;color:var(--sub);font-weight:600;margin-top:3px;white-space:nowrap}
 .row .mp{flex-basis:100%;display:flex;align-items:center;gap:8px;margin-top:2px}
 .row .mp .dd{flex:none}
-.mb{flex:1;min-width:0;height:8px;border-radius:99px;background:#eef0ec;overflow:hidden;display:flex}
+.mb{flex:1;min-width:0;height:8px;border-radius:99px;background:#edf0f5;overflow:hidden;display:flex}
 .mb i{display:block;height:100%;width:0;flex:none;transition:width .45s var(--out)}
-.mb .b0{background:#a9dec0}
+.mb .b0{background:#a7b6fa}
 .mb .b1{background:var(--g)}
-.mt{flex:none;font-size:13px;font-weight:800;color:#868b83;white-space:nowrap}
+.mt{flex:none;font-size:13px;font-weight:800;color:#656e82;white-space:nowrap}
 .mt b{color:var(--g);font-weight:800}
-.mt .me{color:var(--g)}
-.step{display:flex;align-items:center;background:#f1f2ee;border-radius:12px;padding:3px}
+.gathered{flex-basis:100%;margin-top:-4px;color:var(--sub);font-size:11.5px;font-weight:700}
+.step{display:flex;align-items:center;background:#edf0f5;border-radius:12px;padding:3px}
 .step button{width:28px;height:30px;border-radius:9px;font-size:18px;font-weight:700;display:grid;place-items:center;transition:background .2s,transform .15s var(--spring)}
 .step button:hover{background:#fff}
 .step button:active{transform:scale(.8)}
@@ -135,38 +133,42 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .hold .ok{position:absolute;inset:0;margin:auto;width:26px;height:26px;fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30}
 .hold.done .ok{animation:draw .3s var(--out) forwards}
 
-.scrim{position:absolute;inset:0;background:rgba(12,18,14,.38);opacity:0;pointer-events:none;transition:opacity .4s;z-index:19;backdrop-filter:blur(2px)}
+.scrim{position:absolute;inset:0;background:rgba(12,16,38,.38);opacity:0;pointer-events:none;transition:opacity .4s;z-index:19;backdrop-filter:blur(2px)}
 .scrim.show{opacity:1;pointer-events:auto}
-.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:30px 30px 0 0;padding:26px 22px 28px;transform:translateY(105%);transition:transform .65s cubic-bezier(.2,1.15,.3,1);z-index:20;text-align:center}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:30px 30px 0 0;padding:26px 22px 28px;max-height:100%;display:flex;flex-direction:column;transform:translateY(105%);transition:transform .65s cubic-bezier(.2,1.15,.3,1);z-index:20;text-align:center}
 .sheet.show{transform:none}
-.sheet .grab{width:40px;height:5px;border-radius:9px;background:#e2e4df;margin:-12px auto 18px}
+.sheet .grab{width:40px;height:5px;border-radius:9px;background:#dfe3eb;margin:-12px auto 18px}
 .ck{width:68px;height:68px;border-radius:50%;background:var(--g);margin:0 auto 14px;display:grid;place-items:center;transform:scale(0)}
 .sheet.show .ck{animation:pop .5s var(--spring) .1s forwards}
 .ck svg{width:34px;height:34px;fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30}
 .sheet.show .ck svg{animation:draw .4s var(--out) .4s forwards}
 .sheet h3{font-size:22px;font-weight:800}
-.rcpt{margin:18px 0;text-align:left;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.rcpt .top{background:var(--g2);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.rcpt .li~.top{border-top:1px solid var(--line)}
-.rcpt .top .ri{font-size:15px;font-weight:800}
-.rcpt .tv{display:flex;align-items:center;gap:8px;white-space:nowrap}
-.rcpt .tv b{font-size:28px;font-weight:800;color:var(--g);letter-spacing:-.6px}
-.rcpt .tv em{font-style:normal;font-size:12px;font-weight:800;color:#fff;background:var(--g);padding:3px 8px;border-radius:7px}
-.rcpt .li{display:flex;justify-content:space-between;align-items:center;padding:9px 16px;font-size:13.5px;border-top:1px solid #f0f1ed;opacity:0}
-.rcpt .li span{color:var(--sub);font-weight:600}
-.sheet.show .rcpt .li{animation:up .4s var(--out) forwards;animation-delay:calc(.4s + var(--i)*60ms)}
-.rcpt .ri{display:flex;align-items:center;gap:8px}
-.rcpt .rt{width:28px;height:28px;border-radius:8px;background:#fff;display:grid;place-items:center;flex:none}
+.sheet .grab,.sheet .ck,.sheet h3,.sheet .go{flex:none}
+.sheet.pending .ck{display:none}
+.rcpt{margin:15px 0;text-align:left;border:1px solid var(--line);border-radius:16px;overflow:auto;min-height:0;overscroll-behavior:contain}
+.receipt+.receipt{border-top:1px solid var(--line)}
+.rcpt .top{background:var(--g2);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rcpt .ri{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:800}
+.rcpt .rt{width:27px;height:27px;border-radius:8px;background:#fff;display:grid;place-items:center;flex:none}
 .rcpt .rt img{width:22px;height:22px;display:block}
-.rcpt .li b{font-weight:700}
-.rcpt .li.me{padding:11px 16px;background:#fbfefc}
-.rcpt .li.me span{color:var(--ink);font-size:15px;font-weight:800}
-.rcpt .li.me b{font-size:18px;font-weight:800;color:var(--g)}
+.rcpt .tv{font-size:26px;font-weight:800;color:var(--g);letter-spacing:-.5px;white-space:nowrap}
+.rcpt .met{padding:8px 14px;color:var(--deep);font-size:13px;font-weight:800;background:var(--g2)}
+.rcpt .li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 14px;font-size:14px;font-weight:650;border-top:1px solid var(--line)}
+.sheet.show .rcpt .li{animation:up .4s var(--out) both;animation-delay:calc(.35s + var(--i)*48ms)}
+.rcpt .li b,.rcpt .li small{white-space:nowrap}
+.rcpt .li.me{color:var(--deep);background:var(--mine);font-weight:800}
+.rcpt .li small{margin-left:4px;font-size:11px}
+.rcpt .compact .li,.rcpt.multi .li{padding-block:4px;font-size:12px}
+.rcpt .receipt-totals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line)}
+.rcpt .receipt-totals div{display:flex;justify-content:space-between;align-items:center;gap:4px;padding:10px 12px;font-size:12px;color:var(--sub);font-weight:700;white-space:nowrap}
+.rcpt .receipt-totals div+div{border-left:1px solid var(--line)}
+.rcpt .receipt-totals b{font-size:15px;color:var(--deep)}
+.rcpt .delivery{padding:7px 14px;border-top:1px solid var(--line);font-size:12px;color:var(--sub);font-weight:700}
 .sheet .go{width:100%;height:52px;border-radius:16px;background:var(--ink);color:#fff;font-weight:800;font-size:15px;transition:transform .15s}
 .sheet .go:active{transform:scale(.96)}
 .sheet .go:focus{outline:none}.sheet .go:focus-visible{box-shadow:0 0 0 4px var(--g3)}
 .cf{position:absolute;width:6px;height:9px;border-radius:2px;z-index:25;pointer-events:none}
-.cf.w{box-shadow:0 0 0 1px #c9ebd8}
+.cf.w{box-shadow:0 0 0 1px #cbd4fa}
 
 /* bundle cards */
 .fc{padding:14px;margin-bottom:10px;cursor:pointer;user-select:none}
@@ -177,32 +179,33 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .fc .fn span{font-size:12px;color:var(--sub);font-weight:600}
 .fc .pg{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 7px}
 .fc .pv{display:flex;align-items:baseline;font-size:24px;font-weight:800;color:var(--g)}
-.fc .pv .gl{color:#9aa097;font-size:17px;font-weight:700;white-space:pre}
-.fc .pg small{font-size:clamp(12.5px,calc(11.5px / var(--ps)),14px);color:#868b83;font-weight:600}
+.fc .pv .gl{color:#768096;font-size:17px;font-weight:700;white-space:pre}
+.fc .pg small{font-size:clamp(12.5px,calc(11.5px / var(--ps)),14px);color:#656e82;font-weight:600}
 .fc .bar{height:10px;flex:1;min-width:0}
 .fc .bw{display:flex;align-items:center;gap:10px}
-.fc .arw{flex:none;width:18px;height:18px;margin-right:-4px;color:#a3a8a0;transition:transform .25s var(--out),color .25s}
+.fc .arw{flex:none;width:18px;height:18px;margin-right:-4px;color:#939bad;transition:transform .25s var(--out),color .25s}
 .fc .arw svg{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .fc:hover .arw{color:var(--g);transform:translateX(2px)}
 
 /* ===== admin ===== */
-.admin{height:100vh;overflow:hidden;background:#fbfbf9;min-width:0}
+.admin{height:100vh;overflow:hidden;background:#f5f6f8;min-width:0}
 .admin.scroll{overflow:auto}
 .admin.scroll .main{min-width:1000px;min-height:900px}
 .main{zoom:var(--az);height:calc(100vh / var(--az));max-width:1500px;margin:0 auto;display:grid;grid-template-rows:auto minmax(0,1fr);gap:14px;padding:16px 20px;overflow:hidden}
 .live{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800;color:var(--g);background:var(--g2);padding:7px 12px;border-radius:99px}
 .live i{width:8px;height:8px;border-radius:50%;background:var(--g);animation:pulse 1.4s infinite}
 
-.big{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;align-items:center;padding:12px 22px}
-.st{display:flex;flex-direction:column;gap:3px;padding:0 20px;border-left:1px solid var(--line);min-width:0}
-.st:first-child{padding-left:0;border-left:0}
+.big{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr)) auto;align-items:center;padding:12px 20px}
+.st{display:flex;flex-direction:column;gap:3px;padding:0 15px;border-left:1px solid var(--line);min-width:0}
+.wordmark{font-size:21px;font-weight:900;color:var(--g);letter-spacing:-.6px;white-space:nowrap;margin-right:20px}
 .st .lb{font-size:14px;font-weight:800;color:var(--sub);white-space:nowrap}
 .st .num{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
 .st .num .roll{font-size:42px;font-weight:800;letter-spacing:-1.4px}
 .st .num small{font-size:18px;color:var(--sub);font-weight:700}
 .big .live{margin-left:16px}
 
-.body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(450px,1fr);gap:14px;min-height:0}
+.body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(450px,1fr);gap:14px;min-height:0}
+.rcol{display:grid;grid-template-rows:minmax(0,45fr) minmax(0,55fr);gap:14px;min-width:0;min-height:0}
 .lcol{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:14px;min-height:0}
 .mapc{padding:14px 16px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -211,53 +214,82 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .map-all{font-size:12px;font-weight:800;color:var(--g);background:var(--g2);padding:4px 8px;border-radius:7px;white-space:nowrap}
 .lg{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--sub);font-weight:700}
 .lg .k{display:inline-flex;align-items:center;gap:6px}
-.lg .k i{width:12px;height:12px;border-radius:50%;background:#5cb985}
-.lg .k i.c{background:#fff;border:2px solid #9fcfb4}
-.mapbox{position:relative;flex:1;min-height:0;overflow:hidden;overflow:clip;border-radius:12px;container-type:size;background:#f7f8f5}
-/* Animate the map and use its current scale to keep the markers the same size. */
+.lg .k i{width:12px;height:12px;border-radius:50%;background:var(--g)}
+.lg .k i.c{background:#fff;border:2px solid #8495e6}
+.mapbox{position:relative;flex:1;min-height:0;overflow:hidden;overflow:clip;border-radius:12px;background:#edf0f5}
 @property --map-scale{syntax:"<number>";inherits:true;initial-value:1}
 @property --map-x{syntax:"<percentage>";inherits:false;initial-value:0%}
 @property --map-y{syntax:"<percentage>";inherits:false;initial-value:0%}
-@property --pin-boost{syntax:"<number>";inherits:false;initial-value:1}
 .mapwrap{position:absolute;inset:0;isolation:isolate;--mark-scale:calc(1 / var(--map-scale));transform-origin:0 0;transform:translate(var(--map-x),var(--map-y)) scale(var(--map-scale));transition:--map-x 550ms var(--ease),--map-y 550ms var(--ease),--map-scale 550ms var(--ease)}
 .mapwrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.mapwrap path{fill:#e9ede6;stroke:#fff;stroke-width:2}
-.mapwrap path.op{fill:#5cb985;cursor:pointer}
-.mapwrap path.selected{fill:var(--g3)}
-.mapwrap path.op.selected{fill:color-mix(in srgb,var(--g),#5cb985)}
-.mapwrap path.map-outline{fill:none;stroke:var(--g);stroke-width:2.5;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
-.cand{position:absolute;z-index:2;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;transform:translate(-50%,-50%) scale(var(--mark-scale));transition:opacity .2s ease-out}
-.cand::before{content:"";box-sizing:border-box;width:clamp(16px,2.6cqw,22px);aspect-ratio:1;border-radius:50%;border:3px solid #7fc39d;background:#fff}
-.cand:hover::before,.cand:focus-visible::before,.cand[aria-pressed="true"]::before{border-color:var(--g)}
-.mapwrap.focused .cand:not([aria-pressed="true"]):not(:hover):not(:focus-visible){opacity:.34}
-.cand[aria-pressed="true"]{z-index:5}
-.cand-label{position:absolute;left:50%;bottom:calc(50% + 14px);transform:translateX(-50%);white-space:nowrap;color:var(--g);background:#fff;border-radius:8px;box-shadow:0 0 0 1px var(--g3),0 2px 6px rgba(0,0,0,.14);padding:5px 9px;font-size:14px;font-weight:800;pointer-events:none}
-.mdot{position:absolute;z-index:1;width:14px;height:14px;border-radius:50%;background:var(--g);border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transform:translate(-50%,-50%) scale(var(--mark-scale));pointer-events:none}
-.pin{position:absolute;z-index:3;transform-origin:50% 100%;transform:translate(-50%,-100%) scale(var(--mark-scale)) translateY(-12px) scale(var(--pin-boost));display:inline-flex;align-items:center;white-space:nowrap;font-size:clamp(16px,min(3cqw,3.6cqh),21px);font-weight:800;padding:4px 10px;border-radius:9px;background:#fff;color:var(--g);box-shadow:0 0 0 1.5px var(--g3),0 2px 6px rgba(0,0,0,.14);transition:background .6s var(--ease),color .6s var(--ease),--pin-boost .6s var(--ease)}
-.pin[aria-pressed="true"]{box-shadow:0 0 0 1.5px var(--g),0 2px 6px rgba(0,0,0,.14)}
-.pin .pl{color:var(--ink);white-space:pre;transition:color .6s cubic-bezier(.2,.8,.2,1)}
-.pin.hot{background:var(--ink);color:#fff;--pin-boost:1.08}
-.pin.hot .pl{color:#fff}
+.mapwrap path{fill:#e2e7ef;stroke:#fff;stroke-width:1;transition:fill .4s var(--ease)}
+.mapwrap path.op{fill:#cbd4fa;stroke:#8d9fe9}
+.mapwrap.focused path.op{fill:#c2cdfb}
+.pin{position:absolute;z-index:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;transform:translate(-50%,-50%) scale(var(--mark-scale));transition:opacity .24s var(--ease)}
+.pin::before{content:"";width:15px;height:15px;border-radius:50%;background:var(--g);border:2px solid #fff;box-shadow:0 0 0 1px var(--g)}
+.pin.plan::before{background:#fff;border-color:#8495e6;box-shadow:none}
+.pin:hover::before,.pin[aria-pressed="true"]::before{box-shadow:0 0 0 3px #a7b6fa}
+.pin-label{position:absolute;left:50%;bottom:calc(100% + 3px);transform:translateX(-50%);display:inline-flex;align-items:center;gap:3px;white-space:nowrap;color:var(--deep);background:#fff;border-radius:8px;box-shadow:0 0 0 1px var(--g3),0 2px 6px rgba(0,0,0,.13);padding:6px 9px;font-size:14px;font-weight:800;transition:background .24s var(--ease),color .24s var(--ease)}
+.pin.gate .pin-label{left:calc(100% + 3px);bottom:50%;transform:translateY(50%);font-size:16px}
+.pin.market .pin-label{left:auto;right:calc(100% + 3px);bottom:50%;transform:translateY(50%)}
+.pin-label .roll{color:var(--g)}
+.mapwrap.focused .pin[aria-pressed="false"]{opacity:.42}
+.pin[aria-pressed="true"],.pin:focus-visible{z-index:3}
+.pin[aria-pressed="true"] .pin-label,.pin.hot .pin-label{background:var(--deep);color:#fff}
+.pin[aria-pressed="true"] .roll,.pin.hot .roll{color:#fff}
 .rip{position:absolute;border-radius:50%;border:2.5px solid var(--g);transform:translate(-50%,-50%) scale(var(--mark-scale));animation:rip 1.3s ease-out forwards;pointer-events:none}
-.pin:focus-visible,.cand:focus-visible,.map-all:focus-visible{outline:2px solid var(--g);outline-offset:2px}
-.tip{position:fixed;z-index:50;background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:7px 10px;border-radius:9px;pointer-events:none;opacity:0;transform:translate(12px,12px);transition:opacity .12s}
-.tip.on{opacity:1}
-.tip span{color:#9ee6bd;margin-left:6px}
+.pin:focus-visible,.map-all:focus-visible{outline:2px solid var(--g);outline-offset:3px}
+
+/* purchase data */
+.purchase{min-height:0;min-width:0;display:flex;flex-direction:column;padding:14px 16px;overflow:hidden}
+.purchase .ch{margin-bottom:11px;min-height:24px}
+.purchase .ch h3{white-space:nowrap}
+.purchase-status{font-size:12px;padding:3px 8px;border-radius:7px;background:#edf0f5;color:var(--sub);font-weight:800;white-space:nowrap}
+.purchase-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1.13fr) minmax(0,1fr);gap:9px}
+.metric{min-width:0;min-height:0;border-radius:10px;background:#f7f8fb;border:1px solid #edf0f5;padding:10px;display:flex;flex-direction:column;gap:6px}
+.metric h4{font-size:12px;font-weight:800;color:var(--sub);white-space:nowrap}
+.rank-list{flex:1;min-height:0;position:relative}
+.rank-row{position:absolute;left:0;right:0;top:0;height:calc(100% / 3);display:grid;grid-template-columns:19px max-content minmax(0,1fr) 35px;gap:5px;align-items:center;transform:translateY(calc(var(--rank) * 100%));transition:transform 300ms var(--ease);font-size:12px;font-weight:750}
+.rank-row img{width:19px;height:19px}
+.rank-row b{text-align:right;color:var(--deep)}
+.rank-track{height:8px;border-radius:10px;background:#e5eafa;overflow:hidden}
+.rank-track i{display:block;width:var(--value,0%);height:100%;border-radius:inherit;background:#5268dc;transition:width 420ms var(--ease),background-color 180ms var(--ease)}
+.columns{flex:1;min-height:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:5px}
+.column{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) 14px;text-align:center}
+.column-plot{min-height:0;display:flex;align-items:flex-end;justify-content:center;padding-top:15px}
+.column i{display:block;position:relative;width:min(75%,30px);height:var(--value,0%);min-height:3px;border-radius:4px 4px 1px 1px;background:#5268dc;transition:height 420ms var(--ease),background-color 180ms var(--ease)}
+.column b{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);font-style:normal;color:var(--deep);font-size:11px;white-space:nowrap}
+.column small{color:var(--sub);font-size:11px;font-weight:750;padding-top:2px}
+.column.zero i{background:#dce1eb}
+.trend{gap:3px}
+.trend .column{grid-template-rows:minmax(0,1fr)}
+.trend .column i{width:100%;background:#cbd5fc}
+.trend .column.current i{background:var(--g)}
+.price-line{display:flex;align-items:center;justify-content:space-between;gap:4px;margin:auto 0;font-size:12.5px;white-space:nowrap;color:var(--deep);letter-spacing:-.25px}
+.price-line .chip{font-size:10.5px;padding:4px 5px;letter-spacing:-.35px;background:var(--mine);color:var(--deep)}
+.purchase.planned .rank-row img,.purchase.planned .rank-row .item-name,.purchase.planned .rank-row b,.purchase.planned .column b{visibility:hidden}
+.purchase.planned .rank-track,.purchase.planned .column i{background:#e3e7ef}
+.purchase.planned .rank-track i{display:none}
+.purchase.planned .column i{height:3px}
+.purchase.planned .price-line{height:12px;border-radius:8px;background:#e3e7ef;width:72%}
+.purchase.planned .price-line>*{visibility:hidden}
+.purchase.switching .purchase-grid,.purchase.switching #purchaseTitle,.purchase.switching .purchase-status{animation:store-in 240ms var(--ease) both}
 
 /* order record table */
 .feedc{padding:14px 0 0;display:flex;flex-direction:column;overflow:hidden;min-height:0}
-.feedc .ch{padding:0 16px}
+.feedc .ch{padding:0 16px;min-height:24px;margin-bottom:6px;gap:8px}
+.feed-note{color:var(--sub);font-size:12px;font-weight:700;white-space:nowrap}
 .fh,.fr{display:grid;grid-template-columns:minmax(0,1fr) 72px 118px 26px 64px;column-gap:6px;align-items:center}
-.fh{padding:0 14px 8px 17px;font-size:13.5px;font-weight:800;color:#7d8279;border-bottom:1px solid var(--line)}
+.fh{padding:0 14px 8px 17px;font-size:13.5px;font-weight:800;color:#626b7d;border-bottom:1px solid var(--line)}
 .fh>*,.fr>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fh .c4,.fr .c4{text-align:center}
 .fh .c5,.fr .c5{text-align:right}
 .feed{flex:1;min-height:0;overflow:hidden;position:relative}
 .fi{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease-in-out}
 .fi.in{grid-template-rows:1fr}
-.fi.cut{visibility:hidden}
+.fi.cut{display:none}
 .fi>div{overflow:hidden}
-.fr{padding:calc(10px + var(--fx,0px)) 14px;border-left:3px solid transparent;border-bottom:1px solid #f1f2ee;font-size:13.5px;font-weight:600;color:var(--sub);opacity:0;transition:opacity .25s}
+.fr{padding:calc(7px + var(--fx,0px)) 14px;border-left:3px solid transparent;border-bottom:1px solid #edf0f5;font-size:13.5px;font-weight:600;color:var(--sub);opacity:0;transition:opacity .25s}
 .fi.in .fr{opacity:1}
 .fi.in.hl .fr{animation:hl2 1.8s ease-out}
 .fr .c1{font-size:15px;font-weight:800;color:var(--ink)}
@@ -265,8 +297,9 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .fr .c3 img{width:22px;height:22px;flex:none;display:block;user-select:none}
 .fr .c3 em{font-style:normal;overflow:hidden;text-overflow:ellipsis}
 .fr .c4{font-weight:800;color:var(--ink)}
-.fr .c5{font-size:14px;font-weight:700;color:#6d726b}
-.fi.mine .fr{border-left:6px solid var(--g);background:#e4f5eb;padding:calc(14px + var(--fx,0px)) 14px calc(14px + var(--fx,0px)) 11px;color:#2f5c43}
+.fr .c5{font-size:14px;font-weight:700;color:#646d7e}
+.fi.mine .fr{border-left:6px solid var(--g);background:var(--mine);padding-inline-start:11px;color:var(--deep)}
+.fi.mine .fr>*{color:var(--deep)}
 .fi.mine .fr .c1{font-size:16px}
 .fi.mine.in.hl .fr{animation:hlm 2.4s ease-out}
 .feedc [hidden]{display:none}
@@ -276,8 +309,8 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .stores .fh,.stores .fr{grid-template-columns:minmax(0,1fr) minmax(80px,24%) minmax(64px,19%);text-align:right}
 .stores .fh>:first-child,.stores .fr>:first-child{text-align:left}
 .stores .fr{padding:0 14px;animation:store-in 240ms ease-out both;animation-delay:calc(var(--i) * 30ms)}
-.stores .fr.mine{border-left-color:var(--g);background:var(--g2)}
-.stores .fr.mine .c1,.store-qty{color:var(--g)}
+.stores .fr.mine{border-left-color:var(--g);background:var(--mine);color:var(--deep)}
+.stores .fr.mine .c1,.store-qty{color:var(--deep)}
 .store-status{justify-self:end;background:var(--g2);color:var(--g);border-radius:7px;padding:3px 8px;font-size:12px;font-weight:800}
 
 /* bundle status */
@@ -288,8 +321,8 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .fd img{width:26px;height:26px;display:block;user-select:none}
 .fd .nm{white-space:nowrap}
 .fd .fm{white-space:nowrap;font-size:13px;color:var(--sub);font-weight:600}
-.fd .bt{height:12px;border-radius:6px;background:#f0f1ed;overflow:hidden}
-.fd .bt i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#8fd6af,#16a05c);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.fd .bt{height:12px;border-radius:6px;background:#eceff4;overflow:hidden}
+.fd .bt i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#8194f2,#0919b4);transition:width .45s cubic-bezier(.2,.8,.2,1)}
 .fd .vv{justify-self:end;font-size:15px;color:var(--g);font-weight:800}
 .fd .ok{justify-self:end;display:none;font-size:13px;font-weight:800;color:#fff;background:var(--g);padding:3px 9px;border-radius:7px;white-space:nowrap}
 .fd.full .ok{display:inline-block;animation:ddin .18s ease-out}
@@ -299,12 +332,9 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .admin .card{animation-duration:.4s}
 .admin .card:hover{transform:none;box-shadow:none}
 .admin .rc{transition-duration:.45s}
-.admin .mapwrap path{transition:fill .4s ease,stroke .15s}
-.admin .mapwrap:not(.focused) path[data-g]:hover{stroke:var(--ink)}
-.admin .mapwrap path.op:focus-visible{outline:none;stroke:var(--g);stroke-width:3}
 @media (prefers-reduced-motion:reduce){
-  .mapwrap{transition:none}
-  .stores .fr,.feed-title-in{animation:none;opacity:1}
+  .mapwrap,.rank-row,.rank-track i,.column i{transition:none}
+  .stores .fr,.feed-title-in,.purchase.switching .purchase-grid,.purchase.switching #purchaseTitle,.purchase.switching .purchase-status{animation:none;opacity:1}
 }
 </style>
 </head>
@@ -349,6 +379,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 <section class="admin">
  <div class="main" id="main">
   <div class="card big" style="--d:60ms">
+   <span class="wordmark">소쿠리</span>
    <div class="st"><span class="lb">확정된 공동발주</span><div class="num"><span class="roll" id="sFull"></span><small id="sFullOf"></small></div></div>
    <div class="st"><span class="lb">참여 식당</span><div class="num"><span class="roll" id="sStores"></span><small>곳</small></div></div>
    <div class="st"><span class="lb">주문 기록</span><div class="num"><span class="roll" id="sRecs"></span><small>건</small></div></div>
@@ -358,27 +389,56 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
   <div class="body">
    <div class="lcol">
     <div class="card mapc" style="--d:300ms">
-     <div class="ch"><div class="map-heading"><h3>운영 상권</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>운영 중</span><span class="k"><i class="c"></i>후보</span></span></div>
+     <div class="ch"><div class="map-heading"><h3>동대문구 상권</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>운영 중</span><span class="k"><i class="c"></i>계획</span></span></div>
      <div class="mapbox" id="mapbox">
-      <div class="mapwrap" id="mapwrap"><svg id="map"></svg></div>
+      <div class="mapwrap" id="mapwrap"><svg id="map" aria-hidden="true"></svg></div>
      </div>
     </div>
     <div class="card lc" style="--d:420ms"><div class="ch"><h3>공동발주 현황</h3></div><div class="bars" id="bars"></div></div>
    </div>
-   <div class="card feedc" style="--d:360ms">
-    <div class="ch"><h3 id="feedTitle" aria-live="polite">주문 기록</h3></div>
-    <div class="fh" id="feedHead"><span>점포</span><span>상권</span><span>품목</span><span class="c4">납품</span><span class="c5">시각</span></div>
-    <div class="feed" id="feed"></div>
-    <div class="stores" id="stores" role="table" aria-labelledby="feedTitle" hidden></div>
+   <div class="rcol">
+    <section class="card purchase" id="purchase" aria-labelledby="purchaseTitle" style="--d:340ms">
+     <div class="ch"><h3 id="purchaseTitle" aria-live="polite">시립대 정문 구매 데이터</h3><span class="purchase-status" id="purchaseStatus" hidden>운영 전</span></div>
+     <div class="purchase-grid">
+      <div class="metric"><h4>품목별 주문량</h4><div class="rank-list" id="rankList" role="list"></div></div>
+      <div class="metric"><h4>요일별 납품</h4><div class="columns" id="dayBars" role="list"></div></div>
+      <div class="metric"><h4>12주 추이</h4><div class="columns trend" id="weekBars" role="list"></div></div>
+      <div class="metric"><h4>조달 단가</h4><div class="price-line" id="purchasePrice"></div></div>
+     </div>
+    </section>
+    <div class="card feedc" style="--d:360ms">
+     <div class="ch"><h3 id="feedTitle" aria-live="polite">주문 기록</h3><span class="feed-note" id="feedNote">요일별·품목별 수요로 누적</span></div>
+     <div class="fh" id="feedHead"><span>점포</span><span>상권</span><span>품목</span><span class="c4">납품</span><span class="c5">시각</span></div>
+     <div class="feed" id="feed"></div>
+     <div class="stores" id="stores" role="table" aria-labelledby="feedTitle" hidden></div>
+    </div>
    </div>
   </div>
  </div>
 </section>
 </div>
 <button class="tog" id="tog" title="H"><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
-<div class="tip" id="tip"></div>
 
-<script>const GEO={"w": 800, "h": 658, "g": [{"n": "강동구", "d": "M665.7,340.2L672.6,340.9L677.7,334.5L683.2,330.7L705.4,320.6L730.9,312.7L742.0,307.8L764.4,293.9L771.2,294.5L782.1,293.7L787.8,291.0L784.8,299.3L786.1,306.5L789.5,311.8L792.0,318.9L792.8,327.3L797.4,338.7L796.3,358.2L799.7,361.0L798.8,369.7L800.0,376.2L796.6,376.6L791.8,373.2L785.2,376.6L779.0,375.7L767.2,378.9L761.5,377.1L743.1,403.7L742.5,414.9L735.2,423.9L731.9,432.4L728.3,432.6L726.2,438.8L726.0,444.8L723.3,443.6L677.3,417.9L679.7,412.5L685.1,392.7L676.1,387.0L659.0,380.8L663.8,371.0L667.3,357.0L667.3,344.3L665.7,340.2Z", "x": 730.4, "y": 362.2}, {"n": "송파구", "d": "M577.5,425.2L588.8,428.5L597.8,428.8L610.6,426.8L625.9,421.1L638.3,419.0L645.9,403.7L659.0,380.8L676.1,387.0L685.1,392.7L679.7,412.5L677.3,417.9L723.3,443.6L726.0,444.8L725.9,448.1L722.0,451.1L719.3,455.9L717.1,464.9L719.3,472.5L727.2,477.2L731.9,477.8L736.5,474.8L739.9,478.1L753.0,481.6L758.1,485.1L755.2,493.3L755.5,499.1L752.1,508.4L749.3,512.4L739.8,515.5L735.1,533.3L735.1,537.7L729.5,542.1L721.1,542.3L715.3,549.8L706.1,546.1L699.4,545.0L699.9,553.9L708.4,559.8L703.2,563.1L695.6,563.1L688.8,559.1L688.8,565.2L683.3,569.6L683.3,564.7L680.0,557.1L663.1,528.0L664.2,525.4L658.0,513.4L651.6,506.4L644.9,501.3L634.5,495.7L599.4,484.1L591.7,482.2L583.0,473.5L577.9,437.5L576.6,435.2L577.5,425.2Z", "x": 670.0, "y": 473.4}, {"n": "강남구", "d": "M557.6,415.5L577.5,425.2L576.6,435.2L577.9,437.5L583.0,473.5L591.7,482.2L599.4,484.1L634.5,495.7L644.9,501.3L651.6,506.4L658.0,513.4L664.2,525.4L663.1,528.0L680.0,557.1L683.3,564.7L683.3,569.6L674.1,576.9L672.7,585.5L666.0,582.1L663.7,578.4L652.8,576.0L647.4,583.0L637.3,585.0L633.7,578.7L631.2,573.3L618.3,562.1L611.0,551.1L610.7,544.7L598.9,546.5L590.8,551.1L588.4,546.4L583.7,545.6L581.9,548.7L569.1,551.2L567.3,560.5L558.0,561.8L552.4,561.1L535.6,540.4L528.5,520.5L514.7,522.9L509.9,510.9L488.8,454.9L484.4,436.2L482.1,430.5L472.2,418.5L489.5,401.0L497.0,394.9L506.6,391.9L537.4,407.3L539.2,403.2L543.3,407.2L557.6,415.5Z", "x": 569.4, "y": 492.3}, {"n": "서초구", "d": "M472.2,418.5L482.1,430.5L484.4,436.2L488.8,454.9L509.9,510.9L514.7,522.9L528.5,520.5L535.6,540.4L552.4,561.1L558.0,561.8L567.3,560.5L569.1,551.2L581.9,548.7L583.7,545.6L588.4,546.4L590.8,551.1L598.9,546.5L610.7,544.7L611.0,551.1L618.3,562.1L631.2,573.3L633.7,578.7L630.4,585.1L631.3,590.4L628.6,591.5L626.6,597.3L623.1,599.4L618.5,608.2L618.4,616.4L610.3,620.7L606.9,627.5L592.4,624.5L586.5,626.0L587.1,630.4L592.0,633.2L590.8,637.4L586.2,640.0L584.5,649.2L585.8,652.2L577.1,654.2L575.1,656.9L566.3,654.2L560.2,654.2L549.2,658.0L544.8,653.7L540.3,652.5L538.2,646.1L525.6,634.0L518.1,632.4L517.2,627.5L522.5,619.0L521.2,615.0L521.7,607.8L518.6,602.5L520.3,595.1L519.7,590.3L516.1,586.5L513.8,578.6L515.9,572.9L509.3,568.2L499.4,585.7L488.7,591.4L480.4,593.3L470.6,593.3L466.7,588.5L461.5,576.9L459.6,575.8L456.0,564.6L445.6,564.4L442.4,565.9L444.2,572.6L443.4,576.9L436.5,578.7L427.7,586.6L425.5,581.2L426.9,568.8L424.4,563.2L419.9,558.6L416.1,551.3L414.3,541.9L416.8,494.4L421.0,485.7L413.4,480.1L411.8,476.0L411.5,456.4L416.0,453.1L425.4,452.7L429.2,455.0L445.7,445.4L456.6,438.1L461.1,433.6L465.0,425.8L472.2,418.5Z", "x": 509.0, "y": 549.0}, {"n": "관악구", "d": "M414.3,541.9L416.1,551.3L419.9,558.6L424.4,563.2L426.9,568.8L425.5,581.2L427.7,586.6L416.5,590.0L412.9,599.0L404.1,605.1L399.7,612.0L394.1,612.2L381.4,616.9L380.8,625.1L378.9,627.8L371.8,628.5L370.0,631.5L360.0,631.5L344.8,636.2L339.2,636.2L333.7,640.1L331.5,636.6L331.8,629.6L326.4,622.6L317.6,616.6L317.5,610.7L313.2,605.8L302.6,595.6L301.2,590.0L290.4,587.5L286.3,587.7L285.7,578.5L282.9,572.6L284.6,569.4L280.6,566.3L274.0,551.7L278.8,549.2L281.2,541.2L276.4,538.2L276.9,531.6L259.6,535.5L257.3,533.1L264.4,521.9L269.7,521.9L283.6,516.5L290.9,511.2L304.7,509.9L309.1,499.8L311.3,497.8L318.3,502.0L324.4,502.4L327.8,504.6L337.9,504.5L348.4,500.0L357.5,504.1L361.3,507.4L366.7,506.0L375.3,501.6L374.6,507.8L377.5,516.5L375.6,525.5L393.1,545.1L405.4,542.2L414.3,541.9Z", "x": 346.2, "y": 564.7}, {"n": "동작구", "d": "M411.5,456.4L411.8,476.0L413.4,480.1L421.0,485.7L416.8,494.4L414.3,541.9L405.4,542.2L393.1,545.1L375.6,525.5L377.5,516.5L374.6,507.8L375.3,501.6L366.7,506.0L361.3,507.4L357.5,504.1L348.4,500.0L337.9,504.5L327.8,504.6L324.4,502.4L318.3,502.0L311.3,497.8L309.1,499.8L304.7,509.9L290.9,511.2L283.6,516.5L269.7,521.9L264.4,521.9L282.2,494.4L295.9,491.2L298.7,480.6L306.8,455.1L310.1,454.3L308.0,446.8L320.3,447.9L338.5,443.6L354.7,437.4L360.4,443.4L368.0,448.8L381.8,454.8L411.5,456.4Z", "x": 358.2, "y": 486.5}, {"n": "영등포구", "d": "M238.7,364.7L259.7,379.2L270.1,384.4L314.2,396.5L324.6,398.2L341.6,414.7L347.6,420.4L349.9,428.8L354.7,437.4L338.5,443.6L320.3,447.9L308.0,446.8L310.1,454.3L306.8,455.1L298.7,480.6L295.9,491.2L282.2,494.4L264.4,521.9L259.3,520.3L251.6,512.1L246.3,493.6L245.7,478.1L246.5,467.6L240.0,457.8L219.0,445.2L219.7,432.1L221.0,424.8L223.4,422.2L233.3,416.6L236.3,411.6L239.2,412.4L242.1,405.7L241.6,399.2L234.0,381.0L231.8,380.5L230.1,374.0L238.7,364.7Z", "x": 277.3, "y": 437.0}, {"n": "금천구", "d": "M257.3,533.1L259.6,535.5L276.9,531.6L276.4,538.2L281.2,541.2L278.8,549.2L274.0,551.7L280.6,566.3L284.6,569.4L282.9,572.6L285.7,578.5L286.3,587.7L290.4,587.5L301.2,590.0L302.6,595.6L313.2,605.8L303.2,614.5L298.6,620.4L296.3,627.3L292.6,630.6L285.7,630.3L280.0,636.3L275.0,645.3L263.6,644.6L263.5,640.2L257.1,634.9L255.8,632.0L256.3,622.8L254.9,619.1L249.8,616.6L250.7,610.3L246.9,599.9L244.2,601.6L238.2,599.6L237.3,593.8L231.9,590.8L231.8,583.5L236.6,576.2L219.8,551.3L213.6,539.8L207.5,522.6L210.0,520.9L217.5,518.0L221.3,519.5L231.4,527.7L237.4,534.8L248.3,537.5L256.3,536.4L257.3,533.1Z", "x": 260.7, "y": 580.9}, {"n": "구로구", "d": "M114.5,465.7L122.8,465.9L128.5,473.2L136.7,479.7L144.7,476.0L143.6,472.3L152.7,472.0L153.5,466.3L160.2,464.4L162.9,461.3L168.2,460.2L173.3,463.4L178.3,461.7L182.0,469.5L186.5,469.5L187.9,473.0L193.0,472.3L199.0,474.0L205.2,472.6L207.6,465.1L217.1,451.2L219.0,445.2L240.0,457.8L246.5,467.6L245.7,478.1L246.3,493.6L251.6,512.1L259.3,520.3L264.4,521.9L257.3,533.1L256.3,536.4L248.3,537.5L237.4,534.8L231.4,527.7L221.3,519.5L217.5,518.0L210.0,520.9L214.6,514.7L212.4,512.1L206.5,513.8L206.5,509.7L196.6,500.7L191.0,506.6L184.2,510.2L177.4,519.7L172.4,521.3L169.8,526.9L166.3,530.0L157.0,528.9L154.9,531.6L154.1,547.7L142.5,544.3L134.9,545.2L127.9,539.8L123.1,543.0L113.9,542.5L109.3,544.1L104.8,538.8L105.3,529.8L104.0,523.8L105.3,519.9L112.0,515.1L110.5,509.8L101.2,506.0L94.6,501.9L91.4,494.9L92.1,490.4L97.0,491.6L102.9,488.7L105.2,482.5L108.4,480.7L111.0,471.6L110.3,466.9L114.5,465.7Z", "x": 175.7, "y": 498.8}, {"n": "강서구", "d": "M177.5,305.6L176.9,314.3L178.7,317.8L193.8,326.7L216.0,346.0L238.7,364.7L230.1,374.0L231.8,380.5L229.9,380.5L221.4,370.2L208.6,372.5L202.3,370.7L190.0,361.7L186.0,378.3L188.9,386.9L188.3,397.3L189.5,413.8L160.6,418.4L144.5,421.7L133.0,397.7L134.1,394.7L130.4,384.8L125.3,385.0L124.1,378.9L120.8,376.1L118.3,384.6L109.4,387.6L95.1,387.7L86.9,385.3L84.9,381.6L73.5,382.2L66.6,388.1L64.8,394.4L57.1,399.3L55.1,390.5L57.2,385.7L51.4,384.8L51.3,379.9L45.4,378.5L41.7,373.9L28.6,374.1L20.2,367.7L11.9,368.2L5.3,357.1L0.0,351.5L7.2,351.2L8.5,347.9L22.5,336.2L22.7,330.9L18.6,323.3L24.6,324.0L29.7,321.3L33.9,316.2L32.5,312.4L34.3,307.9L47.3,298.7L54.3,299.2L54.0,291.8L55.2,285.5L59.2,285.1L64.8,272.9L68.6,271.0L65.6,265.7L65.9,261.6L62.4,254.7L61.4,248.1L64.0,241.9L66.9,241.3L68.2,234.6L70.6,233.3L77.6,235.6L97.8,258.1L106.1,266.6L118.4,272.6L164.5,303.3L177.5,305.6Z", "x": 113.9, "y": 338.4}, {"n": "양천구", "d": "M109.4,387.6L118.3,384.6L120.8,376.1L124.1,378.9L125.3,385.0L130.4,384.8L134.1,394.7L133.0,397.7L144.5,421.7L160.6,418.4L189.5,413.8L188.3,397.3L188.9,386.9L186.0,378.3L190.0,361.7L202.3,370.7L208.6,372.5L221.4,370.2L229.9,380.5L231.8,380.5L234.0,381.0L241.6,399.2L242.1,405.7L239.2,412.4L236.3,411.6L233.3,416.6L223.4,422.2L221.0,424.8L219.7,432.1L219.0,445.2L217.1,451.2L207.6,465.1L205.2,472.6L199.0,474.0L193.0,472.3L187.9,473.0L186.5,469.5L182.0,469.5L178.3,461.7L173.3,463.4L168.2,460.2L162.9,461.3L160.2,464.4L153.5,466.3L152.7,472.0L143.6,472.3L144.7,476.0L136.7,479.7L128.5,473.2L122.8,465.9L114.5,465.7L113.0,460.1L114.0,453.8L111.4,446.6L115.9,438.1L115.4,430.6L121.5,421.3L119.3,414.3L116.0,413.6L108.8,401.7L109.4,387.6Z", "x": 174.6, "y": 425.9}, {"n": "마포구", "d": "M264.3,300.2L261.4,303.7L267.4,308.7L296.1,324.8L307.4,328.2L312.3,332.9L309.4,338.5L309.2,343.8L328.8,352.8L336.8,349.5L367.4,347.0L370.5,349.0L375.8,343.7L378.9,349.6L376.3,352.2L377.6,361.4L380.5,365.8L376.7,368.3L373.4,374.0L370.1,376.0L367.6,384.9L356.4,398.1L344.5,401.4L341.6,414.7L324.6,398.2L314.2,396.5L270.1,384.4L259.7,379.2L238.7,364.7L216.0,346.0L193.8,326.7L178.7,317.8L176.9,314.3L177.5,305.6L177.7,303.3L185.1,302.7L188.5,300.8L192.4,303.6L197.1,299.0L202.3,298.1L212.1,293.7L214.5,286.7L213.7,282.8L218.1,276.8L220.6,269.5L224.3,266.3L238.0,281.1L245.3,287.4L249.3,289.2L254.7,296.8L261.4,302.6L264.3,300.2Z", "x": 277.1, "y": 345.2}, {"n": "서대문구", "d": "M354.6,225.5L359.1,228.5L360.7,233.3L359.1,243.5L361.7,248.0L367.5,248.7L366.0,256.2L369.8,265.0L369.9,268.6L366.7,281.4L372.4,286.7L365.0,291.0L360.7,295.4L385.7,326.6L391.3,336.1L386.2,337.8L379.9,342.6L375.8,343.7L370.5,349.0L367.4,347.0L336.8,349.5L328.8,352.8L309.2,343.8L309.4,338.5L312.3,332.9L307.4,328.2L296.1,324.8L267.4,308.7L261.4,303.7L264.3,300.2L282.3,278.2L289.2,279.3L288.5,285.1L301.0,283.0L303.9,275.3L308.1,275.4L312.0,272.5L311.6,267.5L313.6,261.9L322.6,253.2L336.1,247.7L337.6,236.9L339.4,232.9L344.2,232.9L348.3,225.5L354.6,225.5Z", "x": 332.9, "y": 298.9}, {"n": "은평구", "d": "M395.5,166.6L390.7,171.6L372.1,175.8L366.8,183.3L358.0,184.6L357.4,192.5L355.3,198.9L352.7,201.7L354.6,205.6L355.8,215.4L353.5,223.3L354.6,225.5L348.3,225.5L344.2,232.9L339.4,232.9L337.6,236.9L336.1,247.7L322.6,253.2L313.6,261.9L311.6,267.5L312.0,272.5L308.1,275.4L303.9,275.3L301.0,283.0L288.5,285.1L289.2,279.3L282.3,278.2L264.3,300.2L261.4,302.6L254.7,296.8L249.3,289.2L245.3,287.4L238.0,281.1L224.3,266.3L229.7,259.4L233.9,259.5L230.4,266.0L233.9,272.0L241.8,272.3L245.3,270.6L252.5,271.9L258.0,268.9L256.3,262.2L261.9,256.4L260.4,250.9L261.1,246.0L258.8,236.9L262.3,235.3L261.9,220.4L260.1,213.7L264.8,199.1L268.1,198.1L272.2,191.6L270.6,186.5L275.0,181.4L275.6,175.9L270.8,166.0L279.0,158.0L277.8,151.2L280.7,145.6L282.1,137.7L272.9,132.7L274.2,130.0L284.8,136.7L298.9,134.6L306.9,130.1L313.5,124.0L324.2,122.5L329.1,119.2L335.5,107.9L341.7,104.2L348.7,102.4L349.5,106.0L356.3,112.0L362.2,111.2L366.8,117.5L368.5,125.9L373.3,127.9L377.1,139.6L381.5,140.6L389.9,151.2L389.8,156.4L395.5,166.6Z", "x": 313.5, "y": 196.7}, {"n": "노원구", "d": "M651.6,194.2L643.6,196.7L640.3,200.8L633.3,203.2L619.9,196.7L613.6,195.6L604.6,198.5L586.0,206.8L579.5,206.9L574.1,210.4L568.1,209.8L553.1,195.8L545.1,185.6L541.1,179.6L528.8,169.0L533.5,163.8L535.6,155.6L545.4,136.4L554.5,146.2L556.4,133.6L553.3,121.7L552.9,110.1L548.1,98.3L547.6,91.0L542.8,77.8L543.4,68.1L546.0,57.8L548.8,40.0L546.6,34.6L553.9,29.1L558.1,28.5L567.2,30.4L574.0,27.8L582.2,16.9L588.9,16.7L597.4,12.0L605.8,12.0L610.7,17.8L614.4,26.7L631.0,29.4L633.6,37.7L626.7,47.7L625.1,53.5L628.5,59.7L630.1,67.1L632.2,68.9L632.9,75.1L629.4,84.7L633.7,95.3L632.6,100.9L614.6,110.6L627.0,112.1L629.4,117.1L626.0,124.1L630.7,134.6L637.1,135.7L641.8,134.3L656.0,136.8L663.6,147.5L664.4,159.5L661.7,170.7L650.8,179.6L650.7,183.6L647.4,189.2L651.6,194.2Z", "x": 593.5, "y": 118.8}, {"n": "도봉구", "d": "M546.6,34.6L548.8,40.0L546.0,57.8L543.4,68.1L542.8,77.8L547.6,91.0L548.1,98.3L552.9,110.1L553.3,121.7L556.4,133.6L554.5,146.2L545.4,136.4L535.6,155.6L533.5,163.8L528.8,169.0L523.1,162.7L520.1,155.9L515.5,153.2L512.0,144.1L501.9,135.8L496.2,130.0L488.2,126.1L479.4,126.1L474.8,122.8L473.5,118.5L476.0,102.1L478.5,95.9L479.4,83.6L484.9,75.8L481.3,69.2L476.0,62.7L472.3,53.2L466.0,52.2L465.3,40.3L466.6,34.2L464.9,29.6L466.5,16.0L472.3,7.5L476.9,7.5L479.9,0.8L486.4,0.0L491.7,4.3L497.1,4.7L503.2,2.0L505.4,5.7L506.3,12.5L509.1,20.5L511.5,23.2L518.0,22.1L529.3,14.5L531.7,18.4L536.7,21.6L543.1,17.9L546.6,34.6Z", "x": 511.4, "y": 77.7}, {"n": "강북구", "d": "M465.3,40.3L466.0,52.2L472.3,53.2L476.0,62.7L481.3,69.2L484.9,75.8L479.4,83.6L478.5,95.9L476.0,102.1L473.5,118.5L474.8,122.8L479.4,126.1L488.2,126.1L496.2,130.0L501.9,135.8L512.0,144.1L515.5,153.2L520.1,155.9L523.1,162.7L528.8,169.0L541.1,179.6L545.1,185.6L538.9,190.2L533.5,199.4L525.7,206.8L519.9,214.3L507.6,222.4L507.2,214.8L500.0,213.9L492.0,217.3L486.3,211.3L477.7,206.9L470.0,204.8L465.7,199.8L463.8,193.8L464.5,186.8L449.5,182.3L442.9,174.3L438.1,172.2L436.5,167.2L432.8,167.3L422.0,159.0L420.1,156.3L423.0,147.5L417.5,139.4L420.7,133.6L418.3,124.4L413.5,118.4L410.6,112.1L411.2,108.0L420.8,101.5L427.0,90.6L435.8,87.7L437.5,80.7L438.3,70.3L436.0,57.3L433.7,52.9L437.8,50.8L445.5,42.4L456.3,39.3L465.3,40.3Z", "x": 470.7, "y": 139.5}, {"n": "성북구", "d": "M401.8,168.8L406.1,163.7L414.1,160.8L420.1,156.3L422.0,159.0L432.8,167.3L436.5,167.2L438.1,172.2L442.9,174.3L449.5,182.3L464.5,186.8L463.8,193.8L465.7,199.8L470.0,204.8L477.7,206.9L486.3,211.3L492.0,217.3L500.0,213.9L507.2,214.8L507.6,222.4L519.9,214.3L525.7,206.8L533.5,199.4L538.9,190.2L545.1,185.6L553.1,195.8L568.1,209.8L574.1,210.4L579.5,206.9L586.0,206.8L586.6,228.1L584.2,222.0L580.6,222.0L580.9,227.9L574.6,231.2L568.3,232.1L562.6,242.0L559.2,240.8L549.0,244.6L545.6,241.8L540.6,253.4L533.7,253.4L527.1,256.1L524.2,265.5L519.1,268.8L505.1,287.0L493.8,297.4L491.3,295.5L484.5,296.2L480.8,288.3L477.6,287.4L466.4,291.6L463.0,287.7L462.6,279.9L460.8,276.1L454.1,270.9L451.3,262.8L441.1,263.2L438.7,265.6L433.0,265.3L423.6,262.6L418.6,259.3L415.1,254.5L414.2,246.6L420.6,245.8L426.0,241.6L422.5,227.3L424.6,219.0L424.1,209.1L416.6,204.2L412.9,189.6L409.7,185.2L410.3,174.1L404.9,174.9L401.8,168.8Z", "x": 483.8, "y": 230.4}, {"n": "중랑구", "d": "M586.0,206.8L604.6,198.5L613.6,195.6L619.9,196.7L633.3,203.2L640.3,200.8L643.6,196.7L651.6,194.2L662.4,194.7L673.3,201.6L672.6,205.5L674.3,216.3L672.5,223.0L675.7,226.1L675.1,233.4L667.1,244.6L667.6,246.9L675.8,256.5L674.8,258.9L666.2,260.6L660.8,270.5L658.5,281.5L643.5,283.5L646.0,288.5L645.8,296.8L642.7,303.0L642.5,308.3L639.7,310.7L623.8,317.9L609.0,313.6L599.7,312.4L599.0,297.5L596.7,289.5L585.6,271.6L582.2,253.6L583.4,248.9L588.0,241.8L588.5,237.8L586.6,228.1L586.0,206.8Z", "x": 627.3, "y": 249.4}, {"n": "동대문구", "d": "M493.8,297.4L505.1,287.0L519.1,268.8L524.2,265.5L527.1,256.1L533.7,253.4L540.6,253.4L545.6,241.8L549.0,244.6L559.2,240.8L562.6,242.0L568.3,232.1L574.6,231.2L580.9,227.9L580.6,222.0L584.2,222.0L586.6,228.1L588.5,237.8L588.0,241.8L583.4,248.9L582.2,253.6L585.6,271.6L596.7,289.5L599.0,297.5L599.7,312.4L587.4,340.8L584.8,339.6L563.1,335.6L560.8,334.4L541.2,315.9L530.1,309.6L522.0,309.9L512.1,316.0L506.3,317.0L494.2,312.6L493.8,297.4Z", "x": 555.2, "y": 287.9}, {"n": "광진구", "d": "M599.7,312.4L609.0,313.6L623.8,317.9L639.7,310.7L642.5,308.3L648.6,314.6L647.1,317.7L644.4,335.2L642.9,340.9L661.0,341.4L665.7,340.2L667.3,344.3L667.3,357.0L663.8,371.0L659.0,380.8L645.9,403.7L638.3,419.0L625.9,421.1L610.6,426.8L597.8,428.8L588.8,428.5L577.5,425.2L557.6,415.5L577.3,371.9L590.4,342.3L587.4,340.8L599.7,312.4Z", "x": 615.2, "y": 373.3}, {"n": "성동구", "d": "M494.2,312.6L506.3,317.0L512.1,316.0L522.0,309.9L530.1,309.6L541.2,315.9L560.8,334.4L563.1,335.6L584.8,339.6L587.4,340.8L590.4,342.3L577.3,371.9L557.6,415.5L543.3,407.2L539.2,403.2L537.4,407.3L506.6,391.9L497.0,394.9L489.5,401.0L477.8,391.8L467.6,390.2L465.4,384.7L465.9,379.6L467.9,369.8L471.8,368.7L481.6,356.9L482.8,350.6L487.0,346.9L493.2,346.1L494.8,338.2L499.7,333.7L500.5,328.9L494.6,328.5L494.2,312.6Z", "x": 528.4, "y": 362.0}, {"n": "용산구", "d": "M465.9,379.6L465.4,384.7L467.6,390.2L477.8,391.8L489.5,401.0L472.2,418.5L465.0,425.8L461.1,433.6L456.6,438.1L445.7,445.4L429.2,455.0L425.4,452.7L416.0,453.1L411.5,456.4L381.8,454.8L368.0,448.8L360.4,443.4L354.7,437.4L349.9,428.8L347.6,420.4L341.6,414.7L344.5,401.4L356.4,398.1L367.6,384.9L370.1,376.0L373.4,374.0L376.7,368.3L380.5,365.8L377.6,361.4L384.0,355.1L396.3,355.7L404.5,357.5L405.8,353.1L412.3,356.9L418.4,357.8L421.6,356.0L426.2,361.5L430.9,361.6L440.5,371.7L446.7,365.2L454.6,366.0L457.6,364.2L458.7,374.3L463.4,380.0L465.9,379.6Z", "x": 411.6, "y": 407.4}, {"n": "중구", "d": "M494.2,312.6L494.6,328.5L500.5,328.9L499.7,333.7L494.8,338.2L493.2,346.1L487.0,346.9L482.8,350.6L481.6,356.9L471.8,368.7L467.9,369.8L465.9,379.6L463.4,380.0L458.7,374.3L457.6,364.2L454.6,366.0L446.7,365.2L440.5,371.7L430.9,361.6L426.2,361.5L421.6,356.0L418.4,357.8L412.3,356.9L405.8,353.1L404.5,357.5L396.3,355.7L384.0,355.1L377.6,361.4L376.3,352.2L378.9,349.6L375.8,343.7L379.9,342.6L386.2,337.8L391.3,336.1L385.7,326.6L390.3,321.2L397.7,318.8L407.0,318.6L428.3,321.4L443.2,320.0L452.6,317.8L479.6,317.3L488.5,312.7L494.2,312.6Z", "x": 441.4, "y": 340.8}, {"n": "종로구", "d": "M395.5,166.6L401.8,168.8L404.9,174.9L410.3,174.1L409.7,185.2L412.9,189.6L416.6,204.2L424.1,209.1L424.6,219.0L422.5,227.3L426.0,241.6L420.6,245.8L414.2,246.6L415.1,254.5L418.6,259.3L423.6,262.6L433.0,265.3L438.7,265.6L441.1,263.2L451.3,262.8L454.1,270.9L460.8,276.1L462.6,279.9L463.0,287.7L466.4,291.6L477.6,287.4L480.8,288.3L484.5,296.2L491.3,295.5L493.8,297.4L494.2,312.6L488.5,312.7L479.6,317.3L452.6,317.8L443.2,320.0L428.3,321.4L407.0,318.6L397.7,318.8L390.3,321.2L385.7,326.6L360.7,295.4L365.0,291.0L372.4,286.7L366.7,281.4L369.9,268.6L369.8,265.0L366.0,256.2L367.5,248.7L361.7,248.0L359.1,243.5L360.7,233.3L359.1,228.5L354.6,225.5L353.5,223.3L355.8,215.4L354.6,205.6L352.7,201.7L355.3,198.9L357.4,192.5L358.0,184.6L366.8,183.3L372.1,175.8L390.7,171.6L395.5,166.6Z", "x": 406.9, "y": 258.3}]};</script>
+<script>
+const GEO=[
+ ["강동구","M665.7,340.2L672.6,340.9L677.7,334.5L683.2,330.7L705.4,320.6L730.9,312.7L742.0,307.8L764.4,293.9L771.2,294.5L782.1,293.7L787.8,291.0L784.8,299.3L786.1,306.5L789.5,311.8L792.0,318.9L792.8,327.3L797.4,338.7L796.3,358.2L799.7,361.0L798.8,369.7L800.0,376.2L796.6,376.6L791.8,373.2L785.2,376.6L779.0,375.7L767.2,378.9L761.5,377.1L743.1,403.7L742.5,414.9L735.2,423.9L731.9,432.4L728.3,432.6L726.2,438.8L726.0,444.8L723.3,443.6L677.3,417.9L679.7,412.5L685.1,392.7L676.1,387.0L659.0,380.8L663.8,371.0L667.3,357.0L667.3,344.3L665.7,340.2Z"],
+ ["송파구","M577.5,425.2L588.8,428.5L597.8,428.8L610.6,426.8L625.9,421.1L638.3,419.0L645.9,403.7L659.0,380.8L676.1,387.0L685.1,392.7L679.7,412.5L677.3,417.9L723.3,443.6L726.0,444.8L725.9,448.1L722.0,451.1L719.3,455.9L717.1,464.9L719.3,472.5L727.2,477.2L731.9,477.8L736.5,474.8L739.9,478.1L753.0,481.6L758.1,485.1L755.2,493.3L755.5,499.1L752.1,508.4L749.3,512.4L739.8,515.5L735.1,533.3L735.1,537.7L729.5,542.1L721.1,542.3L715.3,549.8L706.1,546.1L699.4,545.0L699.9,553.9L708.4,559.8L703.2,563.1L695.6,563.1L688.8,559.1L688.8,565.2L683.3,569.6L683.3,564.7L680.0,557.1L663.1,528.0L664.2,525.4L658.0,513.4L651.6,506.4L644.9,501.3L634.5,495.7L599.4,484.1L591.7,482.2L583.0,473.5L577.9,437.5L576.6,435.2L577.5,425.2Z"],
+ ["강남구","M557.6,415.5L577.5,425.2L576.6,435.2L577.9,437.5L583.0,473.5L591.7,482.2L599.4,484.1L634.5,495.7L644.9,501.3L651.6,506.4L658.0,513.4L664.2,525.4L663.1,528.0L680.0,557.1L683.3,564.7L683.3,569.6L674.1,576.9L672.7,585.5L666.0,582.1L663.7,578.4L652.8,576.0L647.4,583.0L637.3,585.0L633.7,578.7L631.2,573.3L618.3,562.1L611.0,551.1L610.7,544.7L598.9,546.5L590.8,551.1L588.4,546.4L583.7,545.6L581.9,548.7L569.1,551.2L567.3,560.5L558.0,561.8L552.4,561.1L535.6,540.4L528.5,520.5L514.7,522.9L509.9,510.9L488.8,454.9L484.4,436.2L482.1,430.5L472.2,418.5L489.5,401.0L497.0,394.9L506.6,391.9L537.4,407.3L539.2,403.2L543.3,407.2L557.6,415.5Z"],
+ ["서대문구","M354.6,225.5L359.1,228.5L360.7,233.3L359.1,243.5L361.7,248.0L367.5,248.7L366.0,256.2L369.8,265.0L369.9,268.6L366.7,281.4L372.4,286.7L365.0,291.0L360.7,295.4L385.7,326.6L391.3,336.1L386.2,337.8L379.9,342.6L375.8,343.7L370.5,349.0L367.4,347.0L336.8,349.5L328.8,352.8L309.2,343.8L309.4,338.5L312.3,332.9L307.4,328.2L296.1,324.8L267.4,308.7L261.4,303.7L264.3,300.2L282.3,278.2L289.2,279.3L288.5,285.1L301.0,283.0L303.9,275.3L308.1,275.4L312.0,272.5L311.6,267.5L313.6,261.9L322.6,253.2L336.1,247.7L337.6,236.9L339.4,232.9L344.2,232.9L348.3,225.5L354.6,225.5Z"],
+ ["은평구","M395.5,166.6L390.7,171.6L372.1,175.8L366.8,183.3L358.0,184.6L357.4,192.5L355.3,198.9L352.7,201.7L354.6,205.6L355.8,215.4L353.5,223.3L354.6,225.5L348.3,225.5L344.2,232.9L339.4,232.9L337.6,236.9L336.1,247.7L322.6,253.2L313.6,261.9L311.6,267.5L312.0,272.5L308.1,275.4L303.9,275.3L301.0,283.0L288.5,285.1L289.2,279.3L282.3,278.2L264.3,300.2L261.4,302.6L254.7,296.8L249.3,289.2L245.3,287.4L238.0,281.1L224.3,266.3L229.7,259.4L233.9,259.5L230.4,266.0L233.9,272.0L241.8,272.3L245.3,270.6L252.5,271.9L258.0,268.9L256.3,262.2L261.9,256.4L260.4,250.9L261.1,246.0L258.8,236.9L262.3,235.3L261.9,220.4L260.1,213.7L264.8,199.1L268.1,198.1L272.2,191.6L270.6,186.5L275.0,181.4L275.6,175.9L270.8,166.0L279.0,158.0L277.8,151.2L280.7,145.6L282.1,137.7L272.9,132.7L274.2,130.0L284.8,136.7L298.9,134.6L306.9,130.1L313.5,124.0L324.2,122.5L329.1,119.2L335.5,107.9L341.7,104.2L348.7,102.4L349.5,106.0L356.3,112.0L362.2,111.2L366.8,117.5L368.5,125.9L373.3,127.9L377.1,139.6L381.5,140.6L389.9,151.2L389.8,156.4L395.5,166.6Z"],
+ ["노원구","M651.6,194.2L643.6,196.7L640.3,200.8L633.3,203.2L619.9,196.7L613.6,195.6L604.6,198.5L586.0,206.8L579.5,206.9L574.1,210.4L568.1,209.8L553.1,195.8L545.1,185.6L541.1,179.6L528.8,169.0L533.5,163.8L535.6,155.6L545.4,136.4L554.5,146.2L556.4,133.6L553.3,121.7L552.9,110.1L548.1,98.3L547.6,91.0L542.8,77.8L543.4,68.1L546.0,57.8L548.8,40.0L546.6,34.6L553.9,29.1L558.1,28.5L567.2,30.4L574.0,27.8L582.2,16.9L588.9,16.7L597.4,12.0L605.8,12.0L610.7,17.8L614.4,26.7L631.0,29.4L633.6,37.7L626.7,47.7L625.1,53.5L628.5,59.7L630.1,67.1L632.2,68.9L632.9,75.1L629.4,84.7L633.7,95.3L632.6,100.9L614.6,110.6L627.0,112.1L629.4,117.1L626.0,124.1L630.7,134.6L637.1,135.7L641.8,134.3L656.0,136.8L663.6,147.5L664.4,159.5L661.7,170.7L650.8,179.6L650.7,183.6L647.4,189.2L651.6,194.2Z"],
+ ["도봉구","M546.6,34.6L548.8,40.0L546.0,57.8L543.4,68.1L542.8,77.8L547.6,91.0L548.1,98.3L552.9,110.1L553.3,121.7L556.4,133.6L554.5,146.2L545.4,136.4L535.6,155.6L533.5,163.8L528.8,169.0L523.1,162.7L520.1,155.9L515.5,153.2L512.0,144.1L501.9,135.8L496.2,130.0L488.2,126.1L479.4,126.1L474.8,122.8L473.5,118.5L476.0,102.1L478.5,95.9L479.4,83.6L484.9,75.8L481.3,69.2L476.0,62.7L472.3,53.2L466.0,52.2L465.3,40.3L466.6,34.2L464.9,29.6L466.5,16.0L472.3,7.5L476.9,7.5L479.9,0.8L486.4,0.0L491.7,4.3L497.1,4.7L503.2,2.0L505.4,5.7L506.3,12.5L509.1,20.5L511.5,23.2L518.0,22.1L529.3,14.5L531.7,18.4L536.7,21.6L543.1,17.9L546.6,34.6Z"],
+ ["강북구","M465.3,40.3L466.0,52.2L472.3,53.2L476.0,62.7L481.3,69.2L484.9,75.8L479.4,83.6L478.5,95.9L476.0,102.1L473.5,118.5L474.8,122.8L479.4,126.1L488.2,126.1L496.2,130.0L501.9,135.8L512.0,144.1L515.5,153.2L520.1,155.9L523.1,162.7L528.8,169.0L541.1,179.6L545.1,185.6L538.9,190.2L533.5,199.4L525.7,206.8L519.9,214.3L507.6,222.4L507.2,214.8L500.0,213.9L492.0,217.3L486.3,211.3L477.7,206.9L470.0,204.8L465.7,199.8L463.8,193.8L464.5,186.8L449.5,182.3L442.9,174.3L438.1,172.2L436.5,167.2L432.8,167.3L422.0,159.0L420.1,156.3L423.0,147.5L417.5,139.4L420.7,133.6L418.3,124.4L413.5,118.4L410.6,112.1L411.2,108.0L420.8,101.5L427.0,90.6L435.8,87.7L437.5,80.7L438.3,70.3L436.0,57.3L433.7,52.9L437.8,50.8L445.5,42.4L456.3,39.3L465.3,40.3Z"],
+ ["성북구","M401.8,168.8L406.1,163.7L414.1,160.8L420.1,156.3L422.0,159.0L432.8,167.3L436.5,167.2L438.1,172.2L442.9,174.3L449.5,182.3L464.5,186.8L463.8,193.8L465.7,199.8L470.0,204.8L477.7,206.9L486.3,211.3L492.0,217.3L500.0,213.9L507.2,214.8L507.6,222.4L519.9,214.3L525.7,206.8L533.5,199.4L538.9,190.2L545.1,185.6L553.1,195.8L568.1,209.8L574.1,210.4L579.5,206.9L586.0,206.8L586.6,228.1L584.2,222.0L580.6,222.0L580.9,227.9L574.6,231.2L568.3,232.1L562.6,242.0L559.2,240.8L549.0,244.6L545.6,241.8L540.6,253.4L533.7,253.4L527.1,256.1L524.2,265.5L519.1,268.8L505.1,287.0L493.8,297.4L491.3,295.5L484.5,296.2L480.8,288.3L477.6,287.4L466.4,291.6L463.0,287.7L462.6,279.9L460.8,276.1L454.1,270.9L451.3,262.8L441.1,263.2L438.7,265.6L433.0,265.3L423.6,262.6L418.6,259.3L415.1,254.5L414.2,246.6L420.6,245.8L426.0,241.6L422.5,227.3L424.6,219.0L424.1,209.1L416.6,204.2L412.9,189.6L409.7,185.2L410.3,174.1L404.9,174.9L401.8,168.8Z"],
+ ["중랑구","M586.0,206.8L604.6,198.5L613.6,195.6L619.9,196.7L633.3,203.2L640.3,200.8L643.6,196.7L651.6,194.2L662.4,194.7L673.3,201.6L672.6,205.5L674.3,216.3L672.5,223.0L675.7,226.1L675.1,233.4L667.1,244.6L667.6,246.9L675.8,256.5L674.8,258.9L666.2,260.6L660.8,270.5L658.5,281.5L643.5,283.5L646.0,288.5L645.8,296.8L642.7,303.0L642.5,308.3L639.7,310.7L623.8,317.9L609.0,313.6L599.7,312.4L599.0,297.5L596.7,289.5L585.6,271.6L582.2,253.6L583.4,248.9L588.0,241.8L588.5,237.8L586.6,228.1L586.0,206.8Z"],
+ ["동대문구","M493.8,297.4L505.1,287.0L519.1,268.8L524.2,265.5L527.1,256.1L533.7,253.4L540.6,253.4L545.6,241.8L549.0,244.6L559.2,240.8L562.6,242.0L568.3,232.1L574.6,231.2L580.9,227.9L580.6,222.0L584.2,222.0L586.6,228.1L588.5,237.8L588.0,241.8L583.4,248.9L582.2,253.6L585.6,271.6L596.7,289.5L599.0,297.5L599.7,312.4L587.4,340.8L584.8,339.6L563.1,335.6L560.8,334.4L541.2,315.9L530.1,309.6L522.0,309.9L512.1,316.0L506.3,317.0L494.2,312.6L493.8,297.4Z"],
+ ["광진구","M599.7,312.4L609.0,313.6L623.8,317.9L639.7,310.7L642.5,308.3L648.6,314.6L647.1,317.7L644.4,335.2L642.9,340.9L661.0,341.4L665.7,340.2L667.3,344.3L667.3,357.0L663.8,371.0L659.0,380.8L645.9,403.7L638.3,419.0L625.9,421.1L610.6,426.8L597.8,428.8L588.8,428.5L577.5,425.2L557.6,415.5L577.3,371.9L590.4,342.3L587.4,340.8L599.7,312.4Z"],
+ ["성동구","M494.2,312.6L506.3,317.0L512.1,316.0L522.0,309.9L530.1,309.6L541.2,315.9L560.8,334.4L563.1,335.6L584.8,339.6L587.4,340.8L590.4,342.3L577.3,371.9L557.6,415.5L543.3,407.2L539.2,403.2L537.4,407.3L506.6,391.9L497.0,394.9L489.5,401.0L477.8,391.8L467.6,390.2L465.4,384.7L465.9,379.6L467.9,369.8L471.8,368.7L481.6,356.9L482.8,350.6L487.0,346.9L493.2,346.1L494.8,338.2L499.7,333.7L500.5,328.9L494.6,328.5L494.2,312.6Z"],
+ ["용산구","M465.9,379.6L465.4,384.7L467.6,390.2L477.8,391.8L489.5,401.0L472.2,418.5L465.0,425.8L461.1,433.6L456.6,438.1L445.7,445.4L429.2,455.0L425.4,452.7L416.0,453.1L411.5,456.4L381.8,454.8L368.0,448.8L360.4,443.4L354.7,437.4L349.9,428.8L347.6,420.4L341.6,414.7L344.5,401.4L356.4,398.1L367.6,384.9L370.1,376.0L373.4,374.0L376.7,368.3L380.5,365.8L377.6,361.4L384.0,355.1L396.3,355.7L404.5,357.5L405.8,353.1L412.3,356.9L418.4,357.8L421.6,356.0L426.2,361.5L430.9,361.6L440.5,371.7L446.7,365.2L454.6,366.0L457.6,364.2L458.7,374.3L463.4,380.0L465.9,379.6Z"],
+ ["중구","M494.2,312.6L494.6,328.5L500.5,328.9L499.7,333.7L494.8,338.2L493.2,346.1L487.0,346.9L482.8,350.6L481.6,356.9L471.8,368.7L467.9,369.8L465.9,379.6L463.4,380.0L458.7,374.3L457.6,364.2L454.6,366.0L446.7,365.2L440.5,371.7L430.9,361.6L426.2,361.5L421.6,356.0L418.4,357.8L412.3,356.9L405.8,353.1L404.5,357.5L396.3,355.7L384.0,355.1L377.6,361.4L376.3,352.2L378.9,349.6L375.8,343.7L379.9,342.6L386.2,337.8L391.3,336.1L385.7,326.6L390.3,321.2L397.7,318.8L407.0,318.6L428.3,321.4L443.2,320.0L452.6,317.8L479.6,317.3L488.5,312.7L494.2,312.6Z"],
+ ["종로구","M395.5,166.6L401.8,168.8L404.9,174.9L410.3,174.1L409.7,185.2L412.9,189.6L416.6,204.2L424.1,209.1L424.6,219.0L422.5,227.3L426.0,241.6L420.6,245.8L414.2,246.6L415.1,254.5L418.6,259.3L423.6,262.6L433.0,265.3L438.7,265.6L441.1,263.2L451.3,262.8L454.1,270.9L460.8,276.1L462.6,279.9L463.0,287.7L466.4,291.6L477.6,287.4L480.8,288.3L484.5,296.2L491.3,295.5L493.8,297.4L494.2,312.6L488.5,312.7L479.6,317.3L452.6,317.8L443.2,320.0L428.3,321.4L407.0,318.6L397.7,318.8L390.3,321.2L385.7,326.6L360.7,295.4L365.0,291.0L372.4,286.7L366.7,281.4L369.9,268.6L369.8,265.0L366.0,256.2L367.5,248.7L361.7,248.0L359.1,243.5L360.7,233.3L359.1,228.5L354.6,225.5L353.5,223.3L355.8,215.4L354.6,205.6L352.7,201.7L355.3,198.9L357.4,192.5L358.0,184.6L366.8,183.3L372.1,175.8L390.7,171.6L395.5,166.6Z"]
+];
+</script>
 <script>
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const fmt=n=>Math.round(n).toLocaleString('ko-KR');
@@ -403,66 +463,45 @@ function roll(el,n,f){
 }
 
 /* ===== data: names and numbers live only here ===== */
-const ME={store:'밥만 개근',area:'시립대 정문',gu:'동대문구',x:566,y:300};
+const ME={id:'gate',store:'밥만 개근',area:'시립대 정문',point:[.55,.60]};
 const ITEMS=[
- {id:'ch',f:'chili.png',n:'청양고추',u:'1kg 봉',p:8900,st:1,pick:2},
- {id:'on',f:'onion.png',n:'양파',u:'3kg 망',p:1180,st:3,pick:3},
- {id:'lk',f:'leek.png',n:'대파',u:'1kg 단',p:1750,st:1,pick:2}];
+ {id:'ch',f:'chili.png',n:'청양고추',u:'1kg 봉',p:5960,st:1,pick:2},
+ {id:'mu',f:'mushroom.png',n:'버섯',u:'1kg 팩',p:7900,st:1,pick:2},
+ {id:'on',f:'onion.png',n:'양파',u:'3kg 망',p:1180,st:3,pick:3}];
 const BUNDLES=[
  {farm:'밀양 고추경보',it:'ch',day:'금',goal:10},
  {farm:'무안 캐고 뽑고',it:'on',day:'화',goal:30},
- {farm:'무안 캐고 뽑고',it:'lk',day:'금',goal:10}];
-/* other stores in the same area */
+ {farm:'버섯이 벗이다',it:'mu',day:'수',goal:10}];
 const ST=['김밥 한줄요약','떡볶이 땡땡이','회기 칼국수다','반찬이 본체','파전 기우제','순댓국 수혈','돈까삭까삭','한 삽 덮밥','화난 김치찌개'];
-/* this week's orders before the demo: one per store, [store, item, kg, minutes ago] */
+/* This week's orders before the demo: [store, item, kg, minutes ago]. */
 const HIST=[
  [ST[0],'ch',2,38],[ST[1],'on',6,95],[ST[2],'ch',2,170],
- [ST[3],'lk',2,290],[ST[4],'on',6,760],[ST[5],'ch',2,1500],
- [ST[6],'on',6,2300],[ST[7],'lk',2,3100],[ST[8],'ch',2,4200]];
-/* G: same-area orders, onion and leek only */
-const BURST=[[ST[1],'on',3],[ST[3],'lk',1],[ST[4],'on',3],[ST[0],'lk',1],[ST[5],'on',3],[ST[7],'lk',1],[ST[6],'on',3]];
-/* candidate areas for expansion (hollow dots) */
+ [ST[3],'mu',2,290],[ST[4],'on',6,760],[ST[5],'ch',2,1500],
+ [ST[6],'on',6,2300],[ST[7],'mu',2,3100],[ST[8],'ch',2,4200]];
+const BURST=[[ST[1],'on',3],[ST[3],'mu',1],[ST[4],'on',3],[ST[0],'mu',1],[ST[5],'on',3],[ST[7],'mu',1],[ST[6],'on',3]];
 const CANDS=[
- {gu:'성북구',area:'안암역',stores:[
-  ['김밥 전공필수','김밥'],['떡볶이 추가점','분식'],['칼국수 면접','칼국수'],['백반 장학금','백반'],
-  ['파전 복학생','파전'],['순대 출석부','순댓국'],['돈까스 유급','돈까스'],['덮밥 재수강','덮밥']]},
- {gu:'중랑구',area:'상봉역',stores:[
-  ['국밥 막차탑승','국밥'],['김밥 환승중','김밥'],['냉면 급정거','냉면'],['족발 종착역','족발'],
-  ['떡볶이 급출발','분식'],['백반 첫차','백반'],['닭갈비 만석','닭갈비'],['짜장 개찰구','중식']]},
- {gu:'광진구',area:'건대입구',stores:[
-  ['찌개 단톡방','찌개'],['덮밥 읽씹금지','덮밥'],['떡볶이 답장좀','분식'],['김밥 말다잠','김밥'],
-  ['냉면 밀당중','냉면'],['족발 약속잡기','족발'],['짬뽕 손절금지','중식'],['파전 이모티콘','파전']]},
- {gu:'성동구',area:'왕십리역',stores:[
-  ['순대 꽉찬속','순댓국'],['돈까스 주먹쾅','돈까스'],['냉면 이빨악','냉면'],['국밥 쌀잠수','국밥'],
-  ['덮밥 밥묻혔네','덮밥'],['파전 뒤집개왕','파전'],['닭갈비 불꽃쇼','닭갈비'],['찌개 뚝배기쨍','찌개']]},
- {gu:'종로구',area:'혜화역',stores:[
-  ['김밥 주연상','김밥'],['칼국수 대역','칼국수'],['족발 커튼콜','족발'],['순대 관객석','순댓국'],
-  ['닭갈비 열연','닭갈비'],['백반 대사없음','백반'],['냉면 관객울림','냉면'],['짬뽕 기립박수','중식']]},
- {gu:'중구',area:'충무로',stores:[
-  ['국밥 무삭제','국밥'],['짜장 검은화면','중식'],['돈까스 음향팀','돈까스'],['칼국수 면연기','칼국수'],
-  ['떡볶이 컷금지','분식'],['덮밥 감독판','덮밥'],['찌개 실화바탕','찌개'],['족발 특별출연','족발']]},
- {gu:'서대문구',area:'신촌',stores:[
-  ['백반 셔츠조심','백반'],['김밥 말다지각','김밥'],['떡볶이 출튀','분식'],['국밥 과탑','국밥'],
-  ['닭갈비 팀플중','닭갈비'],['파전 공강한판','파전'],['순대 속전공','순댓국'],['칼국수 면제출','칼국수']]},
- {gu:'노원구',area:'공릉역',stores:[
-  ['국밥 내복한겹','국밥'],['파전 외투금지','파전'],['냉면 입김남','냉면'],['족발 발시려','족발'],
-  ['찌개 패딩벗어','찌개'],['백반 주머니밥','백반'],['칼국수 목도리','칼국수'],['덮밥 이불덮밥','덮밥']]},
- {gu:'마포구',area:'홍대입구',stores:[
-  ['김밥 한줄공연','김밥'],['냉면 고음불가','냉면'],['파전 앙코르','파전'],['돈까스 드럼쾅','돈까스'],
-  ['짜장 입술염색','중식'],['순대 랩배틀','순댓국'],['닭갈비 떼창','닭갈비'],['찌개 볼륨최대','찌개']]}
+ {id:'campus',area:'회기·경희대',point:[.72,.30],stores:[
+  ['김밥 전공필수','김밥'],['백반 장학금','백반'],['파전 복학생','파전'],['덮밥 재수강','덮밥'],
+  ['국밥 과탑','국밥'],['닭갈비 팀플중','닭갈비'],['떡볶이 추가점','분식'],['파전 공강한판','파전']]},
+ {id:'market',area:'청량리',point:[.36,.56],stores:[
+  ['김밥 환승중','김밥'],['족발 종착역','족발'],['국밥 막차탑승','국밥'],['백반 첫차','백반'],
+  ['냉면 급정거','냉면'],['떡볶이 급출발','분식'],['닭갈비 만석','닭갈비'],['짜장 개찰구','중식']]}
 ];
+const DAYS=['월','화','수','목','금'];
+const PREVIOUS_WEEKS=[6,8,9,12,11,15,16,19,21,24,27];
+const RETAIL_CHILI=10500;
 
 const IT=Object.fromEntries(ITEMS.map(i=>[i.id,i]));
 const BOF=id=>BUNDLES.find(b=>b.it===id);
 const pic=id=>`<img src="img/${IT[id].f}" alt="" draggable="false">`;
-const PRE=ITEMS.map(i=>{const im=new Image();im.src='img/'+i.f;return im});
-const S={qty:{},recs:[],storeOrders:new Map(),done:{}};
+const S={qty:{},orderCount:0,storeOrders:new Map(),done:{}};
 function initData(){
-  BUNDLES.forEach(b=>b.cur=0);ITEMS.forEach(i=>S.qty[i.id]=0);S.recs=[];S.storeOrders.clear();
+  BUNDLES.forEach(b=>{b.cur=0;b.stores=new Map()});
+  ITEMS.forEach(i=>S.qty[i.id]=0);S.orderCount=0;S.storeOrders.clear();
   HIST.forEach(([st,it,q])=>applyOrder(st,it,q));
 }
 initData();
-const total=()=>BUNDLES.reduce((a,b)=>a+b.cur,0);
+const total=()=>BUNDLES.reduce((sum,b)=>sum+b.cur,0);
 const nFull=()=>BUNDLES.filter(b=>b.cur>=b.goal).length;
 $('#meName').textContent=ME.store;$('#meArea').textContent=ME.area;
 
@@ -482,7 +521,7 @@ tabs.forEach((t,i)=>t.onclick=()=>{if(!busy)go(i)});
 $('.panes').addEventListener('scroll',e=>{if(e.target.scrollLeft)e.target.scrollLeft=0});
 /* order list */
 const ol=$('#olist');
-ITEMS.forEach((it,k)=>{ol.insertAdjacentHTML('beforeend',`<div class="card row" style="--d:${k*50}ms" data-id="${it.id}"><div class="tile">${pic(it.id)}</div><div class="inf"><div class="nm">${it.n}</div><div class="pr"><b>${fmt(it.p)}원/kg</b></div><div class="sp">${it.u}</div></div><div class="step"><button data-s="-1">−</button><span class="q"></span><button data-s="1">+</button></div><div class="mp"><span class="dd">${BOF(it.id).day}요일 납품</span><span class="mb"><i class="b0"></i><i class="b1"></i></span><span class="mt"></span></div></div>`)});
+ITEMS.forEach((it,k)=>{ol.insertAdjacentHTML('beforeend',`<div class="card row" style="--d:${k*50}ms" data-id="${it.id}"><div class="tile">${pic(it.id)}</div><div class="inf"><div class="nm">${it.n}</div><div class="pr"><b>${fmt(it.p)}원/kg</b></div><div class="sp">${it.u}</div></div><div class="step"><button data-s="-1">−</button><span class="q"></span><button data-s="1">+</button></div><div class="mp"><span class="dd">${BOF(it.id).day}요일 납품</span><span class="mb"><i class="b0"></i><i class="b1"></i></span><span class="mt"></span></div><span class="gathered"></span></div>`)});
 $$('.row',ol).forEach(r=>{const id=r.dataset.id;$$('.step button',r).forEach(b=>b.onclick=()=>{if(busy||hp!==null)return;S.qty[id]=Math.max(0,Math.min(Math.max(0,BOF(id).goal-BOF(id).cur),S.qty[id]+b.dataset.s*IT[id].st));renderOrder()})});
 function renderOrder(){
   let p=0;
@@ -496,7 +535,9 @@ function renderMini(){
   $$('.row',ol).forEach(r=>{const id=r.dataset.id,b=BOF(id),q=busy?(S.done[id]||0):S.qty[id],c=busy?b.cur-q:b.cur,g=b.goal;
     const w0=Math.min(c,g)/g*100,w1=Math.min(q,Math.max(0,g-c))/g*100;
     $('.b0',r).style.width=w0+'%';$('.b1',r).style.width=w1+'%';
-    const t=q>0?`${c} <b>+ ${q}</b> / ${g}kg`:`${c} / ${g}kg`;const mt=$('.mt',r);if(mt.innerHTML!==t)mt.innerHTML=t});
+    const t=q>0?`${c} <b>+ ${q}</b> / ${g}kg`:`${c} / ${g}kg`;const mt=$('.mt',r);if(mt.innerHTML!==t)mt.innerHTML=t;
+    $('.gathered',r).textContent=`같은 날 주문 ${c}kg 모임`;
+  });
 }
 
 /* hold to confirm */
@@ -529,17 +570,39 @@ function confirmOrder(){
   /* the owner's rows stay on top of the record table until R */
   let low=null;lines.slice().reverse().forEach(l=>{const li=addFeed({store:ME.store,item:l.id,qty:l.q,mine:true,t:Date.now()});if(!low)low=li});
   if(!pinned||pinned.parentNode!==feed)pinned=low;
-  const res=lines.map(l=>{const b=BOF(l.id);return{l,b,full:b.cur>=b.goal}});
   later(()=>{hold.classList.remove('loading');hold.classList.add('done')},220);
   later(()=>{
-    $('#sheetT').textContent=res.every(r=>r.full)?'공동발주 확정':'주문 접수';
-    $('#rcpt').innerHTML=res.map(({l,b,full},k)=>`<div class="top"><span class="ri"><span class="rt">${pic(l.id)}</span>${IT[l.id].n}</span><span class="tv"><b>${b.cur} / ${b.goal}kg</b>${full?'<em>달성</em>':''}</span></div>`+
-      [['내 수령',l.q+'kg'],['납품',b.day+'요일'],full?['농가 출하',b.cur+'kg']:['최소 출하량',b.goal+'kg']].map(([a,v],j)=>`<div class="li${j?'':' me'}" style="--i:${k*3+j}"><span>${a}</span><b>${v}</b></div>`).join('')).join('');
+    renderReceipt(lines);
     sheetOpen=true;$('#scrim').inert=false;$('#sheet').inert=false;behind(true);
     $('#scrim').classList.add('show');$('#sheet').classList.add('show');
     if(!$('.stage').inert)$('#sheetGo').focus({preventScroll:true});
-    S.cfT=later(confetti,250);
+    if(!$('#sheet').classList.contains('pending'))S.cfT=later(confetti,250);
   },600);
+}
+function renderReceipt(lines){
+  const orders=lines.map(({id,q})=>{
+    const bundle=BOF(id);
+    return {id,q,bundle,full:bundle.cur>=bundle.goal};
+  });
+  const full=orders.every(o=>o.full),receipt=$('#rcpt');
+  $('#sheetT').textContent=full?'공동발주 확정':'주문 접수';
+  $('#sheet').classList.toggle('pending',!full);
+  receipt.classList.toggle('multi',orders.length>1);
+  receipt.innerHTML=orders.map(({id,q,bundle,full})=>{
+    const {cur,goal,day,stores}=bundle;
+    const participants=[...stores].filter(([name])=>name!==ME.store);
+    participants.push([ME.store,stores.get(ME.store)]);
+    const meals=full?participants.map(([name,qty],index)=>{
+      const mine=name===ME.store;
+      return `<div class="li${mine?' me':''}" style="--i:${index}"><span>${name}${mine?' <small>(방금)</small>':''}</span><b>${qty}kg</b></div>`;
+    }).join(''):'';
+    return `<section class="receipt${stores.size>5?' compact':''}">
+      <div class="top"><span class="ri"><span class="rt">${pic(id)}</span>${IT[id].n}</span><b class="tv">${cur} / ${goal}kg</b></div>
+      ${full?'<div class="met">✓ 최소 출하량 달성 · 발주 확정</div>':''}${meals}
+      <div class="receipt-totals">${full?`<div>농가 출하 <b>${cur}kg</b></div>`:''}<div>내 수령 <b>${q}kg</b></div></div>
+      <div class="delivery">납품 ${day}요일</div>
+    </section>`;
+  }).join('');
 }
 $('#sheetGo').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.repeat)e.preventDefault()});
 $('#sheetGo').onclick=$('#scrim').onclick=()=>{
@@ -554,7 +617,7 @@ $('#sheetGo').onclick=$('#scrim').onclick=()=>{
 const behind=on=>['.sbar','.phead','.panes','.tabbar'].forEach(q=>$(q).inert=on);
 document.addEventListener('keydown',e=>{if(e.key==='Tab'&&sheetOpen&&!$('.app').classList.contains('hide')){e.preventDefault();if(!$('.stage').inert)$('#sheetGo').focus({preventScroll:true})}});
 function confetti(){
-  const sc=$('#screen'),w=sc.clientWidth,h=sc.clientHeight,cs=['#16a05c','#8fd6af','#ffffff','#2cc277','#c9ebd8','#16a05c'];
+  const sc=$('#screen'),w=sc.clientWidth,h=sc.clientHeight,cs=['#0919b4','#8194f2','#ffffff','#5268eb','#fff000','#fff59a'];
   for(let i=0;i<22;i++){const c=document.createElement('i'),col=cs[i%cs.length];c.className='cf'+(col==='#ffffff'?' w':'');c.style.background=col;c.style.left=w/2+'px';c.style.top=(h*.5)+'px';sc.appendChild(c);
     const a=R()*Math.PI*2,v=70+R()*110,dx=Math.cos(a)*v,dy=Math.sin(a)*v-110;
     c.animate([{transform:'translate(0,0) rotate(0)',opacity:1},{transform:`translate(${dx}px,${dy}px) rotate(${R()*400}deg)`,opacity:1,offset:.55},{transform:`translate(${dx*1.15}px,${dy+150}px) rotate(${R()*700}deg)`,opacity:0}],{duration:800+R()*200,easing:'cubic-bezier(.15,.7,.4,1)'}).onfinish=()=>c.remove()}
@@ -572,88 +635,79 @@ function pickFarm(k){
 $$('.fc',fl).forEach((c,k)=>{c.onclick=()=>pickFarm(k);c.onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&!e.repeat){e.preventDefault();pickFarm(k)}}});
 function renderFarms(){
   $$('.fc',fl).forEach((c,k)=>{const b=BUNDLES[k];roll($('.pp',c),b.cur);$('.bar i',c).style.width=Math.min(100,b.cur*100/b.goal)+'%';
-    const full=b.cur>=b.goal,ds=$('.dds',c);if(ds._full!==full){ds._full=full;const ok=$('.dd.ok',ds);if(full&&!ok)ds.insertAdjacentHTML('afterbegin','<span class="dd ok">출하 확정</span>');else if(!full&&ok)ok.remove()}});
+    const full=b.cur>=b.goal,ds=$('.dds',c);if(ds._full!==full){ds._full=full;const ok=$('.dd.ok',ds);if(full&&!ok)ds.insertAdjacentHTML('afterbegin','<span class="dd ok">발주 확정</span>');else if(!full&&ok)ok.remove()}});
 }
 
 /* ===== ADMIN ===== */
-// map: operating area (동대문구) + candidate areas
-const map=$('#map'),mw=$('#mapwrap'),mapbox=$('#mapbox'),mapAll=$('#mapAll'),tip=$('#tip');
-const GG=Object.fromEntries(GEO.g.map(g=>[g.n,g]));
-const AREAS=new Map([ME,...CANDS].map(area=>[area.gu,area]));
-/* the view is cropped around the operating and candidate areas and stretched to the card's shape */
-let VB={x:0,y:0,w:GEO.w,h:GEO.h},selectedArea=null,pin,mapOutline;
-const MK=[];
-const at=(el,x,y)=>{el._x=x;el._y=y;el.style.left=((x-VB.x)/VB.w*100)+'%';el.style.top=((y-VB.y)/VB.h*100)+'%'};
+// The map uses one district boundary and three market buttons.
+const map=$('#map'),mw=$('#mapwrap'),mapbox=$('#mapbox'),mapAll=$('#mapAll');
+const AREAS=new Map([ME,...CANDS].map(area=>[area.id,area]));
+let mapBounds,view,selectedArea=null,pin;
+const pins=new Map();
+function placeMarker(el,{x,y}){
+  el.style.left=`${(x-view.x)/view.w*100}%`;
+  el.style.top=`${(y-view.y)/view.h*100}%`;
+}
 function renderMap(){
-  map.innerHTML=GEO.g.map(g=>`<path d="${g.d}" data-g="${g.n}"${g.n===ME.gu?` class="op" data-area="${ME.gu}" role="button" tabindex="0" aria-label="${ME.gu} · ${ME.area}" aria-pressed="false"`:''}/>`).join('')+
-    '<path class="map-outline" aria-hidden="true"/>';
-  mapOutline=$('.map-outline',map);
-  CANDS.forEach(({gu,area})=>{
-    const d=document.createElement('button');d.type='button';d.className='cand';d.dataset.area=gu;d.tabIndex=0;
-    d.setAttribute('aria-label',`${area} · 후보`);d.setAttribute('aria-pressed','false');
-    d.innerHTML=`<span class="cand-label" hidden>${area} · 후보</span>`;
-    at(d,GG[gu].x,GG[gu].y);mw.appendChild(d);MK.push(d);
-  });
-  const mdot=document.createElement('i');mdot.className='mdot';at(mdot,ME.x,ME.y);mw.appendChild(mdot);MK.push(mdot);
-  pin=document.createElement('button');pin.type='button';pin.className='pin';pin.dataset.area=ME.gu;pin.tabIndex=0;
-  pin.setAttribute('aria-label',`${ME.area} · 운영 중`);pin.setAttribute('aria-pressed','false');
-  pin.innerHTML=`<span class="pl">${ME.area} · </span><span class="roll" id="pinN"></span>kg`;
-  at(pin,ME.x,ME.y);mw.appendChild(pin);MK.push(pin);
-  $$('path[data-g]',map).forEach(p=>{
-    const gu=p.dataset.g,tag=gu===ME.gu?'<span>운영 중</span>':AREAS.has(gu)?'<span>후보</span>':'';
-    p.addEventListener('mouseenter',()=>{if(selectedArea)return;tip.innerHTML=gu+tag;tip.classList.add('on')});
-    p.addEventListener('mousemove',e=>{tip.style.left=e.clientX+'px';tip.style.top=e.clientY+'px'});
-    p.addEventListener('mouseleave',()=>tip.classList.remove('on'));
-  });
+  map.innerHTML=GEO.map(([district,path])=>`<path d="${path}"${district==='동대문구'?' class="op"':''}/>`).join('');
+  mapBounds=$('.op',map).getBBox();
+  for(const area of AREAS.values()){
+    const [u,v]=area.point;
+    area.x=mapBounds.x+mapBounds.width*u;area.y=mapBounds.y+mapBounds.height*v;
+    const button=document.createElement('button');
+    button.type='button';button.className=`pin ${area.id}${area===ME?'':' plan'}`;
+    button.dataset.area=area.id;
+    button.setAttribute('aria-label',`${area.area} · ${area===ME?'운영 중':'계획'}`);
+    button.setAttribute('aria-pressed','false');
+    button.innerHTML=`<span class="pin-label">${area.area}${area===ME?' <span class="roll" id="pinN"></span>kg':''}</span>`;
+    mw.appendChild(button);
+    pins.set(area.id,button);
+  }
+  pin=pins.get(ME.id);
 }
 function positionMap(){
-  const target=selectedArea===ME?ME:GG[selectedArea?.gu],scale=target?1.65:1;
-  const x=target?50-(target.x-VB.x)/VB.w*100*scale:0;
-  const y=target?52-(target.y-VB.y)/VB.h*100*scale:0;
-  mw.style.setProperty('--map-x',x+'%');mw.style.setProperty('--map-y',y+'%');mw.style.setProperty('--map-scale',scale);
+  const scale=selectedArea?1.28:1;
+  const x=selectedArea?50-(selectedArea.x-view.x)/view.w*100*scale:0;
+  const y=selectedArea?50-(selectedArea.y-view.y)/view.h*100*scale:0;
+  mw.style.setProperty('--map-x',x+'%');
+  mw.style.setProperty('--map-y',y+'%');
+  mw.style.setProperty('--map-scale',scale);
 }
 function fitMap(){
-  const bw=mw.clientWidth,bh=mw.clientHeight;if(!bw||!bh)return;
-  const pts=[...CANDS.map(({gu})=>GG[gu]),ME],P=60,T=110;
-  let x0=Math.min(...pts.map(p=>p.x))-P,x1=Math.max(...pts.map(p=>p.x))+P,y0=Math.min(...pts.map(p=>p.y))-P,y1=Math.max(...pts.map(p=>p.y))+P;
-  y0=Math.min(y0,ME.y-T);
-  let w=x1-x0,h=y1-y0;const a=bw/bh;
-  if(w/h<a){const nw=h*a;x0-=(nw-w)/2;w=nw}else{const nh=w/a;y0-=(nh-h)/2;h=nh}
-  VB={x:x0,y:y0,w,h};map.setAttribute('viewBox',`${x0} ${y0} ${w} ${h}`);
-  MK.forEach(el=>at(el,el._x,el._y));
-  $$('.rip',mw).forEach(el=>at(el,ME.x,ME.y));
+  const bw=mw.clientWidth,bh=mw.clientHeight;
+  if(!bw||!bh||!mapBounds)return;
+  const {x,y,width,height}=mapBounds,ratio=bw/bh;
+  const w=Math.max(width+28,(height+26)*ratio),h=w/ratio;
+  view={x:x+(width-w)/2,y:y+(height-h)/2,w,h};
+  map.setAttribute('viewBox',`${view.x} ${view.y} ${w} ${h}`);
+  pins.forEach((button,id)=>placeMarker(button,AREAS.get(id)));
+  $$('.rip',mw).forEach(el=>placeMarker(el,ME));
   positionMap();
 }
 function setArea(area){
   if(selectedArea===area)return;
-  if(!area&&document.activeElement===mapAll)$(`button[data-area="${selectedArea.gu}"]`,mw).focus({preventScroll:true});
+  if(!area&&document.activeElement===mapAll)pins.get(selectedArea.id).focus({preventScroll:true});
   selectedArea=area;
-  mapAll.hidden=!area;mw.classList.toggle('focused',!!area);tip.classList.remove('on');
-  $$('path[data-g]',map).forEach(p=>p.classList.toggle('selected',p.dataset.g===area?.gu));
-  if(area)mapOutline.setAttribute('d',GG[area.gu].d);else mapOutline.removeAttribute('d');
-  $$('[data-area]',mw).forEach(el=>{
-    const active=el.dataset.area===area?.gu;el.setAttribute('aria-pressed',String(active));
-    const label=$('.cand-label',el);if(label)label.hidden=!active;
-  });
-  positionMap();renderAreaPanel();
+  mapAll.hidden=!area;mw.classList.toggle('focused',!!area);
+  pins.forEach((button,id)=>button.setAttribute('aria-pressed',String(id===area?.id)));
+  positionMap();renderAreaPanel();renderPurchaseArea();
 }
 mapbox.addEventListener('click',e=>{
-  const area=AREAS.get(e.target.closest('[data-area]')?.dataset.area);
+  const area=AREAS.get(e.target.closest('button[data-area]')?.dataset.area);
   setArea(area&&area!==selectedArea?area:null);
 });
 $('.mapc').addEventListener('keydown',e=>{
-  if(e.key!=='Enter'&&e.key!==' ')return;
-  if(e.repeat){e.preventDefault();return}
-  if(e.target.matches('path[data-area]')){
-    e.preventDefault();setArea(selectedArea===ME?null:ME);
-  }
+  if(e.repeat&&(e.key==='Enter'||e.key===' '))e.preventDefault();
 });
 mapAll.onclick=()=>setArea(null);
-function ripple(){const r=document.createElement('i');r.className='rip';at(r,ME.x,ME.y);mw.appendChild(r);later(()=>r.remove(),1400)}
+function ripple(){
+  const r=document.createElement('i');r.className='rip';placeMarker(r,ME);
+  mw.appendChild(r);later(()=>r.remove(),1400);
+}
 function hotPin(){clearTimeout(S.hotT);pin.classList.add('hot');S.hotT=later(()=>pin.classList.remove('hot'),2500)}
 // bundle status rows (fixed BUNDLES order, same moment as phone cards)
 const fund=$('#bars');
-fund.innerHTML=BUNDLES.map(b=>`<div class="fd">${pic(b.it)}<span class="nm">${b.day} · ${IT[b.it].n}</span><span class="fm">${b.farm}</span><div class="bt"><i></i></div><span class="roll vv"></span><span class="ok">출하 확정</span></div>`).join('');
+fund.innerHTML=BUNDLES.map(b=>`<div class="fd">${pic(b.it)}<span class="nm">${b.day} · ${IT[b.it].n}</span><span class="fm">${b.farm}</span><div class="bt"><i></i></div><span class="roll vv"></span><span class="ok">발주 확정</span></div>`).join('');
 function renderFund(){
   $$('.fd',fund).forEach((r,k)=>{const b=BUNDLES[k];
     $('.bt i',r).style.width=Math.min(100,b.cur*100/b.goal)+'%';roll($('.vv',r),b.cur,n=>n+' / '+b.goal+'kg');
@@ -661,13 +715,13 @@ function renderFund(){
 }
 
 // order record table
-const feed=$('#feed'),feedHead=$('#feedHead'),feedTitle=$('#feedTitle'),stores=$('#stores'),RAF=new Set();
+const feed=$('#feed'),feedHead=$('#feedHead'),feedTitle=$('#feedTitle'),feedNote=$('#feedNote'),stores=$('#stores'),RAF=new Set();
 function renderAreaPanel(){
   const area=selectedArea,active=area===ME;
   const title=document.createElement('span');title.className='feed-title-in';
   title.textContent=area?`${area.area} ${active?'점포':'후보 점포'}`:'주문 기록';
   feedTitle.replaceChildren(title);
-  feed.hidden=feedHead.hidden=!!area;stores.hidden=!area;
+  feed.hidden=feedHead.hidden=feedNote.hidden=!!area;stores.hidden=!area;
   if(!area){stores.replaceChildren();fitFeed();return}
 
   const headers=active?['점포','이번 주 주문량','주문 건수']:['점포','업종','상태'];
@@ -684,7 +738,9 @@ const FEED_MAX=12;
 function fitFeed(){
   if(feed.hidden)return;
   const H=feed.clientHeight,items=$$('.fi',feed);
-  feed.style.setProperty('--fx','0px');let acc=0,n=0;
+  feed.style.setProperty('--fx','0px');
+  items.forEach(row=>row.classList.remove('cut'));
+  let acc=0,n=0;
   for(let i=0;i<items.length&&i<FEED_MAX;i++){const fr=items[i].querySelector('.fr'),h=fr?fr.offsetHeight:44;if(acc+h>H+1)break;acc+=h;n++}
   const fx=n?Math.max(0,Math.floor((H-acc)/n/2)):0;feed.style.setProperty('--fx',fx+'px');
   items.forEach((li,i)=>li.classList.toggle('cut',i>=n));
@@ -700,15 +756,84 @@ function addFeed(o,instant){
 function ftime(){const now=Date.now();$$('.fi',feed).forEach(li=>{const s=Math.floor((now-li.dataset.t)/1000);$('.c5',li).textContent=s<5?'방금':s<60?s+'초 전':s<3600?Math.floor(s/60)+'분 전':s<86400?Math.floor(s/3600)+'시간 전':Math.floor(s/86400)+'일 전'})}
 function seedFeed(){feed.innerHTML='';HIST.slice().sort((a,b)=>b[3]-a[3]).forEach(([st,it,q,m])=>addFeed({store:st,item:it,qty:q,t:Date.now()-m*60000},true))}
 
-function renderAdmin(){
-  roll($('#sFull'),nFull());roll($('#sStores'),new Set(S.recs).size);roll($('#sRecs'),S.recs.length);
+// The charts share the quantities used for the totals and the bundle status.
+const purchase=$('#purchase'),purchaseTitle=$('#purchaseTitle'),purchaseStatus=$('#purchaseStatus');
+const rankList=$('#rankList'),dayBars=$('#dayBars'),weekBars=$('#weekBars');
+const fixedColumnScale=Math.max(...BUNDLES.map(b=>b.goal));
+const weekScale=BUNDLES.reduce((sum,b)=>sum+b.goal,0);
+function buildPurchase(){
+  rankList.innerHTML=ITEMS.map(({id,n})=>`<div class="rank-row" data-item="${id}" role="listitem">
+    ${pic(id)}<span class="item-name">${n}</span><span class="rank-track"><i></i></span><b></b>
+  </div>`).join('');
+  dayBars.innerHTML=DAYS.map(day=>`<div class="column" data-day="${day}" role="listitem">
+    <div class="column-plot"><i><b></b></i></div><small>${day}</small>
+  </div>`).join('');
+  weekBars.innerHTML=[...PREVIOUS_WEEKS,0].map((_,i)=>`<div class="column${i===PREVIOUS_WEEKS.length?' current':''}" role="listitem">
+    <div class="column-plot"><i>${i===PREVIOUS_WEEKS.length?'<b></b>':''}</i></div>
+  </div>`).join('');
+  const price=IT.ch.p,discount=Math.round((1-price/RETAIL_CHILI)*100);
+  $('#purchasePrice').innerHTML=`<b>${IT.ch.n} ${fmt(price)}원/kg</b><span class="chip">소포장 대비 −${discount}%</span>`;
+}
+function updatePurchaseBar(bar,kg,scale,flash){
+  if(!flash)bar._flash?.cancel();
+  if(bar._kg===kg)return;
+  if(flash&&bar._kg!==undefined&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    bar._flash?.cancel();
+    const base=getComputedStyle(bar).backgroundColor;
+    const accent=bar.closest('.current')?'#040b55':'var(--deep)';
+    bar._flash=bar.animate([{backgroundColor:accent},{backgroundColor:accent,offset:.52},{backgroundColor:base}],
+      {duration:600,easing:'cubic-bezier(.2,.8,.2,1)'});
+  }
+  bar._kg=kg;
+  bar.style.setProperty('--value',`${kg/scale*100}%`);
+}
+function renderPurchaseData(flash){
+  const sorted=[...BUNDLES].sort((a,b)=>b.cur-a.cur);
+  sorted.forEach(({it,cur},index)=>{
+    const row=$(`[data-item="${it}"]`,rankList);
+    row.style.setProperty('--rank',index);
+    row.setAttribute('aria-posinset',index+1);
+    row.setAttribute('aria-setsize',sorted.length);
+    $('b',row).textContent=`${cur}kg`;
+    updatePurchaseBar($('i',row),cur,fixedColumnScale,flash);
+  });
+  $$('.column',dayBars).forEach((column,index)=>{
+    const day=DAYS[index],kg=BUNDLES.reduce((sum,b)=>sum+(b.day===day?b.cur:0),0);
+    column.classList.toggle('zero',kg===0);
+    column.setAttribute('aria-label',`${day}요일 ${kg}kg`);
+    $('b',column).textContent=kg?`${kg}kg`:'';
+    updatePurchaseBar($('i',column),kg,fixedColumnScale,flash);
+  });
+  $$('.column',weekBars).forEach((column,index)=>{
+    const kg=PREVIOUS_WEEKS[index]??total(),value=$('b',column);
+    column.setAttribute('aria-label',`${index+1}주차 ${kg}kg`);
+    if(value)value.textContent=`${kg}kg`;
+    updatePurchaseBar($('i',column),kg,weekScale,flash);
+  });
+}
+function renderPurchaseArea(){
+  const area=selectedArea??ME,planned=area!==ME;
+  purchaseTitle.textContent=`${area.area} 구매 데이터`;
+  purchaseStatus.hidden=!planned;
+  $('.purchase-grid',purchase).inert=planned;
+  purchase.classList.toggle('planned',planned);
+  if(planned)$$('i',purchase).forEach(bar=>bar._flash?.cancel());
+  purchase.classList.remove('switching');
+  void purchase.offsetWidth;
+  purchase.classList.add('switching');
+}
+function renderAdmin(flash=true){
+  roll($('#sFull'),nFull());roll($('#sStores'),S.storeOrders.size);roll($('#sRecs'),S.orderCount);
   roll($('#sKg'),total());roll($('#pinN'),total());
+  renderPurchaseData(flash);
 }
 $('#sFullOf').textContent='/ '+BUNDLES.length;
 
 /* order event */
 function applyOrder(store,item,qty){
-  BOF(item).cur+=qty;S.recs.push(store);
+  const bundle=BOF(item);
+  bundle.cur+=qty;bundle.stores.set(store,(bundle.stores.get(store)??0)+qty);
+  S.orderCount++;
   const stats=S.storeOrders.get(store)??{qty:0,count:0};
   stats.qty+=qty;stats.count++;
   S.storeOrders.set(store,stats);
@@ -749,17 +874,17 @@ function resetDemo(){
   TM.forEach(clearTimeout);TM=[];stopBurst();burstDone=false;cancelHold();clearTimeout(S.cfT);clearTimeout(S.hotT);clearTimeout(togT);
   RAF.forEach(cancelAnimationFrame);RAF.clear();
   setArea(null);
-  busy=false;sheetOpen=false;gLock=false;pinned=null;S.done={};tip.classList.remove('on');
+  busy=false;sheetOpen=false;gLock=false;pinned=null;S.done={};
   hold.classList.remove('loading','done','pressing','shake');
   $('#scrim').classList.remove('show');$('#sheet').classList.remove('show');$('#scrim').inert=true;$('#sheet').inert=true;behind(false);
-  $('#sheetT').textContent='';$('#rcpt').innerHTML='';
+  $('#sheet').classList.remove('pending');$('#sheetT').textContent='';$('#rcpt').innerHTML='';
   $$('.cf,.rip').forEach(e=>e.remove());$$('.row.flash',ol).forEach(r=>r.classList.remove('flash'));
   pin.classList.remove('hot');
   initData();renderOrder();seedFeed();
   if($('.app').classList.contains('hide'))togPhone();
   if(tab!==0)go(0);else renderFarms();
   ol.scrollTop=0;$('#p2').scrollTop=0;$('.panes').scrollLeft=0;
-  renderAdmin();renderFund();
+  purchase.classList.remove('switching');renderAdmin(false);renderFund();
 }
 document.addEventListener('keydown',e=>{
   if(e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.target.tagName==='INPUT')return;
@@ -770,10 +895,11 @@ document.addEventListener('keydown',e=>{
 /* boot */
 seedFeed();
 renderOrder();placeTab();
-renderMap();fitMap();
+renderMap();fitMap();buildPurchase();renderAdmin(false);
+new ResizeObserver(fitFeed).observe(feed);
 new ResizeObserver(fitMap).observe(mapbox);
-setTimeout(()=>{document.body.classList.remove('loading');renderAdmin();renderFarms();renderFund();fitFeed()},950);
-if(document.fonts)document.fonts.ready.then(()=>{fit();placeTab();fitFeed()});
+setTimeout(()=>{document.body.classList.remove('loading');renderFarms();renderFund();fitFeed()},950);
+if(document.fonts)document.fonts.ready.then(()=>{fit();placeTab();fitMap();fitFeed()});
 let rzF=0;window.addEventListener('resize',()=>{cancelAnimationFrame(rzF);rzF=requestAnimationFrame(()=>{fit();placeTab();fitFeed()})});
 </script>
 </body>
