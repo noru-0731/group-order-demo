@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root {
-  --blue:#2d5a27; --navy:#1c3a18; --yellow:#ffcf3a; --pale:#fde9a8;
-  --paper:#f8f4ea; --ink:#1d2218; --muted:#6c6f5d; --line:#e6e0cf;
-  --red:#dc4a22; --tint:#e9f1d9; --mid:#6b9a35; --gold:#f79a24;
+  --blue:#0f9547; --navy:#0a5c2c; --yellow:#ffd43a; --pale:#fff1a8;
+  --paper:#f4f8f3; --ink:#15181a; --muted:#6b7280; --line:#dfe8dd;
+  --red:#e5442b; --tint:#e3f6e9; --mid:#37b866; --gold:#ff9f2e;
   --ease:cubic-bezier(.2,.8,.2,1); --motion:500ms;
 }
 * { box-sizing:border-box }
@@ -72,7 +72,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .card { background:#fff; border:1.5px solid var(--line); border-radius:22px }
 .soft { background:var(--paper); border-color:transparent }
 .blue { background:var(--blue); color:#fff; border-color:var(--blue) }
-.blue .muted,.blue .small { color:#e3edcd }
+.blue .muted,.blue .small { color:#d9f2e0 }
 .blue .big,.blue .yellow { color:var(--yellow) }
 .pad { padding:28px 32px }
 .grid { display:grid; gap:24px; min-width:0; min-height:0 }
@@ -97,7 +97,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 
 .hero { background:var(--blue); border-top-color:var(--blue); color:white }
 .hero::after { content:""; position:absolute; inset:24px; border:1px solid #ffffff38; border-radius:18px; pointer-events:none }
-.hero .deck-id { top:10px; color:#e3edcd }
+.hero .deck-id { top:10px; color:#d9f2e0 }
 .hero .deck-id b,.hero h1 { color:#fff }
 .hero .deck-id span { border-color:#ffffff52 }
 .hero .header { z-index:1 }
@@ -108,7 +108,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .hero-main .intro strong { color:var(--yellow); font-weight:850 }
 .hero .wordmark { display:flex; align-items:center; gap:30px; font-size:154px; line-height:1.05; margin-top:43px }
 .hero .wordmark .icon { width:122px; height:122px; color:var(--yellow) }
-.hero .hero-foot { position:absolute; bottom:94px; left:76px; right:76px; font-size:24px; color:#f3f7e8; border-top:1px solid #ffffff52; padding-top:27px }
+.hero .hero-foot { position:absolute; bottom:94px; left:76px; right:76px; font-size:24px; color:#f1faf3; border-top:1px solid #ffffff52; padding-top:27px }
 .closing .hero-main { top:212px }
 .closing .thanks { margin-top:34px; font-size:54px; font-weight:800; letter-spacing:-.03em }
 .closing .hero-foot { display:flex; justify-content:space-between; gap:25px }
@@ -116,7 +116,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .closing .hero-art { top:170px; right:-145px }
 
 .problem { grid-template-columns:1.22fr 1fr }
-.alley { background:#3e4a35 }
+.alley { background:#344061 }
 .order-chip { position:absolute; display:flex; align-items:center; gap:10px; background:#fff; border-radius:100px; padding:9px 17px; white-space:nowrap; color:var(--ink); font-size:24px; font-weight:720 }
 .order-chip i { width:15px; height:15px; border-radius:50%; background:var(--blue) }
 .order-chip b { color:var(--blue) }
@@ -134,7 +134,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .plan-mix .ring .big { font-size:52px }
 .parts-bar { display:flex; height:45px; margin:24px 0 12px; overflow:hidden; border-radius:8px; background:var(--paper) }
 .parts-bar span:nth-child(1) { background:var(--blue) }
-.parts-bar span:nth-child(2) { background:#dfe6c9 }
+.parts-bar span:nth-child(2) { background:#d8ecdc }
 .parts-bar span:nth-child(3) { background:var(--gold) }
 .parts-labels { display:grid; grid-template-columns:auto 1fr auto; gap:10px; font-size:24px }
 .parts-labels span:nth-child(2) { text-align:center; padding-left:18% }
@@ -199,12 +199,12 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .restaurant { display:flex; align-items:center; padding:0 20px; gap:15px; color:var(--muted); background:var(--paper); transition:background var(--motion),border-color var(--motion),color var(--motion) }
 .restaurant .icon { padding:7px; width:46px; height:46px; border-radius:50%; color:var(--blue); background:var(--tint) }
 .restaurant b { margin-left:auto; white-space:nowrap }
-.restaurant.picked { background:#fff; color:var(--blue); border-color:#9cc36a }
+.restaurant.picked { background:#fff; color:var(--blue); border-color:#7fd197 }
 .order-core { grid-column:3; padding:29px 32px; min-height:350px; z-index:1 }
 .order-core .title { display:flex; align-items:center; gap:12px; margin-bottom:8px }
 .order-core .big { margin:16px 0 20px }
 .order-core .slots { display:grid; grid-template-columns:repeat(5,1fr); gap:7px }
-.slots span { display:block; border-radius:6px; padding:8px 0; text-align:center; background:#35692c; color:#e3edcd; font-size:24px; font-weight:780; transition:color var(--motion),background var(--motion) var(--d,0ms) }
+.slots span { display:block; border-radius:6px; padding:8px 0; text-align:center; background:#178f49; color:#d9f2e0; font-size:24px; font-weight:780; transition:color var(--motion),background var(--motion) var(--d,0ms) }
 .slots span.filled { color:var(--navy); background:var(--yellow) }
 .confirm { display:inline-flex; margin-top:15px; color:var(--yellow); font-size:24px; font-weight:780 }
 .farm-result { grid-column:5; z-index:1; overflow:hidden; align-self:center; transition:border-color var(--motion) }
@@ -222,7 +222,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .demo { display:grid; grid-template-rows:minmax(0,1fr) auto; gap:13px }
 .demo-screen { position:relative; overflow:hidden; background:var(--paper); aspect-ratio:16/9; height:100%; max-width:100%; margin:0 auto }
 .demo-fallback,.demo iframe { position:absolute; inset:0; width:100%; height:100%; border:0 }
-.demo-fallback { background:#f1ede0 }
+.demo-fallback { background:#eef3ec }
 .demo-fallback img { object-fit:contain }
 .demo iframe { opacity:0; pointer-events:none; background:#fff; transition:opacity 240ms var(--ease) }
 .demo-screen.live iframe { opacity:1; pointer-events:auto }
@@ -230,7 +230,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .demo-status { position:absolute; left:16px; bottom:16px; padding:9px 13px; background:#fff; border:1px solid var(--line); border-radius:9px; color:var(--navy) }
 .demo-screen.live .demo-fallback,.demo-screen.live .demo-status { visibility:hidden }
 .video-body { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:28px; align-items:center }
-.video-screen { position:relative; overflow:hidden; aspect-ratio:16/9; width:100%; padding:0; background:#f8f4ea }
+.video-screen { position:relative; overflow:hidden; aspect-ratio:16/9; width:100%; padding:0; background:#f4f8f3 }
 .video-screen img,.video-screen iframe { position:absolute; inset:0; width:100%; height:100%; border:0 }
 .video-screen img { object-fit:contain }
 .video-qr { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:34px 30px; text-align:center; border-top:6px solid var(--blue) }
@@ -266,9 +266,9 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .brand-self .icon { width:38px; height:38px; color:var(--yellow) }
 .price-rows { display:grid; grid-template-rows:repeat(6,1fr) }
 .price-row { display:grid; grid-template-columns:245px 1fr; align-items:center; padding:0 12px; border:1px dashed transparent; border-radius:8px; font-size:24px }
-.price-row.featured { border-color:var(--blue); color:var(--blue); font-weight:800; background:#fbfaf3 }
+.price-row.featured { border-color:var(--blue); color:var(--blue); font-weight:800; background:#f8fcf9 }
 .price-track { position:relative; border-left:1px solid var(--line); width:100%; height:52px; display:flex; align-items:center }
-.price-bar { display:block; height:36px; width:var(--w); background:#b3b0a0; border-radius:0 4px 4px 0 }
+.price-bar { display:block; height:36px; width:var(--w); background:#aab0ba; border-radius:0 4px 4px 0 }
 .featured .price-bar { background:var(--blue) }
 .baseline .price-bar { background:var(--ink) }
 .price-value { position:absolute; left:calc(var(--w) + 10px); white-space:nowrap; font-weight:780 }
@@ -296,7 +296,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .comparison th:first-child { text-align:left; width:29%; padding-left:28px }
 .comparison thead th { background:var(--paper) }
 .comparison thead th:nth-child(2) { background:var(--blue); color:#fff }
-.comparison tbody td:nth-child(2) { background:#f1f6e4 }
+.comparison tbody td:nth-child(2) { background:#edf8f0 }
 .comparison tbody:last-of-type tr:last-child > * { border-bottom:0 }
 .comparison .marks { width:38px; height:38px; margin:auto; color:var(--muted) }
 .comparison td:nth-child(2) .marks { color:var(--blue) }
@@ -330,7 +330,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .market-item:nth-child(n+2)::after { content:""; position:absolute; left:-18px; top:calc(50% - 8px); border:8px solid transparent; border-left-color:var(--mid) }
 .market-item .within { display:inline-block; margin-right:10px; padding:2px 10px; border-radius:6px; background:var(--tint); color:var(--blue); font-size:22px; font-weight:800; vertical-align:3px }
 .market-chart text { font-size:31px; letter-spacing:-.02em }
-.market-chart.holo { overflow:hidden; background:radial-gradient(120% 90% at 50% 100%,#24521f 0%,#12300f 55%,#0a1f0a 100%) }
+.market-chart.holo { overflow:hidden; background:radial-gradient(120% 90% at 50% 100%,#0e4f27 0%,#083a1c 55%,#04220f 100%) }
 .market-chart.holo::after { content:""; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(to bottom,#ffffff0a 0 1px,transparent 1px 5px) }
 .holo-flow { animation:holo-flow 1.6s linear infinite }
 .holo-ping { transform-box:fill-box; transform-origin:center; animation:holo-ping 1.8s ease-out infinite }
@@ -395,7 +395,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .report-card b { color:var(--blue) }
 .spark { display:flex; gap:7px; align-items:flex-end; height:105px; padding:0 5px 4px; border-bottom:1px solid var(--line) }
 .spark i { flex:1; height:var(--h); border-radius:4px 4px 0 0; background:var(--mid) }
-.spark.gray i { background:#b3b0a0 }
+.spark.gray i { background:#aab0ba }
 .entry-validate { padding:34px 36px; display:flex; flex-direction:column; justify-content:space-between; gap:10px }
 .entry-validate .title { font-size:36px; line-height:1.3 }
 .entry-validate .small { font-size:26px }
@@ -409,7 +409,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .person .big { margin-top:8px }
 .person ul { width:100%; margin-top:9px; padding:0; list-style:none }
 .person li { border-top:1px solid var(--line); padding:13px 0 9px; line-height:1.26 }
-.person mark { background:linear-gradient(transparent 58%,#ffcf3a 58%); color:var(--blue); font-weight:850; padding:0 2px }
+.person mark { background:linear-gradient(transparent 58%,#ffd43a 58%); color:var(--blue); font-weight:850; padding:0 2px }
 
 .appendix .body { inset:194px 76px 92px }
 .appendix table { font-size:24px; line-height:1.23 }
@@ -446,7 +446,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .sources a { color:var(--blue); text-underline-offset:3px; overflow-wrap:anywhere }
 .sources .source-names { font-weight:750 }
 
-.controls { position:absolute; z-index:5; right:76px; bottom:18px; display:flex; align-items:center; gap:8px; color:#4d5744; font-size:24px }
+.controls { position:absolute; z-index:5; right:76px; bottom:18px; display:flex; align-items:center; gap:8px; color:#475065; font-size:24px }
 .controls .page-num { padding:0 5px; min-width:82px; text-align:center; font-weight:720 }
 .controls button {
   display:grid; place-items:center; cursor:pointer; width:42px; height:42px; padding:0;
@@ -456,12 +456,12 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .controls .icon { width:23px; height:23px }
 .controls kbd { background:#fff; border:1px solid var(--line); border-radius:8px; padding:4px 9px; color:var(--blue); font:inherit }
 .controls kbd[hidden] { display:none }
-.controls.on-dark { color:#f3f7e8 }
-.controls.on-dark button { background:#2f6328; color:white; border-color:#ffffff54 }
+.controls.on-dark { color:#f1faf3 }
+.controls.on-dark button { background:#138742; color:white; border-color:#ffffff54 }
 .controls a:focus-visible,.controls button:focus-visible,.slide a:focus-visible,#stage:focus-visible { outline:3px solid var(--mid); outline-offset:4px }
-.progress { position:absolute; z-index:6; inset:auto 0 0; height:5px; background:#dfe6c9 }
+.progress { position:absolute; z-index:6; inset:auto 0 0; height:5px; background:#d8ecdc }
 .progress span { display:block; height:100%; width:100%; transform:scaleX(var(--progress,0)); transform-origin:left; background:var(--blue); transition:transform var(--motion) var(--ease) }
-.progress.on-dark { background:#3f7a33 }
+.progress.on-dark { background:#1fa456 }
 .progress.on-dark span { background:var(--yellow) }
 body.idle,body.idle * { cursor:none !important }
 @media (prefers-reduced-motion:reduce) {
@@ -485,7 +485,7 @@ body.idle,body.idle * { cursor:none !important }
   .controls,.progress,.demo iframe,.demo-status,.packet { display:none !important }
   .demo-fallback { visibility:visible !important }
   .slots span { color:var(--navy); background:var(--yellow) }
-  .restaurant { background:#fff; color:var(--blue); border-color:#9cc36a }
+  .restaurant { background:#fff; color:var(--blue); border-color:#7fd197 }
   .farm-result { border-color:var(--blue) }
   .farm-result figcaption strong { color:var(--blue); background:var(--pale); border-radius:6px; display:inline-block; padding:2px 7px }
 }
@@ -574,7 +574,7 @@ body.idle,body.idle * { cursor:none !important }
       </figure>
       <div class="grid problem-stats">
         <article class="card pad ring-card a" data-step="1" style="--d:300ms">
-          <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#e6e0cf" stroke-width="10"/><g data-donut="94.1:#2d5a27"></g></svg><strong class="big" data-count="94.1" data-suffix="%">94.1%</strong></div>
+          <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#dfe8dd" stroke-width="10"/><g data-donut="94.1:#0f9547"></g></svg><strong class="big" data-count="94.1" data-suffix="%">94.1%</strong></div>
           <div><h2 class="title">식재료비 상승으로<br>어려움을 느낀 외식업체</h2><p class="small muted">전국 외식업체 3,138곳 조사</p></div>
         </article>
         <article class="card pad a" data-step="1" style="--d:600ms">
@@ -598,7 +598,7 @@ body.idle,body.idle * { cursor:none !important }
       <article class="card soft pad grower-summary a">
         <span class="big" data-count="7" data-suffix="곳">7곳</span><h2 class="title">팀이 직접 만난 농가</h2>
         <div class="chips"><span class="chip">밀양</span><span class="chip">제주</span><span class="chip">상주</span><span class="chip">…</span></div>
-        <svg class="grower-map" viewBox="0 0 212 362" preserveAspectRatio="xMidYMid meet" role="img" aria-label="밀양, 상주, 제주 위치를 표시한 지도"><path d="M21.0 64.9 L43.5 73.0 L46.0 83.5 L58.5 111.4 L38.5 111.4 L23.5 123.8 L41.0 145.5 L43.5 173.4 L38.5 198.2 L36.0 216.8 L31.0 247.8 L28.5 272.6 L41.0 278.8 L53.5 273.8 L81.0 266.4 L103.5 257.1 L111.0 249.0 L146.0 246.6 L171.0 229.2 L186.0 204.4 L194.5 170.3 L186.0 166.0 L186.0 142.4 L188.5 111.4 L176.0 83.5 L163.5 61.8 L146.0 37.0 L134.5 12.2 L106.0 30.8 L71.0 30.8 L51.0 52.5Z" fill="#e3edcd" stroke="#b7cf8d" stroke-width="2" stroke-linejoin="round"/><ellipse cx="43.5" cy="335.8" rx="20" ry="8" fill="#e3edcd" stroke="#b7cf8d" stroke-width="2"/><circle cx="124.0" cy="148.0" r="10" fill="#2d5a27" stroke="#fff" stroke-width="3"/><text x="112.0" y="153.0" text-anchor="end">상주</text><circle cx="153.5" cy="204.4" r="10" fill="#2d5a27" stroke="#fff" stroke-width="3"/><text x="141.5" y="209.4" text-anchor="end">밀양</text><circle cx="42.5" cy="333.4" r="10" fill="#2d5a27" stroke="#fff" stroke-width="3"/><text x="68.5" y="331.4" text-anchor="start">제주</text></svg>
+        <svg class="grower-map" viewBox="0 0 212 362" preserveAspectRatio="xMidYMid meet" role="img" aria-label="밀양, 상주, 제주 위치를 표시한 지도"><path d="M21.0 64.9 L43.5 73.0 L46.0 83.5 L58.5 111.4 L38.5 111.4 L23.5 123.8 L41.0 145.5 L43.5 173.4 L38.5 198.2 L36.0 216.8 L31.0 247.8 L28.5 272.6 L41.0 278.8 L53.5 273.8 L81.0 266.4 L103.5 257.1 L111.0 249.0 L146.0 246.6 L171.0 229.2 L186.0 204.4 L194.5 170.3 L186.0 166.0 L186.0 142.4 L188.5 111.4 L176.0 83.5 L163.5 61.8 L146.0 37.0 L134.5 12.2 L106.0 30.8 L71.0 30.8 L51.0 52.5Z" fill="#d9f2e0" stroke="#a5dcb6" stroke-width="2" stroke-linejoin="round"/><ellipse cx="43.5" cy="335.8" rx="20" ry="8" fill="#d9f2e0" stroke="#a5dcb6" stroke-width="2"/><circle cx="124.0" cy="148.0" r="10" fill="#0f9547" stroke="#fff" stroke-width="3"/><text x="112.0" y="153.0" text-anchor="end">상주</text><circle cx="153.5" cy="204.4" r="10" fill="#0f9547" stroke="#fff" stroke-width="3"/><text x="141.5" y="209.4" text-anchor="end">밀양</text><circle cx="42.5" cy="333.4" r="10" fill="#0f9547" stroke="#fff" stroke-width="3"/><text x="68.5" y="331.4" text-anchor="start">제주</text></svg>
       </article>
       <figure class="grower-photo photo photo-shade a" data-step="1" style="--d:300ms">
         <img src="img/chili-photo.jpg" alt="청양고추">
@@ -625,17 +625,17 @@ body.idle,body.idle * { cursor:none !important }
       <figure class="map photo a">
         <img src="img/map.jpg" alt="서울시립대와 회기·청량리 일대 지도">
         <svg viewBox="0 0 900 460" aria-hidden="true">
-          <circle class="draw" pathLength="1" cx="441" cy="244" r="164" fill="#6b9a3519" stroke="#2d5a27" stroke-width="3.5"/>
-          <path d="M168 129 302 156M572 339 700 372" fill="none" stroke="#6c6f5d" stroke-width="3" stroke-dasharray="8 8"/>
-          <path d="M449 244h155" fill="none" stroke="#2d5a27" stroke-width="2.5" stroke-dasharray="6 6"/>
-          <g fill="#2d5a27" stroke="white" stroke-width="2">
+          <circle class="draw" pathLength="1" cx="441" cy="244" r="164" fill="#37b86619" stroke="#0f9547" stroke-width="3.5"/>
+          <path d="M168 129 302 156M572 339 700 372" fill="none" stroke="#6b7280" stroke-width="3" stroke-dasharray="8 8"/>
+          <path d="M449 244h155" fill="none" stroke="#0f9547" stroke-width="2.5" stroke-dasharray="6 6"/>
+          <g fill="#0f9547" stroke="white" stroke-width="2">
             <circle class="a" style="--d:100ms" cx="405" cy="138" r="8"/><circle class="a" style="--d:150ms" cx="469" cy="128" r="8"/>
             <circle class="a" style="--d:200ms" cx="521" cy="165" r="8"/><circle class="a" style="--d:250ms" cx="381" cy="191" r="8"/>
             <circle class="a" style="--d:300ms" cx="340" cy="230" r="8"/><circle class="a" style="--d:350ms" cx="549" cy="226" r="8"/>
             <circle class="a" style="--d:400ms" cx="530" cy="276" r="8"/><circle class="a" style="--d:450ms" cx="494" cy="317" r="8"/>
             <circle class="a" style="--d:500ms" cx="389" cy="309" r="8"/><circle class="a" style="--d:550ms" cx="440" cy="354" r="8"/>
           </g>
-          <path d="M441 263c-6-9-16-19-16-29a16 16 0 0 1 32 0c0 10-10 20-16 29z" fill="#2d5a27" stroke="white" stroke-width="3"/><circle cx="441" cy="233" r="5" fill="white"/>
+          <path d="M441 263c-6-9-16-19-16-29a16 16 0 0 1 32 0c0 10-10 20-16 29z" fill="#0f9547" stroke="white" stroke-width="3"/><circle cx="441" cy="233" r="5" fill="white"/>
         </svg>
         <span class="chip map-tag">점포 위치는 예시</span><span class="map-name gate small">서울시립대 정문</span><span class="map-name reach small">500m</span>
         <span class="map-name hoegi small">② 회기·경희대 상권</span><span class="map-name cheong small">③ 청량리 상권</span>
@@ -713,15 +713,15 @@ body.idle,body.idle * { cursor:none !important }
     <div data-step="1" class="body consolidation">
       <div class="flow-main">
         <svg class="flow-wires" viewBox="0 0 1768 480" aria-hidden="true">
-          <g fill="none" stroke="#e6e0cf" stroke-width="3">
+          <g fill="none" stroke="#dfe8dd" stroke-width="3">
             <path d="M368 60C458 60 456 240 550 240"/><path d="M368 150C458 150 456 240 550 240"/><path d="M368 240H550"/><path d="M368 330C458 330 456 240 550 240"/><path d="M368 420C458 420 456 240 550 240"/>
           </g>
-          <g fill="none" stroke="#6b9a35" stroke-width="4">
+          <g fill="none" stroke="#37b866" stroke-width="4">
             <path class="draw" data-step="1" style="--d:500ms" pathLength="1" d="M368 60C458 60 456 240 550 240"/><path class="draw" data-step="1" style="--d:700ms" pathLength="1" d="M368 150C458 150 456 240 550 240"/>
             <path class="draw" data-step="1" style="--d:900ms" pathLength="1" d="M368 240H550"/><path class="draw" data-step="1" style="--d:1100ms" pathLength="1" d="M368 330C458 330 456 240 550 240"/>
             <path class="draw" data-step="1" style="--d:1300ms" pathLength="1" d="M368 420C458 420 456 240 550 240"/>
           </g>
-          <path class="draw" data-step="1" style="--d:1600ms" pathLength="1" d="M1227 240h136m-16-12 13 12-13 12" fill="none" stroke="#2d5a27" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="draw" data-step="1" style="--d:1600ms" pathLength="1" d="M1227 240h136m-16-12 13 12-13 12" fill="none" stroke="#0f9547" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle class="packet" r="9" visibility="hidden"/>
         </svg>
         <div class="restaurants">
@@ -801,13 +801,13 @@ body.idle,body.idle * { cursor:none !important }
     <div data-step="1" class="body">
       <figure class="card positioning a" style="height:100%" aria-label="주문량과 배송비 포함 구매 단가를 기준으로 네 가지 구매 방식 비교">
         <svg class="chart" viewBox="0 0 1768 737" preserveAspectRatio="none" aria-hidden="true">
-          <path class="draw" pathLength="1" d="M99 74V675H1724" fill="none" stroke="#70705f" stroke-width="3"/>
-          <path d="m90 87 9-14 9 14m1600 578 15 10-15 10" fill="none" stroke="#70705f" stroke-width="3"/>
-          <path d="M100 256h1623M100 469h1623M630 80v595m540-595v595" fill="none" stroke="#ddd8c6" stroke-width="2" stroke-dasharray="8 9"/>
-          <circle class="a" data-step="1" cx="185" cy="132" r="11" fill="#7b7b68" style="--d:250ms"/>
-          <circle class="a" data-step="1" style="--d:650ms" cx="745" cy="316" r="11" fill="#7b7b68"/>
-          <circle class="a" data-step="1" style="--d:1050ms" cx="1292" cy="488" r="11" fill="#7b7b68"/>
-          <circle class="a" data-step="1" cx="185" cy="495" r="19" fill="#2d5a27" stroke="#fff" stroke-width="5" style="--d:1500ms"/>
+          <path class="draw" pathLength="1" d="M99 74V675H1724" fill="none" stroke="#65718c" stroke-width="3"/>
+          <path d="m90 87 9-14 9 14m1600 578 15 10-15 10" fill="none" stroke="#65718c" stroke-width="3"/>
+          <path d="M100 256h1623M100 469h1623M630 80v595m540-595v595" fill="none" stroke="#d6dfd5" stroke-width="2" stroke-dasharray="8 9"/>
+          <circle class="a" data-step="1" cx="185" cy="132" r="11" fill="#737b8e" style="--d:250ms"/>
+          <circle class="a" data-step="1" style="--d:650ms" cx="745" cy="316" r="11" fill="#737b8e"/>
+          <circle class="a" data-step="1" style="--d:1050ms" cx="1292" cy="488" r="11" fill="#737b8e"/>
+          <circle class="a" data-step="1" cx="185" cy="495" r="19" fill="#0f9547" stroke="#fff" stroke-width="5" style="--d:1500ms"/>
         </svg>
         <span class="plot-label plot-vertical">kg당 구매 단가(배송비 포함)</span><span class="plot-label plot-high">↑ 높음</span><span class="plot-label plot-low">↓ 낮음</span>
         <span class="plot-label plot-small">← 소량 주문</span><span class="plot-label plot-large">대량 주문(상자 단위) →</span>
@@ -929,45 +929,45 @@ body.idle,body.idle * { cursor:none !important }
         <svg viewBox="0 75 650 737" aria-hidden="true">
           <defs>
             <filter id="holo-glow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            <radialGradient id="holo-base" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#6b9a35" stop-opacity=".55"/><stop offset="1" stop-color="#6b9a35" stop-opacity="0"/></radialGradient>
-            <linearGradient id="holo-beam" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffcf3a" stop-opacity="0"/><stop offset="1" stop-color="#ffcf3a" stop-opacity=".5"/></linearGradient>
+            <radialGradient id="holo-base" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#37b866" stop-opacity=".55"/><stop offset="1" stop-color="#37b866" stop-opacity="0"/></radialGradient>
+            <linearGradient id="holo-beam" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ffd43a" stop-opacity="0"/><stop offset="1" stop-color="#ffd43a" stop-opacity=".5"/></linearGradient>
           </defs>
-          <g class="a" fill="none" stroke="#a6d477" stroke-opacity=".22" stroke-width="1.5"><ellipse cx="325" cy="672" rx="120" ry="40"/><ellipse cx="325" cy="672" rx="200" ry="67"/><ellipse cx="325" cy="672" rx="280" ry="93"/><ellipse cx="325" cy="672" rx="360" ry="120"/><path d="M325 672L745 672"/><path d="M325 672L713 726"/><path d="M325 672L622 771"/><path d="M325 672L486 801"/><path d="M325 672L325 812"/><path d="M325 672L164 801"/><path d="M325 672L28 771"/><path d="M325 672L-63 726"/><path d="M325 672L-95 672"/><path d="M325 672L-63 618"/><path d="M325 672L28 573"/><path d="M325 672L164 543"/><path d="M325 672L325 532"/><path d="M325 672L486 543"/><path d="M325 672L622 573"/><path d="M325 672L713 618"/></g>
+          <g class="a" fill="none" stroke="#8fe0a6" stroke-opacity=".22" stroke-width="1.5"><ellipse cx="325" cy="672" rx="120" ry="40"/><ellipse cx="325" cy="672" rx="200" ry="67"/><ellipse cx="325" cy="672" rx="280" ry="93"/><ellipse cx="325" cy="672" rx="360" ry="120"/><path d="M325 672L745 672"/><path d="M325 672L713 726"/><path d="M325 672L622 771"/><path d="M325 672L486 801"/><path d="M325 672L325 812"/><path d="M325 672L164 801"/><path d="M325 672L28 771"/><path d="M325 672L-63 726"/><path d="M325 672L-95 672"/><path d="M325 672L-63 618"/><path d="M325 672L28 573"/><path d="M325 672L164 543"/><path d="M325 672L325 532"/><path d="M325 672L486 543"/><path d="M325 672L622 573"/><path d="M325 672L713 618"/></g>
           <ellipse class="a" cx="325" cy="672" rx="330" ry="110" fill="url(#holo-base)"/>
-          <g class="a" style="--d:250ms" stroke="#c4e59a" fill="none">
-            <path d="M29 505v92A296 98 0 0 0 621 597v-92A296 98 0 0 1 29 505Z" fill="#c4e59a" fill-opacity=".10" stroke="none"/>
+          <g class="a" style="--d:250ms" stroke="#b5f0c5" fill="none">
+            <path d="M29 505v92A296 98 0 0 0 621 597v-92A296 98 0 0 1 29 505Z" fill="#b5f0c5" fill-opacity=".10" stroke="none"/>
             <path d="M618.0 518.9v92M609.0 532.6v92M594.3 545.7v92M574.0 558.0v92M548.7 569.2v92M518.8 579.1v92M485.0 587.4v92M448.0 594.1v92M408.4 599.0v92M367.1 602.0v92M325.0 603.0v92M282.9 602.0v92M241.6 599.0v92M202.0 594.1v92M165.0 587.4v92M131.2 579.1v92M101.3 569.2v92M76.0 558.0v92M55.7 545.7v92M41.0 532.6v92M32.0 518.9v92" stroke-opacity=".38" stroke-width="1.5"/>
             <path d="M29 551.0A296 98 0 0 0 621 551.0" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="3 7"/>
             <path d="M29 505v92A296 98 0 0 0 621 597v-92" stroke-width="2.5" filter="url(#holo-glow)"/>
-            <ellipse cx="325" cy="505" rx="296" ry="98" fill="#c4e59a" fill-opacity=".16" stroke="none"/>
+            <ellipse cx="325" cy="505" rx="296" ry="98" fill="#b5f0c5" fill-opacity=".16" stroke="none"/>
             <ellipse class="draw" pathLength="1" style="--d:400ms" cx="325" cy="505" rx="296" ry="98" stroke-width="3.5" filter="url(#holo-glow)"/>
             <ellipse class="holo-flow" cx="325" cy="505" rx="219" ry="73" stroke-opacity=".7" stroke-width="2" stroke-dasharray="4 10"/>
             <text x="325" y="651" text-anchor="middle" stroke="none" fill="#fff"><tspan font-weight="850">TAM</tspan><tspan dx="10" font-weight="600" fill-opacity=".85">전국</tspan></text>
           </g>
-          <g class="a" style="--d:600ms" stroke="#8fdc5c" fill="none">
-            <path d="M121 380v92A204 68 0 0 0 529 472v-92A204 68 0 0 1 121 380Z" fill="#8fdc5c" fill-opacity=".10" stroke="none"/>
+          <g class="a" style="--d:600ms" stroke="#5fe08a" fill="none">
+            <path d="M121 380v92A204 68 0 0 0 529 472v-92A204 68 0 0 1 121 380Z" fill="#5fe08a" fill-opacity=".10" stroke="none"/>
             <path d="M525.1 393.3v92M513.5 406.0v92M494.6 417.8v92M469.2 428.1v92M438.3 436.5v92M403.1 442.8v92M364.8 446.7v92M325.0 448.0v92M285.2 446.7v92M246.9 442.8v92M211.7 436.5v92M180.8 428.1v92M155.4 417.8v92M136.5 406.0v92M124.9 393.3v92" stroke-opacity=".38" stroke-width="1.5"/>
             <path d="M121 426.0A204 68 0 0 0 529 426.0" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="3 7"/>
             <path d="M121 380v92A204 68 0 0 0 529 472v-92" stroke-width="2.5" filter="url(#holo-glow)"/>
-            <ellipse cx="325" cy="380" rx="204" ry="68" fill="#8fdc5c" fill-opacity=".16" stroke="none"/>
+            <ellipse cx="325" cy="380" rx="204" ry="68" fill="#5fe08a" fill-opacity=".16" stroke="none"/>
             <ellipse class="draw" pathLength="1" style="--d:750ms" cx="325" cy="380" rx="204" ry="68" stroke-width="3.5" filter="url(#holo-glow)"/>
             <ellipse class="holo-flow" cx="325" cy="380" rx="151" ry="50" stroke-opacity=".7" stroke-width="2" stroke-dasharray="4 10"/>
             <text x="325" y="496" text-anchor="middle" stroke="none" fill="#fff"><tspan font-weight="850">SAM</tspan><tspan dx="10" font-weight="600" fill-opacity=".85">서울</tspan></text>
           </g>
-          <g class="a" style="--d:950ms" stroke="#ffcf3a" fill="none">
-            <path d="M209 258v92A116 39 0 0 0 441 350v-92A116 39 0 0 1 209 258Z" fill="#ffcf3a" fill-opacity=".10" stroke="none"/>
+          <g class="a" style="--d:950ms" stroke="#ffd43a" fill="none">
+            <path d="M209 258v92A116 39 0 0 0 441 350v-92A116 39 0 0 1 209 258Z" fill="#ffd43a" fill-opacity=".10" stroke="none"/>
             <path d="M435.3 270.1v92M418.8 280.9v92M393.2 289.6v92M360.8 295.1v92M325.0 297.0v92M289.2 295.1v92M256.8 289.6v92M231.2 280.9v92M214.7 270.1v92" stroke-opacity=".38" stroke-width="1.5"/>
             <path d="M209 304.0A116 39 0 0 0 441 304.0" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="3 7"/>
             <path d="M209 258v92A116 39 0 0 0 441 350v-92" stroke-width="2.5" filter="url(#holo-glow)"/>
-            <ellipse cx="325" cy="258" rx="116" ry="39" fill="#ffcf3a" fill-opacity=".92" stroke="none"/>
+            <ellipse cx="325" cy="258" rx="116" ry="39" fill="#ffd43a" fill-opacity=".92" stroke="none"/>
             <ellipse class="draw" pathLength="1" style="--d:1100ms" cx="325" cy="258" rx="116" ry="39" stroke-width="3.5" filter="url(#holo-glow)"/>
             <ellipse class="holo-flow" cx="325" cy="258" rx="86" ry="29" stroke-opacity=".7" stroke-width="2" stroke-dasharray="4 10"/>
-            <text x="325" y="345" text-anchor="middle" stroke="none" fill="#ffcf3a"><tspan font-weight="850">SOM</tspan><tspan dx="10" font-weight="600" fill-opacity=".85">동대문구</tspan></text>
+            <text x="325" y="345" text-anchor="middle" stroke="none" fill="#ffd43a"><tspan font-weight="850">SOM</tspan><tspan dx="10" font-weight="600" fill-opacity=".85">동대문구</tspan></text>
           </g>
           <g class="a" style="--d:1150ms">
             <path d="M300 258L312 120h26l12 138Z" fill="url(#holo-beam)"/>
-            <circle cx="325" cy="258" r="7" fill="#16300f" stroke="#16300f"/>
-            <circle class="holo-ping" cx="325" cy="258" r="16" fill="none" stroke="#16300f" stroke-width="2.5"/>
+            <circle cx="325" cy="258" r="7" fill="#06381b" stroke="#06381b"/>
+            <circle class="holo-ping" cx="325" cy="258" r="16" fill="none" stroke="#06381b" stroke-width="2.5"/>
           </g>
         </svg>
       </figure>
@@ -999,14 +999,14 @@ body.idle,body.idle * { cursor:none !important }
       <figure class="card plan-chart a" aria-label="2027년 연매출 1.08억 원, 2028년 연매출 20.1억 원">
         <div class="plan-canvas">
           <svg viewBox="0 0 1194 700" preserveAspectRatio="none" role="img" aria-label="2028년 수수료 9.9억, 구독 4.2억, B2B 6.0억 원">
-            <path d="M83 120H1147M83 212H1147M83 304H1147M83 396H1147M83 488H1147M83 580H1147" fill="none" stroke="#ddd8c6" stroke-width="2"/>
-            <rect class="grow-y" x="244" y="555.2" width="158" height="24.8" rx="2" fill="#2d5a27"/>
-            <rect class="grow-y" x="654" y="352.3" width="180" height="227.7" fill="#2d5a27"/>
-            <rect class="grow-y" x="654" y="255.7" width="180" height="96.6" fill="#6b9a35" style="--d:340ms"/>
-            <rect class="grow-y" x="654" y="117.7" width="180" height="138" fill="#f79a24" style="--d:680ms"/>
-            <path class="draw" pathLength="1" d="M323 555.2 744 117.7" fill="none" stroke="#2d5a27" stroke-width="4" stroke-linecap="round"/>
-            <path class="a" style="--d:1250ms" d="M740.6 153.3 744 117.7 711.8 133.4" fill="none" stroke="#2d5a27" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            <g fill="#2d5a27">
+            <path d="M83 120H1147M83 212H1147M83 304H1147M83 396H1147M83 488H1147M83 580H1147" fill="none" stroke="#d6dfd5" stroke-width="2"/>
+            <rect class="grow-y" x="244" y="555.2" width="158" height="24.8" rx="2" fill="#0f9547"/>
+            <rect class="grow-y" x="654" y="352.3" width="180" height="227.7" fill="#0f9547"/>
+            <rect class="grow-y" x="654" y="255.7" width="180" height="96.6" fill="#37b866" style="--d:340ms"/>
+            <rect class="grow-y" x="654" y="117.7" width="180" height="138" fill="#ff9f2e" style="--d:680ms"/>
+            <path class="draw" pathLength="1" d="M323 555.2 744 117.7" fill="none" stroke="#0f9547" stroke-width="4" stroke-linecap="round"/>
+            <path class="a" style="--d:1250ms" d="M740.6 153.3 744 117.7 711.8 133.4" fill="none" stroke="#0f9547" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#0f9547">
               <circle class="a" style="--d:470ms" cx="323" cy="555.2" r="7"/>
             </g>
           </svg>
@@ -1030,7 +1030,7 @@ body.idle,body.idle * { cursor:none !important }
       </figure>
       <article class="card soft plan-mix a" data-step="1" style="--d:300ms">
         <h2 class="title">2028년 매출 구성</h2>
-        <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><g data-donut="49:#2d5a27,21:#6b9a35,30:#f79a24"></g></svg><strong class="big" data-count="20.1" data-suffix="억">20.1억</strong></div>
+        <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><g data-donut="49:#0f9547,21:#37b866,30:#ff9f2e"></g></svg><strong class="big" data-count="20.1" data-suffix="억">20.1억</strong></div>
         <div class="mix-legend">
           <div><i class="swatch" style="background:var(--blue)"></i><span>공동발주 수수료</span><b>9.9억 · 49%</b></div>
           <div><i class="swatch" style="background:var(--mid)"></i><span>상권 리서치 구독</span><b>4.2억 · 21%</b></div>
