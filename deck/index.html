@@ -311,11 +311,14 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 
 .revenue-model { display:grid; grid-template-rows:minmax(0,1fr) auto; gap:23px }
 .revenue-model > .grid { grid-template-columns:repeat(3,1fr) }
-.model { padding:29px; display:flex; flex-direction:column; gap:14px }
+.model { padding:38px 36px; display:flex; flex-direction:column; gap:18px }
+.model .title { font-size:38px }
+.model .big { font-size:76px }
+.model .description p { font-size:27px; line-height:1.42 }
 .model .chip { align-self:flex-start }
-.model .payer { color:var(--muted); margin-top:12px }
-.model .big { margin:7px 0 12px }
-.model .description { border-top:1px solid var(--line); padding-top:17px; display:grid; gap:10px }
+.model .payer { color:var(--muted); margin-top:22px; font-size:27px }
+.model .big { margin:16px 0 14px }
+.model .description { border-top:1px solid var(--line); margin-top:auto; padding-top:26px; display:grid; gap:16px }
 .price-hypothesis { color:var(--blue); background:var(--tint); padding:3px 8px; border-radius:4px; font-weight:750; font-size:24px; align-self:flex-start }
 .market { grid-template-columns:650px 1fr; align-items:stretch }
 .market-chart { position:relative; min-height:0; background:var(--paper); border-radius:22px }
@@ -748,17 +751,17 @@ body.idle,body.idle * { cursor:none !important }
           <path class="draw" pathLength="1" d="M99 74V675H1724" fill="none" stroke="#65718c" stroke-width="3"/>
           <path d="m90 87 9-14 9 14m1600 578 15 10-15 10" fill="none" stroke="#65718c" stroke-width="3"/>
           <path d="M100 256h1623M100 469h1623M630 80v595m540-595v595" fill="none" stroke="#d7dce9" stroke-width="2" stroke-dasharray="8 9"/>
-          <circle class="a" data-step="1" cx="185" cy="132" r="11" fill="#737b8e" style="--d:300ms"/>
-          <circle class="a" data-step="1" style="--d:600ms" cx="745" cy="316" r="11" fill="#737b8e"/>
-          <circle class="a" data-step="1" style="--d:750ms" cx="1292" cy="488" r="11" fill="#737b8e"/>
-          <circle class="a" data-step="1" cx="185" cy="495" r="19" fill="#0919b4" stroke="#fff" stroke-width="5" style="--d:600ms"/>
+          <circle class="a" data-step="1" cx="185" cy="132" r="11" fill="#737b8e" style="--d:250ms"/>
+          <circle class="a" data-step="1" style="--d:650ms" cx="745" cy="316" r="11" fill="#737b8e"/>
+          <circle class="a" data-step="1" style="--d:1050ms" cx="1292" cy="488" r="11" fill="#737b8e"/>
+          <circle class="a" data-step="1" cx="185" cy="495" r="19" fill="#0919b4" stroke="#fff" stroke-width="5" style="--d:1500ms"/>
         </svg>
         <span class="plot-label plot-vertical">kg당 구매 단가(배송비 포함)</span><span class="plot-label plot-high">↑ 높음</span><span class="plot-label plot-low">↓ 낮음</span>
         <span class="plot-label plot-small">← 소량 주문</span><span class="plot-label plot-large">대량 주문(상자 단위) →</span>
-        <article class="card plot-card plot-coupang a" data-step="1" style="--d:365ms"><h2 class="title"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:30px"> 비즈</h2><p class="small">필요한 만큼 · 소포장 단가 높음</p></article>
-        <article class="card plot-card plot-app a" data-step="1" style="--d:600ms"><h2 class="title">식자재몰·거래처 앱</h2><p class="small">식당 한 곳 단위 구매</p></article>
-        <article class="card plot-card plot-wholesale a" data-step="1" style="--d:750ms"><h2 class="title">도매 상자 구매</h2><p class="small">단가 낮음 · 남는 양 부담</p></article>
-        <article class="card plot-card plot-sokuri a" data-step="1" style="--d:670ms"><h2 class="title" style="color:var(--blue)">소쿠리</h2><p class="small">5곳 × 2kg → 농가엔 10kg 발주</p><mark class="small">단가는 상자 수준으로, 받는 양은 필요한 만큼</mark></article>
+        <article class="card plot-card plot-coupang a" data-step="1" style="--d:250ms"><h2 class="title"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:30px"> 비즈</h2><p class="small">필요한 만큼 · 소포장 단가 높음</p></article>
+        <article class="card plot-card plot-app a" data-step="1" style="--d:650ms"><h2 class="title">식자재몰·거래처 앱</h2><p class="small">식당 한 곳 단위 구매</p></article>
+        <article class="card plot-card plot-wholesale a" data-step="1" style="--d:1050ms"><h2 class="title">도매 상자 구매</h2><p class="small">단가 낮음 · 남는 양 부담</p></article>
+        <article class="card plot-card plot-sokuri a" data-step="1" style="--d:1500ms"><h2 class="title" style="color:var(--blue)">소쿠리</h2><p class="small">5곳 × 2kg → 농가엔 10kg 발주</p><mark class="small">단가는 상자 수준으로, 받는 양은 필요한 만큼</mark></article>
       </figure>
     </div>
   </section>
