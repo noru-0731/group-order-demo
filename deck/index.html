@@ -69,8 +69,9 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .lead::before { content:""; position:absolute; left:0; top:.49em; width:10px; height:10px; background:var(--blue) }
 .body { position:absolute; inset:239px 76px 92px }
 .note { position:absolute; left:76px; right:76px; bottom:43px; font-size:16px; line-height:1.35; color:var(--muted) }
-.card { background:#fff; border:1.5px solid var(--line); border-radius:22px }
+.card { background:var(--paper); border:1.5px solid transparent; border-radius:22px }
 .soft { background:var(--paper); border-color:transparent }
+.card .card:not(.blue) { background:#fff; border-color:var(--line) }
 .blue { background:var(--blue); color:#fff; border-color:var(--blue) }
 .blue .muted,.blue .small { color:#d9f2e0 }
 .blue .big,.blue .yellow { color:var(--yellow) }
