@@ -326,6 +326,12 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .market-chart .circle-label { position:absolute; left:0; right:0; text-align:center; color:var(--navy); font-size:24px; font-weight:800; line-height:1 }
 .market-items { grid-template-rows:repeat(3,1fr) }
 .market-chart text { font-size:31px; letter-spacing:-.02em }
+.market-chart.holo { overflow:hidden; background:radial-gradient(120% 90% at 50% 100%,#16207a 0%,#0a0f45 55%,#060a2e 100%) }
+.market-chart.holo::after { content:""; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(to bottom,#ffffff0a 0 1px,transparent 1px 5px) }
+.holo-flow { animation:holo-flow 1.6s linear infinite }
+.holo-ping { transform-box:fill-box; transform-origin:center; animation:holo-ping 1.8s ease-out infinite }
+@keyframes holo-flow { to { stroke-dashoffset:-28 } }
+@keyframes holo-ping { from { transform:scale(.5); opacity:1 } to { transform:scale(2.6); opacity:0 } }
 .market-chart svg { overflow:visible }
 .market-item { display:grid; grid-template-columns:103px 1fr auto; gap:12px 16px; align-content:center; align-items:center; border-left:8px solid var(--blue); padding:18px 22px }
 .market-item:nth-child(2) { border-left-color:var(--mid) }
@@ -874,31 +880,49 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s12">전국 소상공인 음식점에서, <span class="hl">동대문구부터</span></h1>
     </header>
     <div data-step="1" class="body grid market">
-      <figure class="market-chart a" aria-label="전국, 서울, 동대문구 시장 규모를 3단으로 쌓은 그림">
+      <figure class="market-chart holo a" aria-label="전국, 서울, 동대문구 시장 규모를 3단으로 쌓은 그림">
         <svg viewBox="0 75 650 737" aria-hidden="true">
-          <defs><linearGradient id="tier-tam" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#aab6f2"/><stop offset=".45" stop-color="#c9d1fa"/><stop offset="1" stop-color="#8f9ee8"/></linearGradient><linearGradient id="tier-sam" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3f58d6"/><stop offset=".45" stop-color="#6f86f2"/><stop offset="1" stop-color="#2a40bd"/></linearGradient><linearGradient id="tier-som" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#e0c400"/><stop offset=".45" stop-color="#fff36a"/><stop offset="1" stop-color="#c9aa00"/></linearGradient>
-            <radialGradient id="tier-shadow"><stop offset="0" stop-color="#0a124f" stop-opacity=".28"/><stop offset="1" stop-color="#0a124f" stop-opacity="0"/></radialGradient></defs>
-          <ellipse class="a" cx="325" cy="655" rx="320" ry="62" fill="url(#tier-shadow)"/>
-          <g class="a" style="--d:250ms">
-            <path d="M29 500v96A296 98 0 0 0 621 596v-96A296 98 0 0 1 29 500Z" fill="url(#tier-tam)"/>
-            <path d="M29 596A296 98 0 0 0 621 596" fill="none" stroke="#0a124f" stroke-opacity=".18" stroke-width="3"/>
-            <ellipse cx="325" cy="500" rx="296" ry="98" fill="#e3e8ff" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
-            <ellipse cx="325" cy="500" rx="231" ry="76" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 8"/>
-            <text x="325" y="650" text-anchor="middle" fill="#0919b4"><tspan font-weight="850">TAM</tspan><tspan dx="10" font-weight="650">전국</tspan></text>
+          <defs>
+            <filter id="holo-glow" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <radialGradient id="holo-base" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#4968e6" stop-opacity=".55"/><stop offset="1" stop-color="#4968e6" stop-opacity="0"/></radialGradient>
+            <linearGradient id="holo-beam" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff000" stop-opacity="0"/><stop offset="1" stop-color="#fff000" stop-opacity=".5"/></linearGradient>
+          </defs>
+          <g class="a" fill="none" stroke="#7f9bff" stroke-opacity=".22" stroke-width="1.5"><ellipse cx="325" cy="672" rx="120" ry="40"/><ellipse cx="325" cy="672" rx="200" ry="67"/><ellipse cx="325" cy="672" rx="280" ry="93"/><ellipse cx="325" cy="672" rx="360" ry="120"/><path d="M325 672L745 672"/><path d="M325 672L713 726"/><path d="M325 672L622 771"/><path d="M325 672L486 801"/><path d="M325 672L325 812"/><path d="M325 672L164 801"/><path d="M325 672L28 771"/><path d="M325 672L-63 726"/><path d="M325 672L-95 672"/><path d="M325 672L-63 618"/><path d="M325 672L28 573"/><path d="M325 672L164 543"/><path d="M325 672L325 532"/><path d="M325 672L486 543"/><path d="M325 672L622 573"/><path d="M325 672L713 618"/></g>
+          <ellipse class="a" cx="325" cy="672" rx="330" ry="110" fill="url(#holo-base)"/>
+          <g class="a" style="--d:250ms" stroke="#9db4ff" fill="none">
+            <path d="M29 505v92A296 98 0 0 0 621 597v-92A296 98 0 0 1 29 505Z" fill="#9db4ff" fill-opacity=".10" stroke="none"/>
+            <path d="M618.0 518.9v92M609.0 532.6v92M594.3 545.7v92M574.0 558.0v92M548.7 569.2v92M518.8 579.1v92M485.0 587.4v92M448.0 594.1v92M408.4 599.0v92M367.1 602.0v92M325.0 603.0v92M282.9 602.0v92M241.6 599.0v92M202.0 594.1v92M165.0 587.4v92M131.2 579.1v92M101.3 569.2v92M76.0 558.0v92M55.7 545.7v92M41.0 532.6v92M32.0 518.9v92" stroke-opacity=".38" stroke-width="1.5"/>
+            <path d="M29 551.0A296 98 0 0 0 621 551.0" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="3 7"/>
+            <path d="M29 505v92A296 98 0 0 0 621 597v-92" stroke-width="2.5" filter="url(#holo-glow)"/>
+            <ellipse cx="325" cy="505" rx="296" ry="98" fill="#9db4ff" fill-opacity=".16" stroke="none"/>
+            <ellipse class="draw" pathLength="1" style="--d:400ms" cx="325" cy="505" rx="296" ry="98" stroke-width="3.5" filter="url(#holo-glow)"/>
+            <ellipse class="holo-flow" cx="325" cy="505" rx="219" ry="73" stroke-opacity=".7" stroke-width="2" stroke-dasharray="4 10"/>
+            <text x="325" y="651" text-anchor="middle" stroke="none" fill="#fff"><tspan font-weight="850">TAM</tspan><tspan dx="10" font-weight="600" fill-opacity=".85">전국</tspan></text>
           </g>
-          <g class="a" style="--d:600ms">
-            <path d="M121 372v96A204 68 0 0 0 529 468v-96A204 68 0 0 1 121 372Z" fill="url(#tier-sam)"/>
-            <path d="M121 468A204 68 0 0 0 529 468" fill="none" stroke="#0a124f" stroke-opacity=".18" stroke-width="3"/>
-            <ellipse cx="325" cy="372" rx="204" ry="68" fill="#93a6fb" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
-            <ellipse cx="325" cy="372" rx="159" ry="53" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 8"/>
-            <text x="325" y="492" text-anchor="middle" fill="#ffffff"><tspan font-weight="850">SAM</tspan><tspan dx="10" font-weight="650">서울</tspan></text>
+          <g class="a" style="--d:600ms" stroke="#62c8ff" fill="none">
+            <path d="M121 380v92A204 68 0 0 0 529 472v-92A204 68 0 0 1 121 380Z" fill="#62c8ff" fill-opacity=".10" stroke="none"/>
+            <path d="M525.1 393.3v92M513.5 406.0v92M494.6 417.8v92M469.2 428.1v92M438.3 436.5v92M403.1 442.8v92M364.8 446.7v92M325.0 448.0v92M285.2 446.7v92M246.9 442.8v92M211.7 436.5v92M180.8 428.1v92M155.4 417.8v92M136.5 406.0v92M124.9 393.3v92" stroke-opacity=".38" stroke-width="1.5"/>
+            <path d="M121 426.0A204 68 0 0 0 529 426.0" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="3 7"/>
+            <path d="M121 380v92A204 68 0 0 0 529 472v-92" stroke-width="2.5" filter="url(#holo-glow)"/>
+            <ellipse cx="325" cy="380" rx="204" ry="68" fill="#62c8ff" fill-opacity=".16" stroke="none"/>
+            <ellipse class="draw" pathLength="1" style="--d:750ms" cx="325" cy="380" rx="204" ry="68" stroke-width="3.5" filter="url(#holo-glow)"/>
+            <ellipse class="holo-flow" cx="325" cy="380" rx="151" ry="50" stroke-opacity=".7" stroke-width="2" stroke-dasharray="4 10"/>
+            <text x="325" y="496" text-anchor="middle" stroke="none" fill="#fff"><tspan font-weight="850">SAM</tspan><tspan dx="10" font-weight="600" fill-opacity=".85">서울</tspan></text>
           </g>
-          <g class="a" style="--d:950ms">
-            <path d="M209 250v96A116 39 0 0 0 441 346v-96A116 39 0 0 1 209 250Z" fill="url(#tier-som)"/>
-            <path d="M209 346A116 39 0 0 0 441 346" fill="none" stroke="#0a124f" stroke-opacity=".18" stroke-width="3"/>
-            <ellipse cx="325" cy="250" rx="116" ry="39" fill="#fff000" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
-            <ellipse cx="325" cy="250" rx="90" ry="30" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 8"/>
-            <text x="325" y="341" text-anchor="middle" fill="#0a124f"><tspan font-weight="850">SOM</tspan><tspan dx="10" font-weight="650">동대문구</tspan></text>
+          <g class="a" style="--d:950ms" stroke="#fff000" fill="none">
+            <path d="M209 258v92A116 39 0 0 0 441 350v-92A116 39 0 0 1 209 258Z" fill="#fff000" fill-opacity=".10" stroke="none"/>
+            <path d="M435.3 270.1v92M418.8 280.9v92M393.2 289.6v92M360.8 295.1v92M325.0 297.0v92M289.2 295.1v92M256.8 289.6v92M231.2 280.9v92M214.7 270.1v92" stroke-opacity=".38" stroke-width="1.5"/>
+            <path d="M209 304.0A116 39 0 0 0 441 304.0" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="3 7"/>
+            <path d="M209 258v92A116 39 0 0 0 441 350v-92" stroke-width="2.5" filter="url(#holo-glow)"/>
+            <ellipse cx="325" cy="258" rx="116" ry="39" fill="#fff000" fill-opacity=".92" stroke="none"/>
+            <ellipse class="draw" pathLength="1" style="--d:1100ms" cx="325" cy="258" rx="116" ry="39" stroke-width="3.5" filter="url(#holo-glow)"/>
+            <ellipse class="holo-flow" cx="325" cy="258" rx="86" ry="29" stroke-opacity=".7" stroke-width="2" stroke-dasharray="4 10"/>
+            <text x="325" y="345" text-anchor="middle" stroke="none" fill="#fff000"><tspan font-weight="850">SOM</tspan><tspan dx="10" font-weight="600" fill-opacity=".85">동대문구</tspan></text>
+          </g>
+          <g class="a" style="--d:1150ms">
+            <path d="M300 258L312 120h26l12 138Z" fill="url(#holo-beam)"/>
+            <circle cx="325" cy="258" r="7" fill="#0a124f" stroke="#0a124f"/>
+            <circle class="holo-ping" cx="325" cy="258" r="16" fill="none" stroke="#0a124f" stroke-width="2.5"/>
           </g>
         </svg>
       </figure>
