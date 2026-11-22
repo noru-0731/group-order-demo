@@ -173,6 +173,12 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .pilot-pair .card { padding:20px 26px }
 .pilot-pair .title,.pilot-pair .big { margin:6px 0 }
 .pilot-pair .small + .small { margin-top:3px }
+.nearby { display:grid; grid-template-columns:auto minmax(0,1fr); gap:28px; align-items:center }
+.nearby-list { padding-left:28px; border-left:1px solid var(--line) }
+.nearby-list .kicker { display:flex; align-items:center; gap:8px; margin-bottom:10px }
+.nearby-list .kicker .icon { width:24px; height:24px }
+.nearby-list .chips { gap:7px 8px }
+.nearby-list .chip { padding:5px 13px; font-size:20px; font-weight:700 }
 
 .network { display:grid; grid-template-rows:minmax(0,1fr) auto; gap:24px }
 .network-flow { grid-template-columns:1fr 422px 1fr }
@@ -593,10 +599,16 @@ body.idle,body.idle * { cursor:none !important }
           <p class="small"><b>①</b> 배송비 포함 kg당 구매비 15% 이상 절감(기존 구매처 대비)</p>
           <p class="small"><b>②</b> 10곳 중 7곳 이상 다음 주 재주문</p>
         </article>
-        <article class="card a" data-step="1" style="--d:700ms">
-          <h2 class="kicker">확장 상권 · 인접 4개 동 음식점</h2>
-          <strong class="big" data-count="881" data-suffix="곳">881곳</strong>
-          <p class="small">시범은 정문 500m 안 10곳부터</p>
+        <article class="card nearby a" data-step="1" style="--d:700ms">
+          <div>
+            <h2 class="kicker">확장 상권 · 인접 4개 동 음식점</h2>
+            <strong class="big" data-count="881" data-suffix="곳">881곳</strong>
+            <p class="small">시범은 정문 500m 안 10곳부터</p>
+          </div>
+          <div class="nearby-list">
+            <h3 class="kicker"><svg class="icon" aria-hidden="true"><use href="#store"/></svg>정문 500m 안 음식점</h3>
+            <div class="chips"><span class="chip a" data-step="1" style="--d:820ms">꽃닭</span><span class="chip a" data-step="1" style="--d:865ms">봄솔레씨네</span><span class="chip a" data-step="1" style="--d:910ms">마루한</span><span class="chip a" data-step="1" style="--d:955ms">해피디쉬클럽</span><span class="chip a" data-step="1" style="--d:1000ms">후루사토</span><span class="chip a" data-step="1" style="--d:1045ms">송정돌솥밥</span><span class="chip a" data-step="1" style="--d:1090ms">보성장</span><span class="chip a" data-step="1" style="--d:1135ms">우정식당</span><span class="chip a" data-step="1" style="--d:1180ms">포핸즈</span><span class="chip a" data-step="1" style="--d:1225ms">윤가네</span></div>
+          </div>
         </article>
       </div>
     </div>
