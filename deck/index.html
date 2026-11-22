@@ -325,6 +325,12 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .market-chart svg { position:absolute; inset:0; width:100%; height:100% }
 .market-chart .circle-label { position:absolute; left:0; right:0; text-align:center; color:var(--navy); font-size:24px; font-weight:800; line-height:1 }
 .market-items { grid-template-rows:repeat(3,1fr) }
+.market-item { position:relative }
+.market-item:nth-child(2) { margin-left:70px }
+.market-item:nth-child(3) { margin-left:140px }
+.market-item:nth-child(n+2)::before { content:""; position:absolute; left:-44px; top:-26px; width:30px; height:calc(50% + 26px); border-left:3px solid var(--mid); border-bottom:3px solid var(--mid); border-bottom-left-radius:14px }
+.market-item:nth-child(n+2)::after { content:""; position:absolute; left:-18px; top:calc(50% - 8px); border:8px solid transparent; border-left-color:var(--mid) }
+.market-item .within { display:inline-block; margin-right:10px; padding:2px 10px; border-radius:6px; background:var(--tint); color:var(--blue); font-size:22px; font-weight:800; vertical-align:3px }
 .market-chart text { font-size:31px; letter-spacing:-.02em }
 .market-chart.holo { overflow:hidden; background:radial-gradient(120% 90% at 50% 100%,#16207a 0%,#0a0f45 55%,#060a2e 100%) }
 .market-chart.holo::after { content:""; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(to bottom,#ffffff0a 0 1px,transparent 1px 5px) }
@@ -374,7 +380,11 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .global-news::before { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(#fffffff0,#ffffffb3),url("img/alley-gray.jpg") center/cover }
 .global-news .chips { gap:12px }
 .news-cards { grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:16px }
-.news { padding:22px 25px; display:flex; flex-direction:column; justify-content:space-between; gap:10px; background:#ffffffed }
+.news { position:relative; overflow:hidden; padding:28px 34px; display:flex; flex-direction:column; justify-content:space-between; gap:12px; background:#fffffff2; border-left:9px solid var(--blue) }
+.news::after { content:"”"; position:absolute; right:22px; bottom:-92px; color:var(--tint); font-size:260px; font-weight:900; line-height:1; z-index:0 }
+.news > * { position:relative; z-index:1 }
+.news .title { font-size:41px; line-height:1.3; letter-spacing:-.03em }
+.news-outlet { align-self:flex-start; padding:5px 14px; border-radius:7px; background:var(--navy); color:#fff; font-size:22px; font-weight:800 }
 .news .small { color:var(--muted) }
 .entry-plan { display:grid; grid-template-rows:164px minmax(0,1fr); gap:23px }
 .entry-flow { grid-template-columns:1fr 56px 1fr 56px 1fr; gap:12px; align-items:stretch }
@@ -388,8 +398,11 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .spark { display:flex; gap:7px; align-items:flex-end; height:105px; padding:0 5px 4px; border-bottom:1px solid var(--line) }
 .spark i { flex:1; height:var(--h); border-radius:4px 4px 0 0; background:var(--mid) }
 .spark.gray i { background:#aab0ba }
-.entry-validate { padding:23px 27px; display:flex; flex-direction:column; justify-content:center; gap:10px }
-.entry-validate .goal { border-top:1px solid #ffffff50; padding-top:10px }
+.entry-validate { padding:34px 36px; display:flex; flex-direction:column; justify-content:space-between; gap:10px }
+.entry-validate .title { font-size:36px; line-height:1.3 }
+.entry-validate .small { font-size:26px }
+.entry-validate .big { font-size:70px }
+.entry-validate .goal { border-top:1px solid #ffffff50; padding-top:22px }
 .entry-validate .big { margin-top:3px }
 
 .team-cards { grid-template-columns:repeat(3,1fr) }
@@ -932,11 +945,11 @@ body.idle,body.idle * { cursor:none !important }
           <p class="small">521,142곳 × 비프랜차이즈 81.2% × 86.8% = 367,342곳<br>367,342곳 × 월 100만 원 × 12 × 8%</p>
         </article>
         <article class="card market-item a" data-step="1" style="--d:600ms">
-          <b class="market-key title">SAM</b><h2 class="title">서울 소상공인 음식점</h2><strong class="big">연 <span data-count="708" data-suffix="억 원">708억 원</span></strong>
+          <b class="market-key title">SAM</b><h2 class="title"><span class="within">그 안에</span>서울 소상공인 음식점</h2><strong class="big">연 <span data-count="708" data-suffix="억 원">708억 원</span></strong>
           <p class="small">84,937곳(프랜차이즈 19,656곳 제외) × 86.8% = 73,725곳<br>73,725곳 × 월 100만 원 × 12 × 8%</p>
         </article>
         <article class="card market-item a" data-step="1" style="--d:950ms">
-          <b class="market-key title">SOM</b><h2 class="title">동대문구 소상공인 음식점</h2><strong class="big">연 <span data-count="26.2" data-suffix="억 원">26.2억 원</span></strong>
+          <b class="market-key title">SOM</b><h2 class="title"><span class="within">그 안에</span>동대문구 소상공인 음식점</h2><strong class="big">연 <span data-count="26.2" data-suffix="억 원">26.2억 원</span></strong>
           <p class="small">3,138곳(프랜차이즈 636곳 제외) × 86.8% = 2,724곳<br>2,724곳 × 월 100만 원 × 12 × 8%</p>
           <p class="small extra">2028년 목표: 그중 500곳 확보 → 식당 수수료 4.8억 원</p>
         </article>
@@ -959,9 +972,10 @@ body.idle,body.idle * { cursor:none !important }
             <rect class="grow-y" x="654" y="352.3" width="180" height="227.7" fill="#0919b4"/>
             <rect class="grow-y" x="654" y="255.7" width="180" height="96.6" fill="#4968e6" style="--d:340ms"/>
             <rect class="grow-y" x="654" y="117.7" width="180" height="138" fill="#ffc738" style="--d:680ms"/>
-            <path class="draw" pathLength="1" d="M323 555.2 744 117.7" fill="none" stroke="#0919b4" stroke-width="3"/>
+            <path class="draw" pathLength="1" d="M323 555.2 744 117.7" fill="none" stroke="#0919b4" stroke-width="4" stroke-linecap="round"/>
+            <path class="a" style="--d:1250ms" d="M740.6 153.3 744 117.7 711.8 133.4" fill="none" stroke="#0919b4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
             <g fill="#0919b4">
-              <circle class="a" style="--d:470ms" cx="323" cy="555.2" r="7"/><circle class="a" style="--d:910ms" cx="744" cy="117.7" r="7"/>
+              <circle class="a" style="--d:470ms" cx="323" cy="555.2" r="7"/>
             </g>
           </svg>
           <div aria-hidden="true">
@@ -970,7 +984,7 @@ body.idle,body.idle * { cursor:none !important }
             <span class="chart-text chart-tick" style="--y:304">12</span><span class="chart-text chart-tick" style="--y:396">8</span>
             <span class="chart-text chart-tick" style="--y:488">4</span><span class="chart-text chart-tick" style="--y:580">0</span>
           </div>
-          <span class="chart-text chart-total a" style="--x:323;--y:527;--d:440ms">1.08억</span>
+          <span class="chart-text chart-total a" style="--x:262;--y:522;--d:440ms">1.08억</span>
           <span class="chart-text chart-total large a" style="--x:744;--y:73;--d:680ms" data-count="20.1" data-suffix="억">20.1억</span>
           <span class="chart-text" style="--x:323;--y:618">2027년 (1년차)</span><span class="chart-text" style="--x:744;--y:618">2028년 (2년차)</span>
           <div class="plan-legend small">
@@ -1004,10 +1018,10 @@ body.idle,body.idle * { cursor:none !important }
     <div data-step="1" class="body card global-news a">
       <div class="chips a" style="--d:60ms"><span class="chip">일본 외식 1호점</span><span class="chip">미국 패스트캐주얼</span><span class="chip">중화권 티 브랜드</span><span class="chip">유럽 디저트</span></div>
       <div class="grid news-cards">
-        <article class="card news a" style="--d:125ms"><h2 class="title">“한국 반응이 곧 세계 성적표”…글로벌 외식업계 진출 러시</h2><p class="small">메트로경제 · 2026.02.18</p></article>
-        <article class="card news a" style="--d:235ms"><h2 class="title">“일본도 중국도 건너뛰었다”…한국인 입맛 잡으러 온 외식 공룡</h2><p class="small">한국경제 · 2026.10.24</p></article>
-        <article class="card news a" data-step="1" style="--d:300ms"><h2 class="title">“도쿄 안가도 되겠네”…日 맛집 속속 상륙</h2><p class="small">헤럴드경제 · 2026.07.28</p></article>
-        <article class="card news a" data-step="1" style="--d:410ms"><h2 class="title">韓 상륙 시작한 日외식 브랜드···‘입점 경쟁’ 벌이는 유통업계</h2><p class="small">투데이코리아 · 2026.09.08</p></article>
+        <article class="card news a" style="--d:125ms"><span class="news-outlet">메트로경제</span><h2 class="title">“한국 반응이 곧 세계 성적표”…글로벌 외식업계 진출 러시</h2><p class="small">2026.02.18 보도</p></article>
+        <article class="card news a" style="--d:235ms"><span class="news-outlet">한국경제</span><h2 class="title">“일본도 중국도 건너뛰었다”…한국인 입맛 잡으러 온 외식 공룡</h2><p class="small">2026.10.24 보도</p></article>
+        <article class="card news a" data-step="1" style="--d:300ms"><span class="news-outlet">헤럴드경제</span><h2 class="title">“도쿄 안가도 되겠네”…日 맛집 속속 상륙</h2><p class="small">2026.07.28 보도</p></article>
+        <article class="card news a" data-step="1" style="--d:410ms"><span class="news-outlet">투데이코리아</span><h2 class="title">韓 상륙 시작한 日외식 브랜드···‘입점 경쟁’ 벌이는 유통업계</h2><p class="small">2026.09.08 보도</p></article>
       </div>
       <p class="band blue a" data-step="1" style="--d:600ms"><b>이 브랜드들이 소쿠리 상권 데이터의 잠재 고객</b> · “어느 상권에서 무엇이 팔리는가?” → 소쿠리는 실제 발주 기록으로 답합니다.</p>
     </div>
