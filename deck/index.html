@@ -325,6 +325,8 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .market-chart svg { position:absolute; inset:0; width:100%; height:100% }
 .market-chart .circle-label { position:absolute; left:0; right:0; text-align:center; color:var(--navy); font-size:24px; font-weight:800; line-height:1 }
 .market-items { grid-template-rows:repeat(3,1fr) }
+.market-chart text { font-size:31px; letter-spacing:-.02em }
+.market-chart svg { overflow:visible }
 .market-item { display:grid; grid-template-columns:103px 1fr auto; gap:12px 16px; align-content:center; align-items:center; border-left:8px solid var(--blue); padding:18px 22px }
 .market-item:nth-child(2) { border-left-color:var(--mid) }
 .market-item:nth-child(3) { border-left-color:var(--gold) }
@@ -872,33 +874,44 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s12">전국 소상공인 음식점에서, <span class="hl">동대문구부터</span></h1>
     </header>
     <div data-step="1" class="body grid market">
-      <figure class="market-chart a" aria-label="전국, 서울, 동대문구 시장 규모를 나타낸 동심원">
-        <svg viewBox="0 0 650 737" aria-hidden="true">
-          <g fill="none" stroke="#d9deea" stroke-width="2" stroke-dasharray="8 8">
-            <circle cx="325" cy="365" r="261"/><circle cx="325" cy="365" r="184"/><circle cx="325" cy="365" r="102"/>
+      <figure class="market-chart a" aria-label="전국, 서울, 동대문구 시장 규모를 3단으로 쌓은 그림">
+        <svg viewBox="0 75 650 737" aria-hidden="true">
+          <defs><linearGradient id="tier-tam" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#aab6f2"/><stop offset=".45" stop-color="#c9d1fa"/><stop offset="1" stop-color="#8f9ee8"/></linearGradient><linearGradient id="tier-sam" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3f58d6"/><stop offset=".45" stop-color="#6f86f2"/><stop offset="1" stop-color="#2a40bd"/></linearGradient><linearGradient id="tier-som" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#e0c400"/><stop offset=".45" stop-color="#fff36a"/><stop offset="1" stop-color="#c9aa00"/></linearGradient>
+            <radialGradient id="tier-shadow"><stop offset="0" stop-color="#0a124f" stop-opacity=".28"/><stop offset="1" stop-color="#0a124f" stop-opacity="0"/></radialGradient></defs>
+          <ellipse class="a" cx="325" cy="655" rx="320" ry="62" fill="url(#tier-shadow)"/>
+          <g class="a" style="--d:250ms">
+            <path d="M29 500v96A296 98 0 0 0 621 596v-96A296 98 0 0 1 29 500Z" fill="url(#tier-tam)"/>
+            <path d="M29 596A296 98 0 0 0 621 596" fill="none" stroke="#0a124f" stroke-opacity=".18" stroke-width="3"/>
+            <ellipse cx="325" cy="500" rx="296" ry="98" fill="#e3e8ff" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+            <ellipse cx="325" cy="500" rx="231" ry="76" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 8"/>
+            <text x="325" y="650" text-anchor="middle" fill="#0919b4"><tspan font-weight="850">TAM</tspan><tspan dx="10" font-weight="650">전국</tspan></text>
           </g>
-          <circle class="draw" pathLength="1" cx="325" cy="365" r="261" fill="#e0e5ff" stroke="#0919b4" stroke-width="3" transform="rotate(-90 325 365)"/>
-          <g class="a" data-step="1" style="--d:300ms">
-            <circle class="draw" pathLength="1" cx="325" cy="365" r="184" fill="#8da1fa" stroke="#4968e6" stroke-width="3" transform="rotate(-90 325 365)"/>
+          <g class="a" style="--d:600ms">
+            <path d="M121 372v96A204 68 0 0 0 529 468v-96A204 68 0 0 1 121 372Z" fill="url(#tier-sam)"/>
+            <path d="M121 468A204 68 0 0 0 529 468" fill="none" stroke="#0a124f" stroke-opacity=".18" stroke-width="3"/>
+            <ellipse cx="325" cy="372" rx="204" ry="68" fill="#93a6fb" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+            <ellipse cx="325" cy="372" rx="159" ry="53" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 8"/>
+            <text x="325" y="492" text-anchor="middle" fill="#ffffff"><tspan font-weight="850">SAM</tspan><tspan dx="10" font-weight="650">서울</tspan></text>
           </g>
-          <g class="a" data-step="1" style="--d:600ms">
-            <circle class="draw" pathLength="1" cx="325" cy="365" r="102" fill="#fff000" stroke="#0919b4" stroke-width="3" transform="rotate(-90 325 365)"/>
+          <g class="a" style="--d:950ms">
+            <path d="M209 250v96A116 39 0 0 0 441 346v-96A116 39 0 0 1 209 250Z" fill="url(#tier-som)"/>
+            <path d="M209 346A116 39 0 0 0 441 346" fill="none" stroke="#0a124f" stroke-opacity=".18" stroke-width="3"/>
+            <ellipse cx="325" cy="250" rx="116" ry="39" fill="#fff000" stroke="#fff" stroke-opacity=".7" stroke-width="3"/>
+            <ellipse cx="325" cy="250" rx="90" ry="30" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 8"/>
+            <text x="325" y="341" text-anchor="middle" fill="#0a124f"><tspan font-weight="850">SOM</tspan><tspan dx="10" font-weight="650">동대문구</tspan></text>
           </g>
         </svg>
-        <span class="circle-label a" style="top:19%;--d:130ms">TAM · 전국</span>
-        <span class="circle-label a" data-step="1" style="top:30%;--d:430ms">SAM · 서울</span>
-        <span class="circle-label a" data-step="1" style="top:48%;--d:730ms">SOM · 동대문구</span>
       </figure>
       <div class="grid market-items">
-        <article class="card market-item a">
+        <article class="card market-item a" style="--d:250ms">
           <b class="market-key title">TAM</b><h2 class="title">전국 소상공인 음식점</h2><strong class="big">연 <span data-count="3527" data-suffix="억 원">3,527억 원</span></strong>
           <p class="small">521,142곳 × 비프랜차이즈 81.2% × 86.8% = 367,342곳<br>367,342곳 × 월 100만 원 × 12 × 8%</p>
         </article>
-        <article class="card market-item a" data-step="1" style="--d:300ms">
+        <article class="card market-item a" data-step="1" style="--d:600ms">
           <b class="market-key title">SAM</b><h2 class="title">서울 소상공인 음식점</h2><strong class="big">연 <span data-count="708" data-suffix="억 원">708억 원</span></strong>
           <p class="small">84,937곳(프랜차이즈 19,656곳 제외) × 86.8% = 73,725곳<br>73,725곳 × 월 100만 원 × 12 × 8%</p>
         </article>
-        <article class="card market-item a" data-step="1" style="--d:600ms">
+        <article class="card market-item a" data-step="1" style="--d:950ms">
           <b class="market-key title">SOM</b><h2 class="title">동대문구 소상공인 음식점</h2><strong class="big">연 <span data-count="26.2" data-suffix="억 원">26.2억 원</span></strong>
           <p class="small">3,138곳(프랜차이즈 636곳 제외) × 86.8% = 2,724곳<br>2,724곳 × 월 100만 원 × 12 × 8%</p>
           <p class="small extra">2028년 목표: 그중 500곳 확보 → 식당 수수료 4.8억 원</p>
