@@ -499,12 +499,13 @@ body.idle,body.idle * { cursor:none !important }
 .cover::after{display:none}
 .cover .hero-art{display:none}
 .hero-photos{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#fff}
-.hero-photos .ph{position:relative;margin:0;overflow:hidden}
+.hero-photos .ph{position:relative;margin:0;overflow:hidden;background:#0c0e14}
 .hero-photos .ph img{position:absolute;max-width:none;width:auto;height:100%;top:0;object-fit:fill}
 .hero-photos .r img{left:var(--shop-x,-43px)}
-.hero-photos .f img{left:var(--farm-x,-392px);transform:scaleX(-1)}
+.hero-photos .f img{left:var(--farm-x,-392px);top:var(--farm-y,-55px);transform:scaleX(-1)}
 .hero-photos::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0c0e14eb 0%,#0c0e14b3 30%,#0c0e1400 60%);z-index:1}
 .hero-photos .cap{position:absolute;top:110px;color:#14161c;font-weight:800;font-size:26px;padding:8px 18px;border-radius:999px;z-index:2}
+.hero-photos .f::before{content:"";position:absolute;inset:-40px;background:url("img/cover-farm.jpg") 30% 100%/cover;transform:scaleX(-1);filter:blur(24px) brightness(.7)}
 .hero-photos .r .cap{left:40px;background:var(--c-shop)}
 .hero-photos .f .cap{right:40px;background:var(--c-farm)}
 .hero-photos .badge{position:absolute;left:50%;top:var(--badge-y,398px);width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;background:#fbf7f0;display:grid;place-items:center;box-shadow:0 14px 30px #0006;z-index:2;border:6px solid #fff}
