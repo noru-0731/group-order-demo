@@ -131,6 +131,8 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .ring { position:relative; width:216px; height:216px; margin:auto }
 .ring svg { width:100%; height:100% }
 .ring .big { position:absolute; inset:0; display:grid; place-content:center }
+.ring-card .ring .big { font-size:46px }
+.plan-mix .ring .big { font-size:52px }
 .parts-bar { display:flex; height:45px; margin:24px 0 12px; overflow:hidden; border-radius:8px; background:var(--paper) }
 .parts-bar span:nth-child(1) { background:var(--blue) }
 .parts-bar span:nth-child(2) { background:#dbe1f3 }
@@ -477,7 +479,7 @@ body.idle,body.idle * { cursor:none !important }
     <footer class="hero-foot a" style="--d:160ms">2026 글로컬 미래도시 창업경진대회 · 박수현 · 김동훈 · 이승헌</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s2">
+  <section class="slide" data-steps="1" aria-labelledby="s2">
     <header class="header">
       <p class="eyebrow a">Ⅰ. 무엇이 문제인가?</p>
       <h1 class="a" id="s2">같은 골목, 같은 재료인데 <span class="hl">식당마다 따로</span> 삽니다</h1>
@@ -498,7 +500,7 @@ body.idle,body.idle * { cursor:none !important }
           <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#e3e6ee" stroke-width="10"/><g data-donut="94.1:#0919b4"></g></svg><strong class="big" data-count="94.1" data-suffix="%">94.1%</strong></div>
           <div><h2 class="title">식재료비 상승으로<br>어려움을 느낀 외식업체</h2><p class="small muted">전국 3,138곳 중</p></div>
         </article>
-        <article class="card pad a" data-step="2">
+        <article class="card pad a" data-step="1" style="--d:600ms">
           <p class="kicker">매출 100원 중</p>
           <h2 class="big">식재료비 <span data-count="40.7" data-suffix="원">40.7원</span></h2>
           <div class="parts-bar" aria-hidden="true"><span class="grow-x" style="width:40.7%"></span><span class="grow-x" style="width:50.6%;--d:90ms"></span><span class="grow-x" style="width:8.7%;--d:180ms"></span></div>
@@ -510,7 +512,7 @@ body.idle,body.idle * { cursor:none !important }
     <footer class="note">자료: 농림축산식품부·한국농촌경제연구원, 2025 외식업체 경영실태 조사(전국 3,138개 업체, 2024년 실적) · 사진: 회기역 파전골목, 서울특별시(공공누리 제1유형)/Wikimedia Commons</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s3">
+  <section class="slide" data-steps="1" aria-labelledby="s3">
     <header class="header">
       <p class="eyebrow a">Ⅰ. 무엇이 문제인가?</p>
       <h1 class="a" id="s3">농가는 <span class="hl">‘다음 주 주문’</span>이 없습니다</h1>
@@ -526,18 +528,18 @@ body.idle,body.idle * { cursor:none !important }
         <blockquote class="title">지원금을 받아 귀농했지만, 판로를 찾기 어려워 수익을 내기 힘들었다고 합니다<cite>밀양 청양고추 농가 · 농가 인터뷰 중 발췌</cite></blockquote>
       </figure>
       <div class="grower-needs">
-        <h2 class="kicker a" data-step="2">농가에 필요한 것</h2>
+        <h2 class="kicker a" data-step="1" style="--d:600ms">농가에 필요한 것</h2>
         <div class="grid">
-          <p class="card title a" data-step="2" style="--d:70ms">출하 전에 아는 구매자</p>
-          <p class="card title a" data-step="2" style="--d:150ms">미리 확정된 출하 물량</p>
-          <p class="card title a" data-step="2" style="--d:230ms">다음 주에도 이어지는 주문</p>
+          <p class="card title a" data-step="1" style="--d:670ms">출하 전에 아는 구매자</p>
+          <p class="card title a" data-step="1" style="--d:750ms">미리 확정된 출하 물량</p>
+          <p class="card title a" data-step="1" style="--d:830ms">다음 주에도 이어지는 주문</p>
         </div>
       </div>
     </div>
     <footer class="note">자료: 팀 자체 현장 인터뷰(밀양·제주·상주 등 농가 7곳) · 사진: Cheongyang-gochu, Y-h Kim / Wikimedia Commons (CC0)</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s4">
+  <section class="slide" data-steps="1" aria-labelledby="s4">
     <header class="header">
       <p class="eyebrow a">Ⅱ. 왜 서울시립대 앞인가?</p>
       <h1 class="a" id="s4">첫 실증: 서울시립대 정문 <span class="hl">반경 500m</span></h1>
@@ -571,13 +573,13 @@ body.idle,body.idle * { cursor:none !important }
         </ul>
       </article>
       <div class="grid pilot-pair">
-        <article class="card blue a" data-step="2">
+        <article class="card blue a" data-step="1" style="--d:600ms">
           <h2 class="kicker">첫 시범운영 성공 기준</h2>
           <p class="title">식당 10곳 · 농가 2곳 · 공통 식재료 3종</p>
           <p class="small"><b>①</b> 배송비 포함 kg당 구매비 15% 이상 절감(기존 구매처 대비)</p>
           <p class="small"><b>②</b> 10곳 중 7곳 이상 다음 주 재주문</p>
         </article>
-        <article class="card a" data-step="2" style="--d:100ms">
+        <article class="card a" data-step="1" style="--d:700ms">
           <h2 class="kicker">확장 상권 · 인접 4개 동 음식점</h2>
           <strong class="big" data-count="881" data-suffix="곳">881곳</strong>
           <p class="small">시범은 정문 500m 안 10곳부터</p>
@@ -587,7 +589,7 @@ body.idle,body.idle * { cursor:none !important }
     <footer class="note">자료: 서울시 상권분석서비스(점포-행정동) 2025년 4분기 식사류 7개 업종 · 동대문구 일반음식점 인허가 정보 · 지도: © OpenStreetMap contributors (ODbL) · ②③ 확장 상권은 계획</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s5">
+  <section class="slide" data-steps="1" aria-labelledby="s5">
     <header class="header">
       <p class="eyebrow a">Ⅱ. 왜 서울시립대 앞인가?</p>
       <h1 class="a" id="s5">식당과 농가, <span class="hl">양쪽 네트워크</span>로 시작합니다</h1>
@@ -618,14 +620,14 @@ body.idle,body.idle * { cursor:none !important }
           <div class="chips"><span class="chip"><img src="img/chili.png" alt="">청양고추</span><span class="chip"><img src="img/mushroom.png" alt="">버섯</span><span class="chip">+1종 선정 중</span></div>
         </article>
       </div>
-      <aside class="card soft network-links a" data-step="2">
+      <aside class="card soft network-links a" data-step="1" style="--d:600ms">
         <h2 class="kicker">팀원 개인 네트워크 보유</h2><b class="title">한국농어촌공사 · 농진원 · 농정원 · 한국엔젤투자협회</b>
       </aside>
     </div>
     <footer class="note">자료: 팀 현장조사·네트워크 현황(2026.11 기준)</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s6" id="consolidation">
+  <section class="slide" data-steps="1" aria-labelledby="s6" id="consolidation">
     <header class="header">
       <p class="eyebrow a">Ⅲ. 소쿠리의 솔루션</p>
       <h1 class="a" id="s6">식당은 나눠 받고, 농가는 <span class="hl">모아서 출하</span>합니다</h1>
@@ -664,12 +666,12 @@ body.idle,body.idle * { cursor:none !important }
           <figcaption><span class="kicker">산지 농가</span><strong class="title">10kg 한 번에 출하</strong></figcaption>
         </figure>
       </div>
-      <div class="flow-summary" data-step="2">
-        <p class="band a" data-step="2"><b>최소 출하량 미달 시</b> · 마감 2일 전 알림 → 다음 납품일 이월 또는 전액 환불 선택</p>
+      <div class="flow-summary" data-step="1" style="--d:600ms">
+        <p class="band a" data-step="1" style="--d:600ms"><b>최소 출하량 미달 시</b> · 마감 2일 전 알림 → 다음 납품일 이월 또는 전액 환불 선택</p>
         <div class="grid">
-          <article class="card soft a" data-step="2" style="--d:60ms"><span class="step-badge">1</span><div><p class="kicker">농가</p><p class="small">품목·규격·최소 출하량 등록</p></div></article>
-          <article class="card soft a" data-step="2" style="--d:130ms"><span class="step-badge">2</span><div><p class="kicker">식당</p><p class="small">필요한 만큼만 주문</p></div></article>
-          <article class="card soft a" data-step="2" style="--d:200ms"><span class="step-badge">3</span><div><p class="kicker">소쿠리</p><p class="small">도달 시 확정 → 모아 출하·나눠 배송</p></div></article>
+          <article class="card soft a" data-step="1" style="--d:660ms"><span class="step-badge">1</span><div><p class="kicker">농가</p><p class="small">품목·규격·최소 출하량 등록</p></div></article>
+          <article class="card soft a" data-step="1" style="--d:730ms"><span class="step-badge">2</span><div><p class="kicker">식당</p><p class="small">필요한 만큼만 주문</p></div></article>
+          <article class="card soft a" data-step="1" style="--d:800ms"><span class="step-badge">3</span><div><p class="kicker">소쿠리</p><p class="small">도달 시 확정 → 모아 출하·나눠 배송</p></div></article>
         </div>
       </div>
     </div>
@@ -716,7 +718,7 @@ body.idle,body.idle * { cursor:none !important }
     <footer class="note">시연용 가상 거래 · 영상: youtu.be/fDNIIM4nx5Q · 데모: noru-0731.github.io/group-order-demo</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s8">
+  <section class="slide" data-steps="1" aria-labelledby="s8">
     <header class="header">
       <p class="eyebrow a">Ⅲ. 소쿠리의 솔루션</p>
       <h1 class="a" id="s8">소량으로 사면서, <span class="hl">공동발주 단가</span>로</h1>
@@ -731,20 +733,20 @@ body.idle,body.idle * { cursor:none !important }
           <circle class="a" data-step="1" cx="185" cy="132" r="11" fill="#737b8e"/>
           <circle class="a" data-step="1" style="--d:300ms" cx="745" cy="316" r="11" fill="#737b8e"/>
           <circle class="a" data-step="1" style="--d:450ms" cx="1292" cy="488" r="11" fill="#737b8e"/>
-          <circle class="a" data-step="2" cx="185" cy="495" r="19" fill="#0919b4" stroke="#fff" stroke-width="5"/>
+          <circle class="a" data-step="1" cx="185" cy="495" r="19" fill="#0919b4" stroke="#fff" stroke-width="5" style="--d:600ms"/>
         </svg>
         <span class="plot-label plot-vertical">kg당 구매 단가(배송비 포함)</span><span class="plot-label plot-high">높음</span><span class="plot-label plot-low">낮음</span>
         <span class="plot-label plot-small">← 소량 주문</span><span class="plot-label plot-large">대량 주문(상자 단위) →</span>
         <article class="card plot-card plot-coupang a" data-step="1" style="--d:65ms"><h2 class="title"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:30px"> 비즈</h2><p class="small">필요한 만큼 · 소포장 단가 높음</p></article>
         <article class="card plot-card plot-app a" data-step="1" style="--d:300ms"><h2 class="title">식자재몰·거래처 앱</h2><p class="small">식당 한 곳 단위 구매</p></article>
         <article class="card plot-card plot-wholesale a" data-step="1" style="--d:450ms"><h2 class="title">도매 상자 구매</h2><p class="small">단가 낮음 · 남는 양 부담</p></article>
-        <article class="card plot-card plot-sokuri a" data-step="2" style="--d:70ms"><h2 class="title" style="color:var(--blue)">소쿠리</h2><p class="small">5곳 × 2kg → 농가엔 10kg 발주</p><mark class="small">단가는 상자 수준으로, 받는 양은 필요한 만큼</mark></article>
+        <article class="card plot-card plot-sokuri a" data-step="1" style="--d:670ms"><h2 class="title" style="color:var(--blue)">소쿠리</h2><p class="small">5곳 × 2kg → 농가엔 10kg 발주</p><mark class="small">단가는 상자 수준으로, 받는 양은 필요한 만큼</mark></article>
       </figure>
     </div>
     <footer class="note">위치 근거: 청양고추 kg당 가격(다음 쪽) — 쿠팡 1kg 10,500원 · 쿠팡 10kg 6,030원 · 가락 경락가 4,778원 · 소쿠리 6,660원(배송·소분 포함 추정) · 식자재몰·거래처 앱은 회원 전용 가격이라 중간에 가정 배치</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s9" id="price-slide">
+  <section class="slide" data-steps="1" aria-labelledby="s9" id="price-slide">
     <header class="header">
       <p class="eyebrow a">Ⅲ. 소쿠리의 솔루션</p>
       <h1 class="a" id="s9">필요한 만큼만 사도, <span class="hl">시장보다 저렴하게</span></h1>
@@ -771,20 +773,20 @@ body.idle,body.idle * { cursor:none !important }
           <article class="card soft"><p class="small">동네 소매 대비</p><strong>−36%</strong></article>
           <article class="card soft"><p class="small">경락가 대비</p><strong>+39%</strong><p class="small muted">10kg 상자보다 +10% · 2kg 단위</p></article>
         </div>
-        <article class="card price-breakdown a" data-step="2">
+        <article class="card price-breakdown a" data-step="1" style="--d:600ms">
           <h2 class="kicker">소쿠리 6,660원/kg (식당 도착가)</h2>
           <div class="breakdown-lines">
-            <div class="line-item a" data-step="2" data-add="4778" style="--d:75ms"><span>농가 정산 기준가(경락가)</span><b>4,778원</b></div>
-            <div class="line-item a" data-step="2" data-add="382" style="--d:225ms"><span>소쿠리 수수료 8%</span><b>382원</b></div>
-            <div class="line-item a" data-step="2" data-add="700" style="--d:375ms"><span>산지→서울 택배(10kg 7,000원)</span><b>700원</b></div>
-            <div class="line-item a" data-step="2" data-add="500" style="--d:525ms"><span>소분·포장(인건비 포함)</span><b>500원</b></div>
-            <div class="line-item a" data-step="2" data-add="300" style="--d:675ms"><span>근거리 배송(회당 3,000원 ÷ 10kg)</span><b>300원</b></div>
+            <div class="line-item a" data-step="1" data-add="4778" style="--d:675ms"><span>농가 정산 기준가(경락가)</span><b>4,778원</b></div>
+            <div class="line-item a" data-step="1" data-add="382" style="--d:825ms"><span>소쿠리 수수료 8%</span><b>382원</b></div>
+            <div class="line-item a" data-step="1" data-add="700" style="--d:975ms"><span>산지→서울 택배(10kg 7,000원)</span><b>700원</b></div>
+            <div class="line-item a" data-step="1" data-add="500" style="--d:1125ms"><span>소분·포장(인건비 포함)</span><b>500원</b></div>
+            <div class="line-item a" data-step="1" data-add="300" style="--d:1275ms"><span>근거리 배송(회당 3,000원 ÷ 10kg)</span><b>300원</b></div>
           </div>
           <div class="total-line"><span>식당 도착가</span><b id="price-total">6,660원</b></div>
           <p class="small muted">농가 정산 = 경락가 − 판매수수료 3%<br>(가락 위탁수수료 4%·하역비보다 적음)</p>
         </article>
       </div>
-      <p class="band yellow a" data-step="2" style="--d:950ms">식당의 주 구매처(식자재마트·도매상) 가격은 시범운영 중 영수증으로 실측 비교합니다.</p>
+      <p class="band yellow a" data-step="1" style="--d:1550ms">식당의 주 구매처(식자재마트·도매상) 가격은 시범운영 중 영수증으로 실측 비교합니다.</p>
     </div>
     <footer class="note">자료: 가락 경락가 상품 47,782원/10kg(garakprice, 2026.11.21) · 중도매인 49,000원/10kg(KAMIS, 2026.11.20) · 소매 중품 1,034원/100g(KAMIS 2026 연평균, 기준일 다름) · 쿠팡 1kg 10,500원·10kg 60,300원(2026.11 조회) · 택배·소분·근거리 배송비는 사업 가정</footer>
   </section>
@@ -817,7 +819,7 @@ body.idle,body.idle * { cursor:none !important }
     <footer class="note">공개 자료 기준 팀 분석(쿠팡 뉴스룸·CJ프레시웨이 뉴스룸·키친보드 블로그) · △ = 일부 제공(예: 산지직송 상품) 또는 확인 필요 · ‘상자 수준 단가’는 실측 검증 예정</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s11">
+  <section class="slide" data-steps="1" aria-labelledby="s11">
     <header class="header">
       <p class="eyebrow a">Ⅳ. Business Model</p>
       <h1 class="a" id="s11">누가, 무엇에 <span class="hl">돈을 내는가</span></h1>
@@ -835,18 +837,18 @@ body.idle,body.idle * { cursor:none !important }
           <strong class="big">월 <span data-count="2.9" data-suffix="만 원">2.9만 원</span></strong><span class="price-hypothesis">가격 가설</span>
           <div class="description small"><p>우리 동네에서 잘 나가는 품목·작물 순위</p><p>내 발주 단가 vs 상권 평균 · 신메뉴 힌트</p><p class="muted">기본 순위는 무료 공개 → 상세 리서치는 구독</p></div>
         </article>
-        <article class="card model a" data-step="2">
+        <article class="card model a" data-step="1" style="--d:600ms">
           <span class="chip">2028~ 출시</span><p class="small payer">해외 브랜드</p><h2 class="title">B2B 한국 진입 서비스</h2>
           <strong class="big">건당 <span data-count="4000" data-suffix="만 원">4,000만 원</span></strong><span class="price-hypothesis">가격 가설</span>
           <div class="description small"><p>후보 상권 비교 · 식재료 조달 단가 리포트</p><p>산지 농가 공급망 연결 · 1호점 공동발주 운영</p></div>
         </article>
       </div>
-      <p class="band yellow a" data-step="2" style="--d:450ms"><b>검증 계획</b> · 첫 시범운영 식당 10곳에서 ① 절감액 &gt; 수수료 ② 상권 리서치 지불의사 ③ 2주 연속 재주문율을 확인합니다.</p>
+      <p class="band yellow a" data-step="1" style="--d:1050ms"><b>검증 계획</b> · 첫 시범운영 식당 10곳에서 ① 절감액 &gt; 수수료 ② 상권 리서치 지불의사 ③ 2주 연속 재주문율을 확인합니다.</p>
     </div>
     <footer class="note">수수료율 8%·월 구매액은 사업 가정(월 100만 원 근거: 일반음식점 식재료비 월 865만 원 중 채소·농산물 약 12% 가정) · 구독 월 2.9만 원, 한국 진입 패키지 건당 4,000만 원은 가격 가설</footer>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s12">
+  <section class="slide" data-steps="1" aria-labelledby="s12">
     <header class="header">
       <p class="eyebrow a">Ⅳ. Business Model</p>
       <h1 class="a" id="s12">전국 소상공인 음식점에서, <span class="hl">동대문구부터</span></h1>
@@ -861,13 +863,13 @@ body.idle,body.idle * { cursor:none !important }
           <g class="a" data-step="1">
             <circle class="draw" pathLength="1" cx="325" cy="365" r="184" fill="#8da1fa" stroke="#4968e6" stroke-width="3" transform="rotate(-90 325 365)"/>
           </g>
-          <g class="a" data-step="2">
+          <g class="a" data-step="1" style="--d:600ms">
             <circle class="draw" pathLength="1" cx="325" cy="365" r="102" fill="#fff000" stroke="#0919b4" stroke-width="3" transform="rotate(-90 325 365)"/>
           </g>
         </svg>
         <span class="circle-label a" style="top:19%;--d:130ms">TAM · 전국</span>
         <span class="circle-label a" data-step="1" style="top:30%;--d:130ms">SAM · 서울</span>
-        <span class="circle-label a" data-step="2" style="top:48%;--d:130ms">SOM · 동대문구</span>
+        <span class="circle-label a" data-step="1" style="top:48%;--d:730ms">SOM · 동대문구</span>
       </figure>
       <div class="grid market-items">
         <article class="card market-item a">
@@ -878,7 +880,7 @@ body.idle,body.idle * { cursor:none !important }
           <b class="market-key title">SAM</b><h2 class="title">서울 소상공인 음식점</h2><strong class="big">연 <span data-count="708" data-suffix="억 원">708억 원</span></strong>
           <p class="small">84,937곳(프랜차이즈 19,656곳 제외) × 86.8% = 73,725곳<br>73,725곳 × 월 100만 원 × 12 × 8%</p>
         </article>
-        <article class="card market-item a" data-step="2">
+        <article class="card market-item a" data-step="1" style="--d:600ms">
           <b class="market-key title">SOM</b><h2 class="title">동대문구 소상공인 음식점</h2><strong class="big">연 <span data-count="26.2" data-suffix="억 원">26.2억 원</span></strong>
           <p class="small">3,138곳(프랜차이즈 636곳 제외) × 86.8% = 2,724곳<br>2,724곳 × 월 100만 원 × 12 × 8%</p>
           <p class="small extra">2028년 목표: 그중 500곳 확보 → 식당 수수료 4.8억 원</p>
@@ -940,7 +942,7 @@ body.idle,body.idle * { cursor:none !important }
     <footer class="note">연평균 점포 기준 · 2027 = 시범 10곳 → 연말 150곳(연평균 75곳), 월 100만 원 · 2028 = 연평균 500곳, 품목 확장 후 월 150만 원 · 수수료 = 식당 8% + 농가 3% · 산출표는 부록 A2 · 모두 사업 가정</footer>
   </section>
 
-  <section class="slide global-slide" data-steps="2" aria-labelledby="s14">
+  <section class="slide global-slide" data-steps="1" aria-labelledby="s14">
     <header class="header">
       <p class="eyebrow a">Ⅴ. Global</p>
       <h1 class="a" id="s14">한국은 글로벌 외식 브랜드의 <span class="hl">테스트베드</span>입니다</h1>
@@ -954,11 +956,11 @@ body.idle,body.idle * { cursor:none !important }
         <article class="card news a" data-step="1"><h2 class="title">“도쿄 안가도 되겠네”…日 맛집 속속 상륙</h2><p class="small">헤럴드경제 · 2026.07.28</p></article>
         <article class="card news a" data-step="1" style="--d:110ms"><h2 class="title">韓 상륙 시작한 日외식 브랜드···‘입점 경쟁’ 벌이는 유통업계</h2><p class="small">투데이코리아 · 2026.09.08</p></article>
       </div>
-      <p class="band blue a" data-step="2"><b>이 브랜드들이 소쿠리 상권 데이터의 잠재 고객</b> · “어느 상권에서 무엇이 팔리는가?” → 소쿠리는 실제 발주 기록으로 답합니다.</p>
+      <p class="band blue a" data-step="1" style="--d:600ms"><b>이 브랜드들이 소쿠리 상권 데이터의 잠재 고객</b> · “어느 상권에서 무엇이 팔리는가?” → 소쿠리는 실제 발주 기록으로 답합니다.</p>
     </div>
   </section>
 
-  <section class="slide" data-steps="2" aria-labelledby="s15">
+  <section class="slide" data-steps="1" aria-labelledby="s15">
     <header class="header">
       <p class="eyebrow a">Ⅴ. Global</p>
       <h1 class="a" id="s15">해외 외식 브랜드에 <span class="hl">‘한국 진입 서비스’</span>를 팝니다</h1>
@@ -988,7 +990,7 @@ body.idle,body.idle * { cursor:none !important }
             </article>
           </div>
         </article>
-        <article class="card blue entry-validate a" data-step="2">
+        <article class="card blue entry-validate a" data-step="1" style="--d:600ms">
           <h2 class="kicker">첫 고객 검증</h2>
           <p class="title">일본 외식 브랜드 · 한국 진출 지원업체 5곳 인터뷰</p>
           <p class="small">필요 지표 + 견적으로 지불의사 검증</p>
@@ -1493,8 +1495,8 @@ body.idle,body.idle * { cursor:none !important }
     }
     if (slide === consolidation) updateFlow(previous);
     if (slide === priceSlide) {
-      if (previous < 2 && step >= 2) addCosts();
-      if (step < 2) stopCost();
+      if (previous < 1 && step >= 1) addCosts();
+      if (step < 1) stopCost();
     }
     updateControls();
   }
