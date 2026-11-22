@@ -255,7 +255,11 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .plot-sokuri mark { display:inline-block; margin-top:7px; padding:3px 8px; border-radius:4px; background:var(--pale); color:var(--navy) }
 
 .prices { display:grid; grid-template-columns:1.22fr 1fr; grid-template-rows:minmax(0,1fr) auto; gap:16px 23px }
-.price-chart { padding:24px; display:grid; grid-template-rows:auto 1fr; gap:15px }
+.price-chart { padding:24px; display:grid; grid-template-rows:auto 1fr auto; gap:15px }
+.price-term { margin:0; padding-top:12px; border-top:1px solid var(--line); color:var(--muted) }
+.price-term b { color:var(--navy) }
+.brand-self { display:inline-flex; align-items:center; gap:10px }
+.brand-self .icon { width:38px; height:38px; color:var(--yellow) }
 .price-rows { display:grid; grid-template-rows:repeat(6,1fr) }
 .price-row { display:grid; grid-template-columns:245px 1fr; align-items:center; padding:0 12px; border:1px dashed transparent; border-radius:8px; font-size:24px }
 .price-row.featured { border-color:var(--blue); color:var(--blue); font-weight:800; background:#f8f9ff }
@@ -737,7 +741,7 @@ body.idle,body.idle * { cursor:none !important }
           <circle class="a" data-step="1" style="--d:750ms" cx="1292" cy="488" r="11" fill="#737b8e"/>
           <circle class="a" data-step="1" cx="185" cy="495" r="19" fill="#0919b4" stroke="#fff" stroke-width="5" style="--d:600ms"/>
         </svg>
-        <span class="plot-label plot-vertical">kg당 구매 단가(배송비 포함)</span><span class="plot-label plot-high">높음</span><span class="plot-label plot-low">낮음</span>
+        <span class="plot-label plot-vertical">kg당 구매 단가(배송비 포함)</span><span class="plot-label plot-high">↑ 높음</span><span class="plot-label plot-low">↓ 낮음</span>
         <span class="plot-label plot-small">← 소량 주문</span><span class="plot-label plot-large">대량 주문(상자 단위) →</span>
         <article class="card plot-card plot-coupang a" data-step="1" style="--d:365ms"><h2 class="title"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:30px"> 비즈</h2><p class="small">필요한 만큼 · 소포장 단가 높음</p></article>
         <article class="card plot-card plot-app a" data-step="1" style="--d:600ms"><h2 class="title">식자재몰·거래처 앱</h2><p class="small">식당 한 곳 단위 구매</p></article>
@@ -759,11 +763,12 @@ body.idle,body.idle * { cursor:none !important }
         <div class="price-rows" id="price-rows">
           <div class="price-row a" data-price="10500" style="--d:55ms"><span><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:20px"> 1kg 소포장</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">10,500원 <em>+120%</em></span></div></div>
           <div class="price-row a" data-price="10340" style="--d:120ms"><span>동네 소매(2026 연평균)</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">10,340원 <em>+116%</em></span></div></div>
-          <div class="price-row a" data-price="6030" style="--d:185ms"><span><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:20px"> 10kg 상자</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">6,030원 <em>+26%</em></span></div></div>
-          <div class="price-row featured a" data-price="6660" style="--d:250ms"><span>소쿠리 공동발주(2kg)</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">6,660원 <em>+39%</em></span></div></div>
+          <div class="price-row featured a" data-price="6660" style="--d:185ms"><span>소쿠리 공동발주(2kg)</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">6,660원 <em>+39%</em></span></div></div>
+          <div class="price-row a" data-price="6030" style="--d:250ms"><span><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:20px"> 10kg 상자</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">6,030원 <em>+26%</em></span></div></div>
           <div class="price-row a" data-price="4900" style="--d:315ms"><span>중도매인 직접 구매(10kg)</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">4,900원 <em>+3%</em></span></div></div>
           <div class="price-row baseline a" data-price="4778" style="--d:380ms"><span>가락시장 경락가(10kg 상자)</span><div class="price-track"><i class="price-bar grow-x"></i><span class="price-value">4,778원 <em>기준</em></span></div></div>
         </div>
+        <p class="price-term small a" style="--d:460ms"><b>경락가</b> · 도매시장 경매에서 낙찰된 가격</p>
       </article>
       <div class="price-detail">
         <article class="card blue price-highlight a" data-step="1" style="--d:300ms">
@@ -800,7 +805,7 @@ body.idle,body.idle * { cursor:none !important }
     <div data-step="1" class="body comparison">
       <div class="card compare-table a">
         <table aria-label="구매 방식별 제공 기능">
-          <thead><tr><th scope="col">구매 기능</th><th scope="col">소쿠리</th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:34px"></span><small class="logo-cap">사업자 소포장</small></th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-sikbom.png" alt="식봄" style="height:38px"></span><small class="logo-cap">식자재몰</small></th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-kitchenboard.png" alt="키친보드" style="height:34px"></span><small class="logo-cap">거래처 앱</small></th><th scope="col">도매 상자 구매</th></tr></thead>
+          <thead><tr><th scope="col">구매 기능</th><th scope="col"><span class="brand-self"><svg class="icon" aria-hidden="true"><use href="#basket"/></svg>소쿠리</span></th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:34px"></span><small class="logo-cap">사업자 소포장</small></th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-sikbom.png" alt="식봄" style="height:38px"></span><small class="logo-cap">식자재몰</small></th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-kitchenboard.png" alt="키친보드" style="height:34px"></span><small class="logo-cap">거래처 앱</small></th><th scope="col">도매 상자 구매</th></tr></thead>
           <tbody>
             <tr class="a" data-step="1" data-marks="YNNNN" style="--d:300ms"><th scope="row">같은 상권 주문 합산</th></tr>
             <tr class="a" data-step="1" data-marks="YSSNN" style="--d:395ms"><th scope="row">산지 농가 직출하</th></tr>
