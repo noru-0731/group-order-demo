@@ -138,10 +138,16 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .parts-bar span:nth-child(1) { background:var(--blue) }
 .parts-bar span:nth-child(2) { background:#dbe1f3 }
 .parts-bar span:nth-child(3) { background:var(--gold) }
-.parts-labels { display:grid; grid-template-columns:1fr 1.15fr auto; gap:10px; font-size:24px }
+.parts-labels { display:grid; grid-template-columns:auto 1fr auto; gap:10px; font-size:24px }
+.parts-labels span:nth-child(2) { text-align:center; padding-left:18% }
 .parts-labels b:first-child { color:var(--blue) }
 .grower { grid-template-columns:390px 1fr; grid-template-rows:minmax(0,1fr) auto }
-.grower-summary { display:flex; flex-direction:column; justify-content:center; gap:15px }
+.grower-summary { display:flex; flex-direction:column; justify-content:flex-start; gap:13px }
+.grower-map { flex:1; min-height:0; width:100%; margin-top:6px }
+.grower-map text { font-size:27px; font-weight:800; fill:var(--blue) }
+.need-icon { flex:none; display:grid; place-items:center; width:58px; height:58px; border-radius:50%; background:var(--blue); color:#fff }
+.need-icon svg { width:30px; height:30px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
+.grower-needs .card { display:flex; align-items:center; gap:18px }
 .grower-photo { background:#425b33 }
 .grower-photo blockquote { position:absolute; left:32px; right:32px; bottom:30px; max-width:1040px; padding:24px 28px; color:#fff; border-left:8px solid var(--yellow) }
 .grower-photo cite { display:block; color:#fff; margin-top:14px; font-size:24px; font-style:normal }
@@ -161,7 +167,7 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .map .cheong { right:4%; top:76% }
 .why { padding:23px 30px; display:flex; flex-direction:column; justify-content:center }
 .why ul { list-style:none; padding:0; margin-top:11px }
-.why li { padding:10px 0; border-top:1px solid var(--line) }
+.why li { padding:19px 0; border-top:1px solid var(--line) }
 .why li span { display:block; margin-top:3px }
 .pilot-pair { grid-column:1/-1; grid-template-columns:1fr 1fr }
 .pilot-pair .card { padding:20px 26px }
@@ -171,7 +177,10 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .network { display:grid; grid-template-rows:minmax(0,1fr) auto; gap:24px }
 .network-flow { grid-template-columns:1fr 422px 1fr }
 .network-flow > .card { display:flex; flex-direction:column; justify-content:center; gap:17px; padding:36px }
-.network-hub { position:relative; display:grid; place-items:center }
+.network-hub { position:relative; display:flex; align-items:center; justify-content:center; gap:12px }
+.hub-arrow { position:relative; flex:none; width:88px }
+.hub-arrow span { position:absolute; left:50%; bottom:calc(100% + 16px); transform:translateX(-50%); white-space:nowrap; color:var(--blue); font-size:22px; font-weight:780 }
+.hub-arrow svg { display:block; width:100%; fill:none; stroke:var(--blue); stroke-width:4.5; stroke-linecap:round; stroke-linejoin:round }
 .network-hub svg.arrows { position:absolute; width:100%; height:100%; inset:0 }
 .hub-core { width:204px; height:204px; border-radius:50%; display:grid; place-content:center; justify-items:center; gap:7px; background:var(--blue); color:#fff; z-index:1 }
 .hub-core .icon { width:65px; height:65px; color:var(--yellow) }
@@ -197,9 +206,9 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .farm-result { grid-column:5; z-index:1; overflow:hidden; align-self:center; transition:border-color var(--motion) }
 .farm-result img { height:249px }
 .farm-result figcaption { padding:17px 22px 20px }
-.farm-result figcaption strong { display:block; margin-top:6px; color:var(--muted); transition:color var(--motion) }
+.farm-result figcaption strong { display:inline-block; margin:0 0 0 8px; padding:2px 7px; border-radius:6px; color:var(--muted); white-space:nowrap; transition:color var(--motion),background var(--motion) }
 .farm-result.confirmed { border-color:var(--blue) }
-.farm-result.confirmed figcaption strong { color:var(--blue); background:var(--pale); border-radius:6px; display:inline-block; padding:2px 7px }
+.farm-result.confirmed figcaption strong { color:var(--blue); background:var(--pale) }
 .packet { fill:var(--yellow); stroke:var(--blue); stroke-width:3 }
 .flow-summary .grid { grid-template-columns:repeat(3,1fr); gap:16px; margin-top:12px }
 .flow-summary .card { padding:14px 16px; display:flex; gap:13px; align-items:center }
@@ -216,12 +225,13 @@ h1 { margin-top:9px; color:var(--blue); font-size:60px; line-height:1.09; font-w
 .demo-link { position:absolute; right:0; top:154px; color:var(--blue); font-size:24px; font-weight:750; text-underline-offset:5px }
 .demo-status { position:absolute; left:16px; bottom:16px; padding:9px 13px; background:#fff; border:1px solid var(--line); border-radius:9px; color:var(--navy) }
 .demo-screen.live .demo-fallback,.demo-screen.live .demo-status { visibility:hidden }
-.video-body { display:grid; grid-template-columns:auto minmax(0,1fr); gap:24px; align-items:stretch }
-.video-screen { position:relative; overflow:hidden; aspect-ratio:16/9; height:100%; padding:0; background:#f5f6f8 }
+.video-body { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:28px; align-items:center }
+.video-screen { position:relative; overflow:hidden; aspect-ratio:16/9; width:100%; padding:0; background:#f5f6f8 }
 .video-screen img,.video-screen iframe { position:absolute; inset:0; width:100%; height:100%; border:0 }
 .video-screen img { object-fit:contain }
-.video-qr { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:24px 18px; text-align:center }
-.video-qr img { width:100%; max-width:290px; aspect-ratio:1; image-rendering:pixelated }
+.video-qr { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:34px 30px; text-align:center; border-top:6px solid var(--blue) }
+.video-qr .qr-box { display:block; width:100%; padding:14px; border:1px solid var(--line); border-radius:20px; background:#fff }
+.video-qr img { display:block; width:100%; aspect-ratio:1; image-rendering:pixelated }
 .video-qr a { color:var(--blue); text-underline-offset:4px; word-break:break-all }
 .video-qr .video-open { margin-top:10px; font-weight:750 }
 .hub-sub { font-size:19px; font-weight:650; opacity:.85 }
@@ -486,7 +496,7 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s2">같은 골목, 같은 재료인데 <span class="hl">식당마다 따로</span> 삽니다</h1>
       <p class="lead a">상자째 사면 남고, 조금씩 사면 배송비가 붙습니다. 작은 식당일수록 구매 조건이 불리합니다.</p>
     </header>
-    <div class="body grid problem">
+    <div data-step="1" class="body grid problem">
       <figure class="alley photo photo-shade a">
         <img src="img/alley.jpg" alt="회기역 파전골목">
         <div class="order-chip a" style="left:5%;top:10%;--d:90ms"><i></i>식당 A <b>청양고추 2kg</b> <em>+ 배송비</em></div>
@@ -497,9 +507,9 @@ body.idle,body.idle * { cursor:none !important }
         <figcaption class="a" style="--d:490ms">같은 날, 같은 골목에서 <b>주문 5건 · 배송 5번</b></figcaption>
       </figure>
       <div class="grid problem-stats">
-        <article class="card pad ring-card a" data-step="1">
+        <article class="card pad ring-card a" data-step="1" style="--d:300ms">
           <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="#e3e6ee" stroke-width="10"/><g data-donut="94.1:#0919b4"></g></svg><strong class="big" data-count="94.1" data-suffix="%">94.1%</strong></div>
-          <div><h2 class="title">식재료비 상승으로<br>어려움을 느낀 외식업체</h2><p class="small muted">전국 3,138곳 중</p></div>
+          <div><h2 class="title">식재료비 상승으로<br>어려움을 느낀 외식업체</h2><p class="small muted">전국 외식업체 3,138곳 조사</p></div>
         </article>
         <article class="card pad a" data-step="1" style="--d:600ms">
           <p class="kicker">매출 100원 중</p>
@@ -518,21 +528,22 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s3">농가는 <span class="hl">‘다음 주 주문’</span>이 없습니다</h1>
       <p class="lead a">판로가 불확실하면, 농가는 얼마나 심고 언제 출하할지 정할 수 없습니다.</p>
     </header>
-    <div class="body grid grower">
+    <div data-step="1" class="body grid grower">
       <article class="card soft pad grower-summary a">
         <span class="big" data-count="7" data-suffix="곳">7곳</span><h2 class="title">팀이 직접 만난 농가</h2>
         <div class="chips"><span class="chip">밀양</span><span class="chip">제주</span><span class="chip">상주</span><span class="chip">…</span></div>
+        <svg class="grower-map" viewBox="0 0 212 362" preserveAspectRatio="xMidYMid meet" role="img" aria-label="밀양, 상주, 제주 위치를 표시한 지도"><path d="M21.0 64.9 L43.5 73.0 L46.0 83.5 L58.5 111.4 L38.5 111.4 L23.5 123.8 L41.0 145.5 L43.5 173.4 L38.5 198.2 L36.0 216.8 L31.0 247.8 L28.5 272.6 L41.0 278.8 L53.5 273.8 L81.0 266.4 L103.5 257.1 L111.0 249.0 L146.0 246.6 L171.0 229.2 L186.0 204.4 L194.5 170.3 L186.0 166.0 L186.0 142.4 L188.5 111.4 L176.0 83.5 L163.5 61.8 L146.0 37.0 L134.5 12.2 L106.0 30.8 L71.0 30.8 L51.0 52.5Z" fill="#dfe4fb" stroke="#aab4ea" stroke-width="2" stroke-linejoin="round"/><ellipse cx="43.5" cy="335.8" rx="20" ry="8" fill="#dfe4fb" stroke="#aab4ea" stroke-width="2"/><circle cx="124.0" cy="148.0" r="10" fill="#0919b4" stroke="#fff" stroke-width="3"/><text x="112.0" y="153.0" text-anchor="end">상주</text><circle cx="153.5" cy="204.4" r="10" fill="#0919b4" stroke="#fff" stroke-width="3"/><text x="141.5" y="209.4" text-anchor="end">밀양</text><circle cx="42.5" cy="333.4" r="10" fill="#0919b4" stroke="#fff" stroke-width="3"/><text x="68.5" y="331.4" text-anchor="start">제주</text></svg>
       </article>
-      <figure class="grower-photo photo photo-shade a" data-step="1">
+      <figure class="grower-photo photo photo-shade a" data-step="1" style="--d:300ms">
         <img src="img/chili-photo.jpg" alt="청양고추">
         <blockquote class="title">지원금을 받아 귀농했지만, 판로를 찾기 어려워 수익을 내기 힘들었다고 합니다<cite>밀양 청양고추 농가 · 농가 인터뷰 중 발췌</cite></blockquote>
       </figure>
       <div class="grower-needs">
         <h2 class="kicker a" data-step="1" style="--d:600ms">농가에 필요한 것</h2>
         <div class="grid">
-          <p class="card title a" data-step="1" style="--d:670ms">출하 전에 아는 구매자</p>
-          <p class="card title a" data-step="1" style="--d:750ms">미리 확정된 출하 물량</p>
-          <p class="card title a" data-step="1" style="--d:830ms">다음 주에도 이어지는 주문</p>
+          <p class="card title a" data-step="1" style="--d:670ms"><span class="need-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>출하 전에 아는 구매자</p>
+          <p class="card title a" data-step="1" style="--d:750ms"><span class="need-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span>미리 확정된 출하 물량</p>
+          <p class="card title a" data-step="1" style="--d:830ms"><span class="need-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 9h13l-3-3M20 15H7l3 3"/></svg></span>다음 주에도 이어지는 주문</p>
         </div>
       </div>
     </div>
@@ -544,7 +555,7 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s4">첫 실증: 서울시립대 정문 <span class="hl">반경 500m</span></h1>
       <p class="lead a">팀이 걸어서 매주 다시 찾아갈 수 있는 상권에서, 공공데이터로 대상 식당부터 찾습니다.</p>
     </header>
-    <div class="body grid pilot">
+    <div data-step="1" class="body grid pilot">
       <figure class="map photo a">
         <img src="img/map.jpg" alt="서울시립대와 회기·청량리 일대 지도">
         <svg viewBox="0 0 900 460" aria-hidden="true">
@@ -563,7 +574,7 @@ body.idle,body.idle * { cursor:none !important }
         <span class="chip map-tag">점포 위치는 예시</span><span class="map-name gate small">서울시립대 정문</span><span class="map-name reach small">500m</span>
         <span class="map-name hoegi small">② 회기·경희대 상권</span><span class="map-name cheong small">③ 청량리 상권</span>
       </figure>
-      <article class="card why a" data-step="1">
+      <article class="card why a" data-step="1" style="--d:300ms">
         <h2 class="kicker">왜 여기서 시작하나</h2>
         <ul>
           <li><b class="title">걸어서 매주 다시 찾아가는 거리</b><span class="small muted">사장님 인터뷰·납품 확인을 팀이 직접</span></li>
@@ -593,7 +604,7 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s5">식당과 농가, <span class="hl">양쪽 네트워크</span>로 시작합니다</h1>
       <p class="lead a">농가 7곳을 직접 만났고, 그중 5곳이 납품 의사를 밝혔습니다.</p>
     </header>
-    <div class="body network">
+    <div data-step="1" class="body network">
       <div class="grid network-flow">
         <article class="card soft a">
           <h2 class="kicker">공급 · 산지 농가</h2>
@@ -603,14 +614,11 @@ body.idle,body.idle * { cursor:none !important }
           <p class="small muted">버섯 농가 섭외 중 · 농진원 서울센터 연계</p>
         </article>
         <div class="network-hub a" style="--d:110ms">
-          <svg class="arrows" viewBox="0 0 422 500" preserveAspectRatio="none" aria-hidden="true">
-            <path class="draw" pathLength="1" d="M8 250h110m184 0h110" fill="none" stroke="#0919b4" stroke-width="4" style="--d:220ms"/>
-            <path class="draw" pathLength="1" d="m101 238 13 12-13 12m294-24 13 12-13 12" fill="none" stroke="#0919b4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="--d:360ms"/>
-          </svg>
-          <div class="hub-labels"><span>모아서 출하</span><span>나눠서 배송</span></div>
+          <div class="hub-arrow"><span>모아서 출하</span><svg viewBox="0 0 96 28" aria-hidden="true"><path class="draw" pathLength="1" d="M3 14H88" style="--d:520ms"/><path d="M78 4l12 10-12 10"/></svg></div>
           <div class="hub-core"><svg class="icon" aria-hidden="true"><use href="#basket"/></svg><b class="title">소쿠리</b><span class="hub-sub">같은 날 주문 합산</span></div>
+          <div class="hub-arrow"><span>나눠서 배송</span><svg viewBox="0 0 96 28" aria-hidden="true"><path class="draw" pathLength="1" d="M3 14H88" style="--d:660ms"/><path d="M78 4l12 10-12 10"/></svg></div>
         </div>
-        <article class="card a" data-step="1">
+        <article class="card a" data-step="1" style="--d:300ms">
           <h2 class="kicker">수요 · 시립대 앞 식당</h2>
           <strong class="big" data-count="10" data-suffix="곳">10곳</strong>
           <p class="title">첫 운영 목표<br>공동발주 참여 식당</p>
@@ -630,18 +638,18 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s6">식당은 나눠 받고, 농가는 <span class="hl">모아서 출하</span>합니다</h1>
       <p class="lead a">같은 날 받을 주문이 농가의 최소 출하량을 채우면, 소쿠리가 발주를 확정합니다.</p>
     </header>
-    <div class="body consolidation">
+    <div data-step="1" class="body consolidation">
       <div class="flow-main">
         <svg class="flow-wires" viewBox="0 0 1768 480" aria-hidden="true">
           <g fill="none" stroke="#e3e6ee" stroke-width="3">
             <path d="M368 60C458 60 456 240 550 240"/><path d="M368 150C458 150 456 240 550 240"/><path d="M368 240H550"/><path d="M368 330C458 330 456 240 550 240"/><path d="M368 420C458 420 456 240 550 240"/>
           </g>
           <g fill="none" stroke="#4968e6" stroke-width="4">
-            <path class="draw" data-step="1" style="--d:0ms" pathLength="1" d="M368 60C458 60 456 240 550 240"/><path class="draw" data-step="1" style="--d:450ms" pathLength="1" d="M368 150C458 150 456 240 550 240"/>
-            <path class="draw" data-step="1" style="--d:900ms" pathLength="1" d="M368 240H550"/><path class="draw" data-step="1" style="--d:1350ms" pathLength="1" d="M368 330C458 330 456 240 550 240"/>
-            <path class="draw" data-step="1" style="--d:1800ms" pathLength="1" d="M368 420C458 420 456 240 550 240"/>
+            <path class="draw" data-step="1" style="--d:500ms" pathLength="1" d="M368 60C458 60 456 240 550 240"/><path class="draw" data-step="1" style="--d:700ms" pathLength="1" d="M368 150C458 150 456 240 550 240"/>
+            <path class="draw" data-step="1" style="--d:900ms" pathLength="1" d="M368 240H550"/><path class="draw" data-step="1" style="--d:1100ms" pathLength="1" d="M368 330C458 330 456 240 550 240"/>
+            <path class="draw" data-step="1" style="--d:1300ms" pathLength="1" d="M368 420C458 420 456 240 550 240"/>
           </g>
-          <path class="draw" data-step="1" style="--d:2350ms" pathLength="1" d="M1227 240h136m-16-12 13 12-13 12" fill="none" stroke="#0919b4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="draw" data-step="1" style="--d:1600ms" pathLength="1" d="M1227 240h136m-16-12 13 12-13 12" fill="none" stroke="#0919b4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle class="packet" r="9" visibility="hidden"/>
         </svg>
         <div class="restaurants">
@@ -656,19 +664,19 @@ body.idle,body.idle * { cursor:none !important }
           <p class="small">금요일 납품 · 청양고추 1kg 봉</p>
           <strong class="big"><span id="gauge">0</span> / 10kg</strong>
           <div class="slots" aria-hidden="true"><span>2kg</span><span>2kg</span><span>2kg</span><span>2kg</span><span>2kg</span></div>
-          <p class="confirm a" data-step="1" style="--d:2350ms">최소 출하량 도달 → 발주 확정</p>
+          <p class="confirm a" data-step="1" style="--d:1600ms">최소 출하량 도달 → 발주 확정</p>
         </article>
         <figure class="card farm-result a" style="--d:210ms">
           <img src="img/greenhouse.jpg" alt="청양고추 비닐하우스">
           <figcaption><span class="kicker">산지 농가</span><strong class="title">10kg 한 번에 출하</strong></figcaption>
         </figure>
       </div>
-      <div class="flow-summary" data-step="1" style="--d:600ms">
-        <p class="band a" data-step="1" style="--d:600ms"><b>최소 출하량 미달 시</b> · 마감 2일 전 알림 → 다음 납품일 이월 또는 전액 환불 선택</p>
+      <div class="flow-summary" data-step="1" style="--d:1750ms">
+        <p class="band a" data-step="1" style="--d:1750ms"><b>최소 출하량 미달 시</b> · 마감 2일 전 알림 → 다음 납품일 이월 또는 전액 환불 선택</p>
         <div class="grid">
-          <article class="card soft a" data-step="1" style="--d:660ms"><span class="step-badge">1</span><div><p class="kicker">농가</p><p class="small">품목·규격·최소 출하량 등록</p></div></article>
-          <article class="card soft a" data-step="1" style="--d:730ms"><span class="step-badge">2</span><div><p class="kicker">식당</p><p class="small">필요한 만큼만 주문</p></div></article>
-          <article class="card soft a" data-step="1" style="--d:800ms"><span class="step-badge">3</span><div><p class="kicker">소쿠리</p><p class="small">도달 시 확정 → 모아 출하·나눠 배송</p></div></article>
+          <article class="card soft a" data-step="1" style="--d:1830ms"><span class="step-badge">1</span><div><p class="kicker">농가</p><p class="small">품목·규격·최소 출하량 등록</p></div></article>
+          <article class="card soft a" data-step="1" style="--d:1910ms"><span class="step-badge">2</span><div><p class="kicker">식당</p><p class="small">필요한 만큼만 주문</p></div></article>
+          <article class="card soft a" data-step="1" style="--d:1990ms"><span class="step-badge">3</span><div><p class="kicker">소쿠리</p><p class="small">도달 시 확정 → 모아 출하·나눠 배송</p></div></article>
         </div>
       </div>
     </div>
@@ -704,9 +712,9 @@ body.idle,body.idle * { cursor:none !important }
       </div>
       <aside class="card video-qr a" style="--d:160ms">
         <p class="kicker">데모 체험</p>
-        <img src="img/qr.png" alt="데모 체험 QR">
-        <p class="title">지금 직접 눌러 보기</p>
-        <a class="small" href="https://noru-0731.github.io/group-order-demo/" target="_blank" rel="noopener">noru-0731.github.io/group-order-demo</a>
+        <h2 class="title">QR로 지금 직접 눌러 보기</h2>
+        <a class="qr-box" href="https://noru-0731.github.io/group-order-demo/" target="_blank" rel="noopener"><img src="img/qr.png" alt="데모 체험 QR"></a>
+        <p class="small muted">휴대폰 카메라로 비추면 시연 화면이 열립니다</p>
         <a class="small video-open" href="https://youtu.be/fDNIIM4nx5Q" target="_blank" rel="noopener">영상 새 창으로 열기 ↗</a>
       </aside>
     </div>
@@ -718,22 +726,22 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s8">소량으로 사면서, <span class="hl">공동발주 단가</span>로</h1>
       <p class="lead a">식당은 필요한 2kg만 받고, 단가는 10kg 공동발주 기준으로 적용받습니다.</p>
     </header>
-    <div class="body">
+    <div data-step="1" class="body">
       <figure class="card positioning a" style="height:100%" aria-label="주문량과 배송비 포함 구매 단가를 기준으로 네 가지 구매 방식 비교">
         <svg class="chart" viewBox="0 0 1768 737" preserveAspectRatio="none" aria-hidden="true">
           <path class="draw" pathLength="1" d="M99 74V675H1724" fill="none" stroke="#65718c" stroke-width="3"/>
           <path d="m90 87 9-14 9 14m1600 578 15 10-15 10" fill="none" stroke="#65718c" stroke-width="3"/>
           <path d="M100 256h1623M100 469h1623M630 80v595m540-595v595" fill="none" stroke="#d7dce9" stroke-width="2" stroke-dasharray="8 9"/>
-          <circle class="a" data-step="1" cx="185" cy="132" r="11" fill="#737b8e"/>
-          <circle class="a" data-step="1" style="--d:300ms" cx="745" cy="316" r="11" fill="#737b8e"/>
-          <circle class="a" data-step="1" style="--d:450ms" cx="1292" cy="488" r="11" fill="#737b8e"/>
+          <circle class="a" data-step="1" cx="185" cy="132" r="11" fill="#737b8e" style="--d:300ms"/>
+          <circle class="a" data-step="1" style="--d:600ms" cx="745" cy="316" r="11" fill="#737b8e"/>
+          <circle class="a" data-step="1" style="--d:750ms" cx="1292" cy="488" r="11" fill="#737b8e"/>
           <circle class="a" data-step="1" cx="185" cy="495" r="19" fill="#0919b4" stroke="#fff" stroke-width="5" style="--d:600ms"/>
         </svg>
         <span class="plot-label plot-vertical">kg당 구매 단가(배송비 포함)</span><span class="plot-label plot-high">높음</span><span class="plot-label plot-low">낮음</span>
         <span class="plot-label plot-small">← 소량 주문</span><span class="plot-label plot-large">대량 주문(상자 단위) →</span>
-        <article class="card plot-card plot-coupang a" data-step="1" style="--d:65ms"><h2 class="title"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:30px"> 비즈</h2><p class="small">필요한 만큼 · 소포장 단가 높음</p></article>
-        <article class="card plot-card plot-app a" data-step="1" style="--d:300ms"><h2 class="title">식자재몰·거래처 앱</h2><p class="small">식당 한 곳 단위 구매</p></article>
-        <article class="card plot-card plot-wholesale a" data-step="1" style="--d:450ms"><h2 class="title">도매 상자 구매</h2><p class="small">단가 낮음 · 남는 양 부담</p></article>
+        <article class="card plot-card plot-coupang a" data-step="1" style="--d:365ms"><h2 class="title"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:30px"> 비즈</h2><p class="small">필요한 만큼 · 소포장 단가 높음</p></article>
+        <article class="card plot-card plot-app a" data-step="1" style="--d:600ms"><h2 class="title">식자재몰·거래처 앱</h2><p class="small">식당 한 곳 단위 구매</p></article>
+        <article class="card plot-card plot-wholesale a" data-step="1" style="--d:750ms"><h2 class="title">도매 상자 구매</h2><p class="small">단가 낮음 · 남는 양 부담</p></article>
         <article class="card plot-card plot-sokuri a" data-step="1" style="--d:670ms"><h2 class="title" style="color:var(--blue)">소쿠리</h2><p class="small">5곳 × 2kg → 농가엔 10kg 발주</p><mark class="small">단가는 상자 수준으로, 받는 양은 필요한 만큼</mark></article>
       </figure>
     </div>
@@ -745,7 +753,7 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s9">필요한 만큼만 사도, <span class="hl">시장보다 저렴하게</span></h1>
       <p class="lead a">가락시장 경락가를 100으로 놓고, 식당이 청양고추를 사는 경로별 식당 도착 kg당 가격을 비교했습니다.</p>
     </header>
-    <div class="body prices">
+    <div data-step="1" class="body prices">
       <article class="card price-chart a">
         <h2 class="kicker">청양고추(상품) kg당 가격 · 가락시장 경락가 = 100</h2>
         <div class="price-rows" id="price-rows">
@@ -758,11 +766,11 @@ body.idle,body.idle * { cursor:none !important }
         </div>
       </article>
       <div class="price-detail">
-        <article class="card blue price-highlight a" data-step="1">
+        <article class="card blue price-highlight a" data-step="1" style="--d:300ms">
           <strong class="big" data-count="-37" data-suffix="%">−37%</strong>
           <div><h2 class="title">1kg 소포장 대비</h2><p class="small">10,500원 → 6,660원/kg (배송·소분 포함)</p></div>
         </article>
-        <div class="grid price-mini a" data-step="1" style="--d:100ms">
+        <div class="grid price-mini a" data-step="1" style="--d:400ms">
           <article class="card soft"><p class="small">동네 소매 대비</p><strong>−36%</strong></article>
           <article class="card soft"><p class="small">경락가 대비</p><strong>+39%</strong><p class="small muted">10kg 상자보다 +10% · 2kg 단위</p></article>
         </div>
@@ -789,14 +797,14 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s10">기존 구매 방식이 못 하는 <span class="hl">세 가지</span></h1>
       <p class="lead a">다른 서비스는 식당 한 곳의 구매를 돕고, 소쿠리는 같은 상권의 주문을 묶습니다.</p>
     </header>
-    <div class="body comparison">
+    <div data-step="1" class="body comparison">
       <div class="card compare-table a">
         <table aria-label="구매 방식별 제공 기능">
           <thead><tr><th scope="col">구매 기능</th><th scope="col">소쿠리</th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-coupang.png" alt="쿠팡" style="height:34px"></span><small class="logo-cap">사업자 소포장</small></th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-sikbom.png" alt="식봄" style="height:38px"></span><small class="logo-cap">식자재몰</small></th><th scope="col"><span class="logo-chip"><img class="brand-logo" src="img/logo-kitchenboard.png" alt="키친보드" style="height:34px"></span><small class="logo-cap">거래처 앱</small></th><th scope="col">도매 상자 구매</th></tr></thead>
           <tbody>
-            <tr class="a" data-step="1" data-marks="YNNNN"><th scope="row">같은 상권 주문 합산</th></tr>
-            <tr class="a" data-step="1" data-marks="YSSNN" style="--d:95ms"><th scope="row">산지 농가 직출하</th></tr>
-            <tr class="a" data-step="1" data-marks="YNSNN" style="--d:190ms"><th scope="row">상권 단위 수요 데이터</th></tr>
+            <tr class="a" data-step="1" data-marks="YNNNN" style="--d:300ms"><th scope="row">같은 상권 주문 합산</th></tr>
+            <tr class="a" data-step="1" data-marks="YSSNN" style="--d:395ms"><th scope="row">산지 농가 직출하</th></tr>
+            <tr class="a" data-step="1" data-marks="YNSNN" style="--d:490ms"><th scope="row">상권 단위 수요 데이터</th></tr>
           </tbody>
           <tbody>
             <tr class="a" data-marks="YYYSN" style="--d:80ms"><th scope="row">필요한 만큼 소량 주문</th></tr>
@@ -804,9 +812,9 @@ body.idle,body.idle * { cursor:none !important }
             <tr class="a" data-marks="YSSSY" style="--d:230ms"><th scope="row">상자 수준의 kg당 단가</th></tr>
           </tbody>
         </table>
-        <span class="diff-outline a" data-step="1" aria-hidden="true"></span>
+        <span class="diff-outline a" data-step="1" aria-hidden="true" style="--d:300ms"></span>
       </div>
-      <div class="comparison-legend small"><p>○ 제공 · △ 일부 제공 또는 확인 필요 · × 없음</p><span class="diff-tag a" data-step="1">점선 · 소쿠리만의 차별점</span></div>
+      <div class="comparison-legend small"><p>○ 제공 · △ 일부 제공 또는 확인 필요 · × 없음</p><span class="diff-tag a" data-step="1" style="--d:300ms">점선 · 소쿠리만의 차별점</span></div>
     </div>
   </section>
 
@@ -816,14 +824,14 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s11">누가, 무엇에 <span class="hl">돈을 내는가</span></h1>
       <p class="lead a">공동발주 수수료로 시작해, 쌓인 주문 데이터로 상권 리서치 구독과 B2B 한국 진입 서비스를 팝니다.</p>
     </header>
-    <div class="body revenue-model">
+    <div data-step="1" class="body revenue-model">
       <div class="grid">
         <article class="card model a">
           <span class="chip">2027~ 출시</span><p class="small payer">식당</p><h2 class="title">공동발주 수수료</h2>
           <strong class="big">거래액의 <span data-count="8" data-suffix="%">8%</span></strong><span class="price-hypothesis">가격 가설</span>
           <div class="description small"><p>상품가(농가 정산 기준가)의 8%, 식당 부담</p><p>+ 농가 판매수수료 3%(정산금에서 차감)</p></div>
         </article>
-        <article class="card model a" data-step="1">
+        <article class="card model a" data-step="1" style="--d:300ms">
           <span class="chip">2027 하반기~</span><p class="small payer">식당</p><h2 class="title">상권 리서치 구독</h2>
           <strong class="big">월 <span data-count="2.9" data-suffix="만 원">2.9만 원</span></strong><span class="price-hypothesis">가격 가설</span>
           <div class="description small"><p>우리 동네에서 잘 나가는 품목·작물 순위</p><p>내 발주 단가 vs 상권 평균 · 신메뉴 힌트</p><p class="muted">기본 순위는 무료 공개 → 상세 리서치는 구독</p></div>
@@ -843,14 +851,14 @@ body.idle,body.idle * { cursor:none !important }
       <p class="eyebrow a">Ⅳ. Business Model</p>
       <h1 class="a" id="s12">전국 소상공인 음식점에서, <span class="hl">동대문구부터</span></h1>
     </header>
-    <div class="body grid market">
+    <div data-step="1" class="body grid market">
       <figure class="market-chart a" aria-label="전국, 서울, 동대문구 시장 규모를 나타낸 동심원">
         <svg viewBox="0 0 650 737" aria-hidden="true">
           <g fill="none" stroke="#d9deea" stroke-width="2" stroke-dasharray="8 8">
             <circle cx="325" cy="365" r="261"/><circle cx="325" cy="365" r="184"/><circle cx="325" cy="365" r="102"/>
           </g>
           <circle class="draw" pathLength="1" cx="325" cy="365" r="261" fill="#e0e5ff" stroke="#0919b4" stroke-width="3" transform="rotate(-90 325 365)"/>
-          <g class="a" data-step="1">
+          <g class="a" data-step="1" style="--d:300ms">
             <circle class="draw" pathLength="1" cx="325" cy="365" r="184" fill="#8da1fa" stroke="#4968e6" stroke-width="3" transform="rotate(-90 325 365)"/>
           </g>
           <g class="a" data-step="1" style="--d:600ms">
@@ -858,7 +866,7 @@ body.idle,body.idle * { cursor:none !important }
           </g>
         </svg>
         <span class="circle-label a" style="top:19%;--d:130ms">TAM · 전국</span>
-        <span class="circle-label a" data-step="1" style="top:30%;--d:130ms">SAM · 서울</span>
+        <span class="circle-label a" data-step="1" style="top:30%;--d:430ms">SAM · 서울</span>
         <span class="circle-label a" data-step="1" style="top:48%;--d:730ms">SOM · 동대문구</span>
       </figure>
       <div class="grid market-items">
@@ -866,7 +874,7 @@ body.idle,body.idle * { cursor:none !important }
           <b class="market-key title">TAM</b><h2 class="title">전국 소상공인 음식점</h2><strong class="big">연 <span data-count="3527" data-suffix="억 원">3,527억 원</span></strong>
           <p class="small">521,142곳 × 비프랜차이즈 81.2% × 86.8% = 367,342곳<br>367,342곳 × 월 100만 원 × 12 × 8%</p>
         </article>
-        <article class="card market-item a" data-step="1">
+        <article class="card market-item a" data-step="1" style="--d:300ms">
           <b class="market-key title">SAM</b><h2 class="title">서울 소상공인 음식점</h2><strong class="big">연 <span data-count="708" data-suffix="억 원">708억 원</span></strong>
           <p class="small">84,937곳(프랜차이즈 19,656곳 제외) × 86.8% = 73,725곳<br>73,725곳 × 월 100만 원 × 12 × 8%</p>
         </article>
@@ -885,7 +893,7 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s13">동대문구에서 시작해, <span class="hl">외식 수요 데이터</span> 회사로</h1>
       <p class="lead a">2028년 연매출 <b>20.1억 원</b>, 그중 절반이 상권 리서치 구독과 B2B 한국 진입 서비스입니다.</p>
     </header>
-    <div class="body grid plan">
+    <div data-step="1" class="body grid plan">
       <figure class="card plan-chart a" aria-label="2027년 연매출 1.08억 원, 2028년 연매출 20.1억 원">
         <div class="plan-canvas">
           <svg viewBox="0 0 1194 700" preserveAspectRatio="none" role="img" aria-label="2028년 수수료 9.9억, 구독 4.2억, B2B 6.0억 원">
@@ -917,7 +925,7 @@ body.idle,body.idle * { cursor:none !important }
         <div class="plan-label plan-label-first small a" style="--d:180ms"><strong>2027 · 1년차</strong>시범 10곳 검증 → 연말 150곳<br>연평균 75곳 · 월 100만 원<br>구독은 하반기 6개월</div>
         <div class="plan-label plan-label-next small a" style="--d:330ms"><strong>2028 · 2년차</strong>동대문구 500곳(18%)<br>서울 구독 1,200곳<br>B2B 15건</div>
       </figure>
-      <article class="card soft plan-mix a" data-step="1">
+      <article class="card soft plan-mix a" data-step="1" style="--d:300ms">
         <h2 class="title">2028년 매출 구성</h2>
         <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><g data-donut="49:#0919b4,21:#4968e6,30:#ffc738"></g></svg><strong class="big" data-count="20.1" data-suffix="억">20.1억</strong></div>
         <div class="mix-legend">
@@ -936,13 +944,13 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s14">한국은 글로벌 외식 브랜드의 <span class="hl">테스트베드</span>입니다</h1>
       <p class="lead a">해외 외식 브랜드가 한국에서 먼저 시장 반응을 검증합니다.<br>이들이 출점 전에 알고 싶은 것은 “어느 상권에서 무엇이 팔리는가”입니다.</p>
     </header>
-    <div class="body card global-news a">
+    <div data-step="1" class="body card global-news a">
       <div class="chips a" style="--d:60ms"><span class="chip">일본 외식 1호점</span><span class="chip">미국 패스트캐주얼</span><span class="chip">중화권 티 브랜드</span><span class="chip">유럽 디저트</span></div>
       <div class="grid news-cards">
         <article class="card news a" style="--d:125ms"><h2 class="title">“한국 반응이 곧 세계 성적표”…글로벌 외식업계 진출 러시</h2><p class="small">메트로경제 · 2026.02.18</p></article>
         <article class="card news a" style="--d:235ms"><h2 class="title">“일본도 중국도 건너뛰었다”…한국인 입맛 잡으러 온 외식 공룡</h2><p class="small">한국경제 · 2026.10.24</p></article>
-        <article class="card news a" data-step="1"><h2 class="title">“도쿄 안가도 되겠네”…日 맛집 속속 상륙</h2><p class="small">헤럴드경제 · 2026.07.28</p></article>
-        <article class="card news a" data-step="1" style="--d:110ms"><h2 class="title">韓 상륙 시작한 日외식 브랜드···‘입점 경쟁’ 벌이는 유통업계</h2><p class="small">투데이코리아 · 2026.09.08</p></article>
+        <article class="card news a" data-step="1" style="--d:300ms"><h2 class="title">“도쿄 안가도 되겠네”…日 맛집 속속 상륙</h2><p class="small">헤럴드경제 · 2026.07.28</p></article>
+        <article class="card news a" data-step="1" style="--d:410ms"><h2 class="title">韓 상륙 시작한 日외식 브랜드···‘입점 경쟁’ 벌이는 유통업계</h2><p class="small">투데이코리아 · 2026.09.08</p></article>
       </div>
       <p class="band blue a" data-step="1" style="--d:600ms"><b>이 브랜드들이 소쿠리 상권 데이터의 잠재 고객</b> · “어느 상권에서 무엇이 팔리는가?” → 소쿠리는 실제 발주 기록으로 답합니다.</p>
     </div>
@@ -954,7 +962,7 @@ body.idle,body.idle * { cursor:none !important }
       <h1 class="a" id="s15">해외 외식 브랜드에 <span class="hl">‘한국 진입 서비스’</span>를 팝니다</h1>
       <p class="lead a">그 질문에 소쿠리는 발주 기록으로 상권별 식재료 수요를 추정합니다. 판매 데이터는 참여 식당 동의 시 2028년부터 연동합니다.</p>
     </header>
-    <div class="body entry-plan">
+    <div data-step="1" class="body entry-plan">
       <div class="grid entry-flow">
         <article class="card soft a"><h2 class="title">상권별 주문 기록</h2><p class="small">참여 점포의 발주·판매 기록이 들어올 때마다 갱신</p></article>
         <svg class="arrow-icon a" viewBox="0 0 46 36" aria-hidden="true" style="--d:100ms"><path class="draw" pathLength="1" d="M4 18h36M28 6l12 12-12 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -963,7 +971,7 @@ body.idle,body.idle * { cursor:none !important }
         <article class="card blue a" style="--d:350ms"><h2 class="title">한국 진입 서비스</h2><p class="small">상권 선정 · 산지 공급망 연결 · 1호점 공동발주 운영</p></article>
       </div>
       <div class="grid entry-detail">
-        <article class="card entry-report a" data-step="1">
+        <article class="card entry-report a" data-step="1" style="--d:300ms">
           <h2 class="kicker">예시 화면 · 상권 비교 리포트</h2>
           <div class="grid">
             <article class="card soft report-card">
@@ -990,13 +998,13 @@ body.idle,body.idle * { cursor:none !important }
     </div>
   </section>
 
-  <section class="slide" data-steps="0" aria-labelledby="s16">
+  <section class="slide" data-steps="1" aria-labelledby="s16">
     <header class="header">
       <p class="eyebrow a">Ⅵ. Team</p>
       <h1 class="a" id="s16">박수현 · 김동훈 · 이승헌 <span class="hl">공동대표</span></h1>
       <p class="lead a">사업 · 개발 · 산지 공급망, 세 축을 공동대표가 나눠 맡습니다.</p>
     </header>
-    <div class="body grid team-cards">
+    <div data-step="1" class="body grid team-cards">
       <article class="card person a">
         <div class="avatar"><img src="img/person-park.jpg" alt="박수현"></div>
         <h2 class="big">박수현</h2><p class="title">사업 전략 · 재무</p>
@@ -1350,7 +1358,8 @@ body.idle,body.idle * { cursor:none !important }
   }
   // 6쪽: 한 번 누르면 식당 다섯 곳 주문이 차례로 들어오고, 10kg이 차면 발주 확정까지 이어집니다.
   const flowTimers = [];
-  const ORDER_GAP = 450;
+  const ORDER_GAP = 200;
+  const FLOW_START = 500;
   function stopFlow() {
     flowTimers.splice(0).forEach(clearTimeout);
     stopPacket();
@@ -1388,9 +1397,9 @@ body.idle,body.idle * { cursor:none !important }
         setUnits(index + 1);
         sendPacket(inbound[index]);
         countTo(gauge, (index + 1) * 2, {from:index * 2, delay:260, duration:300});
-      }, index * ORDER_GAP));
+      }, FLOW_START + index * ORDER_GAP));
     }
-    flowTimers.push(setTimeout(() => farm.classList.add("confirmed"), full * ORDER_GAP + 100));
+    flowTimers.push(setTimeout(() => farm.classList.add("confirmed"), FLOW_START + full * ORDER_GAP + 100));
   }
 
   const priceSlide = document.getElementById("price-slide");
@@ -1660,6 +1669,16 @@ body.idle,body.idle * { cursor:none !important }
     if (slides[current] === consolidation) writeNumber(gauge, step >= 1 ? slots.length * 2 : 0);
     printing = false;
   });
+  const diffOutline = document.querySelector(".diff-outline");
+  function placeOutline() {
+    const table = diffOutline.parentElement.querySelector("table");
+    const group = table.tBodies[0];
+    diffOutline.style.top = (table.offsetTop + group.offsetTop + 4) + "px";
+    diffOutline.style.height = (group.offsetHeight - 8) + "px";
+  }
+  placeOutline();
+  document.fonts?.ready.then(placeOutline);
+  addEventListener("load", placeOutline);
   reducedMotion.addEventListener("change", () => {
     if (reducedMotion.matches) reveal(-1);
   });
