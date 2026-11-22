@@ -478,7 +478,6 @@ const HIST=[
  [ST[0],'ch',2,38],[ST[1],'on',6,95],[ST[2],'ch',2,170],
  [ST[3],'mu',2,290],[ST[4],'on',6,760],[ST[5],'ch',2,1500],
  [ST[6],'on',6,2300],[ST[7],'mu',2,3100],[ST[8],'ch',2,4200]];
-const BURST=[[ST[1],'on',3],[ST[3],'mu',1],[ST[4],'on',3],[ST[0],'mu',1],[ST[5],'on',3],[ST[7],'mu',1],[ST[6],'on',3]];
 const CANDS=[
  {id:'campus',area:'회기·경희대',point:[.72,.30],stores:[
   ['김밥 전공필수','김밥'],['백반 장학금','백반'],['파전 복학생','파전'],['덮밥 재수강','덮밥'],
@@ -541,12 +540,12 @@ function renderMini(){
 }
 
 /* hold to confirm */
-const hold=$('#hold');let ht=null,hp=null,busy=false,sheetOpen=false,pinned=null,gLock=false;
+const hold=$('#hold');let ht=null,hp=null,busy=false,sheetOpen=false,pinned=null;
 const shake=()=>{hold.classList.remove('shake');void hold.offsetWidth;hold.classList.add('shake')};
 function startHold(id){
   if(busy||ht)return;
   /* while G orders are still arriving the owner's order cannot be confirmed */
-  if(!S._p||BT.length){shake();return}
+  if(!S._p){shake();return}
   hp=id;hold.classList.add('pressing');ht=setTimeout(confirmOrder,1100);
 }
 function cancelHold(){if(ht){clearTimeout(ht);ht=null}hp=null;hold.classList.remove('pressing')}
@@ -559,8 +558,8 @@ window.addEventListener('blur',cancelHold);
 function confirmOrder(){
   ht=null;hp=null;if(busy)return;
   const lines=ITEMS.filter(i=>S.qty[i.id]>0).map(i=>({id:i.id,q:S.qty[i.id]}));
-  if(!lines.length||BT.length){hold.classList.remove('pressing','shake');renderOrder();shake();return}
-  busy=true;gLock=true;
+  if(!lines.length){hold.classList.remove('pressing','shake');renderOrder();shake();return}
+  busy=true;
   hold.classList.remove('pressing');hold.classList.add('loading');
   setArea(null);
   // phone cards, admin rows and the record table update at the moment of hold completion
@@ -606,7 +605,7 @@ function renderReceipt(lines){
 }
 $('#sheetGo').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.repeat)e.preventDefault()});
 $('#sheetGo').onclick=$('#scrim').onclick=()=>{
-  if(!sheetOpen)return;sheetOpen=false;gLock=false;clearTimeout(S.cfT);
+  if(!sheetOpen)return;sheetOpen=false;clearTimeout(S.cfT);
   const sh=$('#sheet');
   $('#scrim').classList.remove('show');sh.classList.remove('show');
   $('#scrim').inert=true;sh.inert=true;behind(false);
@@ -839,10 +838,6 @@ function applyOrder(store,item,qty){
   S.storeOrders.set(store,stats);
 }
 function pushOrder(o){const bb=BOF(o.item);if(bb.cur>=bb.goal)return;o.qty=Math.min(o.qty,bb.goal-bb.cur);ITEMS.forEach(i=>{const x=BOF(i.id),r=Math.max(0,x.goal-x.cur-(i.id===o.item?o.qty:0));if(S.qty[i.id]>r)S.qty[i.id]=r});setArea(null);applyOrder(o.store,o.item,o.qty);renderAdmin();ripple();hotPin();addFeed(o);renderFarms();renderFund();renderMini()}
-let BT=[],burstDone=false;
-/* G is ignored from the moment a hold starts (pressing, confirming, sheet open) */
-function runBurst(){if(BT.length||burstDone||gLock||sheetOpen||hp!==null||ht)return;burstDone=true;BURST.forEach(([st,it,q],i)=>BT.push(setTimeout(()=>pushOrder({store:st,item:it,qty:q,t:Date.now()}),i*260)));BT.push(setTimeout(()=>BT=[],(BURST.length-1)*260+50))}
-function stopBurst(){BT.forEach(clearTimeout);BT=[]}
 
 function clock(){const d=new Date(),p=n=>String(n).padStart(2,'0');$('#ptime').textContent=`${d.getHours()}:${p(d.getMinutes())}`;ftime()}
 setInterval(clock,1000);clock();
@@ -871,10 +866,10 @@ $('#tog').onclick=togPhone;
 
 /* reset (R) */
 function resetDemo(){
-  TM.forEach(clearTimeout);TM=[];stopBurst();burstDone=false;cancelHold();clearTimeout(S.cfT);clearTimeout(S.hotT);clearTimeout(togT);
+  TM.forEach(clearTimeout);TM=[];cancelHold();clearTimeout(S.cfT);clearTimeout(S.hotT);clearTimeout(togT);
   RAF.forEach(cancelAnimationFrame);RAF.clear();
   setArea(null);
-  busy=false;sheetOpen=false;gLock=false;pinned=null;S.done={};
+  busy=false;sheetOpen=false;pinned=null;S.done={};
   hold.classList.remove('loading','done','pressing','shake');
   $('#scrim').classList.remove('show');$('#sheet').classList.remove('show');$('#scrim').inert=true;$('#sheet').inert=true;behind(false);
   $('#sheet').classList.remove('pending');$('#sheetT').textContent='';$('#rcpt').innerHTML='';
@@ -889,7 +884,6 @@ function resetDemo(){
 document.addEventListener('keydown',e=>{
   if(e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.target.tagName==='INPUT')return;
   if(e.code==='KeyH')togPhone();
-  else if(e.code==='KeyG')runBurst();
   else if(e.code==='KeyR')resetDemo();
 });
 /* boot */
