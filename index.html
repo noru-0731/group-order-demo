@@ -205,7 +205,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .admin{height:100vh;overflow:hidden;background:#f6f4ee;min-width:0}
 .admin.scroll{overflow:auto}
 .admin.scroll .main{min-width:1000px;min-height:900px}
-.main{zoom:var(--az);height:calc(100vh / var(--az));max-width:1500px;margin:0 auto;display:grid;grid-template-rows:auto minmax(0,1fr);gap:14px;padding:16px 20px;overflow:hidden}
+.main{zoom:var(--az);height:calc(100vh / var(--az));max-width:1500px;margin:0 auto;display:grid;grid-template-rows:auto auto minmax(0,1fr);gap:14px;padding:16px 20px;overflow:hidden}
 .live{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800;color:var(--g);background:var(--g2);padding:7px 12px;border-radius:99px}
 .live i{width:8px;height:8px;border-radius:50%;background:var(--g);animation:pulse 1.4s infinite}
 
@@ -220,7 +220,77 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .st .num small{font-size:14px;color:var(--sub);font-weight:700}
 .big .live{margin-left:auto}
 
-.body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(450px,1fr);gap:14px;min-height:0}
+.body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:14px;min-height:0}
+.rname{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--sub);padding-left:18px;border-left:1px solid var(--line);white-space:nowrap}
+.rname b{color:var(--ink);font-weight:800}
+.ctl{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border:1px solid var(--line);border-radius:9px;padding:6px 10px;background:#fff;white-space:nowrap;margin-left:8px}
+.ctl.first{margin-left:auto}
+.ctl svg{width:15px;height:15px;fill:none;stroke:var(--sub);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.kpi{display:block;width:100%;text-align:left;padding:12px 16px 10px;background:#fff;border:1px solid var(--line);border-radius:var(--r);transition:border-color .2s,box-shadow .2s}
+.kpi.on{border-color:var(--g);box-shadow:inset 0 3px 0 var(--g)}
+.kpi:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.kpi .lb{font-size:13px;font-weight:700;color:var(--sub)}
+.kpi .kv{display:flex;align-items:baseline;gap:4px;margin-top:3px}
+.kpi .kv .roll{font-size:30px;font-weight:800;letter-spacing:-.8px}
+.kpi .kv small{font-size:14px;font-weight:700;color:var(--sub)}
+.dl{margin-left:auto;align-self:center;font-size:12.5px;font-weight:800;color:var(--g);background:var(--g2);padding:3px 7px;border-radius:7px;white-space:nowrap}
+.dl.dn{color:#b4432f;background:#fbe9e3}
+.spk{display:block;width:100%;height:26px;margin-top:6px}
+.spk polyline{fill:none;stroke:#7fc795;stroke-width:2;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.kpi.on .spk polyline{stroke:var(--g)}
+.chartc,.tablec{padding:14px 16px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.chart{flex:1;min-height:0;position:relative}
+.chart svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.chart .gl{stroke:#ebe8df;stroke-width:1}
+.chart .yl,.chart .xl{font-size:12px;fill:#9a9e92;font-weight:600}
+.chart .cur{fill:none;stroke:var(--g);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .area{fill:rgba(15,149,71,.08)}
+.chart .prev{fill:none;stroke:#b8baad;stroke-width:2;stroke-dasharray:5 5}
+.chart .dot{fill:var(--g);stroke:#fff;stroke-width:3}
+.chart .vl{font-size:14px;font-weight:800;fill:var(--deep)}
+.chart .dot.hot{animation:dotp 1.6s ease-out}
+@keyframes dotp{0%{stroke-width:9;stroke:#c5ebd0}100%{stroke-width:3;stroke:#fff}}
+.lg .k i.ln{width:16px;height:0;border-radius:0;background:none;border-top:2.5px solid var(--g)}
+.lg .k i.ln.p{border-top:2.5px dashed #b8baad}
+.rt-top{display:flex;align-items:flex-end;gap:16px;padding:0 16px 10px;border-bottom:1px solid var(--line)}
+.rt-n{display:flex;align-items:baseline;gap:4px;white-space:nowrap}
+.rt-n .roll{font-size:28px;font-weight:800;letter-spacing:-.6px}
+.rt-n small{font-size:13px;color:var(--sub);font-weight:700}
+.rt-n small+small{margin-left:6px}
+.rt-bars{flex:1;display:flex;align-items:flex-end;gap:3px;height:38px}
+.rt-bars i{flex:1;min-height:3px;border-radius:3px 3px 0 0;background:#9fdcb3;transition:height .4s var(--ease)}
+.rt-bars i.z{background:#ebe8df}
+.rt-bars i.now{background:var(--g)}
+.rtc>.fh{display:none}
+.rtc .feed .fr{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 58px}
+.rtc .feed .fr .c4{display:none}
+.rtc [hidden]{display:none}
+.seg{display:flex;gap:2px;background:#efede6;border-radius:9px;padding:2px}
+.seg button{font-size:12.5px;font-weight:700;color:var(--sub);padding:4px 11px;border-radius:7px}
+.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.dt{flex:1;min-height:0;display:flex;flex-direction:column}
+.dr.tot{background:#faf8f3;border-bottom:0}
+.dr{flex:1;max-height:64px;min-height:0;display:grid;grid-template-columns:var(--cols);column-gap:16px;align-items:center;padding:0 4px;font-size:14px;font-weight:700;border-bottom:1px solid #f0ede5}
+.dr.dh{flex:none;height:30px;font-size:12.5px;color:#7a7f72;border-bottom:1px solid var(--line)}
+.dr>*{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dr .r{text-align:right}
+.dr .nm{display:flex;align-items:center;gap:7px}
+.dr .nm img{width:24px;height:24px;flex:none}
+.dr .bv{display:flex;align-items:center;gap:9px}
+.dr .bv .tr{flex:1;height:8px;border-radius:4px;background:#efede6;overflow:hidden}
+.dr .bv .tr i{display:block;height:100%;background:var(--g);border-radius:inherit;transition:width .45s var(--ease)}
+.dr .bv b{font-weight:800;font-size:13.5px;min-width:68px;text-align:right}
+.dr .spk{height:24px;margin:0}
+.dr .up{color:var(--g)}
+.dr .dn{color:#b4432f}
+.dr .farm{color:var(--soil)}
+.dr .sub{color:var(--sub);font-weight:600;font-size:13px}
+.dr .ics{display:flex;gap:3px}
+.dr .ics img{width:22px;height:22px}
+.dr .ok,.dr .wait{justify-self:end;font-size:12px;font-weight:800;padding:3px 8px;border-radius:7px}
+.dr .ok{color:#fff;background:var(--g)}
+.dr .wait{color:var(--sub);background:#efede6}
 .rcol{display:grid;grid-template-rows:minmax(0,50fr) minmax(0,50fr);gap:14px;min-width:0;min-height:0}
 .lcol{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:14px;min-height:0}
 .mapc{padding:14px 16px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
@@ -272,43 +342,6 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .rip{position:absolute;border-radius:50%;border:2.5px solid var(--g);transform:translate(-50%,-50%) scale(var(--mark-scale));animation:rip 1.3s ease-out forwards;pointer-events:none}
 .pin:focus-visible,.map-all:focus-visible{outline:2px solid var(--g);outline-offset:3px}
 
-/* purchase data */
-.purchase{min-height:0;min-width:0;display:flex;flex-direction:column;padding:14px 16px;overflow:hidden}
-.purchase .ch{margin-bottom:11px;min-height:24px}
-.purchase .ch h3{white-space:nowrap}
-.purchase-status{font-size:12px;padding:3px 8px;border-radius:7px;background:#efede6;color:var(--sub);font-weight:800;white-space:nowrap}
-.purchase-grid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1.25fr) minmax(0,1fr);gap:10px}
-.metric{min-width:0;min-height:0;border-radius:10px;background:#faf8f3;border:1px solid #efede6;padding:10px;display:flex;flex-direction:column;gap:6px}
-.metric h4{font-size:13px;font-weight:800;color:var(--sub);white-space:nowrap}
-.rank-list{flex:1;min-height:0;position:relative}
-.rank-row{position:absolute;left:0;right:0;top:0;height:calc(100% / 3);display:grid;grid-template-columns:22px max-content minmax(0,1fr) 40px;gap:5px;align-items:center;transform:translateY(calc(var(--rank) * 100%));transition:transform 300ms var(--ease);font-size:13px;font-weight:750}
-.rank-row img{width:22px;height:22px}
-.rank-row b{text-align:right;color:var(--deep)}
-.rank-track{height:8px;border-radius:10px;background:#dff4e6;overflow:hidden}
-.rank-track i{display:block;width:var(--value,0%);height:100%;border-radius:inherit;background:#2fae5e;transition:width 420ms var(--ease),background-color 180ms var(--ease)}
-.columns{flex:1;min-height:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:5px}
-.column{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) 16px;text-align:center}
-.column-plot{min-height:0;display:flex;align-items:flex-end;justify-content:center;padding-top:15px}
-.column i{display:block;position:relative;width:min(75%,30px);height:var(--value,0%);min-height:3px;border-radius:4px 4px 1px 1px;background:#2fae5e;transition:height 420ms var(--ease),background-color 180ms var(--ease)}
-.column b{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);font-style:normal;color:var(--deep);font-size:12px;white-space:nowrap}
-.column small{color:var(--sub);font-size:12px;font-weight:750;padding-top:2px}
-.column.zero i{background:#e2ded3}
-.trend{gap:3px}
-.trend .column{grid-template-rows:minmax(0,1fr)}
-.trend .column i{width:100%;background:#c5ebd0}
-.trend .column.current i{background:var(--g)}
-.metric.wide{grid-column:1/-1}
-.mh{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.price-line{display:flex;align-items:center;gap:8px;font-size:13px;white-space:nowrap;color:var(--deep);letter-spacing:-.2px}
-.price-line .chip{font-size:12px;padding:3px 8px;background:var(--mine);color:var(--deep)}
-.purchase.planned .rank-row img,.purchase.planned .rank-row .item-name,.purchase.planned .rank-row b,.purchase.planned .column b{visibility:hidden}
-.purchase.planned .rank-track,.purchase.planned .column i{background:#e8e5dc}
-.purchase.planned .rank-track i{display:none}
-.purchase.planned .column i{height:3px}
-.purchase.planned .price-line{height:12px;border-radius:8px;background:#e8e5dc;width:240px}
-.purchase.planned .price-line>*{visibility:hidden}
-.purchase.switching .purchase-grid,.purchase.switching #purchaseTitle,.purchase.switching .purchase-status{animation:store-in 240ms var(--ease) both}
-
 /* order record table */
 .feedc{padding:14px 0 0;display:flex;flex-direction:column;overflow:hidden;min-height:0}
 .feedc .ch{padding:0 16px;min-height:24px;margin-bottom:6px;gap:8px}
@@ -350,30 +383,14 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .stores .fr.sum-row{background:#faf8f3;border-top:1px solid var(--line)}
 .store-status{justify-self:end;background:var(--g2);color:var(--g);border-radius:7px;padding:3px 8px;font-size:12px;font-weight:800}
 
-/* bundle status */
-.lc{padding:12px 18px 10px}
-.lc .ch{margin-bottom:8px}
-.bars{display:grid;grid-template-columns:28px max-content max-content minmax(0,1fr) 78px 76px;column-gap:12px;row-gap:4px}
-.fd{display:grid;grid-column:1/-1;grid-template-columns:subgrid;align-items:center;height:30px;padding:0 6px;font-size:15px;font-weight:700}
-.fd img{width:28px;height:28px;display:block;user-select:none}
-.fd .nm{white-space:nowrap}
-.fd .fm{white-space:nowrap;font-size:13px;color:var(--soil);font-weight:700}
-.fd .sc{justify-self:end;font-size:13px;font-weight:700;color:var(--sub);white-space:nowrap}
-.fd.full .scn{display:none}
-.fd .bt{height:12px;border-radius:6px;background:#eeebe3;overflow:hidden}
-.fd .bt i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#6fcb8e,#0f9547);transition:width .45s cubic-bezier(.2,.8,.2,1)}
-.fd .vv{justify-self:end;font-size:15px;color:var(--g);font-weight:800}
-.fd .ok{justify-self:end;display:none;font-size:13px;font-weight:800;color:#fff;background:var(--g);padding:3px 9px;border-radius:7px;white-space:nowrap}
-.fd.full .ok{display:inline-block;animation:ddin .18s ease-out}
-
 /* ===== admin calm ===== */
 .admin{--ease:cubic-bezier(.2,.8,.2,1)}
 .admin .card{animation-duration:.4s}
 .admin .card:hover{transform:none;box-shadow:none}
 .admin .rc{transition-duration:.45s}
 @media (prefers-reduced-motion:reduce){
-  .mapwrap,.rank-row,.rank-track i,.column i{transition:none}
-  .stores .fr,.feed-title-in,.purchase.switching .purchase-grid,.purchase.switching #purchaseTitle,.purchase.switching .purchase-status{animation:none;opacity:1}
+  .mapwrap{transition:none}
+  .stores .fr,.feed-title-in{animation:none;opacity:1}
 }
 </style>
 </head>
@@ -420,42 +437,39 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
  <div class="main" id="main">
   <div class="card big" style="--d:60ms">
    <span class="brand"><img src="img/logo.png" alt="" draggable="false"><span class="wordmark">소쿠리</span></span>
-   <div class="st"><span class="lb">확정된 공동발주</span><div class="num"><span class="roll" id="sFull"></span><small id="sFullOf"></small></div></div>
-   <div class="st"><span class="lb">참여 식당</span><div class="num"><span class="roll" id="sStores"></span><small>곳</small></div></div>
-   <div class="st"><span class="lb">주문 기록</span><div class="num"><span class="roll" id="sRecs"></span><small>건</small></div></div>
-   <div class="st"><span class="lb">이번 주 모인 물량</span><div class="num"><span class="roll" id="sKg"></span><small>kg</small></div></div>
+   <span class="rname"><b>수요 보고서</b>동대문구</span>
+   <span class="ctl first"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>지난 12주<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
+   <span class="ctl">이전 기간과 비교</span>
    <span class="live" id="live"><i></i>LIVE</span>
   </div>
+  <div class="kpis" id="kpis"></div>
   <div class="body">
-   <div class="lcol">
-    <div class="card mapc" style="--d:300ms">
-     <div class="ch"><div class="map-heading"><h3>동대문구 상권</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>운영 중</span><span class="k"><i class="c"></i>계획</span><span class="k"><i class="r"></i>산지</span></span></div>
-     <div class="mapbox" id="mapbox">
-      <div class="mapwrap" id="mapwrap"><svg id="map" aria-hidden="true"></svg></div>
-     </div>
-    </div>
-    <div class="card lc" style="--d:420ms"><div class="ch"><h3>농가별 공동발주</h3></div><div class="bars" id="bars"></div></div>
+   <div class="card chartc" style="--d:200ms">
+    <div class="ch"><h3 id="chartT">주별 발주량</h3><span class="lg"><span class="k"><i class="ln"></i>이번 기간</span><span class="k"><i class="ln p"></i>이전 기간</span></span></div>
+    <div class="chart" id="chart"></div>
    </div>
-   <div class="rcol">
-    <section class="card purchase" id="purchase" aria-labelledby="purchaseTitle" style="--d:340ms">
-     <div class="ch"><h3 id="purchaseTitle" aria-live="polite">시립대 정문 구매 데이터</h3><span class="purchase-status" id="purchaseStatus" hidden>운영 전</span></div>
-     <div class="purchase-grid">
-      <div class="metric"><h4>품목별 주문량</h4><div class="rank-list" id="rankList" role="list"></div></div>
-      <div class="metric"><h4>요일별 납품</h4><div class="columns" id="dayBars" role="list"></div></div>
-      <div class="metric wide"><div class="mh"><h4>12주 추이</h4><div class="price-line" id="purchasePrice"></div></div><div class="columns trend" id="weekBars" role="list"></div></div>
-     </div>
-    </section>
-    <div class="card feedc" style="--d:360ms">
-     <div class="ch"><h3 id="feedTitle" aria-live="polite">주문 기록</h3></div>
-     <div class="fh" id="feedHead"><span>점포</span><span>품목</span><span class="c4">납품</span><span class="c5">시각</span></div>
-     <div class="feed" id="feed"></div>
-     <div class="stores" id="stores" role="table" aria-labelledby="feedTitle" hidden></div>
+   <div class="card feedc rtc" style="--d:260ms">
+    <div class="ch"><h3 id="feedTitle" aria-live="polite">실시간 · 최근 12시간</h3></div>
+    <div class="rt-top" id="rtTop"><div class="rt-n"><span class="roll" id="rtN"></span><small>건</small><small id="rtKg"></small></div><div class="rt-bars" id="rtBars"></div></div>
+    <div class="fh" id="feedHead"><span>점포</span><span>품목</span><span class="c4">납품</span><span class="c5">시각</span></div>
+    <div class="feed" id="feed"></div>
+    <div class="stores" id="stores" role="table" aria-labelledby="feedTitle" hidden></div>
+   </div>
+   <div class="card tablec" style="--d:320ms">
+    <div class="ch"><h3>수요 상세</h3><div class="seg" id="seg"><button type="button" data-v="item" class="on">품목</button><button type="button" data-v="day">요일</button><button type="button" data-v="farm">농가</button></div></div>
+    <div class="dt" id="dt"></div>
+   </div>
+   <div class="card mapc" style="--d:380ms">
+    <div class="ch"><div class="map-heading"><h3>상권별 수요</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>운영 중</span><span class="k"><i class="c"></i>계획</span><span class="k"><i class="r"></i>산지</span></span></div>
+    <div class="mapbox" id="mapbox">
+     <div class="mapwrap" id="mapwrap"><svg id="map" aria-hidden="true"></svg></div>
     </div>
    </div>
   </div>
  </div>
 </section>
 </div>
+
 <button class="tog" id="tog" title="H"><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
 
 <script>
@@ -533,7 +547,16 @@ const FARM_REGION={on:'무안',ch:'밀양',mu:'홍천'};
 const FARM_PLACE={on:'전남 무안',ch:'경남 밀양',mu:'강원 홍천'};
 const SHOP_AT=[[-8,-4],[-13,3],[-5,8],[-3,-11],[4,11],[-17,-8],[-11,12],[7,-11],[-20,4]];
 const PREVIOUS_WEEKS=[6,8,9,12,11,15,16,19,21,24,27];
-const RETAIL_CHILI=10500;
+const RETAIL={ch:10500,on:1650,mu:11800};
+/* demo history for the report: 11 past weeks, this week comes from live data */
+const GOAL_ALL=BUNDLES.reduce((sum,b)=>sum+b.goal,0);
+const ITEM_HIST={on:[3,4,4,6,5,7,8,9,11,12,15],ch:[2,2,3,3,4,5,5,6,7,8,7],mu:[1,2,2,3,2,3,3,4,3,4,5]};
+const KPI=[
+ {lb:'주간 발주량',u:'kg',hist:PREVIOUS_WEEKS,prev:[4,5,5,7,6,8,9,10,11,13,14,16],cur:()=>total(),d:'pct'},
+ {lb:'모집 달성률',u:'%',hist:PREVIOUS_WEEKS.map(v=>Math.round(v/GOAL_ALL*100)),prev:[10,12,12,16,14,18,20,22,24,28,30,32],cur:()=>Math.round(total()/GOAL_ALL*100),d:'pt'},
+ {lb:'참여 식당',u:'곳',hist:[3,4,4,5,5,6,6,7,7,8,8],prev:[2,2,3,3,3,4,4,4,5,5,5,6],cur:()=>S.storeOrders.size,d:'n'},
+ {lb:'시세 대비 절감',u:'%',hist:[28,29,29,30,30,31,31,32,32,33,33],prev:[22,23,23,24,24,25,25,26,26,27,27,28],cur:()=>saving(),d:'pt'}];
+function saving(){let paid=0,retail=0;BUNDLES.forEach(b=>{paid+=b.cur*IT[b.it].p;retail+=b.cur*RETAIL[b.it]});return retail?Math.round((1-paid/retail)*100):0}
 
 const IT=Object.fromEntries(ITEMS.map(i=>[i.id,i]));
 const BOF=id=>BUNDLES.find(b=>b.it===id);
@@ -543,6 +566,8 @@ function initData(){
   BUNDLES.forEach(b=>{b.cur=0;b.stores=new Map()});
   ITEMS.forEach(i=>S.qty[i.id]=0);S.orderCount=0;S.storeOrders.clear();
   HIST.forEach(([st,it,q])=>applyOrder(st,it,q));
+  S.rt=Array(12).fill(0);S.rtKg=0;
+  HIST.forEach(([,,q,m])=>{const h=Math.floor(m/60);if(h<12){S.rt[11-h]++;S.rtKg+=q}});
 }
 initData();
 const total=()=>BUNDLES.reduce((sum,b)=>sum+b.cur,0);
@@ -608,7 +633,7 @@ function confirmOrder(){
   hold.classList.remove('pressing');hold.classList.add('loading');
   setArea(null);
   // phone cards, admin rows and the record table update at the moment of hold completion
-  lines.forEach(l=>applyOrder(ME.store,l.id,l.q));
+  lines.forEach(l=>{applyOrder(ME.store,l.id,l.q);S.rt[11]++;S.rtKg+=l.q});
   S.done=Object.fromEntries(lines.map(l=>[l.id,l.q]));renderMini();
   renderAdmin();renderFarms();renderFund();ripple();hotPin();flowRoutes(lines.map(l=>l.id));
   /* the owner's rows stay on top of the record table until R */
@@ -751,7 +776,7 @@ function clearFarm(){
 }
 function setFarm(id){
   if(selectedFarm===id){setArea(null);return}
-  if(selectedArea){selectedArea=null;mw.classList.remove('focused');pins.forEach(b=>b.setAttribute('aria-pressed','false'));positionMap();renderPurchaseArea()}
+  if(selectedArea){selectedArea=null;mw.classList.remove('focused');pins.forEach(b=>b.setAttribute('aria-pressed','false'));positionMap()}
   selectedFarm=id;mapAll.hidden=false;mw.classList.add('farmsel');
   $$('.farm-tag',mw).forEach(t=>t.setAttribute('aria-pressed',String(t.dataset.it===id)));
   markRoutes();renderAreaPanel();
@@ -764,7 +789,7 @@ function setArea(area){
   selectedArea=area;
   mapAll.hidden=!area;mw.classList.toggle('focused',!!area);
   pins.forEach((button,id)=>button.setAttribute('aria-pressed',String(id===area?.id)));
-  positionMap();renderAreaPanel();renderPurchaseArea();
+  positionMap();renderAreaPanel();
 }
 mapbox.addEventListener('click',e=>{
   const ft=e.target.closest('.farm-tag');if(ft){setFarm(ft.dataset.it);return}
@@ -790,25 +815,41 @@ function flowRoutes(ids){
     later(()=>{r.classList.remove('go');t.classList.remove('go')},2400)});
 }
 function hotPin(){clearTimeout(S.hotT);pin.classList.add('hot');S.hotT=later(()=>pin.classList.remove('hot'),2500)}
-// bundle status rows (fixed BUNDLES order, same moment as phone cards)
-const fund=$('#bars');
-fund.innerHTML=BUNDLES.map(b=>`<div class="fd">${pic(b.it)}<span class="nm">${b.day} · ${IT[b.it].n}</span><span class="fm">${b.farm}</span><div class="bt"><i></i></div><span class="roll vv"></span><span class="sc"><span class="scn"></span><span class="ok">발주 확정</span></span></div>`).join('');
-function renderFund(){
-  $$('.fd',fund).forEach((r,k)=>{const b=BUNDLES[k];
-    $('.bt i',r).style.width=Math.min(100,b.cur*100/b.goal)+'%';roll($('.vv',r),b.cur,n=>n+' / '+b.goal+'kg');
-    $('.scn',r).textContent=`식당 ${b.stores.size}곳`;
-    const full=b.cur>=b.goal;if(r._full!==full){r._full=full;r.classList.toggle('full',full)}});
-  markRoutes();
+// demand table (item / day / farm), same moment as phone cards
+const dt=$('#dt');S.view='item';
+const spark=a=>{const mx=Math.max(...a),mn=Math.min(...a),r=mx-mn||1;return `<svg class="spk" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="${a.map((v,i)=>`${(i*100/(a.length-1)).toFixed(1)},${(27-(v-mn)/r*24).toFixed(1)}`).join(' ')}"/></svg>`};
+const delta=(c,l,kind)=>{const v=kind==='pct'?(l?Math.round((c-l)/l*100):0):c-l,a=v<0?'▼':v>0?'▲':'–';return {v,t:`${a} ${Math.abs(v)}${kind==='pct'?'%':kind==='pt'?'%p':'곳'}`}};
+const bar=(c,g)=>`<span class="bv"><span class="tr"><i style="width:${Math.min(100,c*100/g)}%"></i></span><b>${c} / ${g}kg</b></span>`;
+function renderTable(){
+  let cols,head,rows;
+  if(S.view==='item'){
+    cols='minmax(0,1fr) minmax(0,2fr) 76px 52px minmax(0,1fr)';head=['품목','발주량','지난주 대비','식당','12주 추이'];
+    rows=ITEMS.map(i=>{const b=BOF(i.id),h=ITEM_HIST[i.id],d=delta(b.cur,h[h.length-1],'pct');
+      return [`<span class="nm">${pic(i.id)}${i.n}</span>`,bar(b.cur,b.goal),`<span class="r ${d.v<0?'dn':'up'}">${d.t}</span>`,`<span class="r">${b.stores.size}곳</span>`,spark([...h,b.cur])]});
+    const d=delta(total(),PREVIOUS_WEEKS[PREVIOUS_WEEKS.length-1],'pct');
+    rows.push([`<span class="nm">합계</span>`,bar(total(),GOAL_ALL),`<span class="r ${d.v<0?'dn':'up'}">${d.t}</span>`,`<span class="r">${S.storeOrders.size}곳</span>`,spark([...PREVIOUS_WEEKS,total()])]);
+  }else if(S.view==='day'){
+    cols='54px minmax(0,2fr) minmax(0,1fr) 52px';head=['요일','발주량','품목','식당'];
+    const mx=Math.max(...BUNDLES.map(b=>b.goal));
+    rows=DAYS.map(d=>{const bs=BUNDLES.filter(b=>b.day===d),kg=bs.reduce((t,b)=>t+b.cur,0),st=new Set(bs.flatMap(b=>[...b.stores.keys()]));
+      return [`<span>${d}요일</span>`,`<span class="bv"><span class="tr"><i style="width:${kg*100/mx}%"></i></span><b>${kg}kg</b></span>`,`<span class="ics">${bs.map(b=>pic(b.it)).join('')||'<span class="sub">없음</span>'}</span>`,`<span class="r">${st.size}곳</span>`]});
+  }else{
+    cols='minmax(0,1.9fr) 72px minmax(0,1.4fr) 44px 70px';head=['농가','산지','모집','식당','상태'];
+    rows=BUNDLES.map(b=>[`<span class="nm farm">${pic(b.it)}${b.farm}</span>`,`<span class="sub">${FARM_PLACE[b.it]}</span>`,bar(b.cur,b.goal),`<span class="r">${b.stores.size}곳</span>`,b.cur>=b.goal?'<span class="ok">발주 확정</span>':'<span class="wait">모집 중</span>']);
+  }
+  dt.style.setProperty('--cols',cols);
+  dt.innerHTML=`<div class="dr dh">${head.map((h,i)=>`<span${i&&h!=='발주량'&&h!=='모집'&&h!=='품목'&&h!=='12주 추이'?' class="r"':''}>${h}</span>`).join('')}</div>`+rows.map((r,i)=>`<div class="dr${S.view==='item'&&i===rows.length-1?' tot':''}">${r.join('')}</div>`).join('');
 }
-
+$('#seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.view=b.dataset.v;$$('#seg button').forEach(x=>x.classList.toggle('on',x===b));renderTable()});
+function renderFund(){renderTable();markRoutes()}
 // order record table
 const feed=$('#feed'),feedHead=$('#feedHead'),feedTitle=$('#feedTitle'),stores=$('#stores'),RAF=new Set();
 function renderAreaPanel(){
   const area=selectedArea,active=area===ME,farm=selectedFarm&&BOF(selectedFarm),open=!!(area||farm);
   const title=document.createElement('span');title.className='feed-title-in';
-  title.textContent=farm?`${farm.farm} 출하`:area?`${area.area} ${active?'점포':'후보 점포'}`:'주문 기록';
+  title.textContent=farm?`${farm.farm} 출하`:area?`${area.area} ${active?'점포':'후보 점포'}`:'실시간 · 최근 12시간';
   feedTitle.replaceChildren(title);
-  feed.hidden=feedHead.hidden=open;stores.hidden=!open;
+  feed.hidden=feedHead.hidden=$('#rtTop').hidden=open;stores.hidden=!open;
   if(!open){stores.replaceChildren();fitFeed();return}
 
   let headers,rows,qty=active||!!farm;
@@ -849,78 +890,42 @@ function addFeed(o,instant){
 function ftime(){const now=Date.now();$$('.fi',feed).forEach(li=>{const s=Math.floor((now-li.dataset.t)/1000);$('.c5',li).textContent=s<5?'방금':s<60?s+'초 전':s<3600?Math.floor(s/60)+'분 전':s<86400?Math.floor(s/3600)+'시간 전':Math.floor(s/86400)+'일 전'})}
 function seedFeed(){feed.innerHTML='';HIST.slice().sort((a,b)=>b[3]-a[3]).forEach(([st,it,q,m])=>addFeed({store:st,item:it,qty:q,t:Date.now()-m*60000},true))}
 
-// The charts share the quantities used for the totals and the bundle status.
-const purchase=$('#purchase'),purchaseTitle=$('#purchaseTitle'),purchaseStatus=$('#purchaseStatus');
-const rankList=$('#rankList'),dayBars=$('#dayBars'),weekBars=$('#weekBars');
-const fixedColumnScale=Math.max(...BUNDLES.map(b=>b.goal));
-const weekScale=BUNDLES.reduce((sum,b)=>sum+b.goal,0);
-function buildPurchase(){
-  rankList.innerHTML=ITEMS.map(({id,n})=>`<div class="rank-row" data-item="${id}" role="listitem">
-    ${pic(id)}<span class="item-name">${n}</span><span class="rank-track"><i></i></span><b></b>
-  </div>`).join('');
-  dayBars.innerHTML=DAYS.map(day=>`<div class="column" data-day="${day}" role="listitem">
-    <div class="column-plot"><i><b></b></i></div><small>${day}</small>
-  </div>`).join('');
-  weekBars.innerHTML=[...PREVIOUS_WEEKS,0].map((_,i)=>`<div class="column${i===PREVIOUS_WEEKS.length?' current':''}" role="listitem">
-    <div class="column-plot"><i>${i===PREVIOUS_WEEKS.length?'<b></b>':''}</i></div>
-  </div>`).join('');
-  const price=IT.ch.p,discount=Math.round((1-price/RETAIL_CHILI)*100);
-  $('#purchasePrice').innerHTML=`<b>${IT.ch.n} ${fmt(price)}원/kg</b><span class="chip">소포장 대비 −${discount}%</span>`;
+// KPI cards, weekly chart and realtime card share the live totals
+S.metric=0;
+const kpis=$('#kpis'),chart=$('#chart');
+function buildAdmin(){
+  kpis.innerHTML=KPI.map((k,i)=>`<button type="button" class="kpi card${i?'':' on'}" data-i="${i}" style="--d:${120+i*40}ms"><span class="lb">${k.lb}</span><span class="kv"><span class="roll"></span><small>${k.u}</small><span class="dl"></span></span><span class="spkw"></span></button>`).join('');
+  kpis.addEventListener('click',e=>{const b=e.target.closest('.kpi');if(!b)return;S.metric=+b.dataset.i;$$('.kpi',kpis).forEach(x=>x.classList.toggle('on',x===b));renderChart()});
+  $('#rtBars').innerHTML='<i></i>'.repeat(12);
 }
-function updatePurchaseBar(bar,kg,scale,flash){
-  if(!flash)bar._flash?.cancel();
-  if(bar._kg===kg)return;
-  if(flash&&bar._kg!==undefined&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
-    bar._flash?.cancel();
-    const base=getComputedStyle(bar).backgroundColor;
-    const accent=bar.closest('.current')?'#063d1d':'var(--deep)';
-    bar._flash=bar.animate([{backgroundColor:accent},{backgroundColor:accent,offset:.52},{backgroundColor:base}],
-      {duration:600,easing:'cubic-bezier(.2,.8,.2,1)'});
-  }
-  bar._kg=kg;
-  bar.style.setProperty('--value',`${kg/scale*100}%`);
+function renderKpis(){
+  $$('.kpi',kpis).forEach((el,i)=>{const k=KPI[i],c=k.cur(),d=delta(c,k.hist[k.hist.length-1],k.d);
+    roll($('.roll',el),c);const dl=$('.dl',el);dl.textContent=d.t;dl.classList.toggle('dn',d.v<0);
+    $('.spkw',el).innerHTML=spark([...k.hist,c])});
 }
-function renderPurchaseData(flash){
-  const sorted=[...BUNDLES].sort((a,b)=>b.cur-a.cur);
-  sorted.forEach(({it,cur},index)=>{
-    const row=$(`[data-item="${it}"]`,rankList);
-    row.style.setProperty('--rank',index);
-    row.setAttribute('aria-posinset',index+1);
-    row.setAttribute('aria-setsize',sorted.length);
-    $('b',row).textContent=`${cur}kg`;
-    updatePurchaseBar($('i',row),cur,fixedColumnScale,flash);
-  });
-  $$('.column',dayBars).forEach((column,index)=>{
-    const day=DAYS[index],kg=BUNDLES.reduce((sum,b)=>sum+(b.day===day?b.cur:0),0);
-    column.classList.toggle('zero',kg===0);
-    column.setAttribute('aria-label',`${day}요일 ${kg}kg`);
-    $('b',column).textContent=kg?`${kg}kg`:'';
-    updatePurchaseBar($('i',column),kg,fixedColumnScale,flash);
-  });
-  $$('.column',weekBars).forEach((column,index)=>{
-    const kg=PREVIOUS_WEEKS[index]??total(),value=$('b',column);
-    column.setAttribute('aria-label',`${index+1}주차 ${kg}kg`);
-    if(value)value.textContent=`${kg}kg`;
-    updatePurchaseBar($('i',column),kg,weekScale,flash);
-  });
+function renderChart(hot){
+  const k=KPI[S.metric],cur=[...k.hist,k.cur()],prev=k.prev;
+  $('#chartT').textContent=`주별 ${k.lb.replace('주간 ','')}`;
+  const W=chart.clientWidth,H=chart.clientHeight;if(!W||!H)return;
+  const L=34,Rp=46,T=14,B=24,top=Math.max(...cur,...prev)*1.1,raw=top/4,mag=10**Math.floor(Math.log10(raw)),step=[1,2,2.5,5,10].map(m=>m*mag).find(v=>v>=raw),mx=step*4,n=cur.length;
+  const x=i=>L+(W-L-Rp)*i/(n-1),y=v=>T+(H-T-B)*(1-v/mx);
+  const pts=a=>a.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const ticks=[0,1,2,3,4].map(j=>step*j);
+  chart.innerHTML=`<svg>${ticks.map(t=>`<line class="gl" x1="${L}" x2="${W-Rp+8}" y1="${y(t)}" y2="${y(t)}"/><text class="yl" x="${L-8}" y="${y(t)+4}" text-anchor="end">${t}</text>`).join('')}
+   <path class="area" d="M${x(0)},${y(0)} L${pts(cur).replaceAll(' ',' L')} L${x(n-1)},${y(0)}Z"/>
+   <polyline class="prev" points="${pts(prev)}"/><polyline class="cur" points="${pts(cur)}"/>
+   <circle class="dot${hot?' hot':''}" cx="${x(n-1)}" cy="${y(cur[n-1])}" r="6"/>
+   <text class="vl" x="${x(n-1)+12}" y="${y(cur[n-1])+5}">${cur[n-1]}${k.u}</text>
+   ${[[0,'12주 전'],[6,'6주 전'],[n-1,'이번 주']].map(([i,t])=>`<text class="xl" x="${x(i)}" y="${H-4}" text-anchor="${i?i===n-1?'end':'middle':'start'}">${t}</text>`).join('')}</svg>`;
 }
-function renderPurchaseArea(){
-  const area=selectedArea??ME,planned=area!==ME;
-  purchaseTitle.textContent=`${area.area} 구매 데이터`;
-  purchaseStatus.hidden=!planned;
-  $('.purchase-grid',purchase).inert=planned;
-  purchase.classList.toggle('planned',planned);
-  if(planned)$$('i',purchase).forEach(bar=>bar._flash?.cancel());
-  purchase.classList.remove('switching');
-  void purchase.offsetWidth;
-  purchase.classList.add('switching');
+function renderRT(){
+  roll($('#rtN'),S.rt.reduce((a,b)=>a+b,0));$('#rtKg').textContent=`${S.rtKg}kg`;
+  const mx=Math.max(2,...S.rt);$$('#rtBars i').forEach((b,i)=>{const v=S.rt[i];b.style.height=(v?Math.max(18,v/mx*100):8)+'%';b.className=v?(i===11?'now':''):'z'});
 }
-function renderAdmin(flash=true){
-  roll($('#sFull'),nFull());roll($('#sStores'),S.storeOrders.size);roll($('#sRecs'),S.orderCount);
-  roll($('#sKg'),total());roll($('#pinN'),total());
-  renderPurchaseData(flash);
+function renderAdmin(flash){
+  renderKpis();renderChart(flash);renderRT();roll($('#pinN'),total());
 }
-$('#sFullOf').textContent='/ '+BUNDLES.length;
+new ResizeObserver(()=>renderChart()).observe(chart);
 
 /* order event */
 function applyOrder(store,item,qty){
@@ -973,7 +978,8 @@ function resetDemo(){
   if($('.app').classList.contains('hide'))togPhone();
   if(tab!==0)go(0);else renderFarms();
   ol.scrollTop=0;$('#p2').scrollTop=0;$('.panes').scrollLeft=0;
-  purchase.classList.remove('switching');renderAdmin(false);renderFund();
+  S.metric=0;S.view='item';$$('.kpi').forEach((x,i)=>x.classList.toggle('on',!i));$$('#seg button').forEach((x,i)=>x.classList.toggle('on',!i));
+  renderAdmin(false);renderFund();
 }
 document.addEventListener('keydown',e=>{
   if(e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.target.tagName==='INPUT')return;
@@ -983,7 +989,7 @@ document.addEventListener('keydown',e=>{
 /* boot */
 seedFeed();
 renderOrder();placeTab();
-renderMap();fitMap();buildPurchase();renderAdmin(false);
+renderMap();fitMap();buildAdmin();renderAdmin(false);renderTable();
 new ResizeObserver(fitFeed).observe(feed);
 new ResizeObserver(fitMap).observe(mapbox);
 setTimeout(()=>{document.body.classList.remove('loading');renderFarms();renderFund();fitFeed()},950);
