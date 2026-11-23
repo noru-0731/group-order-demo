@@ -1062,7 +1062,7 @@ function buildMini(){
 function fitMini(){
   const W=mini.clientWidth,H=mini.clientHeight;if(!W||!H||!ME.x)return;
   /* same framing idea as before: the three market areas, cover the box so the neighbours fill the corners */
-  const A=[ME,...CANDS],x0=Math.min(...A.map(a=>a.x))-20,y0=Math.min(...A.map(a=>a.y))-16,x1=Math.max(...A.map(a=>a.x))+20,y1=Math.max(...A.map(a=>a.y))+20;
+  const A=[ME,...CANDS],B=miniSvg._b,x0=B.x-6,y0=B.y-6,x1=B.x+B.width+6,y1=B.y+B.height+6;
   const k=Math.min(W/(x1-x0),H/(y1-y0)),fw=W/k,fh=H/k,vx=(x0+x1)/2-fw/2,vy=(y0+y1)/2-fh/2;
   miniSvg.setAttribute('viewBox',`${vx} ${vy} ${fw} ${fh}`);
   A.forEach(a=>{$$(`[data-a="${a.id}"]`,mini).forEach(el=>{el.style.left=(a.x-vx)*k+'px';el.style.top=(a.y-vy)*k+'px'})});
