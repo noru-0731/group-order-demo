@@ -227,10 +227,15 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .minic:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 .mx-open{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;color:var(--g);background:var(--g2);padding:5px 9px;border-radius:8px}
 .mx-open svg,.mx-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.mini-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:14px;align-items:center}
-.mini{position:relative;height:100%;min-height:0}
+.mini-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:14px;align-items:center}
+.mini{position:relative;height:100%;min-height:0;border-radius:12px;overflow:hidden;background:#eef0e4}
 .mini svg{position:absolute;inset:0;width:100%;height:100%}
-.mini svg path{fill:#d7f0dd;stroke:#5fbf80;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.mini svg path{fill:#e6e6d8;stroke:#fbfaf4;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.mini svg path.op{fill:#c9ebd2;stroke:#5fbf80;stroke-width:1.6}
+.mini svg path.dots{fill:url(#mdots);stroke:none}
+.mlab{position:absolute;transform:translate(-50%,calc(-100% - 10px));font-size:12px;font-weight:800;color:var(--deep);background:#fff;padding:3px 7px;border-radius:7px;box-shadow:0 0 0 1px var(--g3),0 2px 5px rgba(0,0,0,.1);white-space:nowrap;pointer-events:none}
+.mlab.on{background:var(--deep);color:#fff;box-shadow:none;transform:translate(-50%,14px)}
+.mlab[data-a="market"]{transform:translate(calc(-100% - 12px),-50%)}
 .mdot{position:absolute;width:15px;height:15px;border-radius:50%;transform:translate(-50%,-50%);background:#fff;border:2.5px dashed #2fae5e}
 .mdot.on{width:20px;height:20px;background:var(--g);border:3px solid #fff;box-shadow:0 0 0 1px var(--g)}
 .mini-list{display:flex;flex-direction:column;gap:10px}
@@ -242,14 +247,17 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .ml.on b{color:var(--deep)}
 .ml-foot{margin-top:2px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--soil);display:flex;align-items:center;gap:6px}
 .ml-foot::before{content:"";width:16px;border-top:2.5px dashed var(--soil);opacity:.7}
-.mapx{position:absolute;inset:0;z-index:5;display:flex;visibility:hidden;opacity:0;pointer-events:none;flex-direction:column;padding:14px 16px;min-height:0;overflow:hidden;box-shadow:0 18px 40px -20px rgba(40,40,20,.35)}
+.mapx .ch{margin-bottom:8px}
+.mapx{position:absolute;left:0;right:0;bottom:0;top:calc(50% + 7px);z-index:5;display:flex;visibility:hidden;opacity:0;pointer-events:none;flex-direction:column;padding:14px 16px;min-height:0;overflow:hidden;box-shadow:0 18px 40px -20px rgba(40,40,20,.35)}
 .mapx.open{visibility:visible;opacity:1;pointer-events:auto;animation:mxin .32s var(--ease) both}
 @keyframes mxin{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
-.mx-close{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;border:1px solid var(--line);color:var(--sub);margin-left:6px}
-.mx-close:hover{color:var(--ink);background:#faf8f3}
-.mx-grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px}
+.mx-close{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;color:#fff;background:var(--deep);padding:6px 10px;border-radius:8px;margin-left:8px}
+.mx-close:hover{background:var(--g)}
+.mx-grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:14px}
 .mx-grid .mapbox{height:100%}
-.mx-side{display:flex;flex-direction:column;min-height:0;border:1px solid var(--line);border-radius:12px;padding:12px 0 0;overflow:hidden}
+.mx-side{display:flex;flex-direction:column;min-height:0;border:1px solid var(--line);border-radius:12px;padding:10px 0 0;overflow:hidden}
+.mx-side .store-list{grid-auto-rows:34px;max-height:none;overflow-y:auto;scrollbar-width:thin}
+.mx-side .stores .fr{font-size:13.5px}
 .mx-side h4{font-size:15px;font-weight:800;padding:0 14px 8px}
 .mx-side .stores .fh{padding-top:2px}
 .mapwrap .ac{fill:rgba(15,149,71,.14);stroke:var(--g)}
@@ -507,7 +515,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
     <div class="mini-body"><div class="mini" id="mini"><svg id="miniSvg" aria-hidden="true"></svg></div><div class="mini-list" id="miniList"></div></div>
    </div>
    <section class="card mapx" id="mapx" aria-label="동대문구 상권 지도" inert>
-    <div class="ch"><div class="map-heading"><h3>동대문구 상권</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>이번 주 주문</span><span class="k"><i class="c"></i>아직·후보</span><span class="k"><i class="r"></i>산지</span><button type="button" class="mx-close" id="mapClose" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span></div>
+    <div class="ch"><div class="map-heading"><h3>동대문구 상권</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>이번 주 주문</span><span class="k"><i class="c"></i>아직·후보</span><span class="k"><i class="r"></i>산지</span><button type="button" class="mx-close" id="mapClose" title="Esc"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg>지도 접기</button></span></div>
     <div class="mx-grid">
      <div class="mapbox" id="mapbox"><div class="mapwrap" id="mapwrap"><svg id="map" aria-hidden="true"></svg></div></div>
      <aside class="mx-side"><h4 id="sideTitle" aria-live="polite"></h4><div class="stores" id="stores" role="table" aria-labelledby="sideTitle"></div></aside>
@@ -808,7 +816,7 @@ function fitMap(){
   const bw=mw.clientWidth,bh=mw.clientHeight;
   if(!bw||!bh||!mapBounds)return;
   const {x,y,width,height}=mapBounds,ratio=bw/bh;
-  const w=Math.max(width+90,(height+60)*ratio),h=w/ratio;
+  const w=Math.max(width+90,(height+26)*ratio),h=w/ratio;
   view={x:x+(width-w)/2,y:y+(height-h)/2,w,h};
   map.setAttribute('viewBox',`${view.x} ${view.y} ${w} ${h}`);
   const u=w/bw;
@@ -991,16 +999,23 @@ function renderRT(){
 }
 const mini=$('#mini'),miniSvg=$('#miniSvg');
 function buildMini(){
-  miniSvg.innerHTML=`<path d="${GEO.find(([d])=>d==='동대문구')[1]}"/>`;
-  const b=$('path',miniSvg).getBBox();miniSvg.setAttribute('viewBox',`${b.x-4} ${b.y-4} ${b.width+8} ${b.height+8}`);miniSvg._b=b;
-  mini.insertAdjacentHTML('beforeend',[ME,...CANDS].map(a=>`<span class="mdot${a===ME?' on':''}" data-a="${a.id}"></span>`).join(''));
+  const op=GEO.find(([d])=>d==='동대문구')[1];
+  miniSvg.setAttribute('preserveAspectRatio','xMidYMid slice');
+  miniSvg.innerHTML=`<defs><pattern id="mdots" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".5" fill="#7fc795" opacity=".6"/></pattern></defs>`+
+    GEO.map(([d,path])=>`<path d="${path}"${d==='동대문구'?' class="op"':''}/>`).join('')+`<path class="dots" d="${op}"/>`;
+  const b=$('path.op',miniSvg).getBBox();miniSvg._b=b;
+  mini.insertAdjacentHTML('beforeend',[ME,...CANDS].map(a=>`<span class="mdot${a===ME?' on':''}" data-a="${a.id}"></span><span class="mlab${a===ME?' on':''}" data-a="${a.id}">${a.area}</span>`).join(''));
 }
 function fitMini(){
-  const b=miniSvg._b;if(!b)return;const W=mini.clientWidth,H=mini.clientHeight,vw=b.width+8,vh=b.height+8,k=Math.min(W/vw,H/vh),ox=(W-vw*k)/2,oy=(H-vh*k)/2;
-  [ME,...CANDS].forEach(a=>{const d=$(`.mdot[data-a="${a.id}"]`,mini),[px,py]=a.point;d.style.left=ox+(4+b.width*px)*k+'px';d.style.top=oy+(4+b.height*py)*k+'px'});
+  const b=miniSvg._b;if(!b)return;const W=mini.clientWidth,H=mini.clientHeight;if(!W||!H)return;
+  /* frame the district with a margin, cover the box (slice) so the neighbours fill the corners */
+  const pad=10,vw=b.width+pad*2,vh=b.height+pad*2,k=Math.max(W/vw,H/vh),fw=W/k,fh=H/k,vx=b.x+b.width/2-fw/2,vy=b.y+b.height/2-fh/2;
+  miniSvg.setAttribute('viewBox',`${vx} ${vy} ${fw} ${fh}`);
+  [ME,...CANDS].forEach(a=>{const [px,py]=a.point,x=(b.x+b.width*px-vx)*k,y=(b.y+b.height*py-vy)*k;
+    $$(`[data-a="${a.id}"]`,mini).forEach(el=>{el.style.left=x+'px';el.style.top=y+'px'})});
 }
 function renderMini(){
-  $('#miniList').innerHTML=[ME,...CANDS].map(a=>`<div class="ml${a===ME?' on':''}"><i></i><span>${a.area}</span><b>${a===ME?`${total()}kg · 운영`:`후보 ${a.stores.length}곳`}</b></div>`).join('')+`<div class="ml-foot">산지 ${BUNDLES.length}곳 연결</div>`;
+  $('#miniList').innerHTML=[ME,...CANDS].map(a=>`<div class="ml${a===ME?' on':''}"><i></i><span>${a.area}</span><b>${a===ME?`${total()}kg`:`후보 ${a.stores.length}곳`}</b></div>`).join('')+`<div class="ml-foot">산지 ${BUNDLES.length}곳 연결</div>`;
 }
 /* expanded map over the data area */
 const mapx=$('#mapx');
