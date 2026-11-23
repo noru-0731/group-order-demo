@@ -227,7 +227,8 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .minic:focus-visible{outline:2px solid var(--g);outline-offset:2px}
 .mx-open{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;color:var(--g);background:var(--g2);padding:5px 9px;border-radius:8px}
 .mx-open svg,.mx-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.mini-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:14px;align-items:center}
+.mini-body{flex:1;min-height:0;display:flex}
+.mini-body .mini{flex:1}
 .mini{position:relative;height:100%;min-height:0;border-radius:12px;overflow:hidden;background:#eef0e4}
 .mini svg{position:absolute;inset:0;width:100%;height:100%}
 .mini svg path{fill:#e6e6d8;stroke:#fbfaf4;stroke-width:1.2;vector-effect:non-scaling-stroke}
@@ -537,7 +538,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
    </div>
    <div class="card minic" id="minic" role="button" tabindex="0" aria-label="상권 지도 크게 보기" style="--d:380ms">
     <div class="ch"><h3>구역별 수요</h3><span class="mx-open"><svg viewBox="0 0 24 24"><path d="M15 4h5v5M9 20H4v-5M20 4l-7 7M4 20l7-7"/></svg>크게 보기</span></div>
-    <div class="mini-body"><div class="mini" id="mini"><svg id="miniSvg" aria-hidden="true"></svg></div><div class="mini-list" id="miniList"></div></div>
+    <div class="mini-body"><div class="mini" id="mini"><svg id="miniSvg" aria-hidden="true"></svg></div></div>
    </div>
    <section class="card mapx" id="mapx" aria-label="동대문구 상권 지도" inert>
     <div class="ch"><div class="map-heading"><h3>구역별 수요</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><div class="seg" id="gseg"><button type="button" data-v="all" class="on">전체</button><button type="button" data-v="on">양파</button><button type="button" data-v="ch">청양고추</button><button type="button" data-v="mu">버섯</button></div><span class="scale">적음<i style="background:#dff3e4"></i><i style="background:#b5e3c1"></i><i style="background:#7fcb96"></i><i style="background:#3aa865"></i><i style="background:#0f7a3c"></i>많음</span><span class="k"><i class="c"></i>후보 상권</span><button type="button" class="mx-close" id="mapClose" title="Esc"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg>지도 접기</button></span></div>
@@ -1054,8 +1055,7 @@ function buildMini(){
   miniSvg.setAttribute('preserveAspectRatio','xMidYMid slice');
   miniSvg.innerHTML=`<defs><clipPath id="mclip"><path d="${op}"/></clipPath></defs>`+
     GEO.map(([d,path])=>`<path d="${path}"${d==='동대문구'?' class="op"':''}/>`).join('')+
-    `<g id="mgrid" clip-path="url(#mclip)"></g><path class="opline" d="${op}"/>`+
-    CANDS.map(a=>`<circle class="cand" data-c="${a.id}" r="12"/>`).join('');
+    `<g id="mgrid" clip-path="url(#mclip)"></g><path class="opline" d="${op}"/>`;
   miniSvg._b=$('path.op',miniSvg).getBBox();
   mini.insertAdjacentHTML('beforeend',[ME,...CANDS].map(a=>`<span class="mlab${a===ME?' on':''}" data-a="${a.id}">${a.area}</span>`).join(''));
 }
@@ -1065,13 +1065,9 @@ function fitMini(){
   const A=[ME,...CANDS],x0=Math.min(...A.map(a=>a.x))-20,y0=Math.min(...A.map(a=>a.y))-16,x1=Math.max(...A.map(a=>a.x))+20,y1=Math.max(...A.map(a=>a.y))+20;
   const k=Math.min(W/(x1-x0),H/(y1-y0)),fw=W/k,fh=H/k,vx=(x0+x1)/2-fw/2,vy=(y0+y1)/2-fh/2;
   miniSvg.setAttribute('viewBox',`${vx} ${vy} ${fw} ${fh}`);
-  CANDS.forEach(a=>{const c=$(`[data-c="${a.id}"]`,miniSvg);c.setAttribute('cx',a.x);c.setAttribute('cy',a.y)});
   A.forEach(a=>{$$(`[data-a="${a.id}"]`,mini).forEach(el=>{el.style.left=(a.x-vx)*k+'px';el.style.top=(a.y-vy)*k+'px'})});
 }
-function renderMini(){
-  const joined=1+ST.length+IDLE.length;
-  $('#miniList').innerHTML=[ME,...CANDS].map(a=>`<div class="ml${a===ME?' on':''}"><i></i><span>${a.area}</span><b>${a===ME?joined:0} / ${AREA_SHOPS[a.id]}곳</b></div>`).join('')+`<div class="ml-key"><span class="sc"><i style="background:#dff3e4"></i><i style="background:#7fcb96"></i><i style="background:#0f7a3c"></i>주문량</span><span><i class="o"></i>다음 후보</span></div>`;
-}
+
 /* expanded map over the data area */
 const mapx=$('#mapx');
 function openMap(){if(mapx.classList.contains('open'))return;mapx.classList.add('open');mapx.inert=false;fitMap();renderAreaPanel();$('#mapClose').focus({preventScroll:true})}
@@ -1080,7 +1076,7 @@ $('#minic').addEventListener('click',openMap);
 $('#minic').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.repeat){e.preventDefault();openMap()}});
 $('#mapClose').onclick=closeMap;
 function renderAdmin(flash=true){
-  renderKpis();renderChart(flash);renderRT();roll($('#pinN'),total());renderMini();renderAreas();renderShops();renderGrid(flash);if(mapx.classList.contains('open'))renderAreaPanel();
+  renderKpis();renderChart(flash);renderRT();roll($('#pinN'),total());renderAreas();renderShops();renderGrid(flash);if(mapx.classList.contains('open'))renderAreaPanel();
 }
 new ResizeObserver(()=>renderChart()).observe(chart);
 
@@ -1152,7 +1148,7 @@ renderOrder();placeTab();
 renderMap();fitMap();buildAdmin();renderAdmin(false);renderTable();
 new ResizeObserver(fitFeed).observe(feed);
 new ResizeObserver(fitMap).observe(mapbox);
-buildMini();new ResizeObserver(fitMini).observe(mini);renderMini();renderShops();renderGrid();fitMini();
+buildMini();new ResizeObserver(fitMini).observe(mini);renderShops();renderGrid();fitMini();
 setTimeout(()=>{document.body.classList.remove('loading');renderFarms();renderFund();fitFeed()},950);
 if(document.fonts)document.fonts.ready.then(()=>{fit();placeTab();fitMap();fitFeed()});
 let rzF=0;window.addEventListener('resize',()=>{cancelAnimationFrame(rzF);rzF=requestAnimationFrame(()=>{fit();placeTab();fitFeed()})});
