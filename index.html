@@ -720,7 +720,7 @@ tabs.forEach((t,i)=>t.onclick=()=>{if(!busy)go(i)});
 $('.panes').addEventListener('scroll',e=>{if(e.target.scrollLeft)e.target.scrollLeft=0});
 /* order list */
 const ol=$('#olist');
-ITEMS.forEach((it,k)=>{ol.insertAdjacentHTML('beforeend',`<div class="card row" style="--d:${k*50}ms" data-id="${it.id}"><div class="tile">${pic(it.id)}</div><div class="inf"><div class="nm">${it.n}<i class="hotb" hidden>마감 임박</i></div><div class="pr"><b>${fmt(it.p)}원/kg</b><span>${it.u}</span></div></div><div class="step"><button data-s="-1">−</button><span class="q"></span><button data-s="1">+</button></div><div class="mp"><span class="mt"></span><span class="msg"></span></div><span class="mb"><i class="b0"></i><i class="b1"></i></span></div>`)});
+ITEMS.forEach((it,k)=>{ol.insertAdjacentHTML('beforeend',`<div class="card row" style="--d:${k*50}ms" data-id="${it.id}"><div class="tile">${pic(it.id)}</div><div class="inf"><div class="nm">${it.n}<i class="hotb" hidden>마감 임박</i></div><div class="pr"><b>${fmt(it.p)}원/kg</b></div></div><div class="step"><button data-s="-1">−</button><span class="q"></span><button data-s="1">+</button></div><div class="mp"><span class="mt"></span><span class="msg"></span></div><span class="mb"><i class="b0"></i><i class="b1"></i></span></div>`)});
 $$('.row',ol).forEach(r=>{const id=r.dataset.id;$$('.step button',r).forEach(b=>b.onclick=()=>{if(busy||hp!==null)return;S.qty[id]=Math.max(0,Math.min(Math.max(0,BOF(id).goal-BOF(id).cur),S.qty[id]+b.dataset.s*IT[id].st));renderOrder()})});
 function renderOrder(){
   let p=0;
