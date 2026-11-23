@@ -127,7 +127,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .hold{position:relative;display:block;margin:10px auto 0;width:100%;height:54px;border-radius:16px;background:var(--ink);color:#fff;font-weight:800;font-size:15px;overflow:hidden;transition:width .5s cubic-bezier(.6,0,.2,1),border-radius .5s,transform .2s var(--spring),opacity .3s,background .3s;touch-action:none;user-select:none}
 .hold .fill{position:absolute;inset:0;background:var(--g);transform-origin:left;transform:scaleX(0);transition:transform .35s ease-out}
 .hold.pressing{transform:scale(.97)}
-.hold.pressing .fill{transform:scaleX(1);transition:transform 1.1s linear}
+.hold.pressing .fill{transform:scaleX(1);transition:transform .55s linear}
 .hold .lbl{position:relative;transition:opacity .2s}
 .hold.off{opacity:.35}
 .hold.shake{animation:shake .45s}
@@ -591,7 +591,7 @@ function startHold(id){
   if(busy||ht)return;
   /* while G orders are still arriving the owner's order cannot be confirmed */
   if(!S._p){shake();return}
-  hp=id;hold.classList.add('pressing');ht=setTimeout(confirmOrder,1100);
+  hp=id;hold.classList.add('pressing');ht=setTimeout(confirmOrder,550);
 }
 function cancelHold(){if(ht){clearTimeout(ht);ht=null}hp=null;hold.classList.remove('pressing')}
 hold.addEventListener('pointerdown',e=>{if(!e.isPrimary||e.button!==0||hp!==null)return;startHold(e.pointerId);if(hp===e.pointerId)try{hold.setPointerCapture(e.pointerId)}catch(_){}});
