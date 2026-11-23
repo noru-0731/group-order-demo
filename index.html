@@ -189,7 +189,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .fb-on{--b1:#e0b25e;--b2:#b07a33}
 .fb-mu{--b1:#b8987a;--b2:#7a5b40}
 .fc .fn{flex:1;min-width:0}
-.fc .fn b{font-size:15px;font-weight:800;display:block}
+.fc .fn b{font-size:17px;font-weight:800;display:block;letter-spacing:-.3px}
 .fc .fn span{font-size:12px;color:var(--sub);font-weight:600}
 .fc .pg{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 7px}
 .fc .pv{display:flex;align-items:baseline;font-size:24px;font-weight:800;color:var(--g)}
@@ -508,9 +508,9 @@ const ITEMS=[
  {id:'mu',f:'mushroom.png',n:'버섯',u:'1kg 팩',p:7900,st:1,pick:2},
  {id:'on',f:'onion.png',n:'양파',u:'3kg 망',p:1180,st:3,pick:3}];
 const BUNDLES=[
- {farm:'밀양 고추경보',it:'ch',day:'금',goal:10},
- {farm:'무안 캐고 뽑고',it:'on',day:'화',goal:30},
- {farm:'버섯이 벗이다',it:'mu',day:'수',goal:10}];
+ {farm:'고추 무봤나',it:'ch',day:'금',goal:10},
+ {farm:'양파 무안하게 하지 마세요',it:'on',day:'화',goal:30},
+ {farm:'버섯도 벗이다',it:'mu',day:'수',goal:10}];
 const ST=['김밥 한줄요약','떡볶이 땡땡이','회기 칼국수다','반찬이 본체','파전 기우제','순댓국 수혈','돈까삭까삭','한 삽 덮밥','화난 김치찌개'];
 /* This week's orders before the demo: [store, item, kg, minutes ago]. */
 const HIST=[
@@ -529,8 +529,8 @@ const DAYS=['월','화','수','목','금'];
 /* farm tags sit at the map edge, roughly toward each farm; shop dots sit around the gate */
 const FARM_AT={on:[.15,.9],ch:[.8,.9],mu:[.86,.13]};
 const FARM_BEND={on:.18,ch:-.16,mu:-.2};
-const FARM_REGION={on:'무안',ch:'밀양',mu:'버섯 농가'};
-const FARM_PLACE={on:'전남 무안',ch:'경남 밀양',mu:'버섯 농가'};
+const FARM_REGION={on:'무안',ch:'밀양',mu:'홍천'};
+const FARM_PLACE={on:'전남 무안',ch:'경남 밀양',mu:'강원 홍천'};
 const SHOP_AT=[[-8,-4],[-13,3],[-5,8],[-3,-11],[4,11],[-17,-8],[-11,12],[7,-11],[-20,4]];
 const PREVIOUS_WEEKS=[6,8,9,12,11,15,16,19,21,24,27];
 const RETAIL_CHILI=10500;
