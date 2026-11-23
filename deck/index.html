@@ -479,6 +479,8 @@ body.idle,body.idle * { cursor:none !important }
   }
   .slide:last-of-type { break-after:auto }
   *,*::before,*::after { animation:none !important; transition:none !important }
+  /* 맥 미리보기는 흐린 그림자를 검은 상자로 그린다: 인쇄에서는 흐림 효과를 모두 뺀다 */
+  *,*::before,*::after { text-shadow:none !important; box-shadow:none !important; filter:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important }
   .a,[data-step] { visibility:visible !important; opacity:1 !important; transform:var(--print-transform,none) !important }
   .map .gate { --print-transform:translateX(-50%) }
   .hero-art { opacity:.17 !important }
@@ -688,9 +690,9 @@ body.idle,body.idle * { cursor:none !important }
           <p class="small muted">버섯 농가 섭외 중 · 농진원 서울센터 연계</p>
         </article>
         <div class="network-hub a" style="--d:110ms">
-          <div class="hub-arrow"><span>모아서 출하</span><svg viewBox="0 0 96 28" aria-hidden="true"><path class="draw" pathLength="1" d="M3 14H88" style="--d:520ms"/><path d="M78 4l12 10-12 10"/></svg></div>
+          <div class="hub-arrow"><span>모아서 출하</span><svg viewBox="0 0 96 28" aria-hidden="true"><path class="draw" pathLength="1" d="M3 14H88" style="--d:520ms"/><path class="draw" pathLength="1" d="M78 4l12 10-12 10" style="--d:940ms;--motion:300ms"/></svg></div>
           <div class="hub-core"><svg class="icon" aria-hidden="true"><use href="#basket"/></svg><b class="title">소쿠리</b><span class="hub-sub">같은 날 주문 합산</span></div>
-          <div class="hub-arrow"><span>나눠서 배송</span><svg viewBox="0 0 96 28" aria-hidden="true"><path class="draw" pathLength="1" d="M3 14H88" style="--d:660ms"/><path d="M78 4l12 10-12 10"/></svg></div>
+          <div class="hub-arrow"><span>나눠서 배송</span><svg viewBox="0 0 96 28" aria-hidden="true"><path class="draw" pathLength="1" d="M3 14H88" style="--d:1260ms"/><path class="draw" pathLength="1" d="M78 4l12 10-12 10" style="--d:1680ms;--motion:300ms"/></svg></div>
         </div>
         <article class="card a" data-step="1" style="--d:300ms">
           <h2 class="kicker">수요 · 시립대 앞 식당</h2>
