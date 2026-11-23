@@ -221,6 +221,42 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .big .live{margin-left:auto}
 
 .body{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:14px;min-height:0}
+.body{position:relative}
+.minic{padding:14px 16px;display:flex;flex-direction:column;min-height:0;overflow:hidden;cursor:pointer}
+.minic:hover{border-color:#c5ebd0}
+.minic:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.mx-open{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;color:var(--g);background:var(--g2);padding:5px 9px;border-radius:8px}
+.mx-open svg,.mx-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.mini-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:14px;align-items:center}
+.mini{position:relative;height:100%;min-height:0}
+.mini svg{position:absolute;inset:0;width:100%;height:100%}
+.mini svg path{fill:#d7f0dd;stroke:#5fbf80;stroke-width:1.5;vector-effect:non-scaling-stroke}
+.mdot{position:absolute;width:15px;height:15px;border-radius:50%;transform:translate(-50%,-50%);background:#fff;border:2.5px dashed #2fae5e}
+.mdot.on{width:20px;height:20px;background:var(--g);border:3px solid #fff;box-shadow:0 0 0 1px var(--g)}
+.mini-list{display:flex;flex-direction:column;gap:10px}
+.ml{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:14px;font-weight:700}
+.ml i{width:12px;height:12px;border-radius:50%;border:2px dashed #6fcb8e;background:#fff}
+.ml.on i{border:0;background:var(--g)}
+.ml span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ml b{font-size:13.5px;font-weight:800;color:var(--sub);white-space:nowrap}
+.ml.on b{color:var(--deep)}
+.ml-foot{margin-top:2px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--soil);display:flex;align-items:center;gap:6px}
+.ml-foot::before{content:"";width:16px;border-top:2.5px dashed var(--soil);opacity:.7}
+.mapx{position:absolute;inset:0;z-index:5;display:flex;visibility:hidden;opacity:0;pointer-events:none;flex-direction:column;padding:14px 16px;min-height:0;overflow:hidden;box-shadow:0 18px 40px -20px rgba(40,40,20,.35)}
+.mapx.open{visibility:visible;opacity:1;pointer-events:auto;animation:mxin .32s var(--ease) both}
+@keyframes mxin{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+.mx-close{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;border:1px solid var(--line);color:var(--sub);margin-left:6px}
+.mx-close:hover{color:var(--ink);background:#faf8f3}
+.mx-grid{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px}
+.mx-grid .mapbox{height:100%}
+.mx-side{display:flex;flex-direction:column;min-height:0;border:1px solid var(--line);border-radius:12px;padding:12px 0 0;overflow:hidden}
+.mx-side h4{font-size:15px;font-weight:800;padding:0 14px 8px}
+.mx-side .stores .fh{padding-top:2px}
+.mapwrap .ac{fill:rgba(15,149,71,.14);stroke:var(--g)}
+.mapwrap .ac.plan{fill:rgba(255,255,255,.5);stroke:#6fcb8e}
+.mapwrap .shop.off{fill:#fff;stroke:#9fdcb3}
+.mapwrap .shop.me{fill:#ffd43a;stroke:var(--deep)}
+.mapwrap .shop{transition:fill .4s}
 .rname{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--sub);padding-left:18px;border-left:1px solid var(--line);white-space:nowrap}
 .rname b{color:var(--ink);font-weight:800}
 .ctl{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border:1px solid var(--line);border-radius:9px;padding:6px 10px;background:#fff;white-space:nowrap;margin-left:8px}
@@ -327,10 +363,11 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .mapwrap.farmsel .route.sel{stroke:var(--g);opacity:1}
 .farm-tag .ship{font-size:12px;font-weight:800;color:#fff;background:var(--g);border-radius:99px;padding:2px 7px;margin-left:2px}
 .farm-tag .ship:empty{display:none}
+.farm-tag:not(.full) .ship{background:var(--soil2);color:var(--soil)}
 .farm-tag.full{color:var(--deep);box-shadow:0 0 0 1.5px #6fcb8e,0 3px 8px -4px rgba(0,0,0,.3)}
 .farm-tag[aria-pressed="true"]{background:var(--deep);color:#fff;box-shadow:0 0 0 2px var(--deep)}
 .farm-tag:focus-visible{outline:2px solid var(--g);outline-offset:3px}
-.mapwrap .shop{fill:#fff;stroke:var(--g)}
+.mapwrap .shop{fill:var(--g);stroke:#fff}
 .dlab{position:absolute;transform:translate(-50%,-50%) scale(var(--mark-scale));font-size:12px;font-weight:700;color:#a9ab9c;white-space:nowrap;pointer-events:none;letter-spacing:-.2px}
 .farm-tag{position:absolute;z-index:2;transform:translate(-50%,-50%) scale(var(--mark-scale));display:inline-flex;align-items:center;gap:6px;padding:5px 10px 5px 5px;border-radius:99px;background:#fffdf7;box-shadow:0 0 0 1px var(--soil2),0 3px 8px -4px rgba(90,60,20,.35);font-size:13px;font-weight:800;color:var(--soil);white-space:nowrap;cursor:pointer;font-family:inherit;transition:box-shadow .3s,color .3s,background .3s}
 .farm-tag img{width:24px;height:24px;border-radius:50%;background:#f4ecdc;padding:2px;display:block}
@@ -382,7 +419,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .feedc [hidden]{display:none}
 .feed-title-in{display:inline-block;animation:store-in 240ms ease-out both}
 .stores{flex:1;min-height:0;display:flex;flex-direction:column}
-.store-list{flex:1;min-height:0;display:grid;grid-auto-rows:minmax(0,1fr);max-height:calc(var(--store-count) * 76px);overflow:hidden}
+.store-list{flex:1;min-height:0;display:grid;grid-auto-rows:minmax(0,1fr);max-height:calc(var(--store-count) * 52px);overflow:hidden}
 .stores .fh,.stores .fr{grid-template-columns:minmax(0,1fr) minmax(80px,24%) minmax(64px,19%);text-align:right}
 .stores .fh>:first-child,.stores .fr>:first-child{text-align:left}
 .stores .fr{padding:0 14px;animation:store-in 240ms ease-out both;animation-delay:calc(var(--i) * 30ms)}
@@ -456,22 +493,26 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
     <div class="chart" id="chart"></div>
    </div>
    <div class="card feedc rtc" style="--d:260ms">
-    <div class="ch"><h3 id="feedTitle" aria-live="polite">실시간 · 최근 12시간</h3></div>
+    <div class="ch"><h3 id="feedTitle">실시간 · 최근 12시간</h3></div>
     <div class="rt-top" id="rtTop"><div class="rt-n"><span class="roll" id="rtN"></span><small>건</small><small id="rtKg"></small></div><div class="rt-bars" id="rtBars"></div></div>
     <div class="fh" id="feedHead"><span>점포</span><span>품목</span><span class="c4">납품</span><span class="c5">시각</span></div>
     <div class="feed" id="feed"></div>
-    <div class="stores" id="stores" role="table" aria-labelledby="feedTitle" hidden></div>
    </div>
    <div class="card tablec" style="--d:320ms">
     <div class="ch"><h3>수요 상세</h3><div class="seg" id="seg"><button type="button" data-v="item" class="on">품목</button><button type="button" data-v="day">요일</button><button type="button" data-v="farm">농가</button></div></div>
     <div class="dt" id="dt"></div>
    </div>
-   <div class="card mapc" style="--d:380ms">
-    <div class="ch"><div class="map-heading"><h3>상권별 수요</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>운영 중</span><span class="k"><i class="c"></i>계획</span><span class="k"><i class="r"></i>산지</span></span></div>
-    <div class="mapbox" id="mapbox">
-     <div class="mapwrap" id="mapwrap"><svg id="map" aria-hidden="true"></svg></div>
-    </div>
+   <div class="card minic" id="minic" role="button" tabindex="0" aria-label="상권 지도 크게 보기" style="--d:380ms">
+    <div class="ch"><h3>상권</h3><span class="mx-open"><svg viewBox="0 0 24 24"><path d="M15 4h5v5M9 20H4v-5M20 4l-7 7M4 20l7-7"/></svg>크게 보기</span></div>
+    <div class="mini-body"><div class="mini" id="mini"><svg id="miniSvg" aria-hidden="true"></svg></div><div class="mini-list" id="miniList"></div></div>
    </div>
+   <section class="card mapx" id="mapx" aria-label="동대문구 상권 지도" inert>
+    <div class="ch"><div class="map-heading"><h3>동대문구 상권</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><span class="k"><i></i>이번 주 주문</span><span class="k"><i class="c"></i>아직·후보</span><span class="k"><i class="r"></i>산지</span><button type="button" class="mx-close" id="mapClose" aria-label="닫기"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></span></div>
+    <div class="mx-grid">
+     <div class="mapbox" id="mapbox"><div class="mapwrap" id="mapwrap"><svg id="map" aria-hidden="true"></svg></div></div>
+     <aside class="mx-side"><h4 id="sideTitle" aria-live="polite"></h4><div class="stores" id="stores" role="table" aria-labelledby="sideTitle"></div></aside>
+    </div>
+   </section>
   </div>
  </div>
 </section>
@@ -552,7 +593,10 @@ const FARM_AT={on:[.15,.9],ch:[.8,.9],mu:[.86,.13]};
 const FARM_BEND={on:.18,ch:-.16,mu:-.2};
 const FARM_REGION={on:'무안',ch:'밀양',mu:'홍천'};
 const FARM_PLACE={on:'전남 무안',ch:'경남 밀양',mu:'강원 홍천'};
-const SHOP_AT=[[-8,-4],[-13,3],[-5,8],[-3,-11],[4,11],[-17,-8],[-11,12],[7,-11],[-20,4]];
+const SHOP_AT=[[6,7],[-8,-4],[-13,3],[-5,8],[-3,-11],[4,11],[-17,-8],[-11,12],[7,-11],[-20,4],[-15,-14],[-1,15]];
+/* shops in the gate area that have not ordered this week (last two dots) */
+const IDLE=['국수 휴강','분식 중간고사'];
+const EXPECT={campus:24,market:28};
 const PREVIOUS_WEEKS=[6,8,10,4,11,15,18,18,21,25,27];
 const RETAIL={ch:10500,on:1650,mu:11800};
 /* demo history for the report: 11 past weeks, this week comes from live data */
@@ -732,7 +776,7 @@ function renderMap(){
   map.innerHTML=`<defs><linearGradient id="opf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7f0dd"/><stop offset="1" stop-color="#bfe6c9"/></linearGradient>
    <pattern id="dots" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".45" fill="#7fc795" opacity=".55"/></pattern></defs>`+
    GEO.map(([district,path])=>`<path d="${path}"${district==='동대문구'?' class="op"':''}/>`).join('')+
-   `<path class="dots" d="${op}"/><g id="routes"></g><g id="shops"></g>`;
+   `<path class="dots" d="${op}"/><g id="areas"></g><g id="routes"></g><g id="shops"></g>`;
   mapBounds=$('.op',map).getBBox();
   GEO.forEach(([district],i)=>{if(district==='동대문구')return;const b=$$('path',map)[i].getBBox();
     const lab=document.createElement('span');lab.className='dlab';lab.textContent=district;lab._p={x:b.x+b.width/2,y:b.y+b.height/2};mw.appendChild(lab)});
@@ -750,7 +794,7 @@ function renderMap(){
     pins.set(area.id,button);
   }
   pin=pins.get(ME.id);
-  $('#shops').innerHTML=SHOP_AT.map(([dx,dy])=>`<circle class="shop" cx="${ME.x+dx}" cy="${ME.y+dy}"/>`).join('');
+  $('#shops').innerHTML=[ME.store,...ST,...IDLE].map((st,i)=>{const [dx,dy]=SHOP_AT[i];return `<circle class="shop" data-store="${st}" cx="${ME.x+dx}" cy="${ME.y+dy}"/>`}).join('');
 }
 function positionMap(){
   const scale=selectedArea?1.28:1;
@@ -768,7 +812,8 @@ function fitMap(){
   view={x:x+(width-w)/2,y:y+(height-h)/2,w,h};
   map.setAttribute('viewBox',`${view.x} ${view.y} ${w} ${h}`);
   const u=w/bw;
-  $$('.shop',map).forEach(c=>{c.setAttribute('r',3.6*u);c.setAttribute('stroke-width',2*u)});
+  $$('.shop',map).forEach(c=>{c.setAttribute('r',5*u);c.setAttribute('stroke-width',2*u)});
+  map.dataset.u=u;renderAreas();
   $$('.dlab',mw).forEach(l=>{const {x:px,y:py}=l._p;const near=Object.values(FARM_AT).some(([fx,fy])=>Math.abs(view.x+w*fx-px)<70*u&&Math.abs(view.y+h*fy-py)<30*u);
     l.hidden=near||px<view.x+8*u||px>view.x+w-8*u||py<view.y+8*u||py>view.y+h-8*u;if(!l.hidden)placeMarker(l,l._p)});
   $('#routes').innerHTML=BUNDLES.map(b=>{const [fx,fy]=FARM_AT[b.it],ax=view.x+w*fx,ay=view.y+h*fy;
@@ -806,7 +851,7 @@ mapbox.addEventListener('click',e=>{
   const area=AREAS.get(e.target.closest('button[data-area]')?.dataset.area);
   setArea(area&&area!==selectedArea?area:null);
 });
-$('.mapc').addEventListener('keydown',e=>{
+$('#mapx').addEventListener('keydown',e=>{
   if(e.repeat&&(e.key==='Enter'||e.key===' '))e.preventDefault();
 });
 mapAll.onclick=()=>setArea(null);
@@ -814,9 +859,17 @@ function ripple(){
   const r=document.createElement('i');r.className='rip';placeMarker(r,ME);
   mw.appendChild(r);later(()=>r.remove(),1400);
 }
+function renderAreas(){
+  const u=+map.dataset.u||1,g=$('#areas');if(!g||!ME.x)return;
+  g.innerHTML=[ME,...CANDS].map(a=>{const kg=a===ME?total():EXPECT[a.id],r=(16+Math.sqrt(kg)*7)*u;
+    return `<circle class="ac${a===ME?'':' plan'}" cx="${a.x}" cy="${a.y}" r="${r}" stroke-width="${1.5*u}"${a===ME?'':` stroke-dasharray="${4*u} ${3*u}"`}/>`}).join('');
+}
+function renderShops(){
+  $$('.shop',map).forEach(c=>{const st=c.dataset.store;c.classList.toggle('off',!S.storeOrders.has(st));c.classList.toggle('me',st===ME.store&&S.storeOrders.has(st))});
+}
 function markRoutes(){
   $$('.route',map).forEach(r=>{const b=BOF(r.dataset.it);r.classList.toggle('full',b.cur>=b.goal);r.classList.toggle('sel',r.dataset.it===selectedFarm)});
-  $$('.farm-tag',mw).forEach(t=>{const b=BOF(t.dataset.it),f=b.cur>=b.goal;t.classList.toggle('full',f);$('.ship',t).textContent=f?`${b.cur}kg 출하`:''});
+  $$('.farm-tag',mw).forEach(t=>{const b=BOF(t.dataset.it),f=b.cur>=b.goal;t.classList.toggle('full',f);$('.ship',t).textContent=f?`${b.cur}kg 출하`:`${b.cur}/${b.goal}kg`});
 }
 function flowRoutes(ids){
   ids.forEach(id=>{const r=$(`.route[data-it="${id}"]`,map),t=$(`.farm-tag[data-it="${id}"]`,mw);if(!r)return;
@@ -855,12 +908,8 @@ function renderFund(){renderTable();markRoutes()}
 // order record table
 const feed=$('#feed'),feedHead=$('#feedHead'),feedTitle=$('#feedTitle'),stores=$('#stores'),RAF=new Set();
 function renderAreaPanel(){
-  const area=selectedArea,active=area===ME,farm=selectedFarm&&BOF(selectedFarm),open=!!(area||farm);
-  const title=document.createElement('span');title.className='feed-title-in';
-  title.textContent=farm?`${farm.farm} 출하`:area?`${area.area} ${active?'점포':'후보 점포'}`:'실시간 · 최근 12시간';
-  feedTitle.replaceChildren(title);
-  feed.hidden=feedHead.hidden=$('#rtTop').hidden=open;stores.hidden=!open;
-  if(!open){stores.replaceChildren();fitFeed();return}
+  const area=selectedArea||ME,active=area===ME,farm=selectedFarm&&BOF(selectedFarm);
+  $('#sideTitle').textContent=farm?`${farm.farm} 출하`:`${area.area} ${active?'점포':'후보 점포'}`;
 
   let headers,rows,qty=active||!!farm;
   if(farm){
@@ -869,7 +918,7 @@ function renderAreaPanel(){
     rows.push(['합계',`${farm.cur} / ${farm.goal}kg`,farm.cur>=farm.goal?'발주 확정':'모집 중']);
   }else if(active){
     headers=['점포','이번 주 주문량','주문 건수'];
-    rows=[ME.store,...ST].map(store=>{const stats=S.storeOrders.get(store);return [store,stats?`${fmt(stats.qty)}kg`:'-',`${stats?.count??0}건`]});
+    rows=[ME.store,...ST,...IDLE].map(store=>{const stats=S.storeOrders.get(store);return [store,stats?`${fmt(stats.qty)}kg`:'-',`${stats?.count??0}건`]});
   }else{
     headers=['점포','업종','상태'];rows=area.stores.map(([store,type])=>[store,type,'후보']);
   }
@@ -940,8 +989,28 @@ function renderRT(){
   roll($('#rtN'),S.rt.reduce((a,b)=>a+b,0));$('#rtKg').textContent=`${S.rtKg}kg`;
   const mx=Math.max(2,...S.rt);$$('#rtBars i').forEach((b,i)=>{const v=S.rt[i];b.style.height=(v?Math.max(18,v/mx*100):8)+'%';b.className=v?(i===11?'now':''):'z'});
 }
+const mini=$('#mini'),miniSvg=$('#miniSvg');
+function buildMini(){
+  miniSvg.innerHTML=`<path d="${GEO.find(([d])=>d==='동대문구')[1]}"/>`;
+  const b=$('path',miniSvg).getBBox();miniSvg.setAttribute('viewBox',`${b.x-4} ${b.y-4} ${b.width+8} ${b.height+8}`);miniSvg._b=b;
+  mini.insertAdjacentHTML('beforeend',[ME,...CANDS].map(a=>`<span class="mdot${a===ME?' on':''}" data-a="${a.id}"></span>`).join(''));
+}
+function fitMini(){
+  const b=miniSvg._b;if(!b)return;const W=mini.clientWidth,H=mini.clientHeight,vw=b.width+8,vh=b.height+8,k=Math.min(W/vw,H/vh),ox=(W-vw*k)/2,oy=(H-vh*k)/2;
+  [ME,...CANDS].forEach(a=>{const d=$(`.mdot[data-a="${a.id}"]`,mini),[px,py]=a.point;d.style.left=ox+(4+b.width*px)*k+'px';d.style.top=oy+(4+b.height*py)*k+'px'});
+}
+function renderMini(){
+  $('#miniList').innerHTML=[ME,...CANDS].map(a=>`<div class="ml${a===ME?' on':''}"><i></i><span>${a.area}</span><b>${a===ME?`${total()}kg · 운영`:`후보 ${a.stores.length}곳`}</b></div>`).join('')+`<div class="ml-foot">산지 ${BUNDLES.length}곳 연결</div>`;
+}
+/* expanded map over the data area */
+const mapx=$('#mapx');
+function openMap(){if(mapx.classList.contains('open'))return;mapx.classList.add('open');mapx.inert=false;fitMap();renderAreaPanel();$('#mapClose').focus({preventScroll:true})}
+function closeMap(){if(!mapx.classList.contains('open'))return;setArea(null);mapx.classList.remove('open');mapx.inert=true;$('#minic').focus({preventScroll:true})}
+$('#minic').addEventListener('click',openMap);
+$('#minic').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.repeat){e.preventDefault();openMap()}});
+$('#mapClose').onclick=closeMap;
 function renderAdmin(flash=true){
-  renderKpis();renderChart(flash);renderRT();roll($('#pinN'),total());
+  renderKpis();renderChart(flash);renderRT();roll($('#pinN'),total());renderMini();renderAreas();renderShops();if(mapx.classList.contains('open'))renderAreaPanel();
 }
 new ResizeObserver(()=>renderChart()).observe(chart);
 
@@ -983,6 +1052,7 @@ $('#tog').onclick=togPhone;
 
 /* reset (R) */
 function resetDemo(){
+  if(mapx.classList.contains('open')){setArea(null);mapx.classList.remove('open');mapx.inert=true}
   TM.forEach(clearTimeout);TM=[];cancelHold();clearTimeout(S.cfT);clearTimeout(S.hotT);clearTimeout(togT);
   RAF.forEach(cancelAnimationFrame);RAF.clear();
   setArea(null);
@@ -1003,6 +1073,8 @@ document.addEventListener('keydown',e=>{
   if(e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.target.tagName==='INPUT')return;
   if(e.code==='KeyH')togPhone();
   else if(e.code==='KeyR')resetDemo();
+  else if(e.code==='KeyM')mapx.classList.contains('open')?closeMap():openMap();
+  else if(e.key==='Escape'&&!sheetOpen)closeMap();
 });
 /* boot */
 seedFeed();
@@ -1010,6 +1082,7 @@ renderOrder();placeTab();
 renderMap();fitMap();buildAdmin();renderAdmin(false);renderTable();
 new ResizeObserver(fitFeed).observe(feed);
 new ResizeObserver(fitMap).observe(mapbox);
+buildMini();new ResizeObserver(fitMini).observe(mini);renderMini();renderShops();
 setTimeout(()=>{document.body.classList.remove('loading');renderFarms();renderFund();fitFeed()},950);
 if(document.fonts)document.fonts.ready.then(()=>{fit();placeTab();fitMap();fitFeed()});
 let rzF=0;window.addEventListener('resize',()=>{cancelAnimationFrame(rzF);rzF=requestAnimationFrame(()=>{fit();placeTab();fitFeed()})});
