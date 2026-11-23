@@ -189,7 +189,8 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .fb-on{--b1:#e0b25e;--b2:#b07a33}
 .fb-mu{--b1:#b8987a;--b2:#7a5b40}
 .fc .fn{flex:1;min-width:0}
-.fc .fn b{font-size:17px;font-weight:800;display:block;letter-spacing:-.3px}
+.fc .fn b{font-size:17px;font-weight:800;display:flex;align-items:center;gap:6px;letter-spacing:-.3px}
+.farm-chip{flex:none;font-style:normal;font-size:11.5px;font-weight:800;color:#fff;background:var(--soil);padding:2px 6px;border-radius:6px;letter-spacing:0}
 .fc .fn span{font-size:12px;color:var(--sub);font-weight:600}
 .fc .pg{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 7px}
 .fc .pv{display:flex;align-items:baseline;font-size:24px;font-weight:800;color:var(--g)}
@@ -609,7 +610,7 @@ function roll(el,n,f){
 }
 
 /* ===== data: names and numbers live only here ===== */
-const ME={id:'gate',store:'밥만 개근',area:'시립대 정문',point:[.55,.60]};
+const ME={id:'gate',store:'김밥 한줄요약',area:'시립대 정문',point:[.55,.60]};
 const ITEMS=[
  {id:'ch',f:'chili.png',n:'청양고추',u:'1kg 봉',p:6660,st:1,pick:2},
  {id:'mu',f:'mushroom.png',n:'버섯',u:'1kg 팩',p:7900,st:1,pick:2},
@@ -618,7 +619,7 @@ const BUNDLES=[
  {farm:'고추 무봤나',it:'ch',day:'금',goal:10},
  {farm:'양파 무안하게 하지 마세요',it:'on',day:'화',goal:30},
  {farm:'버섯도 벗이다',it:'mu',day:'수',goal:10}];
-const ST=['김밥 한줄요약','떡볶이 땡땡이','회기 칼국수다','반찬이 본체','파전 기우제','순댓국 수혈','돈까삭까삭','한 삽 덮밥','화난 김치찌개'];
+const ST=['밥만 개근','떡볶이 땡땡이','회기 칼국수다','반찬이 본체','파전 기우제','순댓국 수혈','돈까삭까삭','한 삽 덮밥','화난 김치찌개'];
 /* This week's orders before the demo: [store, item, kg, minutes ago]. */
 const HIST=[
  [ST[0],'ch',2,38],[ST[1],'on',6,95],[ST[2],'ch',2,170],
@@ -794,7 +795,7 @@ function confetti(){
 }
 /* bundle cards */
 const fl=$('#flist');
-BUNDLES.forEach((b,k)=>{fl.insertAdjacentHTML('beforeend',`<div class="card fc stag" style="--i:${k}" role="button" tabindex="0"><div class="fband fb-${b.it}"><span class="freg"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10" r="2.3"/></svg>${FARM_PLACE[b.it]}</span><img src="img/${IT[b.it].f}" alt="" draggable="false"></div><div class="ft"><div class="tile">${pic(b.it)}</div><div class="fn"><b>${b.farm}</b><span>${IT[b.it].n} · ${IT[b.it].u}</span></div><span class="dds"><span class="dd">${b.day}요일 납품</span></span></div>
+BUNDLES.forEach((b,k)=>{fl.insertAdjacentHTML('beforeend',`<div class="card fc stag" style="--i:${k}" role="button" tabindex="0"><div class="fband fb-${b.it}"><span class="freg"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10" r="2.3"/></svg>${FARM_PLACE[b.it]}</span><img src="img/${IT[b.it].f}" alt="" draggable="false"></div><div class="ft"><div class="tile">${pic(b.it)}</div><div class="fn"><b><i class="farm-chip">농가</i>${b.farm}</b><span>${IT[b.it].n} · ${IT[b.it].u}</span></div><span class="dds"><span class="dd">${b.day}요일 납품</span></span></div>
  <div class="pg"><span class="pv"><span class="roll pp"></span><span class="gl"> / ${b.goal}kg</span></span><small>${fmt(IT[b.it].p)}원/kg</small></div><div class="bw"><div class="bar"><i></i></div><span class="arw"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>`)});
 function pickFarm(k){
   if(busy||tab!==0||BUNDLES[k].cur>=BUNDLES[k].goal)return;const id=BUNDLES[k].it;
