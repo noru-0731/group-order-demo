@@ -233,13 +233,14 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .mini svg path{fill:#e6e6d8;stroke:#fbfaf4;stroke-width:1.2;vector-effect:non-scaling-stroke}
 .mini svg path.op{fill:#c9ebd2;stroke:#5fbf80;stroke-width:1.6}
 .mini svg path.dots{fill:url(#mdots);stroke:none}
-.mlab{position:absolute;transform:translate(-50%,calc(-100% - 28px));font-size:12px;font-weight:800;color:var(--deep);background:#fff;padding:3px 7px;border-radius:7px;box-shadow:0 0 0 1px var(--g3),0 2px 5px rgba(0,0,0,.1);white-space:nowrap;pointer-events:none}
+.mlab{position:absolute;transform:translate(-50%,calc(-100% - 20px));font-size:12px;font-weight:800;color:var(--deep);background:#fff;padding:3px 7px;border-radius:7px;box-shadow:0 0 0 1px var(--g3),0 2px 5px rgba(0,0,0,.1);white-space:nowrap;pointer-events:none}
 .mlab.on{background:var(--deep);color:#fff;box-shadow:none;transform:translate(-50%,24px)}
 .mini svg .pt{fill:#a9ab9c}
 .mini svg .pt.on{fill:var(--g)}
-.mini svg .cand{fill:rgba(186,117,23,.07);stroke:#BA7517;stroke-width:1.6;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
-.mini svg path.dots{display:none}
-.mlab[data-a="market"]{transform:translate(calc(-100% - 30px),-50%)}
+.mini svg .cand{fill:none;stroke:#BA7517;stroke-width:1.6;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
+.mini svg path.opline{fill:none;stroke:#5fbf80;stroke-width:1.4;vector-effect:non-scaling-stroke}
+.mini svg .gc{stroke:none}
+.mlab[data-a="market"]{transform:translate(-50%,calc(-100% - 20px))}
 .mdot{position:absolute;width:15px;height:15px;border-radius:50%;transform:translate(-50%,-50%);background:#fff;border:2.5px dashed #2fae5e}
 .mdot.on{width:20px;height:20px;background:var(--g);border:3px solid #fff;box-shadow:0 0 0 1px var(--g)}
 .mini-list{display:flex;flex-direction:column;gap:10px}
@@ -254,7 +255,9 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .ml-key{margin-top:2px;padding-top:10px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px;font-weight:700;color:var(--sub)}
 .ml-key span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .ml-key i{width:8px;height:8px;border-radius:50%;background:#a9ab9c}
-.ml-key i.g{background:var(--g)}
+.ml-key .sc{gap:2px}
+.ml-key .sc i{width:10px;height:8px;border-radius:2px}
+.ml-key .sc i:last-of-type{margin-right:3px}
 .ml-key i.o{width:10px;height:10px;background:none;border:1.6px dashed #BA7517}
 .ml-foot{margin-top:2px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;font-weight:700;color:var(--soil);display:flex;align-items:center;gap:6px}
 .ml-foot::before{content:"";width:16px;border-top:2.5px dashed var(--soil);opacity:.7}
@@ -279,6 +282,8 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .mapx .shop,.mapx .ac,.mapx .route,.mapx .farm-tag,.mapx path.dots,.mapx .dlab{display:none}
 .mapwrap path.opline{fill:none;stroke:#5fbf80;stroke-width:1.2;pointer-events:none}
 .mapwrap .gc{stroke:none}
+.mapx .mapbox{cursor:grab;touch-action:none}
+.mapwrap.dragging{transition:none;cursor:grabbing}
 .mapwrap .gc.hot{animation:gch 1.6s ease-out}
 @keyframes gch{0%{fill:#ffd43a}100%{}}
 .scale{display:inline-flex;align-items:center;gap:2px;font-size:12px;font-weight:700;color:var(--sub);margin:0 6px}
@@ -531,7 +536,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
     <div class="dt" id="dt"></div>
    </div>
    <div class="card minic" id="minic" role="button" tabindex="0" aria-label="상권 지도 크게 보기" style="--d:380ms">
-    <div class="ch"><h3>확장 기회</h3><span class="mx-open"><svg viewBox="0 0 24 24"><path d="M15 4h5v5M9 20H4v-5M20 4l-7 7M4 20l7-7"/></svg>크게 보기</span></div>
+    <div class="ch"><h3>구역별 수요</h3><span class="mx-open"><svg viewBox="0 0 24 24"><path d="M15 4h5v5M9 20H4v-5M20 4l-7 7M4 20l7-7"/></svg>크게 보기</span></div>
     <div class="mini-body"><div class="mini" id="mini"><svg id="miniSvg" aria-hidden="true"></svg></div><div class="mini-list" id="miniList"></div></div>
    </div>
    <section class="card mapx" id="mapx" aria-label="동대문구 상권 지도" inert>
@@ -826,10 +831,11 @@ function renderMap(){
   pin=pins.get(ME.id);
   $('#shops').innerHTML=[ME.store,...ST,...IDLE].map((st,i)=>{const [dx,dy]=SHOP_AT[i];return `<circle class="shop" data-store="${st}" cx="${ME.x+dx}" cy="${ME.y+dy}"/>`}).join('');
 }
+const PAN_MAX=8;let pan={x:0,y:0};
 function positionMap(){
   const scale=selectedArea?1.28:1;
-  const x=selectedArea?50-(selectedArea.x-view.x)/view.w*100*scale:0;
-  const y=selectedArea?50-(selectedArea.y-view.y)/view.h*100*scale:0;
+  const x=(selectedArea?50-(selectedArea.x-view.x)/view.w*100*scale:0)+pan.x;
+  const y=(selectedArea?50-(selectedArea.y-view.y)/view.h*100*scale:0)+pan.y;
   mw.style.setProperty('--map-x',x+'%');
   mw.style.setProperty('--map-y',y+'%');
   mw.style.setProperty('--map-scale',scale);
@@ -837,9 +843,9 @@ function positionMap(){
 function fitMap(){
   const bw=mw.clientWidth,bh=mw.clientHeight;
   if(!bw||!bh||!mapBounds)return;
-  /* frame the three market areas, not the whole district, so the demand grid reads at half height */
-  const A=[ME,...CANDS],x=Math.min(...A.map(a=>a.x))-26,y=Math.min(...A.map(a=>a.y))-14,width=Math.max(...A.map(a=>a.x))+26-x,height=Math.max(...A.map(a=>a.y))+24-y,ratio=bw/bh;
-  const w=Math.max(width,height*ratio),h=w/ratio;
+  /* the whole district with a small margin; the small card already shows the close-up */
+  const {x,y,width,height}=mapBounds,ratio=bw/bh;
+  const w=Math.max(width+40,(height+14)*ratio),h=w/ratio;
   view={x:x+(width-w)/2,y:y+(height-h)/2,w,h};
   map.setAttribute('viewBox',`${view.x} ${view.y} ${w} ${h}`);
   const u=w/bw;
@@ -877,6 +883,15 @@ function setArea(area){
   pins.forEach((button,id)=>button.setAttribute('aria-pressed',String(id===area?.id)));
   positionMap();renderAreaPanel();
 }
+/* drag the big map a little (±8% of the box), no momentum */
+let drag=null,dragMoved=false;
+mapbox.addEventListener('pointerdown',e=>{if(e.button!==0||e.target.closest('button'))return;drag={x:e.clientX,y:e.clientY,px:pan.x,py:pan.y,id:e.pointerId};dragMoved=false});
+mapbox.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+  if(!dragMoved&&Math.hypot(dx,dy)<4)return;if(!dragMoved){dragMoved=true;mw.classList.add('dragging');try{mapbox.setPointerCapture(drag.id)}catch(_){}}
+  const cl=v=>Math.max(-PAN_MAX,Math.min(PAN_MAX,v));pan={x:cl(drag.px+dx/mapbox.clientWidth*100),y:cl(drag.py+dy/mapbox.clientHeight*100)};positionMap()});
+const endDrag=()=>{if(!drag)return;drag=null;mw.classList.remove('dragging')};
+['pointerup','pointercancel','lostpointercapture'].forEach(ev=>mapbox.addEventListener(ev,endDrag));
+mapbox.addEventListener('click',e=>{if(dragMoved){dragMoved=false;e.stopImmediatePropagation()}},true);
 mapbox.addEventListener('click',e=>{
   const ft=e.target.closest('.farm-tag');if(ft){setFarm(ft.dataset.it);return}
   const area=AREAS.get(e.target.closest('button[data-area]')?.dataset.area);
@@ -908,7 +923,7 @@ function renderGrid(hot){
   const mx=Math.max(1,...val.values()),meKey=key(ME.x+SHOP_AT[0][0],ME.y+SHOP_AT[0][1]);
   let h='';for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const k=`${c},${r}`,v=val.get(k)||0;
     h+=`<rect class="gc${hot&&k===meKey&&qtyOf(ME.store)?' hot':''}" x="${x+c*CELL+.4}" y="${y+r*CELL+.4}" width="${CELL-.8}" height="${CELL-.8}" rx=".9" fill="${v?GRID_C[Math.min(4,Math.floor(v/mx*4.999))]:'#f1f4ea'}"></rect>`}
-  g.innerHTML=h;
+  g.innerHTML=h;const mg=$('#mgrid');if(mg)mg.innerHTML=h.replaceAll(' hot','');
 }
 $('#gseg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.gridItem=b.dataset.v;$$('#gseg button').forEach(x=>x.classList.toggle('on',x===b));renderGrid()});
 function markRoutes(){
@@ -1037,34 +1052,30 @@ const mini=$('#mini'),miniSvg=$('#miniSvg');
 function buildMini(){
   const op=GEO.find(([d])=>d==='동대문구')[1];
   miniSvg.setAttribute('preserveAspectRatio','xMidYMid slice');
-  miniSvg.innerHTML=`<defs><pattern id="mdots" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".5" fill="#7fc795" opacity=".6"/></pattern></defs>`+
-    GEO.map(([d,path])=>`<path d="${path}"${d==='동대문구'?' class="op"':''}/>`).join('')+`<path class="dots" d="${op}"/>`;
-  const b=$('path.op',miniSvg).getBBox();miniSvg._b=b;
-  /* scatter each area's restaurants inside the district; joined ones (gate) in green */
-  const opPath=$('path.op',miniSvg);let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
-  let pts='';[ME,...CANDS].forEach(a=>{const cx=b.x+b.width*a.point[0],cy=b.y+b.height*a.point[1],joined=a===ME?2+ST.length+IDLE.length-1:0;let n=0,t=0;
-    while(n<AREA_SHOPS[a.id]&&t++<2000){const ang=rnd()*Math.PI*2,rr=Math.sqrt(rnd())*11,px=cx+Math.cos(ang)*rr,py=cy+Math.sin(ang)*rr;
-      if(!opPath.isPointInFill(new DOMPoint(px,py)))continue;pts+=`<circle class="pt${n<joined?' on':''}" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="${n<joined?1.15:.95}"/>`;n++}
-    if(a!==ME)pts+=`<circle class="cand" cx="${cx}" cy="${cy}" r="13"/>`});
-  miniSvg.insertAdjacentHTML('beforeend',`<g>${pts}</g>`);
+  miniSvg.innerHTML=`<defs><clipPath id="mclip"><path d="${op}"/></clipPath></defs>`+
+    GEO.map(([d,path])=>`<path d="${path}"${d==='동대문구'?' class="op"':''}/>`).join('')+
+    `<g id="mgrid" clip-path="url(#mclip)"></g><path class="opline" d="${op}"/>`+
+    CANDS.map(a=>`<circle class="cand" data-c="${a.id}" r="12"/>`).join('');
+  miniSvg._b=$('path.op',miniSvg).getBBox();
   mini.insertAdjacentHTML('beforeend',[ME,...CANDS].map(a=>`<span class="mlab${a===ME?' on':''}" data-a="${a.id}">${a.area}</span>`).join(''));
 }
 function fitMini(){
-  const b=miniSvg._b;if(!b)return;const W=mini.clientWidth,H=mini.clientHeight;if(!W||!H)return;
-  /* frame the district with a margin, cover the box (slice) so the neighbours fill the corners */
-  const pad=10,vw=b.width+pad*2,vh=b.height+pad*2,k=Math.max(W/vw,H/vh),fw=W/k,fh=H/k,vx=b.x+b.width/2-fw/2,vy=b.y+b.height/2-fh/2;
+  const W=mini.clientWidth,H=mini.clientHeight;if(!W||!H||!ME.x)return;
+  /* same framing idea as before: the three market areas, cover the box so the neighbours fill the corners */
+  const A=[ME,...CANDS],x0=Math.min(...A.map(a=>a.x))-20,y0=Math.min(...A.map(a=>a.y))-16,x1=Math.max(...A.map(a=>a.x))+20,y1=Math.max(...A.map(a=>a.y))+20;
+  const k=Math.min(W/(x1-x0),H/(y1-y0)),fw=W/k,fh=H/k,vx=(x0+x1)/2-fw/2,vy=(y0+y1)/2-fh/2;
   miniSvg.setAttribute('viewBox',`${vx} ${vy} ${fw} ${fh}`);
-  [ME,...CANDS].forEach(a=>{const [px,py]=a.point,x=(b.x+b.width*px-vx)*k,y=(b.y+b.height*py-vy)*k;
-    $$(`[data-a="${a.id}"]`,mini).forEach(el=>{el.style.left=x+'px';el.style.top=y+'px'})});
+  CANDS.forEach(a=>{const c=$(`[data-c="${a.id}"]`,miniSvg);c.setAttribute('cx',a.x);c.setAttribute('cy',a.y)});
+  A.forEach(a=>{$$(`[data-a="${a.id}"]`,mini).forEach(el=>{el.style.left=(a.x-vx)*k+'px';el.style.top=(a.y-vy)*k+'px'})});
 }
 function renderMini(){
   const joined=1+ST.length+IDLE.length;
-  $('#miniList').innerHTML=[ME,...CANDS].map(a=>`<div class="ml${a===ME?' on':''}"><i></i><span>${a.area}</span><b>${a===ME?joined:0} / ${AREA_SHOPS[a.id]}곳</b></div>`).join('')+`<div class="ml-key"><span><i class="g"></i>가입</span><span><i></i>미가입 식당</span><span><i class="o"></i>다음 후보</span></div>`;
+  $('#miniList').innerHTML=[ME,...CANDS].map(a=>`<div class="ml${a===ME?' on':''}"><i></i><span>${a.area}</span><b>${a===ME?joined:0} / ${AREA_SHOPS[a.id]}곳</b></div>`).join('')+`<div class="ml-key"><span class="sc"><i style="background:#dff3e4"></i><i style="background:#7fcb96"></i><i style="background:#0f7a3c"></i>주문량</span><span><i class="o"></i>다음 후보</span></div>`;
 }
 /* expanded map over the data area */
 const mapx=$('#mapx');
 function openMap(){if(mapx.classList.contains('open'))return;mapx.classList.add('open');mapx.inert=false;fitMap();renderAreaPanel();$('#mapClose').focus({preventScroll:true})}
-function closeMap(){if(!mapx.classList.contains('open'))return;setArea(null);mapx.classList.remove('open');mapx.inert=true;$('#minic').focus({preventScroll:true})}
+function closeMap(){if(!mapx.classList.contains('open'))return;pan={x:0,y:0};setArea(null);positionMap();mapx.classList.remove('open');mapx.inert=true;$('#minic').focus({preventScroll:true})}
 $('#minic').addEventListener('click',openMap);
 $('#minic').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.repeat){e.preventDefault();openMap()}});
 $('#mapClose').onclick=closeMap;
@@ -1111,7 +1122,7 @@ $('#tog').onclick=togPhone;
 
 /* reset (R) */
 function resetDemo(){
-  if(mapx.classList.contains('open')){setArea(null);mapx.classList.remove('open');mapx.inert=true}
+  pan={x:0,y:0};if(mapx.classList.contains('open')){setArea(null);mapx.classList.remove('open');mapx.inert=true}positionMap();
   TM.forEach(clearTimeout);TM=[];cancelHold();clearTimeout(S.cfT);clearTimeout(S.hotT);clearTimeout(togT);
   RAF.forEach(cancelAnimationFrame);RAF.clear();
   setArea(null);
@@ -1141,7 +1152,7 @@ renderOrder();placeTab();
 renderMap();fitMap();buildAdmin();renderAdmin(false);renderTable();
 new ResizeObserver(fitFeed).observe(feed);
 new ResizeObserver(fitMap).observe(mapbox);
-buildMini();new ResizeObserver(fitMini).observe(mini);renderMini();renderShops();
+buildMini();new ResizeObserver(fitMini).observe(mini);renderMini();renderShops();renderGrid();fitMini();
 setTimeout(()=>{document.body.classList.remove('loading');renderFarms();renderFund();fitFeed()},950);
 if(document.fonts)document.fonts.ready.then(()=>{fit();placeTab();fitMap();fitFeed()});
 let rzF=0;window.addEventListener('resize',()=>{cancelAnimationFrame(rzF);rzF=requestAnimationFrame(()=>{fit();placeTab();fitFeed()})});
