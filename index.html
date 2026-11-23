@@ -72,7 +72,10 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .sic{display:flex;align-items:center;gap:6px}
 .sic svg{display:block;fill:var(--ink)}
 .phead{display:flex;align-items:center;gap:8px;padding:4px 20px 12px}
-.phead h2{font-size:18px;font-weight:800;letter-spacing:-.3px}
+.phead h2{font-size:19px;font-weight:800;letter-spacing:-.3px}
+.phead .papp{margin-left:auto;width:32px;height:32px;display:block;user-select:none}
+.phead .av{width:38px;height:38px;border-radius:12px}
+.phead .av img{width:28px;height:28px}
 .panes{flex:1;min-height:0;overflow:hidden;overflow:clip;position:relative}
 .track{display:flex;width:200%;height:100%;transition:transform .6s cubic-bezier(.65,0,.2,1)}
 .pane{width:50%;height:100%;overflow-y:auto;padding:2px 16px 18px;scrollbar-width:none}
@@ -80,9 +83,10 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .pane.show .stag{animation:up .55s var(--out) both;animation-delay:calc(var(--i,0)*70ms)}
 .tabbar{height:78px;display:flex;position:relative;border-top:1px solid var(--line);background:#fff;padding:8px 14px 22px}
 .tabbar .pill{position:absolute;top:8px;height:48px;border-radius:16px;background:var(--g2);transition:left .5s var(--spring),width .5s var(--spring)}
-.tab{flex:1;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:600;color:var(--mute);transition:color .3s,transform .15s}
+.tab{flex:1;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:13px;font-weight:700;color:var(--mute);transition:color .3s,transform .15s}
 .tab:active{transform:scale(.9)}
 .tab.on{color:var(--g)}
+.tab svg.i{width:23px;height:23px}
 
 .tile{width:44px;height:44px;border-radius:13px;background:#f2efe7;display:grid;place-items:center;flex:none;transition:transform .4s var(--spring),background .3s}
 .tile img{width:34px;height:34px;display:block;user-select:none;pointer-events:none}
@@ -172,9 +176,18 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .cf.w{box-shadow:0 0 0 1px #c5ebd0}
 
 /* bundle cards */
-.fc{padding:14px;margin-bottom:10px;cursor:pointer;user-select:none}
+.fc{padding:14px;margin-bottom:10px;cursor:pointer;user-select:none;overflow:hidden}
 .fc:active{transform:scale(.98)}
 .fc .ft{display:flex;gap:12px;align-items:center}
+.fband{position:relative;height:40px;margin:-14px -14px 12px;border-radius:calc(var(--r) - 1px) calc(var(--r) - 1px) 0 0;overflow:hidden;display:flex;align-items:center;padding:0 14px;background:linear-gradient(115deg,var(--b1),var(--b2))}
+.fband::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-14deg,transparent 0 10px,rgba(255,255,255,.16) 10px 12px)}
+.fband img{position:absolute;right:16px;top:4px;width:50px;height:50px;transform:rotate(-14deg);filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));pointer-events:none}
+.freg{position:relative;display:flex;align-items:center;gap:4px;font-size:13px;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.18)}
+.freg svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2}
+.fc .ft .tile{display:none}
+.fb-ch{--b1:#7cb86a;--b2:#2f7d3e}
+.fb-on{--b1:#e0b25e;--b2:#b07a33}
+.fb-mu{--b1:#b8987a;--b2:#7a5b40}
 .fc .fn{flex:1;min-width:0}
 .fc .fn b{font-size:15px;font-weight:800;display:block}
 .fc .fn span{font-size:12px;color:var(--sub);font-weight:600}
@@ -196,19 +209,19 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .live{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800;color:var(--g);background:var(--g2);padding:7px 12px;border-radius:99px}
 .live i{width:8px;height:8px;border-radius:50%;background:var(--g);animation:pulse 1.4s infinite}
 
-.big{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr)) auto;align-items:center;padding:12px 20px}
-.st{display:flex;flex-direction:column;gap:3px;padding:0 15px;border-left:1px solid var(--line);min-width:0}
+.big{display:flex;align-items:center;padding:9px 18px}
+.st{display:flex;align-items:baseline;gap:8px;padding:0 18px;border-left:1px solid var(--line);min-width:0}
 .brand{display:flex;align-items:center;gap:8px;margin-right:20px}
-.brand img{width:46px;height:46px;display:block;user-select:none}
-.wordmark{font-size:23px;font-weight:900;color:var(--deep);letter-spacing:-.6px;white-space:nowrap}
-.st .lb{font-size:14px;font-weight:800;color:var(--sub);white-space:nowrap}
+.brand img{width:36px;height:36px;display:block;user-select:none}
+.wordmark{font-size:20px;font-weight:900;color:var(--deep);letter-spacing:-.6px;white-space:nowrap}
+.st .lb{font-size:13px;font-weight:800;color:var(--sub);white-space:nowrap}
 .st .num{display:flex;align-items:baseline;gap:5px;white-space:nowrap}
-.st .num .roll{font-size:42px;font-weight:800;letter-spacing:-1.4px}
-.st .num small{font-size:18px;color:var(--sub);font-weight:700}
-.big .live{margin-left:16px}
+.st .num .roll{font-size:24px;font-weight:800;letter-spacing:-.6px}
+.st .num small{font-size:14px;color:var(--sub);font-weight:700}
+.big .live{margin-left:auto}
 
 .body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(450px,1fr);gap:14px;min-height:0}
-.rcol{display:grid;grid-template-rows:minmax(0,45fr) minmax(0,55fr);gap:14px;min-width:0;min-height:0}
+.rcol{display:grid;grid-template-rows:minmax(0,50fr) minmax(0,50fr);gap:14px;min-width:0;min-height:0}
 .lcol{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:14px;min-height:0}
 .mapc{padding:14px 16px;display:flex;flex-direction:column;min-height:0;overflow:hidden}
 .ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -231,9 +244,17 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .mapwrap path.dots{fill:url(#dots);stroke:none;pointer-events:none}
 .mapwrap .route{fill:none;stroke:var(--soil);stroke-linecap:round;opacity:.55}
 .mapwrap .route.go{stroke:var(--g);opacity:1}
+.mapwrap .route.full:not(.go){stroke:var(--g);opacity:.85;stroke-dasharray:none}
+.mapwrap.farmsel .route:not(.sel){opacity:.18}
+.mapwrap.farmsel .route.sel{stroke:var(--g);opacity:1}
+.farm-tag .ship{font-size:12px;font-weight:800;color:#fff;background:var(--g);border-radius:99px;padding:2px 7px;margin-left:2px}
+.farm-tag .ship:empty{display:none}
+.farm-tag.full{color:var(--deep);box-shadow:0 0 0 1.5px #6fcb8e,0 3px 8px -4px rgba(0,0,0,.3)}
+.farm-tag[aria-pressed="true"]{background:var(--deep);color:#fff;box-shadow:0 0 0 2px var(--deep)}
+.farm-tag:focus-visible{outline:2px solid var(--g);outline-offset:3px}
 .mapwrap .shop{fill:#fff;stroke:var(--g)}
 .dlab{position:absolute;transform:translate(-50%,-50%) scale(var(--mark-scale));font-size:12px;font-weight:700;color:#a9ab9c;white-space:nowrap;pointer-events:none;letter-spacing:-.2px}
-.farm-tag{position:absolute;z-index:2;transform:translate(-50%,-50%) scale(var(--mark-scale));display:inline-flex;align-items:center;gap:6px;padding:5px 10px 5px 5px;border-radius:99px;background:#fffdf7;box-shadow:0 0 0 1px var(--soil2),0 3px 8px -4px rgba(90,60,20,.35);font-size:13px;font-weight:800;color:var(--soil);white-space:nowrap;pointer-events:none;transition:box-shadow .3s,color .3s}
+.farm-tag{position:absolute;z-index:2;transform:translate(-50%,-50%) scale(var(--mark-scale));display:inline-flex;align-items:center;gap:6px;padding:5px 10px 5px 5px;border-radius:99px;background:#fffdf7;box-shadow:0 0 0 1px var(--soil2),0 3px 8px -4px rgba(90,60,20,.35);font-size:13px;font-weight:800;color:var(--soil);white-space:nowrap;cursor:pointer;font-family:inherit;transition:box-shadow .3s,color .3s,background .3s}
 .farm-tag img{width:24px;height:24px;border-radius:50%;background:#f4ecdc;padding:2px;display:block}
 .farm-tag.go{color:var(--deep);box-shadow:0 0 0 2px var(--g),0 3px 8px -4px rgba(0,0,0,.3)}
 .pin{position:absolute;z-index:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;transform:translate(-50%,-50%) scale(var(--mark-scale));transition:opacity .24s var(--ease)}
@@ -292,7 +313,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .feedc{padding:14px 0 0;display:flex;flex-direction:column;overflow:hidden;min-height:0}
 .feedc .ch{padding:0 16px;min-height:24px;margin-bottom:6px;gap:8px}
 .feed-note{color:var(--sub);font-size:12px;font-weight:700;white-space:nowrap}
-.fh,.fr{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(130px,1.1fr) 40px 70px;column-gap:10px;align-items:center}
+.fh,.fr{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,1fr) 64px 58px;column-gap:10px;align-items:center}
 .fh{padding:0 14px 8px 17px;font-size:13.5px;font-weight:800;color:#636859;border-bottom:1px solid var(--line)}
 .fh>*,.fr>*{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fh .c4,.fr .c4{text-align:center}
@@ -310,6 +331,8 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .fr .c3 img{width:22px;height:22px;flex:none;display:block;user-select:none}
 .fr .c3 em{font-style:normal;overflow:hidden;text-overflow:ellipsis}
 .fr .c4{font-weight:800;color:var(--ink)}
+.fr .c4 i{font-style:normal;font-size:12px;padding:3px 7px;border-radius:7px;background:#efede6;color:#555a50}
+.fi.mine .fr .c4 i{background:rgba(255,255,255,.6)}
 .fr .c5{font-size:14px;font-weight:700;color:#666b60}
 .fi.mine .fr{border-left:6px solid var(--g);background:var(--mine);padding-inline-start:11px;color:var(--deep)}
 .fi.mine .fr>*{color:var(--deep)}
@@ -324,6 +347,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .stores .fr{padding:0 14px;animation:store-in 240ms ease-out both;animation-delay:calc(var(--i) * 30ms)}
 .stores .fr.mine{border-left-color:var(--g);background:var(--mine);color:var(--deep)}
 .stores .fr.mine .c1,.store-qty{color:var(--deep)}
+.stores .fr.sum-row{background:#faf8f3;border-top:1px solid var(--line)}
 .store-status{justify-self:end;background:var(--g2);color:var(--g);border-radius:7px;padding:3px 8px;font-size:12px;font-weight:800}
 
 /* bundle status */
@@ -362,6 +386,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
   <div class="phead">
    <span class="av"><img src="img/store.png" alt="" draggable="false"></span>
    <h2 id="meName"></h2><span class="chip" id="meArea"></span>
+   <img class="papp" src="img/logo.png" alt="소쿠리" draggable="false">
   </div>
   <div class="panes"><div class="track" id="track">
    <div class="pane farms show" id="p2">
@@ -505,6 +530,7 @@ const DAYS=['월','화','수','목','금'];
 const FARM_AT={on:[.15,.9],ch:[.8,.9],mu:[.86,.13]};
 const FARM_BEND={on:.18,ch:-.16,mu:-.2};
 const FARM_REGION={on:'무안',ch:'밀양',mu:'버섯 농가'};
+const FARM_PLACE={on:'전남 무안',ch:'경남 밀양',mu:'버섯 농가'};
 const SHOP_AT=[[-8,-4],[-13,3],[-5,8],[-3,-11],[4,11],[-17,-8],[-11,12],[7,-11],[-20,4]];
 const PREVIOUS_WEEKS=[6,8,9,12,11,15,16,19,21,24,27];
 const RETAIL_CHILI=10500;
@@ -642,7 +668,7 @@ function confetti(){
 }
 /* bundle cards */
 const fl=$('#flist');
-BUNDLES.forEach((b,k)=>{fl.insertAdjacentHTML('beforeend',`<div class="card fc stag" style="--i:${k}" role="button" tabindex="0"><div class="ft"><div class="tile">${pic(b.it)}</div><div class="fn"><b>${b.farm}</b><span>${IT[b.it].n} · ${IT[b.it].u}</span></div><span class="dds"><span class="dd">${b.day}요일 납품</span></span></div>
+BUNDLES.forEach((b,k)=>{fl.insertAdjacentHTML('beforeend',`<div class="card fc stag" style="--i:${k}" role="button" tabindex="0"><div class="fband fb-${b.it}"><span class="freg"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0C18.5 15.2 12 21 12 21z"/><circle cx="12" cy="10" r="2.3"/></svg>${FARM_PLACE[b.it]}</span><img src="img/${IT[b.it].f}" alt="" draggable="false"></div><div class="ft"><div class="tile">${pic(b.it)}</div><div class="fn"><b>${b.farm}</b><span>${IT[b.it].n} · ${IT[b.it].u}</span></div><span class="dds"><span class="dd">${b.day}요일 납품</span></span></div>
  <div class="pg"><span class="pv"><span class="roll pp"></span><span class="gl"> / ${b.goal}kg</span></span><small>${fmt(IT[b.it].p)}원/kg</small></div><div class="bw"><div class="bar"><i></i></div><span class="arw"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></div></div>`)});
 function pickFarm(k){
   if(busy||tab!==0||BUNDLES[k].cur>=BUNDLES[k].goal)return;const id=BUNDLES[k].it;
@@ -660,7 +686,7 @@ function renderFarms(){
 // The map uses one district boundary and three market buttons.
 const map=$('#map'),mw=$('#mapwrap'),mapbox=$('#mapbox'),mapAll=$('#mapAll');
 const AREAS=new Map([ME,...CANDS].map(area=>[area.id,area]));
-let mapBounds,view,selectedArea=null,pin;
+let mapBounds,view,selectedArea=null,selectedFarm=null,pin;
 const pins=new Map();
 function placeMarker(el,{x,y}){
   el.style.left=`${(x-view.x)/view.w*100}%`;
@@ -675,7 +701,7 @@ function renderMap(){
   mapBounds=$('.op',map).getBBox();
   GEO.forEach(([district],i)=>{if(district==='동대문구')return;const b=$$('path',map)[i].getBBox();
     const lab=document.createElement('span');lab.className='dlab';lab.textContent=district;lab._p={x:b.x+b.width/2,y:b.y+b.height/2};mw.appendChild(lab)});
-  BUNDLES.forEach(b=>{const t=document.createElement('span');t.className='farm-tag';t.dataset.it=b.it;t.innerHTML=`${pic(b.it)}${FARM_REGION[b.it]}`;mw.appendChild(t)});
+  BUNDLES.forEach(b=>{const t=document.createElement('button');t.type='button';t.className='farm-tag';t.dataset.it=b.it;t.setAttribute('aria-pressed','false');t.setAttribute('aria-label',`${b.farm} 출하`);t.innerHTML=`${pic(b.it)}${FARM_REGION[b.it]}<b class="ship"></b>`;mw.appendChild(t)});
   for(const area of AREAS.values()){
     const [u,v]=area.point;
     area.x=mapBounds.x+mapBounds.width*u;area.y=mapBounds.y+mapBounds.height*v;
@@ -714,19 +740,34 @@ function fitMap(){
     const mx=(ax+ME.x)/2,my=(ay+ME.y)/2,dx=ME.x-ax,dy=ME.y-ay,k=FARM_BEND[b.it];
     return `<path class="route" data-it="${b.it}" d="M${ax},${ay} Q${mx-dy*k},${my+dx*k} ${ME.x},${ME.y}" stroke-width="${2.2*u}" stroke-dasharray="${2*u} ${6*u}"/>`}).join('');
   $$('.farm-tag',mw).forEach(t=>{const [fx,fy]=FARM_AT[t.dataset.it];placeMarker(t,{x:view.x+w*fx,y:view.y+h*fy})});
+  markRoutes();
   pins.forEach((button,id)=>placeMarker(button,AREAS.get(id)));
   $$('.rip',mw).forEach(el=>placeMarker(el,ME));
   positionMap();
 }
+function clearFarm(){
+  selectedFarm=null;mw.classList.remove('farmsel');
+  $$('.farm-tag',mw).forEach(t=>t.setAttribute('aria-pressed','false'));markRoutes();
+}
+function setFarm(id){
+  if(selectedFarm===id){setArea(null);return}
+  if(selectedArea){selectedArea=null;mw.classList.remove('focused');pins.forEach(b=>b.setAttribute('aria-pressed','false'));positionMap();renderPurchaseArea()}
+  selectedFarm=id;mapAll.hidden=false;mw.classList.add('farmsel');
+  $$('.farm-tag',mw).forEach(t=>t.setAttribute('aria-pressed',String(t.dataset.it===id)));
+  markRoutes();renderAreaPanel();
+}
 function setArea(area){
-  if(selectedArea===area)return;
-  if(!area&&document.activeElement===mapAll)pins.get(selectedArea.id).focus({preventScroll:true});
+  if(selectedArea===area&&!selectedFarm)return;
+  const hadFarm=!!selectedFarm;if(hadFarm)clearFarm();
+  if(selectedArea===area){mapAll.hidden=true;renderAreaPanel();return}
+  if(!area&&document.activeElement===mapAll&&selectedArea)pins.get(selectedArea.id).focus({preventScroll:true});
   selectedArea=area;
   mapAll.hidden=!area;mw.classList.toggle('focused',!!area);
   pins.forEach((button,id)=>button.setAttribute('aria-pressed',String(id===area?.id)));
   positionMap();renderAreaPanel();renderPurchaseArea();
 }
 mapbox.addEventListener('click',e=>{
+  const ft=e.target.closest('.farm-tag');if(ft){setFarm(ft.dataset.it);return}
   const area=AREAS.get(e.target.closest('button[data-area]')?.dataset.area);
   setArea(area&&area!==selectedArea?area:null);
 });
@@ -737,6 +778,10 @@ mapAll.onclick=()=>setArea(null);
 function ripple(){
   const r=document.createElement('i');r.className='rip';placeMarker(r,ME);
   mw.appendChild(r);later(()=>r.remove(),1400);
+}
+function markRoutes(){
+  $$('.route',map).forEach(r=>{const b=BOF(r.dataset.it);r.classList.toggle('full',b.cur>=b.goal);r.classList.toggle('sel',r.dataset.it===selectedFarm)});
+  $$('.farm-tag',mw).forEach(t=>{const b=BOF(t.dataset.it),f=b.cur>=b.goal;t.classList.toggle('full',f);$('.ship',t).textContent=f?`${b.cur}kg 출하`:''});
 }
 function flowRoutes(ids){
   ids.forEach(id=>{const r=$(`.route[data-it="${id}"]`,map),t=$(`.farm-tag[data-it="${id}"]`,mw);if(!r)return;
@@ -753,28 +798,35 @@ function renderFund(){
     $('.bt i',r).style.width=Math.min(100,b.cur*100/b.goal)+'%';roll($('.vv',r),b.cur,n=>n+' / '+b.goal+'kg');
     $('.scn',r).textContent=`식당 ${b.stores.size}곳`;
     const full=b.cur>=b.goal;if(r._full!==full){r._full=full;r.classList.toggle('full',full)}});
+  markRoutes();
 }
 
 // order record table
 const feed=$('#feed'),feedHead=$('#feedHead'),feedTitle=$('#feedTitle'),stores=$('#stores'),RAF=new Set();
 function renderAreaPanel(){
-  const area=selectedArea,active=area===ME;
+  const area=selectedArea,active=area===ME,farm=selectedFarm&&BOF(selectedFarm),open=!!(area||farm);
   const title=document.createElement('span');title.className='feed-title-in';
-  title.textContent=area?`${area.area} ${active?'점포':'후보 점포'}`:'주문 기록';
+  title.textContent=farm?`${farm.farm} 출하`:area?`${area.area} ${active?'점포':'후보 점포'}`:'주문 기록';
   feedTitle.replaceChildren(title);
-  feed.hidden=feedHead.hidden=!!area;stores.hidden=!area;
-  if(!area){stores.replaceChildren();fitFeed();return}
+  feed.hidden=feedHead.hidden=open;stores.hidden=!open;
+  if(!open){stores.replaceChildren();fitFeed();return}
 
-  const headers=active?['점포','이번 주 주문량','주문 건수']:['점포','업종','상태'];
-  const rows=active?[ME.store,...ST].map(store=>{
-    const stats=S.storeOrders.get(store);
-    return [store,stats?`${fmt(stats.qty)}kg`:'-',`${stats?.count??0}건`];
-  }):area.stores.map(([store,type])=>[store,type,'후보']);
+  let headers,rows,qty=active||!!farm;
+  if(farm){
+    headers=['식당','주문량','납품'];
+    rows=[...farm.stores].sort((a,b)=>b[1]-a[1]).map(([store,q])=>[store,`${q}kg`,`${farm.day}요일`]);
+    rows.push(['합계',`${farm.cur} / ${farm.goal}kg`,farm.cur>=farm.goal?'발주 확정':'모집 중']);
+  }else if(active){
+    headers=['점포','이번 주 주문량','주문 건수'];
+    rows=[ME.store,...ST].map(store=>{const stats=S.storeOrders.get(store);return [store,stats?`${fmt(stats.qty)}kg`:'-',`${stats?.count??0}건`]});
+  }else{
+    headers=['점포','업종','상태'];rows=area.stores.map(([store,type])=>[store,type,'후보']);
+  }
   stores.innerHTML=`<div class="fh" role="row">${headers.map(h=>`<span role="columnheader">${h}</span>`).join('')}</div>`+
     `<div class="store-list" role="rowgroup" style="--store-count:${rows.length}">${rows.map(([store,value,status],i)=>
-      `<div class="fr${store===ME.store?' mine':''}" role="row" style="--i:${i}"><span class="c1" role="cell">${store}</span><span${active&&value!=='-'?' class="store-qty"':''} role="cell">${value}</span><span${active?'':' class="store-status"'} role="cell">${status}</span></div>`).join('')}</div>`;
+      `<div class="fr${store===ME.store?' mine':''}${farm&&i===rows.length-1?' sum-row':''}" role="row" style="--i:${i}"><span class="c1" role="cell">${store}</span><span${qty&&value!=='-'?' class="store-qty"':''} role="cell">${value}</span><span${qty&&!(farm&&i===rows.length-1)?'':' class="store-status"'} role="cell">${status}</span></div>`).join('')}</div>`;
 }
-const FEED_MAX=12;
+const FEED_MAX=16;
 /* rows that fit (max FEED_MAX) share the leftover height as padding */
 function fitFeed(){
   if(feed.hidden)return;
@@ -783,12 +835,12 @@ function fitFeed(){
   items.forEach(row=>row.classList.remove('cut'));
   let acc=0,n=0;
   for(let i=0;i<items.length&&i<FEED_MAX;i++){const fr=items[i].querySelector('.fr'),h=fr?fr.offsetHeight:44;if(acc+h>H+1)break;acc+=h;n++}
-  const fx=n?Math.max(0,Math.floor((H-acc)/n/2)):0;feed.style.setProperty('--fx',fx+'px');
+  const fx=n?Math.min(3,Math.max(0,Math.floor((H-acc)/n/2))):0;feed.style.setProperty('--fx',fx+'px');
   items.forEach((li,i)=>li.classList.toggle('cut',i>=n));
 }
 function addFeed(o,instant){
   const li=document.createElement('div');li.className='fi'+(o.mine?' mine':'');li.dataset.t=o.t||Date.now();
-  li.innerHTML=`<div><div class="fr"><span class="c1">${o.store}</span><span class="c3">${pic(o.item)}<em>${IT[o.item].n} ${o.qty}kg</em></span><span class="c4">${BOF(o.item).day}</span><span class="c5"></span></div></div>`;
+  li.innerHTML=`<div><div class="fr"><span class="c1">${o.store}</span><span class="c3">${pic(o.item)}<em>${IT[o.item].n} ${o.qty}kg</em></span><span class="c4"><i>${BOF(o.item).day}요일</i></span><span class="c5"></span></div></div>`;
   if(!o.mine&&pinned&&pinned.parentNode===feed)pinned.after(li);else feed.prepend(li);
   if(instant)li.classList.add('in');else{const f=requestAnimationFrame(()=>{RAF.delete(f);const f2=requestAnimationFrame(()=>{RAF.delete(f2);li.classList.add('in','hl')});RAF.add(f2)});RAF.add(f)}
   while(feed.children.length>24)feed.lastChild.remove();ftime();fitFeed();
