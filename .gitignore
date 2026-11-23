@@ -2,3 +2,4 @@
 .playwright-mcp/
 .round/
 .vercel
+.env*
