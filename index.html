@@ -109,9 +109,12 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:14px 12px 12px;margin-bottom:8px;transition:border-color .3s,background .3s,transform .3s var(--out),box-shadow .3s}
 .row.has{border-color:var(--g3);background:#f6fcf8}
 .row.has .tile{background:var(--g2);transform:rotate(-6deg) scale(1.05)}
-.row .inf{flex:1;min-width:0}
-.row .nm{font-size:17px;font-weight:700;white-space:nowrap}
-.row .pr{white-space:nowrap;font-size:14px;margin-top:3px;letter-spacing:-.2px}
+.row .inf{flex:1;min-width:0;overflow:hidden}
+.row .nm{font-size:17px;font-weight:800;white-space:nowrap}
+.row .fm{display:flex;align-items:center;gap:5px;margin-top:3px;font-size:12px;font-weight:700;color:var(--soil);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .fm .farm-chip{font-size:10.5px;padding:1px 5px}
+.row .pr{white-space:nowrap;font-size:14.5px;margin-top:4px;letter-spacing:-.2px;display:flex;align-items:baseline;gap:6px}
+.row .pr span{font-size:12px;color:var(--sub);font-weight:600}
 .row .pr b{font-weight:800}
 .row .sp{font-size:12px;color:var(--sub);font-weight:600;margin-top:3px;white-space:nowrap}
 .row .mp{flex-basis:100%;display:flex;align-items:center;gap:8px;margin-top:2px}
@@ -122,7 +125,15 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .mb .b1{background:var(--g)}
 .mt{flex:none;font-size:13px;font-weight:800;color:#666b60;white-space:nowrap}
 .mt b{color:var(--g);font-weight:800}
-.gathered{flex-basis:100%;margin-top:-4px;color:var(--sub);font-size:11.5px;font-weight:700}
+.row .ft{flex-basis:100%;display:flex;align-items:center;gap:7px;margin-top:-2px;font-size:12.5px;font-weight:700;color:var(--sub);white-space:nowrap}
+.row .ft .msg{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.row .ft .msg b{color:var(--ink);font-weight:800}
+.row .ft .dl2{flex:none;font-size:11.5px;color:#8a8d80}
+.stt{flex:none;font-size:11.5px;font-weight:800;padding:3px 7px;border-radius:7px}
+.stt.wait{color:#666b60;background:#efede6}
+.stt.near{color:var(--deep);background:var(--g2)}
+.stt.hot{color:#fff;background:#d9622b}
+.stt.ok{color:#fff;background:var(--g)}
 .step{display:flex;align-items:center;background:#efede6;border-radius:12px;padding:3px}
 .step button{width:28px;height:30px;border-radius:9px;font-size:18px;font-weight:700;display:grid;place-items:center;transition:background .2s,transform .15s var(--spring)}
 .step button:hover{background:#fff}
@@ -643,6 +654,8 @@ const CANDS=[
   ['냉면 급정거','냉면'],['떡볶이 급출발','분식'],['닭갈비 만석','닭갈비'],['짜장 개찰구','중식']]}
 ];
 const DAYS=['월','화','수','목','금'];
+/* demo day is Monday: orders close at 18:00 the day before delivery */
+const DEADLINE={화:'오늘 18시',수:'내일 18시',금:'목 18시'},TODAY_DEADLINE_DAY='화';
 /* farm tags sit at the map edge, roughly toward each farm; shop dots sit around the gate */
 const FARM_AT={on:[.15,.9],ch:[.8,.9],mu:[.86,.13]};
 const FARM_BEND={on:.18,ch:-.16,mu:-.2};
@@ -701,7 +714,7 @@ tabs.forEach((t,i)=>t.onclick=()=>{if(!busy)go(i)});
 $('.panes').addEventListener('scroll',e=>{if(e.target.scrollLeft)e.target.scrollLeft=0});
 /* order list */
 const ol=$('#olist');
-ITEMS.forEach((it,k)=>{ol.insertAdjacentHTML('beforeend',`<div class="card row" style="--d:${k*50}ms" data-id="${it.id}"><div class="tile">${pic(it.id)}</div><div class="inf"><div class="nm">${it.n}</div><div class="pr"><b>${fmt(it.p)}원/kg</b></div><div class="sp">${it.u}</div></div><div class="step"><button data-s="-1">−</button><span class="q"></span><button data-s="1">+</button></div><div class="mp"><span class="dd">${BOF(it.id).day}요일 납품</span><span class="mb"><i class="b0"></i><i class="b1"></i></span><span class="mt"></span></div><span class="gathered"></span></div>`)});
+ITEMS.forEach((it,k)=>{ol.insertAdjacentHTML('beforeend',`<div class="card row" style="--d:${k*50}ms" data-id="${it.id}"><div class="tile">${pic(it.id)}</div><div class="inf"><div class="nm">${it.n}</div><div class="fm"><i class="farm-chip">농가</i>${BOF(it.id).farm}</div><div class="pr"><b>${fmt(it.p)}원/kg</b><span>${it.u}</span></div></div><div class="step"><button data-s="-1">−</button><span class="q"></span><button data-s="1">+</button></div><div class="mp"><span class="mb"><i class="b0"></i><i class="b1"></i></span><span class="mt"></span></div><div class="ft"><span class="stt"></span><span class="msg"></span><span class="dl2">${DEADLINE[BOF(it.id).day]} 마감 · ${BOF(it.id).day} 납품</span></div></div>`)});
 $$('.row',ol).forEach(r=>{const id=r.dataset.id;$$('.step button',r).forEach(b=>b.onclick=()=>{if(busy||hp!==null)return;S.qty[id]=Math.max(0,Math.min(Math.max(0,BOF(id).goal-BOF(id).cur),S.qty[id]+b.dataset.s*IT[id].st));renderOrder()})});
 function renderOrder(){
   let p=0;
@@ -716,7 +729,11 @@ function renderMini(){
     const w0=Math.min(c,g)/g*100,w1=Math.min(q,Math.max(0,g-c))/g*100;
     $('.b0',r).style.width=w0+'%';$('.b1',r).style.width=w1+'%';
     const t=q>0?`${c} <b>+ ${q}</b> / ${g}kg`:`${c} / ${g}kg`;const mt=$('.mt',r);if(mt.innerHTML!==t)mt.innerHTML=t;
-    $('.gathered',r).textContent=`같은 날 주문 ${c}kg 모임`;
+    /* status chip and the one line that tells the owner what happens next */
+    const full=c>=g,remain=g-c-q,soon=b.day===TODAY_DEADLINE_DAY,st=$('.stt',r),msg=$('.msg',r);
+    const [cls,txt]=full?['ok','발주 확정']:soon?['hot','마감 임박']:(c+q)/g>=.8?['near','거의 다 모임']:['wait','모집 중'];
+    if(st.className!=='stt '+cls){st.className='stt '+cls;st.textContent=txt}
+    msg.innerHTML=full?`${b.day}요일에 받아요`:remain<=0?'<b>이 주문으로 확정</b>':`<b>${remain}kg</b> 더 모이면 확정`;
   });
 }
 
