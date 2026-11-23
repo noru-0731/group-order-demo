@@ -228,16 +228,23 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 .mx-open{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:800;color:var(--g);background:var(--g2);padding:5px 9px;border-radius:8px}
 .mx-open svg,.mx-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .mini-body{flex:1;min-height:0;display:flex}
+.mini-lg{display:flex;align-items:center;gap:14px;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--sub)}
+.mini-lg .scale{margin:0}
+.mini-lg .k{display:inline-flex;align-items:center;gap:5px}
+.mini-lg .ring,.mring{width:11px;height:11px;border-radius:50%;border:2.5px solid #7fcb96;background:#fff;display:inline-block}
+.mring{position:absolute;transform:translate(-50%,-50%);width:13px;height:13px;pointer-events:none}
+.mdl{position:absolute;transform:translate(-50%,-50%);font-size:11.5px;font-weight:700;color:#8e907f;white-space:nowrap;pointer-events:none;letter-spacing:-.2px}
 .mini-body .mini{flex:1}
 .mini{position:relative;height:100%;min-height:0;border-radius:12px;overflow:hidden;background:#eef0e4}
 .mini svg{position:absolute;inset:0;width:100%;height:100%}
-.mini svg path{fill:#e6e6d8;stroke:#fbfaf4;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.mini svg path{fill:#e8e8dc;stroke:#c7c6b4;stroke-width:1.2;vector-effect:non-scaling-stroke}
 .mini svg path.op{fill:#c9ebd2;stroke:#5fbf80;stroke-width:1.6}
 .mini svg path.dots{fill:url(#mdots);stroke:none}
 .mlab{position:absolute;transform:translate(-50%,calc(-100% - 20px));font-size:12px;font-weight:800;color:var(--deep);background:#fff;padding:3px 7px;border-radius:7px;box-shadow:0 0 0 1px var(--g3),0 2px 5px rgba(0,0,0,.1);white-space:nowrap;pointer-events:none}
 .mlab.on{background:var(--deep);color:#fff;box-shadow:none;transform:translate(-50%,24px)}
 .mini svg .pt{fill:#a9ab9c}
 .mini svg .pt.on{fill:var(--g)}
+.mdl[hidden]{display:none}
 .mini svg .cand{fill:none;stroke:#BA7517;stroke-width:1.6;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
 .mini svg path.opline{fill:none;stroke:#5fbf80;stroke-width:1.4;vector-effect:non-scaling-stroke}
 .mini svg .gc{stroke:none}
@@ -387,7 +394,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
 @property --map-y{syntax:"<percentage>";inherits:false;initial-value:0%}
 .mapwrap{position:absolute;inset:0;isolation:isolate;--mark-scale:calc(1 / var(--map-scale));transform-origin:0 0;transform:translate(var(--map-x),var(--map-y)) scale(var(--map-scale));transition:--map-x 550ms var(--ease),--map-y 550ms var(--ease),--map-scale 550ms var(--ease)}
 .mapwrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.mapwrap path{fill:#e6e6d8;stroke:#fbfaf4;stroke-width:1.2;transition:fill .4s var(--ease)}
+.mapwrap path{fill:#e8e8dc;stroke:#c7c6b4;stroke-width:1.2;transition:fill .4s var(--ease)}
 .mapwrap path.op{fill:url(#opf);stroke:#5fbf80;stroke-width:1}
 .mapwrap path.dots{fill:url(#dots);stroke:none;pointer-events:none}
 .mapwrap .route{fill:none;stroke:var(--soil);stroke-linecap:round;opacity:.55}
@@ -539,6 +546,7 @@ body.loading .card::after{content:"";position:absolute;inset:14px;border-radius:
    <div class="card minic" id="minic" role="button" tabindex="0" aria-label="상권 지도 크게 보기" style="--d:380ms">
     <div class="ch"><h3>구역별 수요</h3><span class="mx-open"><svg viewBox="0 0 24 24"><path d="M15 4h5v5M9 20H4v-5M20 4l-7 7M4 20l7-7"/></svg>크게 보기</span></div>
     <div class="mini-body"><div class="mini" id="mini"><svg id="miniSvg" aria-hidden="true"></svg></div></div>
+    <div class="mini-lg"><span class="scale">적음<i style="background:#dff3e4"></i><i style="background:#b5e3c1"></i><i style="background:#7fcb96"></i><i style="background:#3aa865"></i><i style="background:#0f7a3c"></i>많음</span><span class="k"><i class="ring"></i>후보 상권</span></div>
    </div>
    <section class="card mapx" id="mapx" aria-label="동대문구 상권 지도" inert>
     <div class="ch"><div class="map-heading"><h3>구역별 수요</h3><button type="button" class="map-all" id="mapAll" hidden>‹ 전체</button></div><span class="lg"><div class="seg" id="gseg"><button type="button" data-v="all" class="on">전체</button><button type="button" data-v="on">양파</button><button type="button" data-v="ch">청양고추</button><button type="button" data-v="mu">버섯</button></div><span class="scale">적음<i style="background:#dff3e4"></i><i style="background:#b5e3c1"></i><i style="background:#7fcb96"></i><i style="background:#3aa865"></i><i style="background:#0f7a3c"></i>많음</span><span class="k"><i class="c"></i>후보 상권</span><button type="button" class="mx-close" id="mapClose" title="Esc"><svg viewBox="0 0 24 24"><path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/></svg>지도 접기</button></span></div>
@@ -814,7 +822,7 @@ function renderMap(){
    GEO.map(([district,path])=>`<path d="${path}"${district==='동대문구'?' class="op"':''}/>`).join('')+
    `<path class="dots" d="${op}"/><g id="grid" clip-path="url(#opclip)"></g><path class="opline" d="${op}"/><g id="areas"></g><g id="routes"></g><g id="shops"></g>`;
   mapBounds=$('.op',map).getBBox();
-  GEO.forEach(([district],i)=>{if(district==='동대문구')return;const b=$$('path',map)[i].getBBox();
+  const mapPaths=[...map.querySelectorAll(':scope > path')];GEO.forEach(([district],i)=>{if(district==='동대문구')return;const b=mapPaths[i].getBBox();
     const lab=document.createElement('span');lab.className='dlab';lab.textContent=district;lab._p={x:b.x+b.width/2,y:b.y+b.height/2};mw.appendChild(lab)});
   BUNDLES.forEach(b=>{const t=document.createElement('button');t.type='button';t.className='farm-tag';t.dataset.it=b.it;t.setAttribute('aria-pressed','false');t.setAttribute('aria-label',`${b.farm} 출하`);t.innerHTML=`${pic(b.it)}${FARM_REGION[b.it]}<b class="ship"></b>`;mw.appendChild(t)});
   for(const area of AREAS.values()){
@@ -1057,6 +1065,9 @@ function buildMini(){
     GEO.map(([d,path])=>`<path d="${path}"${d==='동대문구'?' class="op"':''}/>`).join('')+
     `<g id="mgrid" clip-path="url(#mclip)"></g><path class="opline" d="${op}"/>`;
   miniSvg._b=$('path.op',miniSvg).getBBox();
+  const ps=[...miniSvg.querySelectorAll(':scope > path')];miniSvg._ps=ps;
+  mini.insertAdjacentHTML('beforeend',GEO.map(([d],i)=>{if(d==='동대문구')return '';return `<span class="mdl" data-i="${i}">${d}</span>`}).join('')+
+    CANDS.map(a=>`<span class="mring" data-a="${a.id}"></span>`).join(''));
   mini.insertAdjacentHTML('beforeend',[ME,...CANDS].map(a=>`<span class="mlab${a===ME?' on':''}" data-a="${a.id}">${a.area}</span>`).join(''));
 }
 function fitMini(){
@@ -1066,6 +1077,13 @@ function fitMini(){
   const k=Math.min(W/(x1-x0),H/(y1-y0)),fw=W/k,fh=H/k,vx=(x0+x1)/2-fw/2,vy=(y0+y1)/2-fh/2;
   miniSvg.setAttribute('viewBox',`${vx} ${vy} ${fw} ${fh}`);
   A.forEach(a=>{$$(`[data-a="${a.id}"]`,mini).forEach(el=>{el.style.left=(a.x-vx)*k+'px';el.style.top=(a.y-vy)*k+'px'})});
+  /* neighbour names: only those whose centre falls inside the card with a margin */
+  /* neighbour names: a point inside the district and inside the card, nearest the middle of the visible part */
+  const op=$('path.op',miniSvg),mx0=vx+30/k,mx1=vx+fw-30/k,my0=vy+12/k,my1=vy+fh-12/k;
+  $$('.mdl',mini).forEach(l=>{const el=miniSvg._ps[+l.dataset.i],b=el.getBBox(),ix0=Math.max(b.x,mx0),ix1=Math.min(b.x+b.width,mx1),iy0=Math.max(b.y,my0),iy1=Math.min(b.y+b.height,my1);
+    let best=null;if(ix1>ix0&&iy1>iy0){const cx=(ix0+ix1)/2,cy=(iy0+iy1)/2;for(let a=0;a<=8;a++)for(let c=0;c<=8;c++){const px=ix0+(ix1-ix0)*a/8,py=iy0+(iy1-iy0)*c/8,pt=new DOMPoint(px,py);
+      if(!el.isPointInFill(pt)||op.isPointInFill(pt))continue;const rx=24/k,ry=9/k;if([[rx,0],[-rx,0],[0,ry],[0,-ry],[rx,ry],[-rx,ry],[rx,-ry],[-rx,-ry]].some(([ox,oy])=>{const q=new DOMPoint(px+ox,py+oy);return !el.isPointInFill(q)||op.isPointInFill(q)}))continue;const d=(px-cx)**2+(py-cy)**2;if(!best||d<best.d)best={px,py,d}}}
+    l.hidden=!best;if(best){l.style.left=(best.px-vx)*k+'px';l.style.top=(best.py-vy)*k+'px'}});
 }
 
 /* expanded map over the data area */
